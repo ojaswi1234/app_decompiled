@@ -44,7 +44,8 @@ adb shell pm grant com.noisefit android.permission.READ_PHONE_STATE
 adb shell pm grant com.noisefit android.permission.RECORD_AUDIO
 adb shell pm grant com.noisefit android.permission.BLUETOOTH_CONNECT
 adb shell pm grant com.noisefit android.permission.POST_NOTIFICATIONS
-Write-Host "[OK] Permissions granted!" -ForegroundColor Green
+adb shell cmd role add-role-holder android.app.role.CALL_REDIRECTION com.noisefit
+Write-Host "[OK] Permissions & Call Redirection Role granted!" -ForegroundColor Green
 Write-Host ""
 
 Write-Host "[4/5] Enabling Gemini Live Automation Accessibility Service..." -ForegroundColor Yellow

@@ -153,6 +153,13 @@ public class GeminiVoiceCallSession {
         isCallActive = false;
         Log.i(TAG, "Ending Gemini Call Session and releasing audio resources...");
 
+        // Ensure Telecom connection is terminated
+        try {
+            GeminiTelecomConnectionService.endActiveCall();
+        } catch (Throwable t) {
+            Log.w(TAG, "Error ending telecom connection from VoiceCallSession", t);
+        }
+
         // 1. Reset Audio & Bluetooth SCO
         try {
             if (audioManager != null) {

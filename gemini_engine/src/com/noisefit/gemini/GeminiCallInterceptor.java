@@ -43,6 +43,9 @@ public class GeminiCallInterceptor {
         Log.i(TAG, "Target Contact Name: " + TRIGGER_NAME);
         Log.i(TAG, "==========================================================");
 
+        // Save application context for accessibility automation
+        GeminiAccessibilityService.setSavedContext(appContext);
+
         // Register Telecom PhoneAccount early
         GeminiTelecomConnectionService.registerPhoneAccount(appContext);
 
@@ -249,11 +252,14 @@ public class GeminiCallInterceptor {
         }
     }
 
-    private static void triggerGeminiSession(final Context context, final String number) {
+    public static void triggerGeminiSession(final Context context, final String number) {
         final Context app = context.getApplicationContext();
         sMainHandler.post(new Runnable() {
             @Override
             public void run() {
+                // Clean up any stale telecom connection first
+                GeminiTelecomConnectionService.endActiveCall();
+
                 // 1. Establish Telecom Connection to keep smartwatch in CALL ACTIVE state with timer & controls
                 GeminiTelecomConnectionService.startGeminiLiveCall(app, "Gemini", number);
 
@@ -261,9 +267,28 @@ public class GeminiCallInterceptor {
                 GeminiVoiceCallSession.getInstance().startCall(app, number);
 
                 // 3. Request Accessibility Service to gesture-click Open Gemini Live
-                GeminiAccessibilityService.requestLiveSessionStart();
+                GeminiAccessibilityService.requestLiveSessionStart(app);
 
                 // 4. Wake screen and bring up official installed Google Gemini App
+                launchOfficialGeminiApp(app);
+            }
+        });
+    }
+
+    public static void onOutgoingGeminiCall(final Context context, final String number) {
+        final Context app = context.getApplicationContext();
+        sMainHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                Log.i(TAG, ">>> onOutgoingGeminiCall: Starting SCO Audio & Gemini Live Automation <<<");
+
+                // 1. Start Bluetooth SCO Audio Routing to lock watch mic & speaker
+                GeminiVoiceCallSession.getInstance().startCall(app, number);
+
+                // 2. Request Accessibility Service to gesture-click Open Gemini Live
+                GeminiAccessibilityService.requestLiveSessionStart(app);
+
+                // 3. Wake screen and bring up official installed Google Gemini App
                 launchOfficialGeminiApp(app);
             }
         });
@@ -327,6 +352,9 @@ public class GeminiCallInterceptor {
             GeminiTelecomConnectionService.endActiveCall();
             GeminiAccessibilityService.requestLiveSessionEnd();
             GeminiVoiceCallSession.getInstance().endCall();
+        } else {
+            // Safety check: ensure Telecom connection is never lingering
+            GeminiTelecomConnectionService.endActiveCall();
         }
     }
 }

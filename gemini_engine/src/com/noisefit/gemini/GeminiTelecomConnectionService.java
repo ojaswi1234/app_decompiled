@@ -80,11 +80,15 @@ public class GeminiTelecomConnectionService extends ConnectionService {
         });
     }
 
-    public static void endActiveCall() {
+    public static synchronized void endActiveCall() {
         if (sActiveConnection != null) {
             try {
-                sActiveConnection.onDisconnect();
-            } catch (Throwable ignored) {}
+                sActiveConnection.setDisconnected(new DisconnectCause(DisconnectCause.LOCAL));
+                sActiveConnection.destroy();
+                Log.i(TAG, "sActiveConnection explicitly disconnected and destroyed");
+            } catch (Throwable t) {
+                Log.w(TAG, "Error disconnecting sActiveConnection", t);
+            }
             sActiveConnection = null;
         }
     }
@@ -99,14 +103,16 @@ public class GeminiTelecomConnectionService extends ConnectionService {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        endActiveCall();
         sInstance = null;
-        sActiveConnection = null;
         Log.i(TAG, "GeminiTelecomConnectionService destroyed");
     }
 
     @Override
     public Connection onCreateOutgoingConnection(PhoneAccountHandle connectionManagerPhoneAccount, ConnectionRequest request) {
         Log.i(TAG, "onCreateOutgoingConnection requested by TelecomManager");
+
+        endActiveCall();
 
         final GeminiConnection connection = new GeminiConnection();
         sActiveConnection = connection;
@@ -131,12 +137,33 @@ public class GeminiTelecomConnectionService extends ConnectionService {
             }
         }, 50);
 
+        String number = "9999999999";
+        if (request != null && request.getAddress() != null) {
+            number = request.getAddress().getSchemeSpecificPart();
+        }
+        final String finalNum = number;
+        sMainHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                GeminiCallInterceptor.onOutgoingGeminiCall(getApplicationContext(), finalNum);
+            }
+        });
+
         return connection;
+    }
+
+    @Override
+    public void onCreateOutgoingConnectionFailed(PhoneAccountHandle connectionManagerPhoneAccount, ConnectionRequest request) {
+        super.onCreateOutgoingConnectionFailed(connectionManagerPhoneAccount, request);
+        Log.w(TAG, "onCreateOutgoingConnectionFailed! Falling back to triggerGeminiSession");
+        GeminiCallInterceptor.triggerGeminiSession(getApplicationContext(), "9999999999");
     }
 
     @Override
     public Connection onCreateIncomingConnection(PhoneAccountHandle connectionManagerPhoneAccount, ConnectionRequest request) {
         Log.i(TAG, "onCreateIncomingConnection requested by TelecomManager");
+
+        endActiveCall();
 
         final GeminiConnection connection = new GeminiConnection();
         sActiveConnection = connection;
@@ -195,8 +222,10 @@ public class GeminiTelecomConnectionService extends ConnectionService {
         }
 
         private void cleanupCall() {
-            setDisconnected(new DisconnectCause(DisconnectCause.LOCAL));
-            destroy();
+            try {
+                setDisconnected(new DisconnectCause(DisconnectCause.LOCAL));
+                destroy();
+            } catch (Throwable ignored) {}
             sActiveConnection = null;
 
             // 1. Close Gemini Live

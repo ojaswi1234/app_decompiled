@@ -1,0 +1,148 @@
+.class final Lcom/moengage/inapp/internal/ViewHandler$autoDismissInAppIfRequired$2;
+.super Lkotlin/jvm/internal/Lambda;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function0;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/moengage/inapp/internal/ViewHandler;->autoDismissInAppIfRequired(Landroid/widget/FrameLayout;Lcom/moengage/inapp/internal/model/CampaignPayload;Landroid/view/View;Landroid/app/Activity;)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lkotlin/jvm/internal/Lambda;",
+        "Lkotlin/jvm/functions/Function0<",
+        "Ljava/lang/String;",
+        ">;"
+    }
+.end annotation
+
+
+# instance fields
+.field final synthetic $activity:Landroid/app/Activity;
+
+.field final synthetic this$0:Lcom/moengage/inapp/internal/ViewHandler;
+
+
+# direct methods
+.method public constructor <init>(Lcom/moengage/inapp/internal/ViewHandler;Landroid/app/Activity;)V
+    .registers 3
+
+    iput-object p1, p0, Lcom/moengage/inapp/internal/ViewHandler$autoDismissInAppIfRequired$2;->this$0:Lcom/moengage/inapp/internal/ViewHandler;
+
+    iput-object p2, p0, Lcom/moengage/inapp/internal/ViewHandler$autoDismissInAppIfRequired$2;->$activity:Landroid/app/Activity;
+
+    const/4 p1, 0x0
+
+    invoke-direct {p0, p1}, Lkotlin/jvm/internal/Lambda;-><init>(I)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public bridge synthetic invoke()Ljava/lang/Object;
+    .registers 2
+
+    .line 1
+    invoke-virtual {p0}, Lcom/moengage/inapp/internal/ViewHandler$autoDismissInAppIfRequired$2;->invoke()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public final invoke()Ljava/lang/String;
+    .registers 4
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    .line 2
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    iget-object v1, p0, Lcom/moengage/inapp/internal/ViewHandler$autoDismissInAppIfRequired$2;->this$0:Lcom/moengage/inapp/internal/ViewHandler;
+
+    # getter for: Lcom/moengage/inapp/internal/ViewHandler;->tag:Ljava/lang/String;
+    invoke-static {v1}, Lcom/moengage/inapp/internal/ViewHandler;->access$getTag$p(Lcom/moengage/inapp/internal/ViewHandler;)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v1, " autoDismissInAppIfRequired() : auto dismiss cache size for "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v1, p0, Lcom/moengage/inapp/internal/ViewHandler$autoDismissInAppIfRequired$2;->$activity:Landroid/app/Activity;
+
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/Class;->getName()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v1, " is "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v1, p0, Lcom/moengage/inapp/internal/ViewHandler$autoDismissInAppIfRequired$2;->this$0:Lcom/moengage/inapp/internal/ViewHandler;
+
+    # getter for: Lcom/moengage/inapp/internal/ViewHandler;->autoDismissCache:Ljava/util/Map;
+    invoke-static {v1}, Lcom/moengage/inapp/internal/ViewHandler;->access$getAutoDismissCache$p(Lcom/moengage/inapp/internal/ViewHandler;)Ljava/util/Map;
+
+    move-result-object v1
+
+    iget-object v2, p0, Lcom/moengage/inapp/internal/ViewHandler$autoDismissInAppIfRequired$2;->$activity:Landroid/app/Activity;
+
+    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/Class;->getName()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-interface {v1, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Ljava/util/Set;
+
+    if-eqz v1, :cond_46
+
+    invoke-interface {v1}, Ljava/util/Set;->size()I
+
+    move-result v1
+
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v1
+
+    goto :goto_47
+
+    :cond_46
+    const/4 v1, 0x0
+
+    :goto_47
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method

@@ -1,0 +1,316 @@
+.class public Lcom/moengage/datatype/MOEDatetime;
+.super Lcom/moengage/datatype/MOEDouble;
+.source "SourceFile"
+
+
+# instance fields
+.field private operator:Ljava/lang/String;
+
+.field private valueType:Ljava/lang/String;
+
+
+# direct methods
+.method public constructor <init>(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    .registers 4
+
+    invoke-direct {p0, p1}, Lcom/moengage/datatype/MOEDouble;-><init>(Ljava/lang/Object;)V
+
+    iput-object p2, p0, Lcom/moengage/datatype/MOEDatetime;->valueType:Ljava/lang/String;
+
+    iput-object p3, p0, Lcom/moengage/datatype/MOEDatetime;->operator:Ljava/lang/String;
+
+    return-void
+.end method
+
+.method private convertToFutureDate(JJ)Ljava/lang/Double;
+    .registers 5
+
+    add-long/2addr p1, p3
+
+    long-to-double p1, p1
+
+    invoke-static {p1, p2}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method private convertToPastDate(JJ)Ljava/lang/Double;
+    .registers 5
+
+    sub-long/2addr p1, p3
+
+    long-to-double p1, p1
+
+    invoke-static {p1, p2}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method private getCurrentTimeInMilli()J
+    .registers 4
+
+    invoke-static {}, Ljava/util/Calendar;->getInstance()Ljava/util/Calendar;
+
+    move-result-object v0
+
+    iget-object v1, p0, Lcom/moengage/datatype/MOEDatetime;->operator:Ljava/lang/String;
+
+    const-string v2, "inTheLast"
+
+    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_28
+
+    iget-object v1, p0, Lcom/moengage/datatype/MOEDatetime;->operator:Ljava/lang/String;
+
+    const-string v2, "inTheNext"
+
+    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_28
+
+    const/16 v1, 0xb
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v1, v2}, Ljava/util/Calendar;->set(II)V
+
+    const/16 v1, 0xc
+
+    invoke-virtual {v0, v1, v2}, Ljava/util/Calendar;->set(II)V
+
+    const/16 v1, 0xd
+
+    invoke-virtual {v0, v1, v2}, Ljava/util/Calendar;->set(II)V
+
+    :cond_28
+    invoke-virtual {v0}, Ljava/util/Calendar;->getTimeInMillis()J
+
+    move-result-wide v0
+
+    return-wide v0
+.end method
+
+.method private getDayInMilliseconds()J
+    .registers 3
+
+    const-wide/32 v0, 0x5265c00
+
+    return-wide v0
+.end method
+
+.method private getValueInMilliSeconds(J)J
+    .registers 5
+
+    invoke-direct {p0}, Lcom/moengage/datatype/MOEDatetime;->getDayInMilliseconds()J
+
+    move-result-wide v0
+
+    mul-long/2addr p1, v0
+
+    return-wide p1
+.end method
+
+
+# virtual methods
+.method public cast()Ljava/lang/Double;
+    .registers 3
+
+    .line 2
+    iget-object v0, p0, Lcom/moengage/datatype/MOEDouble;->value:Ljava/lang/Object;
+
+    if-nez v0, :cond_6
+
+    const/4 v0, 0x0
+
+    return-object v0
+
+    .line 3
+    :cond_6
+    :try_start_6
+    new-instance v0, Ljava/text/SimpleDateFormat;
+
+    const-string v1, "yyyy-MM-dd\'T\'HH:mm:ss"
+
+    invoke-direct {v0, v1}, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String;)V
+
+    .line 4
+    iget-object v1, p0, Lcom/moengage/datatype/MOEDouble;->value:Ljava/lang/Object;
+
+    invoke-virtual {v1}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/text/DateFormat;->parse(Ljava/lang/String;)Ljava/util/Date;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/util/Date;->getTime()J
+
+    move-result-wide v0
+
+    long-to-double v0, v0
+
+    invoke-static {v0, v1}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+
+    move-result-object v0
+    :try_end_20
+    .catch Ljava/text/ParseException; {:try_start_6 .. :try_end_20} :catch_21
+
+    return-object v0
+
+    .line 5
+    :catch_21
+    invoke-super {p0}, Lcom/moengage/datatype/MOEDouble;->cast()Ljava/lang/Double;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public bridge synthetic cast()Ljava/lang/Object;
+    .registers 2
+
+    .line 1
+    invoke-virtual {p0}, Lcom/moengage/datatype/MOEDatetime;->cast()Ljava/lang/Double;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getValue()Ljava/lang/Double;
+    .registers 7
+
+    .line 2
+    iget-object v0, p0, Lcom/moengage/datatype/MOEDatetime;->valueType:Ljava/lang/String;
+
+    const-string v1, "absolute"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_f
+
+    .line 3
+    invoke-virtual {p0}, Lcom/moengage/datatype/MOEDatetime;->cast()Ljava/lang/Double;
+
+    move-result-object v0
+
+    goto :goto_41
+
+    .line 4
+    :cond_f
+    invoke-direct {p0}, Lcom/moengage/datatype/MOEDatetime;->getCurrentTimeInMilli()J
+
+    move-result-wide v0
+
+    .line 5
+    iget-object v2, p0, Lcom/moengage/datatype/MOEDouble;->value:Ljava/lang/Object;
+
+    invoke-virtual {v2}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v2}, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
+
+    move-result-wide v2
+
+    .line 6
+    invoke-direct {p0, v2, v3}, Lcom/moengage/datatype/MOEDatetime;->getValueInMilliSeconds(J)J
+
+    move-result-wide v2
+
+    .line 7
+    iget-object v4, p0, Lcom/moengage/datatype/MOEDatetime;->valueType:Ljava/lang/String;
+
+    invoke-virtual {v4}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    const-string v5, "relative_future"
+
+    invoke-virtual {v4, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-nez v5, :cond_3d
+
+    const-string v5, "relative_past"
+
+    invoke-virtual {v4, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v4
+
+    if-nez v4, :cond_38
+
+    const/4 v0, 0x0
+
+    goto :goto_41
+
+    .line 8
+    :cond_38
+    invoke-direct {p0, v0, v1, v2, v3}, Lcom/moengage/datatype/MOEDatetime;->convertToPastDate(JJ)Ljava/lang/Double;
+
+    move-result-object v0
+
+    goto :goto_41
+
+    .line 9
+    :cond_3d
+    invoke-direct {p0, v0, v1, v2, v3}, Lcom/moengage/datatype/MOEDatetime;->convertToFutureDate(JJ)Ljava/lang/Double;
+
+    move-result-object v0
+
+    .line 10
+    :goto_41
+    iget-object v1, p0, Lcom/moengage/datatype/MOEDatetime;->operator:Ljava/lang/String;
+
+    const-string v2, "after"
+
+    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_5b
+
+    if-eqz v0, :cond_5b
+
+    .line 11
+    invoke-virtual {v0}, Ljava/lang/Double;->doubleValue()D
+
+    move-result-wide v0
+
+    invoke-direct {p0}, Lcom/moengage/datatype/MOEDatetime;->getDayInMilliseconds()J
+
+    move-result-wide v2
+
+    long-to-double v2, v2
+
+    add-double/2addr v0, v2
+
+    invoke-static {v0, v1}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+
+    move-result-object v0
+
+    :cond_5b
+    return-object v0
+.end method
+
+.method public bridge synthetic getValue()Ljava/lang/Object;
+    .registers 2
+
+    .line 1
+    invoke-virtual {p0}, Lcom/moengage/datatype/MOEDatetime;->getValue()Ljava/lang/Double;
+
+    move-result-object v0
+
+    return-object v0
+.end method

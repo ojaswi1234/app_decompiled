@@ -1,0 +1,182 @@
+.class public abstract Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# static fields
+.field public static final a:Ljava/util/WeakHashMap;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/WeakHashMap<",
+            "Landroid/view/View;",
+            "Lcom/nineoldandroids/view/ViewPropertyAnimator;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .registers 2
+
+    new-instance v0, Ljava/util/WeakHashMap;
+
+    const/4 v1, 0x0
+
+    invoke-direct {v0, v1}, Ljava/util/WeakHashMap;-><init>(I)V
+
+    sput-object v0, Lcom/nineoldandroids/view/ViewPropertyAnimator;->a:Ljava/util/WeakHashMap;
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method public static c(Landroid/view/View;)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+    .registers 4
+
+    sget-object v0, Lcom/nineoldandroids/view/ViewPropertyAnimator;->a:Ljava/util/WeakHashMap;
+
+    invoke-virtual {v0, p0}, Ljava/util/WeakHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Lcom/nineoldandroids/view/ViewPropertyAnimator;
+
+    if-nez v1, :cond_30
+
+    sget-object v1, Landroid/os/Build$VERSION;->SDK:Ljava/lang/String;
+
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(Ljava/lang/String;)Ljava/lang/Integer;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/Integer;->intValue()I
+
+    move-result v1
+
+    const/16 v2, 0xe
+
+    if-lt v1, v2, :cond_1e
+
+    new-instance v1, Lcom/nineoldandroids/view/ViewPropertyAnimatorICS;
+
+    invoke-direct {v1, p0}, Lcom/nineoldandroids/view/ViewPropertyAnimatorICS;-><init>(Landroid/view/View;)V
+
+    goto :goto_2d
+
+    :cond_1e
+    const/16 v2, 0xb
+
+    if-lt v1, v2, :cond_28
+
+    new-instance v1, Lcom/nineoldandroids/view/ViewPropertyAnimatorHC;
+
+    invoke-direct {v1, p0}, Lcom/nineoldandroids/view/ViewPropertyAnimatorHC;-><init>(Landroid/view/View;)V
+
+    goto :goto_2d
+
+    :cond_28
+    new-instance v1, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;
+
+    invoke-direct {v1, p0}, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;-><init>(Landroid/view/View;)V
+
+    :goto_2d
+    invoke-virtual {v0, p0, v1}, Ljava/util/WeakHashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    :cond_30
+    return-object v1
+.end method
+
+
+# virtual methods
+.method public abstract A(F)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract B(F)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract C(F)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract a(F)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract b(F)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract d()V
+.end method
+
+.method public abstract e()J
+.end method
+
+.method public abstract f()J
+.end method
+
+.method public abstract g(F)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract h(F)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract i(F)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract j(F)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract k(F)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract l(F)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract m(F)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract n(F)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract o(F)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract p(F)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract q(J)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract r(Landroid/view/animation/Interpolator;)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract s(Lcom/nineoldandroids/animation/Animator$AnimatorListener;)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract t(J)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract u()V
+.end method
+
+.method public abstract v(F)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract w(F)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract x(F)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract y(F)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method
+
+.method public abstract z(F)Lcom/nineoldandroids/view/ViewPropertyAnimator;
+.end method

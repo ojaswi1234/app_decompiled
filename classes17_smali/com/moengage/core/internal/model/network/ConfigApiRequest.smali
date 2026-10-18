@@ -1,0 +1,106 @@
+.class public final Lcom/moengage/core/internal/model/network/ConfigApiRequest;
+.super Lcom/moengage/core/internal/model/network/BaseRequest;
+.source "SourceFile"
+
+
+# instance fields
+.field private final baseRequest:Lcom/moengage/core/internal/model/network/BaseRequest;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+.field private final integrations:Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List<",
+            "Lcom/moengage/core/internal/model/IntegrationMeta;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+.field private final isEncryptionEnabled:Z
+
+
+# direct methods
+.method public constructor <init>(Lcom/moengage/core/internal/model/network/BaseRequest;ZLjava/util/List;)V
+    .registers 5
+    .param p1    # Lcom/moengage/core/internal/model/network/BaseRequest;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p3    # Ljava/util/List;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lcom/moengage/core/internal/model/network/BaseRequest;",
+            "Z",
+            "Ljava/util/List<",
+            "Lcom/moengage/core/internal/model/IntegrationMeta;",
+            ">;)V"
+        }
+    .end annotation
+
+    const-string v0, "baseRequest"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    const-string v0, "integrations"
+
+    invoke-static {p3, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-direct {p0, p1}, Lcom/moengage/core/internal/model/network/BaseRequest;-><init>(Lcom/moengage/core/internal/model/network/BaseRequest;)V
+
+    iput-object p1, p0, Lcom/moengage/core/internal/model/network/ConfigApiRequest;->baseRequest:Lcom/moengage/core/internal/model/network/BaseRequest;
+
+    iput-boolean p2, p0, Lcom/moengage/core/internal/model/network/ConfigApiRequest;->isEncryptionEnabled:Z
+
+    iput-object p3, p0, Lcom/moengage/core/internal/model/network/ConfigApiRequest;->integrations:Ljava/util/List;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final getBaseRequest()Lcom/moengage/core/internal/model/network/BaseRequest;
+    .registers 2
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/moengage/core/internal/model/network/ConfigApiRequest;->baseRequest:Lcom/moengage/core/internal/model/network/BaseRequest;
+
+    return-object v0
+.end method
+
+.method public final getIntegrations()Ljava/util/List;
+    .registers 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List<",
+            "Lcom/moengage/core/internal/model/IntegrationMeta;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/moengage/core/internal/model/network/ConfigApiRequest;->integrations:Ljava/util/List;
+
+    return-object v0
+.end method
+
+.method public final isEncryptionEnabled()Z
+    .registers 2
+
+    iget-boolean v0, p0, Lcom/moengage/core/internal/model/network/ConfigApiRequest;->isEncryptionEnabled:Z
+
+    return v0
+.end method

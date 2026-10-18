@@ -1,0 +1,137 @@
+.class public final Lcom/mapbox/maps/plugin/viewport/data/DefaultViewportTransitionOptions;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/mapbox/maps/plugin/viewport/data/DefaultViewportTransitionOptions$Builder;
+    }
+.end annotation
+
+
+# instance fields
+.field public final a:J
+
+
+# direct methods
+.method public constructor <init>(J)V
+    .registers 3
+
+    .line 2
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 3
+    iput-wide p1, p0, Lcom/mapbox/maps/plugin/viewport/data/DefaultViewportTransitionOptions;->a:J
+
+    return-void
+.end method
+
+.method public synthetic constructor <init>(JLkotlin/jvm/internal/DefaultConstructorMarker;)V
+    .registers 4
+
+    .line 1
+    invoke-direct {p0, p1, p2}, Lcom/mapbox/maps/plugin/viewport/data/DefaultViewportTransitionOptions;-><init>(J)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a()J
+    .registers 3
+
+    iget-wide v0, p0, Lcom/mapbox/maps/plugin/viewport/data/DefaultViewportTransitionOptions;->a:J
+
+    return-wide v0
+.end method
+
+.method public final b()Lcom/mapbox/maps/plugin/viewport/data/DefaultViewportTransitionOptions$Builder;
+    .registers 4
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    new-instance v0, Lcom/mapbox/maps/plugin/viewport/data/DefaultViewportTransitionOptions$Builder;
+
+    invoke-direct {v0}, Lcom/mapbox/maps/plugin/viewport/data/DefaultViewportTransitionOptions$Builder;-><init>()V
+
+    iget-wide v1, p0, Lcom/mapbox/maps/plugin/viewport/data/DefaultViewportTransitionOptions;->a:J
+
+    invoke-virtual {v0, v1, v2}, Lcom/mapbox/maps/plugin/viewport/data/DefaultViewportTransitionOptions$Builder;->b(J)Lcom/mapbox/maps/plugin/viewport/data/DefaultViewportTransitionOptions$Builder;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public equals(Ljava/lang/Object;)Z
+    .registers 6
+    .param p1    # Ljava/lang/Object;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+
+    instance-of v0, p1, Lcom/mapbox/maps/plugin/viewport/data/DefaultViewportTransitionOptions;
+
+    if-eqz v0, :cond_10
+
+    iget-wide v0, p0, Lcom/mapbox/maps/plugin/viewport/data/DefaultViewportTransitionOptions;->a:J
+
+    check-cast p1, Lcom/mapbox/maps/plugin/viewport/data/DefaultViewportTransitionOptions;
+
+    iget-wide v2, p1, Lcom/mapbox/maps/plugin/viewport/data/DefaultViewportTransitionOptions;->a:J
+
+    cmp-long p1, v0, v2
+
+    if-nez p1, :cond_10
+
+    const/4 p1, 0x1
+
+    return p1
+
+    :cond_10
+    const/4 p1, 0x0
+
+    return p1
+.end method
+
+.method public hashCode()I
+    .registers 3
+
+    iget-wide v0, p0, Lcom/mapbox/maps/plugin/viewport/data/DefaultViewportTransitionOptions;->a:J
+
+    invoke-static {v0, v1}, Ljava/lang/Long;->hashCode(J)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public toString()Ljava/lang/String;
+    .registers 4
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "DefaultViewportTransitionOptions(maxDurationMs="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-wide v1, p0, Lcom/mapbox/maps/plugin/viewport/data/DefaultViewportTransitionOptions;->a:J
+
+    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    const/16 v1, 0x29
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method

@@ -1,0 +1,265 @@
+.class Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$AnimatorEventListener;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lcom/nineoldandroids/animation/Animator$AnimatorListener;
+.implements Lcom/nineoldandroids/animation/ValueAnimator$AnimatorUpdateListener;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = "AnimatorEventListener"
+.end annotation
+
+
+# instance fields
+.field public final synthetic a:Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;
+
+
+# direct methods
+.method public constructor <init>(Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;)V
+    .registers 2
+
+    .line 1
+    iput-object p1, p0, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$AnimatorEventListener;->a:Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method public synthetic constructor <init>(Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$1;)V
+    .registers 3
+
+    .line 2
+    invoke-direct {p0, p1}, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$AnimatorEventListener;-><init>(Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public a(Lcom/nineoldandroids/animation/Animator;)V
+    .registers 3
+
+    iget-object v0, p0, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$AnimatorEventListener;->a:Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;
+
+    invoke-static {v0}, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;->E(Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;)Lcom/nineoldandroids/animation/Animator$AnimatorListener;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_11
+
+    iget-object v0, p0, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$AnimatorEventListener;->a:Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;
+
+    invoke-static {v0}, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;->E(Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;)Lcom/nineoldandroids/animation/Animator$AnimatorListener;
+
+    move-result-object v0
+
+    invoke-interface {v0, p1}, Lcom/nineoldandroids/animation/Animator$AnimatorListener;->a(Lcom/nineoldandroids/animation/Animator;)V
+
+    :cond_11
+    iget-object v0, p0, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$AnimatorEventListener;->a:Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;
+
+    invoke-static {v0}, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;->G(Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;)Ljava/util/HashMap;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p1}, Ljava/util/HashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+
+    iget-object p1, p0, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$AnimatorEventListener;->a:Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;
+
+    invoke-static {p1}, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;->G(Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;)Ljava/util/HashMap;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/util/HashMap;->isEmpty()Z
+
+    move-result p1
+
+    if-eqz p1, :cond_2c
+
+    iget-object p1, p0, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$AnimatorEventListener;->a:Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;
+
+    const/4 v0, 0x0
+
+    invoke-static {p1, v0}, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;->F(Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;Lcom/nineoldandroids/animation/Animator$AnimatorListener;)Lcom/nineoldandroids/animation/Animator$AnimatorListener;
+
+    :cond_2c
+    return-void
+.end method
+
+.method public b(Lcom/nineoldandroids/animation/Animator;)V
+    .registers 3
+
+    iget-object v0, p0, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$AnimatorEventListener;->a:Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;
+
+    invoke-static {v0}, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;->E(Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;)Lcom/nineoldandroids/animation/Animator$AnimatorListener;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_11
+
+    iget-object v0, p0, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$AnimatorEventListener;->a:Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;
+
+    invoke-static {v0}, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;->E(Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;)Lcom/nineoldandroids/animation/Animator$AnimatorListener;
+
+    move-result-object v0
+
+    invoke-interface {v0, p1}, Lcom/nineoldandroids/animation/Animator$AnimatorListener;->b(Lcom/nineoldandroids/animation/Animator;)V
+
+    :cond_11
+    return-void
+.end method
+
+.method public c(Lcom/nineoldandroids/animation/Animator;)V
+    .registers 3
+
+    iget-object v0, p0, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$AnimatorEventListener;->a:Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;
+
+    invoke-static {v0}, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;->E(Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;)Lcom/nineoldandroids/animation/Animator$AnimatorListener;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_11
+
+    iget-object v0, p0, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$AnimatorEventListener;->a:Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;
+
+    invoke-static {v0}, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;->E(Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;)Lcom/nineoldandroids/animation/Animator$AnimatorListener;
+
+    move-result-object v0
+
+    invoke-interface {v0, p1}, Lcom/nineoldandroids/animation/Animator$AnimatorListener;->c(Lcom/nineoldandroids/animation/Animator;)V
+
+    :cond_11
+    return-void
+.end method
+
+.method public d(Lcom/nineoldandroids/animation/ValueAnimator;)V
+    .registers 8
+
+    invoke-virtual {p1}, Lcom/nineoldandroids/animation/ValueAnimator;->L()F
+
+    move-result v0
+
+    iget-object v1, p0, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$AnimatorEventListener;->a:Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;
+
+    invoke-static {v1}, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;->G(Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;)Ljava/util/HashMap;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object p1
+
+    check-cast p1, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$PropertyBundle;
+
+    iget v1, p1, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$PropertyBundle;->a:I
+
+    and-int/lit16 v1, v1, 0x1ff
+
+    if-eqz v1, :cond_27
+
+    iget-object v1, p0, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$AnimatorEventListener;->a:Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;
+
+    invoke-static {v1}, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;->H(Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;)Ljava/lang/ref/WeakReference;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Landroid/view/View;
+
+    if-eqz v1, :cond_27
+
+    invoke-virtual {v1}, Landroid/view/View;->invalidate()V
+
+    :cond_27
+    iget-object p1, p1, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$PropertyBundle;->b:Ljava/util/ArrayList;
+
+    if-eqz p1, :cond_48
+
+    invoke-virtual {p1}, Ljava/util/ArrayList;->size()I
+
+    move-result v1
+
+    const/4 v2, 0x0
+
+    :goto_30
+    if-ge v2, v1, :cond_48
+
+    invoke-virtual {p1, v2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$NameValuesHolder;
+
+    iget v4, v3, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$NameValuesHolder;->b:F
+
+    iget v5, v3, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$NameValuesHolder;->c:F
+
+    mul-float/2addr v5, v0
+
+    add-float/2addr v4, v5
+
+    iget-object v5, p0, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$AnimatorEventListener;->a:Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;
+
+    iget v3, v3, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$NameValuesHolder;->a:I
+
+    invoke-static {v5, v3, v4}, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;->I(Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;IF)V
+
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_30
+
+    :cond_48
+    iget-object p1, p0, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$AnimatorEventListener;->a:Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;
+
+    invoke-static {p1}, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;->H(Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;)Ljava/lang/ref/WeakReference;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+
+    move-result-object p1
+
+    check-cast p1, Landroid/view/View;
+
+    if-eqz p1, :cond_59
+
+    invoke-virtual {p1}, Landroid/view/View;->invalidate()V
+
+    :cond_59
+    return-void
+.end method
+
+.method public e(Lcom/nineoldandroids/animation/Animator;)V
+    .registers 3
+
+    iget-object v0, p0, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$AnimatorEventListener;->a:Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;
+
+    invoke-static {v0}, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;->E(Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;)Lcom/nineoldandroids/animation/Animator$AnimatorListener;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_11
+
+    iget-object v0, p0, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC$AnimatorEventListener;->a:Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;
+
+    invoke-static {v0}, Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;->E(Lcom/nineoldandroids/view/ViewPropertyAnimatorPreHC;)Lcom/nineoldandroids/animation/Animator$AnimatorListener;
+
+    move-result-object v0
+
+    invoke-interface {v0, p1}, Lcom/nineoldandroids/animation/Animator$AnimatorListener;->e(Lcom/nineoldandroids/animation/Animator;)V
+
+    :cond_11
+    return-void
+.end method

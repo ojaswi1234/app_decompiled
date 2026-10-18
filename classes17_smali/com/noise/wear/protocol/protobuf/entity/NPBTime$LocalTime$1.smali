@@ -1,0 +1,68 @@
+.class Lcom/noise/wear/protocol/protobuf/entity/NPBTime$LocalTime$1;
+.super Lcom/google/protobuf/AbstractParser;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/noise/wear/protocol/protobuf/entity/NPBTime$LocalTime;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lcom/google/protobuf/AbstractParser<",
+        "Lcom/noise/wear/protocol/protobuf/entity/NPBTime$LocalTime;",
+        ">;"
+    }
+.end annotation
+
+
+# direct methods
+.method public constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Lcom/google/protobuf/AbstractParser;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public parsePartialFrom(Lcom/google/protobuf/CodedInputStream;Lcom/google/protobuf/ExtensionRegistryLite;)Lcom/noise/wear/protocol/protobuf/entity/NPBTime$LocalTime;
+    .registers 5
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcom/google/protobuf/InvalidProtocolBufferException;
+        }
+    .end annotation
+
+    .line 2
+    new-instance v0, Lcom/noise/wear/protocol/protobuf/entity/NPBTime$LocalTime;
+
+    const/4 v1, 0x0
+
+    invoke-direct {v0, p1, p2, v1}, Lcom/noise/wear/protocol/protobuf/entity/NPBTime$LocalTime;-><init>(Lcom/google/protobuf/CodedInputStream;Lcom/google/protobuf/ExtensionRegistryLite;Lcom/noise/wear/protocol/protobuf/entity/NPBTime$1;)V
+
+    return-object v0
+.end method
+
+.method public bridge synthetic parsePartialFrom(Lcom/google/protobuf/CodedInputStream;Lcom/google/protobuf/ExtensionRegistryLite;)Ljava/lang/Object;
+    .registers 3
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcom/google/protobuf/InvalidProtocolBufferException;
+        }
+    .end annotation
+
+    .line 1
+    invoke-virtual {p0, p1, p2}, Lcom/noise/wear/protocol/protobuf/entity/NPBTime$LocalTime$1;->parsePartialFrom(Lcom/google/protobuf/CodedInputStream;Lcom/google/protobuf/ExtensionRegistryLite;)Lcom/noise/wear/protocol/protobuf/entity/NPBTime$LocalTime;
+
+    move-result-object p1
+
+    return-object p1
+.end method

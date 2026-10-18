@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NoiseFit — We didn't catch last night</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+
+    @property --t {
+      syntax: '<number>';
+      inherits: true;
+      initial-value: 0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; }
+
+    /* ── Screen fills the full viewport ── */
+    .nf-screen {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      isolation: isolate;
+      font-family: 'Inter', -apple-system, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+
+      /* All hue-based colours reference --nf-hue so a single JS
+         setProperty() recolours the entire atmosphere coherently */
+      --nf-hue:         218;
+
+      background:
+        radial-gradient(120% 80% at 50% 116%, #000 30%, transparent 70%),
+        linear-gradient(180deg,
+          hsl(var(--nf-hue) 30% 9%)  0%,
+          hsl(var(--nf-hue) 34% 6%) 26%,
+          #05060a                    60%,
+          #020203                   100%);
+
+      /* Tunable parameters */
+      --nf-pulse-speed:   7s;
+      --nf-pulse-depth:   0.55;
+      --nf-drift-speed:   19s;
+      --nf-horizon:       38%;
+      --nf-planet:        168%;
+      --nf-atmos:         1;
+      --nf-rim:           1;
+      --nf-vignette:      0.9;
+      --nf-intro-delay:   0.5s;
+      --nf-intro-reveal:  1.5s;
+      --nf-ui-fade-delay: 2.0s;
+      --nf-ui-fade-dur:   1.0s;
+    }
+
+    /* ══════════════════════════════════════════
+       ATMOSPHERIC BACKGROUND
+       ══════════════════════════════════════════ */
+
+    /* Intro mask — wipes atmosphere in L→R */
+    .nf-field-mask {
+      position: absolute;
+      inset: 0;
+      -webkit-mask-image: linear-gradient(100deg,
+        #000 0%, #000 40%, transparent 60%, transparent 100%);
+              mask-image: linear-gradient(100deg,
+        #000 0%, #000 40%, transparent 60%, transparent 100%);
+      -webkit-mask-size: 250% 100%;
+              mask-size: 250% 100%;
+      -webkit-mask-repeat: no-repeat;
+              mask-repeat: no-repeat;
+      -webkit-mask-position: 100% 0;
+              mask-position: 100% 0;
+      animation: nf-intro-reveal var(--nf-intro-reveal)
+                 cubic-bezier(.4, 0, .2, 1)
+                 var(--nf-intro-delay) both;
+    }
+
+    @keyframes nf-intro-reveal {
+      from { -webkit-mask-position: 100% 0; mask-position: 100% 0; }
+      to   { -webkit-mask-position:   0% 0; mask-position:   0% 0; }
+    }
+
+    /* Ambient breathe — single --t driver */
+    .nf-field {
+      position: absolute;
+      inset: 0;
+      animation: nf-breathe var(--nf-pulse-speed)
+                 cubic-bezier(.45, 0, .55, 1) infinite;
+    }
+
+    @keyframes nf-breathe {
+      0%   { --t: 0; }
+      50%  { --t: 1; }
+      100% { --t: 0; }
+    }
+
+    /* Layer 1 — upper haze */
+    .nf-haze {
+      position: absolute;
+      left: 50%;
+      top: calc(var(--nf-horizon) - 30%);
+      width: 150%;
+      height: 70%;
+      transform: translateX(-50%);
+      background: radial-gradient(
+        ellipse 60% 70% at 50% 100%,
+        hsla(var(--nf-hue) 85% 62% / 0.22) 0%,
+        hsla(var(--nf-hue) 80% 55% / 0.10) 32%,
+        transparent 68%
+      );
+      filter: blur(8px);
+      opacity: calc(0.75 + var(--t) * 0.45 * var(--nf-pulse-depth));
+    }
+
+    /* Layer 2 — planet body + 4-stop atmospheric rim */
+    .nf-planet {
+      position: absolute;
+      left: 50%;
+      top: var(--nf-horizon);
+      width: var(--nf-planet);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      background: radial-gradient(circle at 50% 8%,
+        hsl(var(--nf-hue) 30% 8%)  0%,
+        hsl(var(--nf-hue) 32% 5%) 22%,
+        #030406                    48%
+      );
+      box-shadow:
+        0 0 calc(2px   * var(--nf-atmos)) 0
+          hsla(var(--nf-hue) 95% 88% / 0.85),
+        0 0 calc(22px  * var(--nf-atmos)) calc(1px  * var(--nf-atmos))
+          hsla(var(--nf-hue) 88% 68% / calc(0.55 * (0.7 + var(--t) * var(--nf-pulse-depth)))),
+        0 0 calc(70px  * var(--nf-atmos)) calc(8px  * var(--nf-atmos))
+          hsla(var(--nf-hue) 82% 58% / calc(0.34 * (0.7 + var(--t) * var(--nf-pulse-depth)))),
+        0 0 calc(150px * var(--nf-atmos)) calc(36px * var(--nf-atmos))
+          hsla(var(--nf-hue) 78% 52% / calc(0.22 * (0.7 + var(--t) * var(--nf-pulse-depth))));
+    }
+
+    /* Layer 3 — crest bright-spot, drifts L↔R */
+    .nf-crest {
+      position: absolute;
+      left: 50%;
+      top: calc(var(--nf-horizon) - 11%);
+      width: 104%;
+      height: 20%;
+      background: radial-gradient(
+        ellipse 46% 100% at 50% 100%,
+        hsla(var(--nf-hue) 95% 90% / 0.32)  0%,
+        hsla(var(--nf-hue) 90% 72% / 0.14) 44%,
+        transparent                          74%
+      );
+      filter: blur(9px);
+      opacity: calc(0.7 + var(--t) * 0.5 * var(--nf-pulse-depth));
+      animation: nf-drift var(--nf-drift-speed) ease-in-out infinite;
+    }
+
+    @keyframes nf-drift {
+      0%, 100% { transform: translateX(-55%); }
+      50%       { transform: translateX(-45%); }
+    }
+
+    /* Layer 4 — corner vignette */
+    .nf-vignette {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      background: radial-gradient(130% 100% at 50% 42%,
+        transparent 40%,
+        rgba(0,0,0, calc(0.55 * var(--nf-vignette))) 100%
+      );
+    }
+
+    /* ══════════════════════════════════════════
+       FOREGROUND CONTENT
+       ══════════════════════════════════════════ */
+
+    .nf-content {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      animation: nf-fade-in var(--nf-ui-fade-dur) ease-out var(--nf-ui-fade-delay) both;
+    }
+
+    @keyframes nf-fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* Header row */
+    .nf-hdr {
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      flex-shrink: 0;
+    }
+
+    .nf-streak-pill {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px 4px 4px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 1000px;
+    }
+
+    .nf-avatar {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, hsl(218 38% 32%), hsl(218 30% 20%));
+      border: 1.5px solid rgba(255,255,255,0.14);
+      flex-shrink: 0;
+    }
+
+    .nf-streak-n {
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffd139;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.2px;
+      line-height: 1;
+    }
+
+    .nf-today-btn {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 17px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.2px;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: default;
+      font-family: inherit;
+    }
+
+    .nf-today-btn svg { opacity: 0.45; }
+
+    .nf-hdr-actions { display: flex; align-items: center; gap: 8px; }
+
+    .nf-circ {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.85);
+      padding: 0;
+      cursor: default;
+      flex-shrink: 0;
+      outline: none;
+    }
+
+    /* Hero copy */
+    .nf-hero { padding: 40px 30px 0; text-align: center; }
+
+    .nf-hero h1 {
+      margin: 0 0 14px;
+      font-size: 27px;
+      font-weight: 600;
+      color: #f4f6fa;
+      letter-spacing: -0.4px;
+      line-height: 1.2;
+      text-shadow: 0 1px 24px rgba(120,160,255,0.18);
+    }
+
+    .nf-hero p {
+      margin: 0 auto;
+      font-size: 15.5px;
+      font-weight: 400;
+      color: rgba(220,226,236,0.62);
+      line-height: 1.5;
+      max-width: 300px;
+    }
+
+    /* ══════════════════════════════════════════
+       CONTROL BAR  (replay + colour chips)
+       ══════════════════════════════════════════ */
+
+    .nf-controls {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 10px;
+      background: rgba(14, 16, 20, 0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 1000px;
+      animation: nf-fade-in var(--nf-ui-fade-dur) ease-out var(--nf-ui-fade-delay) both;
+    }
+
+    /* Replay button */
+    .nf-replay {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.75);
+      cursor: pointer;
+      outline: none;
+      transition: background 0.15s, color 0.15s, transform 0.15s;
+      flex-shrink: 0;
+    }
+
+    .nf-replay:hover  { background: rgba(255,255,255,0.14); color: #fff; }
+    .nf-replay:active { transform: scale(0.92); }
+
+    /* Divider between replay and chips */
+    .nf-sep {
+      width: 1px;
+      height: 20px;
+      background: rgba(255,255,255,0.12);
+      flex-shrink: 0;
+      margin: 0 2px;
+    }
+
+    /* Colour chips */
+    .nf-chip {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .nf-chip:hover  { transform: scale(1.12); }
+    .nf-chip:active { transform: scale(0.95); }
+
+    .nf-chip.active {
+      box-shadow: 0 0 0 2.5px #fff, 0 0 0 4px rgba(255,255,255,0.15);
+      transform: scale(1.08);
+    }
+
+    .nf-chip[data-hue="5"]   { background: radial-gradient(circle at 38% 35%, hsl(5  90% 72%), hsl(5  70% 32%)); }
+    .nf-chip[data-hue="142"] { background: radial-gradient(circle at 38% 35%, hsl(142 75% 62%), hsl(142 60% 28%)); }
+    .nf-chip[data-hue="218"] { background: radial-gradient(circle at 38% 35%, hsl(218 90% 70%), hsl(218 75% 34%)); }
+    .nf-chip[data-hue="48"]  { background: radial-gradient(circle at 38% 35%, hsl(48  95% 68%), hsl(48  80% 36%)); }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .nf-field-mask { -webkit-mask-image: none; mask-image: none; animation: none; }
+      .nf-content, .nf-controls { animation: none; opacity: 1; }
+      .nf-field, .nf-crest { animation: none; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="nf-screen" id="screen">
+
+    <!-- Atmospheric background -->
+    <div class="nf-field-mask" id="fieldMask">
+      <div class="nf-field">
+        <div class="nf-haze"></div>
+        <div class="nf-planet"></div>
+        <div class="nf-crest"></div>
+      </div>
+    </div>
+    <div class="nf-vignette"></div>
+
+    <!-- Foreground content -->
+    <div class="nf-content" id="content">
+
+      <div class="nf-hdr">
+        <div class="nf-streak-pill">
+          <div class="nf-avatar"></div>
+          <span style="font-size:14px">🔥</span>
+          <span class="nf-streak-n">12</span>
+        </div>
+
+        <button class="nf-today-btn">
+          Today
+          <svg width="12" height="7" viewBox="0 0 12 7" fill="none" aria-hidden="true">
+            <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.7"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="nf-hdr-actions">
+          <button class="nf-circ" aria-label="Share">
+            <svg width="17" height="20" viewBox="0 0 17 20" fill="none">
+              <path d="M8.5 1.2v12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              <path d="M4.7 5l3.8-3.8L12.3 5" stroke="currentColor" stroke-width="1.7"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3 9.2h-.3A1.7 1.7 0 001 10.9v6.2A1.7 1.7 0 002.7 18.8h11.6A1.7 1.7 0 0016 17.1v-6.2A1.7 1.7 0 0014.3 9.2H14"
+                    stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <button class="nf-circ" aria-label="Device">
+            <svg width="13" height="20" viewBox="0 0 13 20" fill="none">
+              <rect x="1" y="1" width="11" height="18" rx="3" stroke="currentColor" stroke-width="1.6"/>
+              <rect x="3.2" y="4" width="6.6" height="9" rx="1.4" fill="currentColor" opacity="0.55"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="nf-hero">
+        <h1>We didn't catch last night</h1>
+        <p>Pop your band on tonight and you'll wake up to your first
+           sleep score. And if you get some steps in today, we'll
+           count those too.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Control bar -->
+  <div class="nf-controls" role="toolbar" aria-label="Animation controls">
+
+    <!-- Replay -->
+    <button class="nf-replay" id="replayBtn" aria-label="Replay animation">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M2.5 8a5.5 5.5 0 1 0 1.1-3.3" stroke="currentColor" stroke-width="1.6"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M2.5 3.5V8H7" stroke="currentColor" stroke-width="1.6"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <div class="nf-sep" aria-hidden="true"></div>
+
+    <!-- Colour chips: red · green · blue · yellow -->
+    <button class="nf-chip" data-hue="5"   aria-label="Red atmosphere"   title="Red"></button>
+    <button class="nf-chip" data-hue="142" aria-label="Green atmosphere" title="Green"></button>
+    <button class="nf-chip" data-hue="218" aria-label="Blue atmosphere"  title="Blue"></button>
+    <button class="nf-chip" data-hue="48"  aria-label="Yellow atmosphere" title="Yellow"></button>
+
+  </div>
+
+  <script>
+    const screen  = document.getElementById('screen');
+    const mask    = document.getElementById('fieldMask');
+    const content = document.getElementById('content');
+    const chips   = document.querySelectorAll('.nf-chip');
+
+    // Mark blue as active on load
+    document.querySelector('.nf-chip[data-hue="218"]').classList.add('active');
+
+    /* ── Replay ── */
+    document.getElementById('replayBtn').addEventListener('click', () => {
+      [mask, content].forEach(el => {
+        el.style.animation = 'none';
+        void el.offsetWidth; // force reflow
+        el.style.animation = '';
+      });
+    });
+
+    /* ── Colour chips ── */
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        screen.style.setProperty('--nf-hue', chip.dataset.hue);
+      });
+    });
+  </script>
+
+</body>
+</html>

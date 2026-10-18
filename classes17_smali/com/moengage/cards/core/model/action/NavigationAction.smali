@@ -1,0 +1,205 @@
+.class public final Lcom/moengage/cards/core/model/action/NavigationAction;
+.super Lcom/moengage/cards/core/model/action/Action;
+.source "SourceFile"
+
+
+# instance fields
+.field private final actionType:Lcom/moengage/cards/core/model/enums/ActionType;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+.field private final kvPair:Ljava/util/Map;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/Object;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+.field private final navigationType:Lcom/moengage/cards/core/model/enums/NavigationType;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+.field private final value:Ljava/lang/String;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+
+# direct methods
+.method public constructor <init>(Lcom/moengage/cards/core/model/enums/ActionType;Ljava/lang/String;Lcom/moengage/cards/core/model/enums/NavigationType;Ljava/util/Map;)V
+    .registers 6
+    .param p1    # Lcom/moengage/cards/core/model/enums/ActionType;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p2    # Ljava/lang/String;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p3    # Lcom/moengage/cards/core/model/enums/NavigationType;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p4    # Ljava/util/Map;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lcom/moengage/cards/core/model/enums/ActionType;",
+            "Ljava/lang/String;",
+            "Lcom/moengage/cards/core/model/enums/NavigationType;",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "+",
+            "Ljava/lang/Object;",
+            ">;)V"
+        }
+    .end annotation
+
+    const-string v0, "actionType"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    const-string v0, "value"
+
+    invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    const-string v0, "navigationType"
+
+    invoke-static {p3, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    const-string v0, "kvPair"
+
+    invoke-static {p4, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-direct {p0, p1, p2}, Lcom/moengage/cards/core/model/action/Action;-><init>(Lcom/moengage/cards/core/model/enums/ActionType;Ljava/lang/String;)V
+
+    iput-object p1, p0, Lcom/moengage/cards/core/model/action/NavigationAction;->actionType:Lcom/moengage/cards/core/model/enums/ActionType;
+
+    iput-object p2, p0, Lcom/moengage/cards/core/model/action/NavigationAction;->value:Ljava/lang/String;
+
+    iput-object p3, p0, Lcom/moengage/cards/core/model/action/NavigationAction;->navigationType:Lcom/moengage/cards/core/model/enums/NavigationType;
+
+    iput-object p4, p0, Lcom/moengage/cards/core/model/action/NavigationAction;->kvPair:Ljava/util/Map;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public getActionType()Lcom/moengage/cards/core/model/enums/ActionType;
+    .registers 2
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/moengage/cards/core/model/action/NavigationAction;->actionType:Lcom/moengage/cards/core/model/enums/ActionType;
+
+    return-object v0
+.end method
+
+.method public final getKvPair()Ljava/util/Map;
+    .registers 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/Object;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/moengage/cards/core/model/action/NavigationAction;->kvPair:Ljava/util/Map;
+
+    return-object v0
+.end method
+
+.method public final getNavigationType()Lcom/moengage/cards/core/model/enums/NavigationType;
+    .registers 2
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/moengage/cards/core/model/action/NavigationAction;->navigationType:Lcom/moengage/cards/core/model/enums/NavigationType;
+
+    return-object v0
+.end method
+
+.method public getValue()Ljava/lang/String;
+    .registers 2
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/moengage/cards/core/model/action/NavigationAction;->value:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public toString()Ljava/lang/String;
+    .registers 3
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "NavigationAction(actionType="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p0}, Lcom/moengage/cards/core/model/action/NavigationAction;->getActionType()Lcom/moengage/cards/core/model/enums/ActionType;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const-string v1, ", value=\'"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p0}, Lcom/moengage/cards/core/model/action/NavigationAction;->getValue()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v1, "\', navigationType="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v1, p0, Lcom/moengage/cards/core/model/action/NavigationAction;->navigationType:Lcom/moengage/cards/core/model/enums/NavigationType;
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const-string v1, ", kvPair="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v1, p0, Lcom/moengage/cards/core/model/action/NavigationAction;->kvPair:Ljava/util/Map;
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const/16 v1, 0x29
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method

@@ -1,0 +1,33 @@
+.class public final Lcom/moengage/inapp/internal/SyncCompleteObservable;
+.super Ljava/util/Observable;
+.source "SourceFile"
+
+
+# direct methods
+.method public constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/util/Observable;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final onSyncSuccess(Lcom/moengage/core/internal/model/SdkInstance;)V
+    .registers 3
+    .param p1    # Lcom/moengage/core/internal/model/SdkInstance;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+
+    const-string v0, "sdkInstance"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-virtual {p0}, Ljava/util/Observable;->setChanged()V
+
+    invoke-virtual {p0, p1}, Ljava/util/Observable;->notifyObservers(Ljava/lang/Object;)V
+
+    return-void
+.end method

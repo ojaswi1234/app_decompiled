@@ -1,0 +1,221 @@
+.class public final Lcom/moengage/inapp/internal/model/meta/InAppCampaign;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# instance fields
+.field private final campaignMeta:Lcom/moengage/inapp/internal/model/meta/CampaignMeta;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+.field private campaignState:Lcom/moengage/inapp/internal/model/meta/CampaignState;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+.field private final campaignType:Ljava/lang/String;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+.field private final deletionTime:J
+
+.field private status:Ljava/lang/String;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+
+# direct methods
+.method public constructor <init>(Ljava/lang/String;Ljava/lang/String;JLcom/moengage/inapp/internal/model/meta/CampaignMeta;Lcom/moengage/inapp/internal/model/meta/CampaignState;)V
+    .registers 8
+    .param p1    # Ljava/lang/String;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p2    # Ljava/lang/String;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p5    # Lcom/moengage/inapp/internal/model/meta/CampaignMeta;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p6    # Lcom/moengage/inapp/internal/model/meta/CampaignState;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+
+    const-string v0, "campaignType"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    const-string v0, "status"
+
+    invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    const-string v0, "campaignMeta"
+
+    invoke-static {p5, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    const-string v0, "campaignState"
+
+    invoke-static {p6, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lcom/moengage/inapp/internal/model/meta/InAppCampaign;->campaignType:Ljava/lang/String;
+
+    iput-object p2, p0, Lcom/moengage/inapp/internal/model/meta/InAppCampaign;->status:Ljava/lang/String;
+
+    iput-wide p3, p0, Lcom/moengage/inapp/internal/model/meta/InAppCampaign;->deletionTime:J
+
+    iput-object p5, p0, Lcom/moengage/inapp/internal/model/meta/InAppCampaign;->campaignMeta:Lcom/moengage/inapp/internal/model/meta/CampaignMeta;
+
+    iput-object p6, p0, Lcom/moengage/inapp/internal/model/meta/InAppCampaign;->campaignState:Lcom/moengage/inapp/internal/model/meta/CampaignState;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final getCampaignMeta()Lcom/moengage/inapp/internal/model/meta/CampaignMeta;
+    .registers 2
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/moengage/inapp/internal/model/meta/InAppCampaign;->campaignMeta:Lcom/moengage/inapp/internal/model/meta/CampaignMeta;
+
+    return-object v0
+.end method
+
+.method public final getCampaignState()Lcom/moengage/inapp/internal/model/meta/CampaignState;
+    .registers 2
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/moengage/inapp/internal/model/meta/InAppCampaign;->campaignState:Lcom/moengage/inapp/internal/model/meta/CampaignState;
+
+    return-object v0
+.end method
+
+.method public final getCampaignType()Ljava/lang/String;
+    .registers 2
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/moengage/inapp/internal/model/meta/InAppCampaign;->campaignType:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public final getDeletionTime()J
+    .registers 3
+
+    iget-wide v0, p0, Lcom/moengage/inapp/internal/model/meta/InAppCampaign;->deletionTime:J
+
+    return-wide v0
+.end method
+
+.method public final getStatus()Ljava/lang/String;
+    .registers 2
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/moengage/inapp/internal/model/meta/InAppCampaign;->status:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public final setCampaignState(Lcom/moengage/inapp/internal/model/meta/CampaignState;)V
+    .registers 3
+    .param p1    # Lcom/moengage/inapp/internal/model/meta/CampaignState;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+
+    const-string v0, "<set-?>"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    iput-object p1, p0, Lcom/moengage/inapp/internal/model/meta/InAppCampaign;->campaignState:Lcom/moengage/inapp/internal/model/meta/CampaignState;
+
+    return-void
+.end method
+
+.method public final setStatus(Ljava/lang/String;)V
+    .registers 3
+    .param p1    # Ljava/lang/String;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+
+    const-string v0, "<set-?>"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    iput-object p1, p0, Lcom/moengage/inapp/internal/model/meta/InAppCampaign;->status:Ljava/lang/String;
+
+    return-void
+.end method
+
+.method public toString()Ljava/lang/String;
+    .registers 4
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "InAppCampaign(campaignType=\'"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v1, p0, Lcom/moengage/inapp/internal/model/meta/InAppCampaign;->campaignType:Ljava/lang/String;
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v1, "\', status=\'"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v1, p0, Lcom/moengage/inapp/internal/model/meta/InAppCampaign;->status:Ljava/lang/String;
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v1, "\', deletionTime="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-wide v1, p0, Lcom/moengage/inapp/internal/model/meta/InAppCampaign;->deletionTime:J
+
+    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    const-string v1, ", campaignMeta="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v1, p0, Lcom/moengage/inapp/internal/model/meta/InAppCampaign;->campaignMeta:Lcom/moengage/inapp/internal/model/meta/CampaignMeta;
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const-string v1, ", campaignState="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v1, p0, Lcom/moengage/inapp/internal/model/meta/InAppCampaign;->campaignState:Lcom/moengage/inapp/internal/model/meta/CampaignState;
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const/16 v1, 0x29
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method

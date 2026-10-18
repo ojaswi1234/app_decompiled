@@ -1,0 +1,386 @@
+.class public final Lcom/mapbox/turf/TurfJoins;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# direct methods
+.method private constructor <init>()V
+    .registers 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method public static a(Lcom/mapbox/geojson/Point;Ljava/util/List;)Z
+    .registers 21
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lcom/mapbox/geojson/Point;",
+            "Ljava/util/List<",
+            "Lcom/mapbox/geojson/Point;",
+            ">;)Z"
+        }
+    .end annotation
+
+    move-object/from16 v0, p1
+
+    invoke-interface {v0}, Ljava/util/List;->size()I
+
+    move-result v1
+
+    const/4 v2, 0x1
+
+    sub-int/2addr v1, v2
+
+    const/4 v3, 0x0
+
+    move v4, v1
+
+    move v1, v3
+
+    move v5, v1
+
+    :goto_c
+    invoke-interface {v0}, Ljava/util/List;->size()I
+
+    move-result v6
+
+    if-ge v1, v6, :cond_70
+
+    invoke-interface {v0, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v6
+
+    check-cast v6, Lcom/mapbox/geojson/Point;
+
+    invoke-virtual {v6}, Lcom/mapbox/geojson/Point;->longitude()D
+
+    move-result-wide v6
+
+    invoke-interface {v0, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v8
+
+    check-cast v8, Lcom/mapbox/geojson/Point;
+
+    invoke-virtual {v8}, Lcom/mapbox/geojson/Point;->latitude()D
+
+    move-result-wide v8
+
+    invoke-interface {v0, v4}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v10
+
+    check-cast v10, Lcom/mapbox/geojson/Point;
+
+    invoke-virtual {v10}, Lcom/mapbox/geojson/Point;->longitude()D
+
+    move-result-wide v10
+
+    invoke-interface {v0, v4}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Lcom/mapbox/geojson/Point;
+
+    invoke-virtual {v4}, Lcom/mapbox/geojson/Point;->latitude()D
+
+    move-result-wide v12
+
+    invoke-virtual/range {p0 .. p0}, Lcom/mapbox/geojson/Point;->latitude()D
+
+    move-result-wide v14
+
+    cmpl-double v4, v8, v14
+
+    if-lez v4, :cond_44
+
+    move v4, v2
+
+    goto :goto_45
+
+    :cond_44
+    move v4, v3
+
+    :goto_45
+    invoke-virtual/range {p0 .. p0}, Lcom/mapbox/geojson/Point;->latitude()D
+
+    move-result-wide v14
+
+    cmpl-double v14, v12, v14
+
+    if-lez v14, :cond_4f
+
+    move v14, v2
+
+    goto :goto_50
+
+    :cond_4f
+    move v14, v3
+
+    :goto_50
+    if-eq v4, v14, :cond_68
+
+    invoke-virtual/range {p0 .. p0}, Lcom/mapbox/geojson/Point;->longitude()D
+
+    move-result-wide v14
+
+    sub-double/2addr v10, v6
+
+    invoke-virtual/range {p0 .. p0}, Lcom/mapbox/geojson/Point;->latitude()D
+
+    move-result-wide v16
+
+    sub-double v16, v16, v8
+
+    mul-double v10, v10, v16
+
+    sub-double/2addr v12, v8
+
+    div-double/2addr v10, v12
+
+    add-double/2addr v10, v6
+
+    cmpg-double v4, v14, v10
+
+    if-gez v4, :cond_68
+
+    xor-int/lit8 v5, v5, 0x1
+
+    :cond_68
+    add-int/lit8 v4, v1, 0x1
+
+    move/from16 v18, v4
+
+    move v4, v1
+
+    move/from16 v1, v18
+
+    goto :goto_c
+
+    :cond_70
+    return v5
+.end method
+
+.method public static b(Lcom/mapbox/geojson/Point;Lcom/mapbox/geojson/MultiPolygon;)Z
+    .registers 9
+
+    invoke-virtual {p1}, Lcom/mapbox/geojson/MultiPolygon;->coordinates()Ljava/util/List;
+
+    move-result-object p1
+
+    const/4 v0, 0x0
+
+    move v1, v0
+
+    move v2, v1
+
+    :goto_7
+    invoke-interface {p1}, Ljava/util/List;->size()I
+
+    move-result v3
+
+    if-ge v1, v3, :cond_4e
+
+    if-nez v2, :cond_4e
+
+    invoke-interface {p1, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Ljava/util/List;
+
+    invoke-interface {v3, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Ljava/util/List;
+
+    invoke-static {p0, v3}, Lcom/mapbox/turf/TurfJoins;->a(Lcom/mapbox/geojson/Point;Ljava/util/List;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_4b
+
+    const/4 v3, 0x1
+
+    move v5, v0
+
+    move v4, v3
+
+    :goto_24
+    invoke-interface {p1, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v6
+
+    check-cast v6, Ljava/util/List;
+
+    invoke-interface {v6}, Ljava/util/List;->size()I
+
+    move-result v6
+
+    if-ge v4, v6, :cond_48
+
+    if-nez v5, :cond_48
+
+    invoke-interface {p1, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v6
+
+    check-cast v6, Ljava/util/List;
+
+    invoke-interface {v6, v4}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v6
+
+    check-cast v6, Ljava/util/List;
+
+    invoke-static {p0, v6}, Lcom/mapbox/turf/TurfJoins;->a(Lcom/mapbox/geojson/Point;Ljava/util/List;)Z
+
+    move-result v6
+
+    if-eqz v6, :cond_45
+
+    move v5, v3
+
+    :cond_45
+    add-int/lit8 v4, v4, 0x1
+
+    goto :goto_24
+
+    :cond_48
+    if-nez v5, :cond_4b
+
+    move v2, v3
+
+    :cond_4b
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_7
+
+    :cond_4e
+    return v2
+.end method
+
+.method public static c(Lcom/mapbox/geojson/Point;Lcom/mapbox/geojson/Polygon;)Z
+    .registers 3
+
+    invoke-virtual {p1}, Lcom/mapbox/geojson/Polygon;->coordinates()Ljava/util/List;
+
+    move-result-object p1
+
+    new-instance v0, Ljava/util/ArrayList;
+
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    invoke-interface {v0, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    invoke-static {v0}, Lcom/mapbox/geojson/MultiPolygon;->fromLngLats(Ljava/util/List;)Lcom/mapbox/geojson/MultiPolygon;
+
+    move-result-object p1
+
+    invoke-static {p0, p1}, Lcom/mapbox/turf/TurfJoins;->b(Lcom/mapbox/geojson/Point;Lcom/mapbox/geojson/MultiPolygon;)Z
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public static d(Lcom/mapbox/geojson/FeatureCollection;Lcom/mapbox/geojson/FeatureCollection;)Lcom/mapbox/geojson/FeatureCollection;
+    .registers 8
+
+    new-instance v0, Ljava/util/ArrayList;
+
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    const/4 v1, 0x0
+
+    move v2, v1
+
+    :goto_7
+    invoke-virtual {p1}, Lcom/mapbox/geojson/FeatureCollection;->features()Ljava/util/List;
+
+    move-result-object v3
+
+    invoke-interface {v3}, Ljava/util/List;->size()I
+
+    move-result v3
+
+    if-ge v2, v3, :cond_4f
+
+    move v3, v1
+
+    :goto_12
+    invoke-virtual {p0}, Lcom/mapbox/geojson/FeatureCollection;->features()Ljava/util/List;
+
+    move-result-object v4
+
+    invoke-interface {v4}, Ljava/util/List;->size()I
+
+    move-result v4
+
+    if-ge v3, v4, :cond_4c
+
+    invoke-virtual {p0}, Lcom/mapbox/geojson/FeatureCollection;->features()Ljava/util/List;
+
+    move-result-object v4
+
+    invoke-interface {v4, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Lcom/mapbox/geojson/Feature;
+
+    invoke-virtual {v4}, Lcom/mapbox/geojson/Feature;->geometry()Lcom/mapbox/geojson/Geometry;
+
+    move-result-object v4
+
+    check-cast v4, Lcom/mapbox/geojson/Point;
+
+    invoke-virtual {p1}, Lcom/mapbox/geojson/FeatureCollection;->features()Ljava/util/List;
+
+    move-result-object v5
+
+    invoke-interface {v5, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v5
+
+    check-cast v5, Lcom/mapbox/geojson/Feature;
+
+    invoke-virtual {v5}, Lcom/mapbox/geojson/Feature;->geometry()Lcom/mapbox/geojson/Geometry;
+
+    move-result-object v5
+
+    check-cast v5, Lcom/mapbox/geojson/Polygon;
+
+    invoke-static {v4, v5}, Lcom/mapbox/turf/TurfJoins;->c(Lcom/mapbox/geojson/Point;Lcom/mapbox/geojson/Polygon;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_49
+
+    invoke-static {v4}, Lcom/mapbox/geojson/Feature;->fromGeometry(Lcom/mapbox/geojson/Geometry;)Lcom/mapbox/geojson/Feature;
+
+    move-result-object v4
+
+    invoke-virtual {v0, v4}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    :cond_49
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_12
+
+    :cond_4c
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_7
+
+    :cond_4f
+    invoke-static {v0}, Lcom/mapbox/geojson/FeatureCollection;->fromFeatures(Ljava/util/List;)Lcom/mapbox/geojson/FeatureCollection;
+
+    move-result-object p0
+
+    return-object p0
+.end method

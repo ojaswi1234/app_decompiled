@@ -1,0 +1,91 @@
+.class public final Lcom/moengage/core/internal/model/database/entity/KeyValueEntity;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# instance fields
+.field private final id:J
+
+.field private final key:Ljava/lang/String;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+.field private final timeStamp:J
+
+.field private final value:Ljava/lang/String;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+
+# direct methods
+.method public constructor <init>(JLjava/lang/String;Ljava/lang/String;J)V
+    .registers 8
+    .param p3    # Ljava/lang/String;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p4    # Ljava/lang/String;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+
+    const-string v0, "key"
+
+    invoke-static {p3, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    const-string v0, "value"
+
+    invoke-static {p4, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-wide p1, p0, Lcom/moengage/core/internal/model/database/entity/KeyValueEntity;->id:J
+
+    iput-object p3, p0, Lcom/moengage/core/internal/model/database/entity/KeyValueEntity;->key:Ljava/lang/String;
+
+    iput-object p4, p0, Lcom/moengage/core/internal/model/database/entity/KeyValueEntity;->value:Ljava/lang/String;
+
+    iput-wide p5, p0, Lcom/moengage/core/internal/model/database/entity/KeyValueEntity;->timeStamp:J
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final getId()J
+    .registers 3
+
+    iget-wide v0, p0, Lcom/moengage/core/internal/model/database/entity/KeyValueEntity;->id:J
+
+    return-wide v0
+.end method
+
+.method public final getKey()Ljava/lang/String;
+    .registers 2
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/moengage/core/internal/model/database/entity/KeyValueEntity;->key:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public final getTimeStamp()J
+    .registers 3
+
+    iget-wide v0, p0, Lcom/moengage/core/internal/model/database/entity/KeyValueEntity;->timeStamp:J
+
+    return-wide v0
+.end method
+
+.method public final getValue()Ljava/lang/String;
+    .registers 2
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/moengage/core/internal/model/database/entity/KeyValueEntity;->value:Ljava/lang/String;
+
+    return-object v0
+.end method

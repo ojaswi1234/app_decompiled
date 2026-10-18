@@ -1,0 +1,392 @@
+.class public final Lcom/mapbox/maps/plugin/annotation/AnnotationManager$DefaultImpls;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/mapbox/maps/plugin/annotation/AnnotationManager;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "DefaultImpls"
+.end annotation
+
+
+# direct methods
+.method public static a(Lcom/mapbox/maps/plugin/annotation/AnnotationManager;Lcom/mapbox/maps/plugin/annotation/OnAnnotationClickListener;)Z
+    .registers 3
+    .param p0    # Lcom/mapbox/maps/plugin/annotation/AnnotationManager;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p1    # Lcom/mapbox/maps/plugin/annotation/OnAnnotationClickListener;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<G::",
+            "Lcom/mapbox/geojson/Geometry;",
+            "T:",
+            "Lcom/mapbox/maps/plugin/annotation/Annotation<",
+            "TG;>;S::",
+            "Lcom/mapbox/maps/plugin/annotation/AnnotationOptions<",
+            "TG;TT;>;D::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationDragListener<",
+            "+TT;>;U::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationClickListener<",
+            "TT;>;V::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationLongClickListener<",
+            "TT;>;I::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationInteractionListener<",
+            "TT;>;>(",
+            "Lcom/mapbox/maps/plugin/annotation/AnnotationManager<",
+            "TG;TT;TS;TD;TU;TV;TI;>;TU;)Z"
+        }
+    .end annotation
+
+    const-string v0, "u"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-interface {p0}, Lcom/mapbox/maps/plugin/annotation/AnnotationManager;->m()Ljava/util/List;
+
+    move-result-object p0
+
+    invoke-interface {p0, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public static b(Lcom/mapbox/maps/plugin/annotation/AnnotationManager;Lcom/mapbox/maps/plugin/annotation/OnAnnotationDragListener;)Z
+    .registers 3
+    .param p0    # Lcom/mapbox/maps/plugin/annotation/AnnotationManager;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p1    # Lcom/mapbox/maps/plugin/annotation/OnAnnotationDragListener;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<G::",
+            "Lcom/mapbox/geojson/Geometry;",
+            "T:",
+            "Lcom/mapbox/maps/plugin/annotation/Annotation<",
+            "TG;>;S::",
+            "Lcom/mapbox/maps/plugin/annotation/AnnotationOptions<",
+            "TG;TT;>;D::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationDragListener<",
+            "+TT;>;U::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationClickListener<",
+            "TT;>;V::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationLongClickListener<",
+            "TT;>;I::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationInteractionListener<",
+            "TT;>;>(",
+            "Lcom/mapbox/maps/plugin/annotation/AnnotationManager<",
+            "TG;TT;TS;TD;TU;TV;TI;>;TD;)Z"
+        }
+    .end annotation
+
+    const-string v0, "d"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-interface {p0}, Lcom/mapbox/maps/plugin/annotation/AnnotationManager;->z()Ljava/util/List;
+
+    move-result-object p0
+
+    invoke-interface {p0, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public static c(Lcom/mapbox/maps/plugin/annotation/AnnotationManager;Lcom/mapbox/maps/plugin/annotation/OnAnnotationInteractionListener;)Z
+    .registers 3
+    .param p0    # Lcom/mapbox/maps/plugin/annotation/AnnotationManager;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p1    # Lcom/mapbox/maps/plugin/annotation/OnAnnotationInteractionListener;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<G::",
+            "Lcom/mapbox/geojson/Geometry;",
+            "T:",
+            "Lcom/mapbox/maps/plugin/annotation/Annotation<",
+            "TG;>;S::",
+            "Lcom/mapbox/maps/plugin/annotation/AnnotationOptions<",
+            "TG;TT;>;D::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationDragListener<",
+            "+TT;>;U::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationClickListener<",
+            "TT;>;V::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationLongClickListener<",
+            "TT;>;I::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationInteractionListener<",
+            "TT;>;>(",
+            "Lcom/mapbox/maps/plugin/annotation/AnnotationManager<",
+            "TG;TT;TS;TD;TU;TV;TI;>;TI;)Z"
+        }
+    .end annotation
+
+    const-string v0, "i"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-interface {p0}, Lcom/mapbox/maps/plugin/annotation/AnnotationManager;->d()Ljava/util/List;
+
+    move-result-object p0
+
+    invoke-interface {p0, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public static d(Lcom/mapbox/maps/plugin/annotation/AnnotationManager;Lcom/mapbox/maps/plugin/annotation/OnAnnotationLongClickListener;)Z
+    .registers 3
+    .param p0    # Lcom/mapbox/maps/plugin/annotation/AnnotationManager;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p1    # Lcom/mapbox/maps/plugin/annotation/OnAnnotationLongClickListener;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<G::",
+            "Lcom/mapbox/geojson/Geometry;",
+            "T:",
+            "Lcom/mapbox/maps/plugin/annotation/Annotation<",
+            "TG;>;S::",
+            "Lcom/mapbox/maps/plugin/annotation/AnnotationOptions<",
+            "TG;TT;>;D::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationDragListener<",
+            "+TT;>;U::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationClickListener<",
+            "TT;>;V::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationLongClickListener<",
+            "TT;>;I::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationInteractionListener<",
+            "TT;>;>(",
+            "Lcom/mapbox/maps/plugin/annotation/AnnotationManager<",
+            "TG;TT;TS;TD;TU;TV;TI;>;TV;)Z"
+        }
+    .end annotation
+
+    const-string v0, "v"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-interface {p0}, Lcom/mapbox/maps/plugin/annotation/AnnotationManager;->A()Ljava/util/List;
+
+    move-result-object p0
+
+    invoke-interface {p0, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public static e(Lcom/mapbox/maps/plugin/annotation/AnnotationManager;Lcom/mapbox/maps/plugin/annotation/OnAnnotationClickListener;)Z
+    .registers 3
+    .param p0    # Lcom/mapbox/maps/plugin/annotation/AnnotationManager;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p1    # Lcom/mapbox/maps/plugin/annotation/OnAnnotationClickListener;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<G::",
+            "Lcom/mapbox/geojson/Geometry;",
+            "T:",
+            "Lcom/mapbox/maps/plugin/annotation/Annotation<",
+            "TG;>;S::",
+            "Lcom/mapbox/maps/plugin/annotation/AnnotationOptions<",
+            "TG;TT;>;D::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationDragListener<",
+            "+TT;>;U::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationClickListener<",
+            "TT;>;V::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationLongClickListener<",
+            "TT;>;I::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationInteractionListener<",
+            "TT;>;>(",
+            "Lcom/mapbox/maps/plugin/annotation/AnnotationManager<",
+            "TG;TT;TS;TD;TU;TV;TI;>;TU;)Z"
+        }
+    .end annotation
+
+    const-string v0, "u"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-interface {p0}, Lcom/mapbox/maps/plugin/annotation/AnnotationManager;->m()Ljava/util/List;
+
+    move-result-object p0
+
+    invoke-interface {p0, p1}, Ljava/util/List;->remove(Ljava/lang/Object;)Z
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public static f(Lcom/mapbox/maps/plugin/annotation/AnnotationManager;Lcom/mapbox/maps/plugin/annotation/OnAnnotationDragListener;)Z
+    .registers 3
+    .param p0    # Lcom/mapbox/maps/plugin/annotation/AnnotationManager;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p1    # Lcom/mapbox/maps/plugin/annotation/OnAnnotationDragListener;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<G::",
+            "Lcom/mapbox/geojson/Geometry;",
+            "T:",
+            "Lcom/mapbox/maps/plugin/annotation/Annotation<",
+            "TG;>;S::",
+            "Lcom/mapbox/maps/plugin/annotation/AnnotationOptions<",
+            "TG;TT;>;D::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationDragListener<",
+            "+TT;>;U::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationClickListener<",
+            "TT;>;V::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationLongClickListener<",
+            "TT;>;I::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationInteractionListener<",
+            "TT;>;>(",
+            "Lcom/mapbox/maps/plugin/annotation/AnnotationManager<",
+            "TG;TT;TS;TD;TU;TV;TI;>;TD;)Z"
+        }
+    .end annotation
+
+    const-string v0, "d"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-interface {p0}, Lcom/mapbox/maps/plugin/annotation/AnnotationManager;->z()Ljava/util/List;
+
+    move-result-object p0
+
+    invoke-interface {p0, p1}, Ljava/util/List;->remove(Ljava/lang/Object;)Z
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public static g(Lcom/mapbox/maps/plugin/annotation/AnnotationManager;Lcom/mapbox/maps/plugin/annotation/OnAnnotationInteractionListener;)Z
+    .registers 3
+    .param p0    # Lcom/mapbox/maps/plugin/annotation/AnnotationManager;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p1    # Lcom/mapbox/maps/plugin/annotation/OnAnnotationInteractionListener;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<G::",
+            "Lcom/mapbox/geojson/Geometry;",
+            "T:",
+            "Lcom/mapbox/maps/plugin/annotation/Annotation<",
+            "TG;>;S::",
+            "Lcom/mapbox/maps/plugin/annotation/AnnotationOptions<",
+            "TG;TT;>;D::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationDragListener<",
+            "+TT;>;U::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationClickListener<",
+            "TT;>;V::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationLongClickListener<",
+            "TT;>;I::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationInteractionListener<",
+            "TT;>;>(",
+            "Lcom/mapbox/maps/plugin/annotation/AnnotationManager<",
+            "TG;TT;TS;TD;TU;TV;TI;>;TI;)Z"
+        }
+    .end annotation
+
+    const-string v0, "i"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-interface {p0}, Lcom/mapbox/maps/plugin/annotation/AnnotationManager;->d()Ljava/util/List;
+
+    move-result-object p0
+
+    invoke-interface {p0, p1}, Ljava/util/List;->remove(Ljava/lang/Object;)Z
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public static h(Lcom/mapbox/maps/plugin/annotation/AnnotationManager;Lcom/mapbox/maps/plugin/annotation/OnAnnotationLongClickListener;)Z
+    .registers 3
+    .param p0    # Lcom/mapbox/maps/plugin/annotation/AnnotationManager;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p1    # Lcom/mapbox/maps/plugin/annotation/OnAnnotationLongClickListener;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<G::",
+            "Lcom/mapbox/geojson/Geometry;",
+            "T:",
+            "Lcom/mapbox/maps/plugin/annotation/Annotation<",
+            "TG;>;S::",
+            "Lcom/mapbox/maps/plugin/annotation/AnnotationOptions<",
+            "TG;TT;>;D::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationDragListener<",
+            "+TT;>;U::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationClickListener<",
+            "TT;>;V::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationLongClickListener<",
+            "TT;>;I::",
+            "Lcom/mapbox/maps/plugin/annotation/OnAnnotationInteractionListener<",
+            "TT;>;>(",
+            "Lcom/mapbox/maps/plugin/annotation/AnnotationManager<",
+            "TG;TT;TS;TD;TU;TV;TI;>;TV;)Z"
+        }
+    .end annotation
+
+    const-string v0, "v"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-interface {p0}, Lcom/mapbox/maps/plugin/annotation/AnnotationManager;->A()Ljava/util/List;
+
+    move-result-object p0
+
+    invoke-interface {p0, p1}, Ljava/util/List;->remove(Ljava/lang/Object;)Z
+
+    move-result p0
+
+    return p0
+.end method

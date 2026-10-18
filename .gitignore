@@ -1,0 +1,14 @@
+*.apk
+*.idsig
+*.tmp
+*.png
+*.xml
+*.txt
+apktool_res/
+apktool_src/
+jadx_source/
+gemini_build/
+gemini_dex/
+temp_manifest/
+temp_xxhdpi/
+xapk_extracted/

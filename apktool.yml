@@ -1,7 +1,8 @@
 version: 3.0.3
 apkFileName: com.noisefit.apk
 sdkInfo:
-  minSdkVersion: 27
+  minSdkVersion: 26
+  targetSdkVersion: 34
 doNotCompress:
 - arsc
 - dex

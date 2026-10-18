@@ -109,8 +109,8 @@ public class GeminiVoiceCallSession {
                 appContext.registerReceiver(scoReceiver, filter);
             }
 
-            // Set communication mode
-            audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
+            // Keep audio mode normal so Gemini Live app can freely record and capture microphone without conflict
+            Log.i(TAG, "Audio mode kept NORMAL to allow Gemini Live full microphone access");
 
             // Android 12+ (API 31+) direct communication device routing
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {

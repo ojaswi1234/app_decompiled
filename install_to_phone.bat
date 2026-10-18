@@ -40,20 +40,22 @@ adb shell pm grant com.noisefit android.permission.READ_PHONE_STATE
 adb shell pm grant com.noisefit android.permission.RECORD_AUDIO
 adb shell pm grant com.noisefit android.permission.BLUETOOTH_CONNECT
 adb shell pm grant com.noisefit android.permission.POST_NOTIFICATIONS
+adb shell pm grant com.noisefit android.permission.WRITE_SECURE_SETTINGS
 adb shell cmd role add-role-holder android.app.role.CALL_REDIRECTION com.noisefit
-echo [OK] Permissions & Call Redirection Role granted!
+echo [OK] Permissions, WRITE_SECURE_SETTINGS, & Call Redirection Role granted!
 echo.
 
-echo [4/5] Enabling Gemini Live Automation Accessibility Service...
+echo [4/5] Launching NoiseFit app...
+adb shell am force-stop com.noisefit
+adb shell am start -n com.noisefit/com.noisefit.ui.SplashActivity
+timeout /t 1 /nobreak >nul
+echo [OK] NoiseFit started!
+echo.
+
+echo [5/5] Enabling Gemini Live Automation Accessibility Service...
 adb shell settings put secure enabled_accessibility_services com.noisefit/com.noisefit.gemini.GeminiAccessibilityService
 adb shell settings put secure accessibility_enabled 1
 echo [OK] Accessibility service enabled automatically via ADB!
-echo.
-
-echo [5/5] Launching NoiseFit app...
-adb shell am force-stop com.noisefit
-adb shell am start -n com.noisefit/com.noisefit.ui.SplashActivity
-echo [OK] NoiseFit started!
 echo.
 echo ======================================================================
 echo >>> READY FOR TEST! <<<

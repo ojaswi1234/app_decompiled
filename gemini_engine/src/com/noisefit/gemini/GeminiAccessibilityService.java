@@ -8,12 +8,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Path;
+import android.graphics.Point;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 
@@ -26,6 +28,7 @@ public class GeminiAccessibilityService extends AccessibilityService {
     private static volatile GeminiAccessibilityService instance;
     private static volatile boolean isWaitingToStartLive = false;
     private static volatile long startLiveRequestTime = 0;
+    private static volatile int tapAttempts = 0;
     private static volatile boolean isWaitingToEndLive = false;
     private static volatile long endLiveRequestTime = 0;
 
@@ -41,6 +44,7 @@ public class GeminiAccessibilityService extends AccessibilityService {
             if (ACTION_START_LIVE.equals(action)) {
                 isWaitingToStartLive = true;
                 startLiveRequestTime = System.currentTimeMillis();
+                tapAttempts = 0;
                 mainHandler.post(new Runnable() {
                     @Override
                     public void run() {
@@ -80,6 +84,7 @@ public class GeminiAccessibilityService extends AccessibilityService {
         Log.i(TAG, ">>> Automation requested: START GEMINI LIVE <<<");
         isWaitingToStartLive = true;
         startLiveRequestTime = System.currentTimeMillis();
+        tapAttempts = 0;
 
         Context ctx = (context != null) ? context.getApplicationContext() : sSavedContext;
         if (ctx != null) {
@@ -170,18 +175,15 @@ public class GeminiAccessibilityService extends AccessibilityService {
         }
 
         try {
-            AccessibilityServiceInfo info = new AccessibilityServiceInfo();
-            info.eventTypes = AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED | AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED;
-            info.feedbackType = AccessibilityServiceInfo.FEEDBACK_GENERIC;
-            info.notificationTimeout = 100;
-            info.flags = AccessibilityServiceInfo.FLAG_INCLUDE_NOT_IMPORTANT_VIEWS
-                    | AccessibilityServiceInfo.FLAG_REPORT_VIEW_IDS
-                    | AccessibilityServiceInfo.FLAG_RETRIEVE_INTERACTIVE_WINDOWS;
-            info.packageNames = new String[]{
-                    "com.google.android.googlequicksearchbox",
-                    "com.google.android.apps.bard"
-            };
-            setServiceInfo(info);
+            AccessibilityServiceInfo info = getServiceInfo();
+            if (info != null) {
+                info.eventTypes |= AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED | AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED;
+                info.flags |= AccessibilityServiceInfo.FLAG_INCLUDE_NOT_IMPORTANT_VIEWS
+                        | AccessibilityServiceInfo.FLAG_REPORT_VIEW_IDS
+                        | AccessibilityServiceInfo.FLAG_RETRIEVE_INTERACTIVE_WINDOWS;
+                setServiceInfo(info);
+                Log.i(TAG, "Preserved XML capabilities and updated flags dynamically");
+            }
         } catch (Throwable t) {
             Log.e(TAG, "Error configuring service info", t);
         }
@@ -224,65 +226,129 @@ public class GeminiAccessibilityService extends AccessibilityService {
         if (!isWaitingToStartLive) return;
 
         long elapsed = System.currentTimeMillis() - startLiveRequestTime;
-        Log.d(TAG, "attemptStartLive executing: elapsed=" + elapsed + "ms");
+        Log.d(TAG, "attemptStartLive executing: elapsed=" + elapsed + "ms, attempts=" + tapAttempts);
 
-        if (elapsed > 15000) {
-            Log.w(TAG, "Start Live automation timed out (15s)");
+        if (elapsed > 15000 || tapAttempts >= 8) {
+            Log.w(TAG, "Start Live automation finished or timed out (15s)");
             isWaitingToStartLive = false;
             return;
         }
 
-        AccessibilityNodeInfo root = getRootInActiveWindow();
-        if (root == null) {
-            scheduleRetry();
+        // Check if Gemini Live is ALREADY active (as in 1000226324.jpg with the [X] close button and live pill)
+        AccessibilityNodeInfo closeNode = null;
+        try {
+            AccessibilityNodeInfo root = getRootInActiveWindow();
+            if (root != null) {
+                closeNode = findNode(root, "Close Live", "End Live", "Stop Live");
+                root.recycle();
+            }
+        } catch (Throwable ignored) {}
+
+        if (closeNode != null) {
+            closeNode.recycle();
+            Log.i(TAG, ">>> GEMINI LIVE IS ACTIVELY RUNNING! Session successfully established! <<<");
+            isWaitingToStartLive = false;
             return;
         }
 
-        try {
-            AccessibilityNodeInfo liveNode = findNode(root, "Open Gemini Live", "Gemini Live", "Live", "Start Live", "Live voice");
-            if (liveNode != null) {
-                Rect bounds = new Rect();
-                liveNode.getBoundsInScreen(bounds);
-
-                // 1. Try direct accessibility click
-                boolean clicked = liveNode.performAction(AccessibilityNodeInfo.ACTION_CLICK);
-                Log.i(TAG, "liveNode.performAction(ACTION_CLICK): " + clicked);
-
-                liveNode.recycle();
-
-                if (!bounds.isEmpty()) {
-                    int tapX = bounds.centerX();
-                    int tapY = bounds.centerY();
-                    Log.i(TAG, "Found Live node at (" + tapX + ", " + tapY + ") -> Dispatching gesture touch!");
-                    dispatchTapGesture(tapX, tapY);
-                }
-                isWaitingToStartLive = false;
-                return;
-            }
-
-            // Fallback: If 600ms passed and node not found by text, tap bottom-right Live pill area
-            if (elapsed > 600) {
-                DisplayMetrics dm = getResources().getDisplayMetrics();
-                int width = dm.widthPixels;
-                int height = dm.heightPixels;
-                int fallbackX = (width > height) ? (int) (width * 0.875f) : (int) (width * 0.88f);
-                int fallbackY = (width > height) ? (int) (height * 0.865f) : (int) (height * 0.91f);
-                Log.i(TAG, "Dispatching orientation-aware fallback gesture at (" + fallbackX + ", " + fallbackY + ")");
-                dispatchTapGesture(fallbackX, fallbackY);
-                isWaitingToStartLive = false;
-                return;
-            }
-
-            scheduleRetry();
-        } catch (Throwable t) {
-            Log.e(TAG, "Error during attemptStartLive", t);
-            scheduleRetry();
-        } finally {
-            try { root.recycle(); } catch (Throwable ignored) {}
+        // Wait at least 500ms for Gemini app window to draw before clicking
+        if (elapsed < 500) {
+            scheduleRetry(150);
+            return;
         }
+
+        // 1. Try finding Live button node in active window or interactive windows
+        AccessibilityNodeInfo liveNode = null;
+        try {
+            AccessibilityNodeInfo root = getRootInActiveWindow();
+            if (root != null) {
+                liveNode = findNode(root, "Open Gemini Live", "assistant_robin_input_voice_chat_button_compose");
+                root.recycle();
+            }
+        } catch (Throwable t) {
+            Log.w(TAG, "Error checking getRootInActiveWindow", t);
+        }
+
+        if (liveNode == null) {
+            try {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    java.util.List<android.view.accessibility.AccessibilityWindowInfo> windows = getWindows();
+                    if (windows != null) {
+                        for (android.view.accessibility.AccessibilityWindowInfo window : windows) {
+                            AccessibilityNodeInfo wRoot = window.getRoot();
+                            if (wRoot != null) {
+                                liveNode = findNode(wRoot, "Open Gemini Live", "assistant_robin_input_voice_chat_button_compose");
+                                wRoot.recycle();
+                                if (liveNode != null) break;
+                            }
+                        }
+                    }
+                }
+            } catch (Throwable t) {
+                Log.w(TAG, "Error checking getWindows", t);
+            }
+        }
+
+        int tapX = 855;
+        int tapY = 2126;
+
+        if (liveNode != null) {
+            Rect bounds = new Rect();
+            liveNode.getBoundsInScreen(bounds);
+            if (!bounds.isEmpty()) {
+                tapX = bounds.centerX();
+                tapY = bounds.centerY();
+            }
+
+            // Click the node or parent if clickable
+            try {
+                AccessibilityNodeInfo clickableTarget = liveNode;
+                while (clickableTarget != null && !clickableTarget.isClickable()) {
+                    AccessibilityNodeInfo p = clickableTarget.getParent();
+                    if (p == null) break;
+                    clickableTarget = p;
+                }
+                if (clickableTarget != null && clickableTarget.isClickable()) {
+                    boolean clicked = clickableTarget.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                    Log.i(TAG, "clickableTarget.performAction(ACTION_CLICK): " + clicked);
+                }
+            } catch (Throwable t) {
+                Log.w(TAG, "Error performing ACTION_CLICK", t);
+            }
+
+            liveNode.recycle();
+        } else {
+            // Calculate pixel-accurate coordinates for Galaxy M33 (1080x2408)
+            int screenWidth = 1080;
+            int screenHeight = 2408;
+            try {
+                android.view.WindowManager wm = (android.view.WindowManager) getSystemService(Context.WINDOW_SERVICE);
+                if (wm != null) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                        Rect b = wm.getMaximumWindowMetrics().getBounds();
+                        screenWidth = b.width();
+                        screenHeight = b.height();
+                    } else {
+                        android.graphics.Point size = new android.graphics.Point();
+                        wm.getDefaultDisplay().getRealSize(size);
+                        screenWidth = size.x;
+                        screenHeight = size.y;
+                    }
+                }
+            } catch (Throwable ignored) {}
+            tapX = (screenWidth == 1080) ? 855 : (int) (screenWidth * 0.792f);
+            tapY = (screenHeight == 2408) ? 2126 : (int) (screenHeight * 0.883f);
+        }
+
+        Log.i(TAG, ">>> Dispatching verified Live gesture tap at (" + tapX + ", " + tapY + ") [attempt " + (tapAttempts + 1) + "] <<<");
+        dispatchTapGesture(tapX, tapY);
+        tapAttempts++;
+
+        // Schedule check 400ms later to see if Live opened, or retry
+        scheduleRetry(400);
     }
 
-    private void scheduleRetry() {
+    private void scheduleRetry(long delayMs) {
         mainHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -290,22 +356,46 @@ public class GeminiAccessibilityService extends AccessibilityService {
                     attemptStartLive();
                 }
             }
-        }, 100);
+        }, delayMs);
     }
 
     private synchronized void attemptEndLive() {
         if (!isWaitingToEndLive) return;
-
         isWaitingToEndLive = false;
-        Log.i(TAG, "Ending Gemini Live session via GLOBAL_ACTION_BACK");
-        performGlobalAction(GLOBAL_ACTION_BACK);
+        Log.i(TAG, "Ending Gemini Live session: clicking Close [X] and sending BACK");
 
+        // 1. Try finding and clicking the [X] close button (visible in 1000226324.jpg)
+        try {
+            AccessibilityNodeInfo root = getRootInActiveWindow();
+            if (root != null) {
+                AccessibilityNodeInfo closeNode = findNode(root, "Close Live", "End Live", "Stop Live", "Close");
+                if (closeNode != null) {
+                    closeNode.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                    closeNode.recycle();
+                    Log.i(TAG, "Clicked Live close node");
+                }
+                root.recycle();
+            }
+        } catch (Throwable ignored) {}
+
+        // 2. Dispatch tap gesture to [X] location (885, 2126) on Galaxy M33
+        int closeX = 885;
+        int closeY = 2126;
+        dispatchTapGesture(closeX, closeY);
+
+        // 3. Fallback: Double Back to return cleanly to home screen
         mainHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 performGlobalAction(GLOBAL_ACTION_BACK);
             }
-        }, 300);
+        }, 200);
+        mainHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                performGlobalAction(GLOBAL_ACTION_BACK);
+            }
+        }, 500);
     }
 
     private AccessibilityNodeInfo findNode(AccessibilityNodeInfo node, String... keywords) {
@@ -349,11 +439,11 @@ public class GeminiAccessibilityService extends AccessibilityService {
             Path path = new Path();
             path.moveTo(x, y);
             builder.addStroke(new GestureDescription.StrokeDescription(path, 0, 80));
-            dispatchGesture(builder.build(), new GestureResultCallback() {
+            boolean dispatched = dispatchGesture(builder.build(), new GestureResultCallback() {
                 @Override
                 public void onCompleted(GestureDescription gestureDescription) {
                     super.onCompleted(gestureDescription);
-                    Log.i(TAG, ">>> GESTURE TAP COMPLETED! 'Open Gemini Live' ACTIVATED! <<<");
+                    Log.i(TAG, ">>> GESTURE TAP COMPLETED! <<<");
                 }
 
                 @Override
@@ -362,6 +452,7 @@ public class GeminiAccessibilityService extends AccessibilityService {
                     Log.w(TAG, "Gesture tap was cancelled.");
                 }
             }, mainHandler);
+            Log.i(TAG, "dispatchGesture(" + x + ", " + y + ") returned: " + dispatched);
         } else {
             Log.w(TAG, "dispatchGesture requires Android N+");
         }

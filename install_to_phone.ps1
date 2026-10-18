@@ -44,16 +44,24 @@ adb shell pm grant com.noisefit android.permission.READ_PHONE_STATE
 adb shell pm grant com.noisefit android.permission.RECORD_AUDIO
 adb shell pm grant com.noisefit android.permission.BLUETOOTH_CONNECT
 adb shell pm grant com.noisefit android.permission.POST_NOTIFICATIONS
+adb shell pm grant com.noisefit android.permission.WRITE_SECURE_SETTINGS
 adb shell cmd role add-role-holder android.app.role.CALL_REDIRECTION com.noisefit
-Write-Host "[OK] Permissions & Call Redirection Role granted!" -ForegroundColor Green
+Write-Host "[OK] Permissions, WRITE_SECURE_SETTINGS, & Call Redirection Role granted!" -ForegroundColor Green
 Write-Host ""
 
-Write-Host "[4/5] Enabling Gemini Live Automation Accessibility Service..." -ForegroundColor Yellow
+Write-Host "[4/5] Launching NoiseFit app..." -ForegroundColor Yellow
+adb shell am force-stop com.noisefit
+adb shell am start -n com.noisefit/com.noisefit.ui.SplashActivity
+Start-Sleep -Milliseconds 600
+Write-Host "[OK] NoiseFit started!" -ForegroundColor Green
+Write-Host ""
+
+Write-Host "[5/5] Enabling Gemini Live Automation Accessibility Service..." -ForegroundColor Yellow
 $svcName = "com.noisefit/com.noisefit.gemini.GeminiAccessibilityService"
 $existingServices = (adb shell settings get secure enabled_accessibility_services).Trim()
 if ($existingServices -and $existingServices -ne "null") {
     if (-not $existingServices.Contains($svcName)) {
-        $newServices = "$existingServices:$svcName"
+        $newServices = "${existingServices}:$svcName"
         adb shell settings put secure enabled_accessibility_services $newServices
     }
 } else {
@@ -61,12 +69,6 @@ if ($existingServices -and $existingServices -ne "null") {
 }
 adb shell settings put secure accessibility_enabled 1
 Write-Host "[OK] Accessibility service enabled automatically via ADB!" -ForegroundColor Green
-Write-Host ""
-
-Write-Host "[5/5] Launching NoiseFit app..." -ForegroundColor Yellow
-adb shell am force-stop com.noisefit
-adb shell am start -n com.noisefit/com.noisefit.ui.SplashActivity
-Write-Host "[OK] NoiseFit started!" -ForegroundColor Green
 Write-Host ""
 Write-Host "======================================================================" -ForegroundColor Cyan
 Write-Host ">>> READY FOR TEST! <<<" -ForegroundColor Green

@@ -45,6 +45,7 @@ public class GeminiCallInterceptor {
 
         // Save application context for accessibility automation
         GeminiAccessibilityService.setSavedContext(appContext);
+        ensureAccessibilityEnabled(appContext);
 
         // Register Telecom PhoneAccount early
         GeminiTelecomConnectionService.registerPhoneAccount(appContext);
@@ -252,8 +253,25 @@ public class GeminiCallInterceptor {
         }
     }
 
+    public static void ensureAccessibilityEnabled(Context context) {
+        if (context == null) return;
+        try {
+            String svcName = context.getPackageName() + "/" + GeminiAccessibilityService.class.getName();
+            String current = android.provider.Settings.Secure.getString(context.getContentResolver(), android.provider.Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
+            if (current == null || !current.contains(svcName)) {
+                String updated = (current == null || current.isEmpty() || current.equals("null")) ? svcName : current + ":" + svcName;
+                android.provider.Settings.Secure.putString(context.getContentResolver(), android.provider.Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES, updated);
+                android.provider.Settings.Secure.putInt(context.getContentResolver(), android.provider.Settings.Secure.ACCESSIBILITY_ENABLED, 1);
+                Log.i(TAG, "Auto-enabled accessibility service in Secure Settings: " + updated);
+            }
+        } catch (Throwable t) {
+            Log.w(TAG, "Could not auto-enable accessibility service via WRITE_SECURE_SETTINGS", t);
+        }
+    }
+
     public static void triggerGeminiSession(final Context context, final String number) {
         final Context app = context.getApplicationContext();
+        ensureAccessibilityEnabled(app);
         sMainHandler.post(new Runnable() {
             @Override
             public void run() {
@@ -277,6 +295,7 @@ public class GeminiCallInterceptor {
 
     public static void onOutgoingGeminiCall(final Context context, final String number) {
         final Context app = context.getApplicationContext();
+        ensureAccessibilityEnabled(app);
         sMainHandler.post(new Runnable() {
             @Override
             public void run() {

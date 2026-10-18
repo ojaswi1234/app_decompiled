@@ -85,14 +85,20 @@ def main():
 
     with zipfile.ZipFile('temp_base_manifest.apk', 'r') as zmanifest:
         compiled_manifest = zmanifest.read('AndroidManifest.xml')
+        compiled_arsc = zmanifest.read('resources.arsc')
+        compiled_a11y_xml = zmanifest.read('res/xml/gemini_accessibility_service_config.xml')
 
     # 1. Base APK
     strip_and_repack(
         'xapk_extracted/com.noisefit.apk',
         'split_base_unsigned.apk',
-        extra_files={'classes19.dex': dex19_data},
+        extra_files={
+            'classes19.dex': dex19_data,
+            'res/xml/gemini_accessibility_service_config.xml': compiled_a11y_xml
+        },
         replace_files={
             'AndroidManifest.xml': compiled_manifest,
+            'resources.arsc': compiled_arsc,
             'classes17.dex': dex17_data,
             'classes18.dex': dex18_data
         }

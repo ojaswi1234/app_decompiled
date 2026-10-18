@@ -1,0 +1,35 @@
+.class public interface abstract Landroidx/compose/runtime/retain/RetainedValuesStore;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# virtual methods
+.method public abstract consumeExitedValueOrDefault(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    .param p1    # Ljava/lang/Object;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p2    # Ljava/lang/Object;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+.end method
+
+.method public abstract onContentEnteredComposition()V
+.end method
+
+.method public abstract onContentExitComposition()V
+.end method
+
+.method public abstract saveExitingValue(Ljava/lang/Object;Ljava/lang/Object;)V
+    .param p1    # Ljava/lang/Object;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p2    # Ljava/lang/Object;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+.end method

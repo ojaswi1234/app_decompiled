@@ -1,0 +1,94 @@
+.class final Lcom/moengage/core/internal/lifecycle/ApplicationLifecycleHandler$trackNotificationPermissionIfRequired$2;
+.super Lkotlin/jvm/internal/Lambda;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function0;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/moengage/core/internal/lifecycle/ApplicationLifecycleHandler;->trackNotificationPermissionIfRequired(Landroid/content/Context;)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lkotlin/jvm/internal/Lambda;",
+        "Lkotlin/jvm/functions/Function0<",
+        "Ljava/lang/String;",
+        ">;"
+    }
+.end annotation
+
+
+# instance fields
+.field final synthetic $lastTrackedTime:J
+
+.field final synthetic this$0:Lcom/moengage/core/internal/lifecycle/ApplicationLifecycleHandler;
+
+
+# direct methods
+.method public constructor <init>(Lcom/moengage/core/internal/lifecycle/ApplicationLifecycleHandler;J)V
+    .locals 0
+
+    iput-object p1, p0, Lcom/moengage/core/internal/lifecycle/ApplicationLifecycleHandler$trackNotificationPermissionIfRequired$2;->this$0:Lcom/moengage/core/internal/lifecycle/ApplicationLifecycleHandler;
+
+    iput-wide p2, p0, Lcom/moengage/core/internal/lifecycle/ApplicationLifecycleHandler$trackNotificationPermissionIfRequired$2;->$lastTrackedTime:J
+
+    const/4 p1, 0x0
+
+    invoke-direct {p0, p1}, Lkotlin/jvm/internal/Lambda;-><init>(I)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public bridge synthetic invoke()Ljava/lang/Object;
+    .locals 1
+
+    .line 1
+    invoke-virtual {p0}, Lcom/moengage/core/internal/lifecycle/ApplicationLifecycleHandler$trackNotificationPermissionIfRequired$2;->invoke()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public final invoke()Ljava/lang/String;
+    .locals 3
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    .line 2
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    iget-object v1, p0, Lcom/moengage/core/internal/lifecycle/ApplicationLifecycleHandler$trackNotificationPermissionIfRequired$2;->this$0:Lcom/moengage/core/internal/lifecycle/ApplicationLifecycleHandler;
+
+    invoke-static {v1}, Lcom/moengage/core/internal/lifecycle/ApplicationLifecycleHandler;->access$getTag$p(Lcom/moengage/core/internal/lifecycle/ApplicationLifecycleHandler;)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v1, " trackNotificationPermissionIfRequired() : Last Tracked time: "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-wide v1, p0, Lcom/moengage/core/internal/lifecycle/ApplicationLifecycleHandler$trackNotificationPermissionIfRequired$2;->$lastTrackedTime:J
+
+    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method

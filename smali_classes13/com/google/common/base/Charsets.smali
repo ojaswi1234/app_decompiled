@@ -1,0 +1,104 @@
+.class public final Lcom/google/common/base/Charsets;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation build Lcom/google/common/annotations/GwtCompatible;
+.end annotation
+
+
+# static fields
+.field public static final a:Ljava/nio/charset/Charset;
+    .annotation build Lcom/google/common/annotations/GwtIncompatible;
+    .end annotation
+
+    .annotation build Lcom/google/common/annotations/J2ktIncompatible;
+    .end annotation
+
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
+
+.field public static final b:Ljava/nio/charset/Charset;
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
+
+.field public static final c:Ljava/nio/charset/Charset;
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
+
+.field public static final d:Ljava/nio/charset/Charset;
+    .annotation build Lcom/google/common/annotations/GwtIncompatible;
+    .end annotation
+
+    .annotation build Lcom/google/common/annotations/J2ktIncompatible;
+    .end annotation
+
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
+
+.field public static final e:Ljava/nio/charset/Charset;
+    .annotation build Lcom/google/common/annotations/GwtIncompatible;
+    .end annotation
+
+    .annotation build Lcom/google/common/annotations/J2ktIncompatible;
+    .end annotation
+
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
+
+.field public static final f:Ljava/nio/charset/Charset;
+    .annotation build Lcom/google/common/annotations/GwtIncompatible;
+    .end annotation
+
+    .annotation build Lcom/google/common/annotations/J2ktIncompatible;
+    .end annotation
+
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+.end field
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    sget-object v0, Ljava/nio/charset/StandardCharsets;->US_ASCII:Ljava/nio/charset/Charset;
+
+    sput-object v0, Lcom/google/common/base/Charsets;->a:Ljava/nio/charset/Charset;
+
+    sget-object v0, Ljava/nio/charset/StandardCharsets;->ISO_8859_1:Ljava/nio/charset/Charset;
+
+    sput-object v0, Lcom/google/common/base/Charsets;->b:Ljava/nio/charset/Charset;
+
+    sget-object v0, Ljava/nio/charset/StandardCharsets;->UTF_8:Ljava/nio/charset/Charset;
+
+    sput-object v0, Lcom/google/common/base/Charsets;->c:Ljava/nio/charset/Charset;
+
+    sget-object v0, Ljava/nio/charset/StandardCharsets;->UTF_16BE:Ljava/nio/charset/Charset;
+
+    sput-object v0, Lcom/google/common/base/Charsets;->d:Ljava/nio/charset/Charset;
+
+    sget-object v0, Ljava/nio/charset/StandardCharsets;->UTF_16LE:Ljava/nio/charset/Charset;
+
+    sput-object v0, Lcom/google/common/base/Charsets;->e:Ljava/nio/charset/Charset;
+
+    sget-object v0, Ljava/nio/charset/StandardCharsets;->UTF_16:Ljava/nio/charset/Charset;
+
+    sput-object v0, Lcom/google/common/base/Charsets;->f:Ljava/nio/charset/Charset;
+
+    return-void
+.end method
+
+.method private constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method

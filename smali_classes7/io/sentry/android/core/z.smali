@@ -1,0 +1,42 @@
+.class public final synthetic Lio/sentry/android/core/z;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/util/function/Supplier;
+
+
+# instance fields
+.field public final synthetic s:Landroid/content/Context;
+
+.field public final synthetic t:Lio/sentry/android/core/SentryAndroidOptions;
+
+
+# direct methods
+.method public synthetic constructor <init>(Landroid/content/Context;Lio/sentry/android/core/SentryAndroidOptions;)V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lio/sentry/android/core/z;->s:Landroid/content/Context;
+
+    iput-object p2, p0, Lio/sentry/android/core/z;->t:Lio/sentry/android/core/SentryAndroidOptions;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final get()Ljava/lang/Object;
+    .locals 2
+
+    iget-object v0, p0, Lio/sentry/android/core/z;->s:Landroid/content/Context;
+
+    iget-object v1, p0, Lio/sentry/android/core/z;->t:Lio/sentry/android/core/SentryAndroidOptions;
+
+    invoke-static {v0, v1}, Lio/sentry/android/core/AndroidOptionsInitializer;->c(Landroid/content/Context;Lio/sentry/android/core/SentryAndroidOptions;)Lio/sentry/android/core/PerfettoProfiler;
+
+    move-result-object v0
+
+    return-object v0
+.end method

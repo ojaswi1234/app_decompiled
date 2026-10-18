@@ -1,0 +1,43 @@
+.class public final Lcom/noisefit_topstep/dataConversion/DataConverter$parseStepsData$lambda$43$lambda$42$$inlined$fromJson$1;
+.super Lcom/google/gson/reflect/TypeToken;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/noisefit_topstep/dataConversion/DataConverter;->x(Ljava/util/List;)Ljava/util/HashMap;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lcom/google/gson/reflect/TypeToken<",
+        "Ljava/util/ArrayList<",
+        "Ljava/lang/Integer;",
+        ">;>;"
+    }
+.end annotation
+
+.annotation system Ldalvik/annotation/SourceDebugExtension;
+    value = "SMAP\nDataConverter.kt\nKotlin\n*S Kotlin\n*F\n+ 1 DataConverter.kt\ncom/noisefit_topstep/dataConversion/DataConverterKt$fromJson$1\n*L\n1#1,1083:1\n*E\n"
+.end annotation
+
+.annotation build Lkotlin/jvm/internal/SourceDebugExtension;
+    value = {
+        "SMAP\nDataConverter.kt\nKotlin\n*S Kotlin\n*F\n+ 1 DataConverter.kt\ncom/noisefit_topstep/dataConversion/DataConverterKt$fromJson$1\n*L\n1#1,1083:1\n*E\n"
+    }
+.end annotation
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/google/gson/reflect/TypeToken;-><init>()V
+
+    return-void
+.end method

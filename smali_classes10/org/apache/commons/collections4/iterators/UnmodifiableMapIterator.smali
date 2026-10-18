@@ -1,0 +1,181 @@
+.class public final Lorg/apache/commons/collections4/iterators/UnmodifiableMapIterator;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lorg/apache/commons/collections4/MapIterator;
+.implements Lorg/apache/commons/collections4/Unmodifiable;
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "<K:",
+        "Ljava/lang/Object;",
+        "V:",
+        "Ljava/lang/Object;",
+        ">",
+        "Ljava/lang/Object;",
+        "Lorg/apache/commons/collections4/MapIterator<",
+        "TK;TV;>;",
+        "Lorg/apache/commons/collections4/Unmodifiable;"
+    }
+.end annotation
+
+
+# instance fields
+.field public final s:Lorg/apache/commons/collections4/MapIterator;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lorg/apache/commons/collections4/MapIterator<",
+            "+TK;+TV;>;"
+        }
+    .end annotation
+.end field
+
+
+# direct methods
+.method public constructor <init>(Lorg/apache/commons/collections4/MapIterator;)V
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lorg/apache/commons/collections4/MapIterator<",
+            "+TK;+TV;>;)V"
+        }
+    .end annotation
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lorg/apache/commons/collections4/iterators/UnmodifiableMapIterator;->s:Lorg/apache/commons/collections4/MapIterator;
+
+    return-void
+.end method
+
+.method public static a(Lorg/apache/commons/collections4/MapIterator;)Lorg/apache/commons/collections4/MapIterator;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<K:",
+            "Ljava/lang/Object;",
+            "V:",
+            "Ljava/lang/Object;",
+            ">(",
+            "Lorg/apache/commons/collections4/MapIterator<",
+            "+TK;+TV;>;)",
+            "Lorg/apache/commons/collections4/MapIterator<",
+            "TK;TV;>;"
+        }
+    .end annotation
+
+    const-string v0, "iterator"
+
+    invoke-static {p0, v0}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+
+    instance-of v0, p0, Lorg/apache/commons/collections4/Unmodifiable;
+
+    if-eqz v0, :cond_0
+
+    return-object p0
+
+    :cond_0
+    new-instance v0, Lorg/apache/commons/collections4/iterators/UnmodifiableMapIterator;
+
+    invoke-direct {v0, p0}, Lorg/apache/commons/collections4/iterators/UnmodifiableMapIterator;-><init>(Lorg/apache/commons/collections4/MapIterator;)V
+
+    return-object v0
+.end method
+
+
+# virtual methods
+.method public getKey()Ljava/lang/Object;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()TK;"
+        }
+    .end annotation
+
+    iget-object v0, p0, Lorg/apache/commons/collections4/iterators/UnmodifiableMapIterator;->s:Lorg/apache/commons/collections4/MapIterator;
+
+    invoke-interface {v0}, Lorg/apache/commons/collections4/MapIterator;->getKey()Ljava/lang/Object;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getValue()Ljava/lang/Object;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()TV;"
+        }
+    .end annotation
+
+    iget-object v0, p0, Lorg/apache/commons/collections4/iterators/UnmodifiableMapIterator;->s:Lorg/apache/commons/collections4/MapIterator;
+
+    invoke-interface {v0}, Lorg/apache/commons/collections4/MapIterator;->getValue()Ljava/lang/Object;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public hasNext()Z
+    .locals 1
+
+    iget-object v0, p0, Lorg/apache/commons/collections4/iterators/UnmodifiableMapIterator;->s:Lorg/apache/commons/collections4/MapIterator;
+
+    invoke-interface {v0}, Lorg/apache/commons/collections4/MapIterator;->hasNext()Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public next()Ljava/lang/Object;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()TK;"
+        }
+    .end annotation
+
+    iget-object v0, p0, Lorg/apache/commons/collections4/iterators/UnmodifiableMapIterator;->s:Lorg/apache/commons/collections4/MapIterator;
+
+    invoke-interface {v0}, Lorg/apache/commons/collections4/MapIterator;->next()Ljava/lang/Object;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public remove()V
+    .locals 2
+
+    new-instance v0, Ljava/lang/UnsupportedOperationException;
+
+    const-string v1, "remove() is not supported"
+
+    invoke-direct {v0, v1}, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+.end method
+
+.method public setValue(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(TV;)TV;"
+        }
+    .end annotation
+
+    new-instance p1, Ljava/lang/UnsupportedOperationException;
+
+    const-string v0, "setValue() is not supported"
+
+    invoke-direct {p1, v0}, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V
+
+    throw p1
+.end method

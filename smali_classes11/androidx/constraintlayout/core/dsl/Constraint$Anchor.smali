@@ -1,0 +1,214 @@
+.class public Landroidx/constraintlayout/core/dsl/Constraint$Anchor;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/constraintlayout/core/dsl/Constraint;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = "Anchor"
+.end annotation
+
+
+# instance fields
+.field public final a:Landroidx/constraintlayout/core/dsl/Constraint$Side;
+
+.field public b:Landroidx/constraintlayout/core/dsl/Constraint$Anchor;
+
+.field public c:I
+
+.field public d:I
+
+.field public final synthetic e:Landroidx/constraintlayout/core/dsl/Constraint;
+
+
+# direct methods
+.method public constructor <init>(Landroidx/constraintlayout/core/dsl/Constraint;Landroidx/constraintlayout/core/dsl/Constraint$Side;)V
+    .locals 0
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x8010,
+            0x0
+        }
+        names = {
+            null,
+            null
+        }
+    .end annotation
+
+    iput-object p1, p0, Landroidx/constraintlayout/core/dsl/Constraint$Anchor;->e:Landroidx/constraintlayout/core/dsl/Constraint;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    const/4 p1, 0x0
+
+    iput-object p1, p0, Landroidx/constraintlayout/core/dsl/Constraint$Anchor;->b:Landroidx/constraintlayout/core/dsl/Constraint$Anchor;
+
+    const/high16 p1, -0x80000000
+
+    iput p1, p0, Landroidx/constraintlayout/core/dsl/Constraint$Anchor;->d:I
+
+    iput-object p2, p0, Landroidx/constraintlayout/core/dsl/Constraint$Anchor;->a:Landroidx/constraintlayout/core/dsl/Constraint$Side;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public a(Ljava/lang/StringBuilder;)V
+    .locals 1
+
+    iget-object v0, p0, Landroidx/constraintlayout/core/dsl/Constraint$Anchor;->b:Landroidx/constraintlayout/core/dsl/Constraint$Anchor;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Landroidx/constraintlayout/core/dsl/Constraint$Anchor;->a:Landroidx/constraintlayout/core/dsl/Constraint$Side;
+
+    invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v0, ":"
+
+    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const-string v0, ",\n"
+
+    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    :cond_0
+    return-void
+.end method
+
+.method public b()Ljava/lang/String;
+    .locals 1
+
+    iget-object v0, p0, Landroidx/constraintlayout/core/dsl/Constraint$Anchor;->e:Landroidx/constraintlayout/core/dsl/Constraint;
+
+    invoke-static {v0}, Landroidx/constraintlayout/core/dsl/Constraint;->a(Landroidx/constraintlayout/core/dsl/Constraint;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public c()Landroidx/constraintlayout/core/dsl/Constraint;
+    .locals 1
+
+    iget-object v0, p0, Landroidx/constraintlayout/core/dsl/Constraint$Anchor;->e:Landroidx/constraintlayout/core/dsl/Constraint;
+
+    return-object v0
+.end method
+
+.method public toString()Ljava/lang/String;
+    .locals 4
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    const-string v1, "["
+
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    iget-object v1, p0, Landroidx/constraintlayout/core/dsl/Constraint$Anchor;->b:Landroidx/constraintlayout/core/dsl/Constraint$Anchor;
+
+    if-eqz v1, :cond_0
+
+    const-string v1, "\'"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v2, p0, Landroidx/constraintlayout/core/dsl/Constraint$Anchor;->b:Landroidx/constraintlayout/core/dsl/Constraint$Anchor;
+
+    invoke-virtual {v2}, Landroidx/constraintlayout/core/dsl/Constraint$Anchor;->b()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v2, "\',"
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v2, p0, Landroidx/constraintlayout/core/dsl/Constraint$Anchor;->b:Landroidx/constraintlayout/core/dsl/Constraint$Anchor;
+
+    iget-object v2, v2, Landroidx/constraintlayout/core/dsl/Constraint$Anchor;->a:Landroidx/constraintlayout/core/dsl/Constraint$Side;
+
+    invoke-virtual {v2}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    :cond_0
+    iget v1, p0, Landroidx/constraintlayout/core/dsl/Constraint$Anchor;->c:I
+
+    const-string v2, ","
+
+    if-eqz v1, :cond_1
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget v1, p0, Landroidx/constraintlayout/core/dsl/Constraint$Anchor;->c:I
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    :cond_1
+    iget v1, p0, Landroidx/constraintlayout/core/dsl/Constraint$Anchor;->d:I
+
+    const/high16 v3, -0x80000000
+
+    if-eq v1, v3, :cond_3
+
+    iget v1, p0, Landroidx/constraintlayout/core/dsl/Constraint$Anchor;->c:I
+
+    if-nez v1, :cond_2
+
+    const-string v1, ",0,"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget v1, p0, Landroidx/constraintlayout/core/dsl/Constraint$Anchor;->d:I
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    goto :goto_0
+
+    :cond_2
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget v1, p0, Landroidx/constraintlayout/core/dsl/Constraint$Anchor;->d:I
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    :cond_3
+    :goto_0
+    const-string v1, "]"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method

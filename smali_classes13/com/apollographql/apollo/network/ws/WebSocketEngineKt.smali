@@ -1,0 +1,9 @@
+.class public final Lcom/apollographql/apollo/network/ws/WebSocketEngineKt;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# static fields
+.field public static final a:I = 0x3e8
+
+.field public static final b:I = 0x3e9

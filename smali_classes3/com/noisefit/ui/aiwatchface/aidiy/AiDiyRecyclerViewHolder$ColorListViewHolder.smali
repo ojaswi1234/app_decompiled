@@ -1,0 +1,203 @@
+.class public final Lcom/noisefit/ui/aiwatchface/aidiy/AiDiyRecyclerViewHolder$ColorListViewHolder;
+.super Lcom/noisefit/ui/aiwatchface/aidiy/AiDiyRecyclerViewHolder;
+.source "SourceFile"
+
+
+# annotations
+.annotation build Landroidx/compose/runtime/internal/StabilityInferred;
+    parameters = 0x0
+.end annotation
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/noisefit/ui/aiwatchface/aidiy/AiDiyRecyclerViewHolder;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "ColorListViewHolder"
+.end annotation
+
+
+# static fields
+.field public static final L:I = 0x8
+
+
+# instance fields
+.field public final K:Lcom/noisefit/databinding/LayoutDiyColorListBinding;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 0
+
+    return-void
+.end method
+
+.method public constructor <init>(Lcom/noisefit/databinding/LayoutDiyColorListBinding;)V
+    .locals 1
+    .param p1    # Lcom/noisefit/databinding/LayoutDiyColorListBinding;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+
+    const-string v0, "binding"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    const/4 v0, 0x0
+
+    invoke-direct {p0, p1, v0}, Lcom/noisefit/ui/aiwatchface/aidiy/AiDiyRecyclerViewHolder;-><init>(Landroidx/viewbinding/ViewBinding;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+
+    iput-object p1, p0, Lcom/noisefit/ui/aiwatchface/aidiy/AiDiyRecyclerViewHolder$ColorListViewHolder;->K:Lcom/noisefit/databinding/LayoutDiyColorListBinding;
+
+    return-void
+.end method
+
+.method public static synthetic T(Lcom/noisefit/ui/aiwatchface/aidiy/AiDiyRecyclerViewHolder$ColorListViewHolder;I)Lkotlin/Unit;
+    .locals 0
+
+    invoke-static {p0, p1}, Lcom/noisefit/ui/aiwatchface/aidiy/AiDiyRecyclerViewHolder$ColorListViewHolder;->W(Lcom/noisefit/ui/aiwatchface/aidiy/AiDiyRecyclerViewHolder$ColorListViewHolder;I)Lkotlin/Unit;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static final synthetic U(Lcom/noisefit/ui/aiwatchface/aidiy/AiDiyRecyclerViewHolder$ColorListViewHolder;)Lcom/noisefit/databinding/LayoutDiyColorListBinding;
+    .locals 0
+
+    iget-object p0, p0, Lcom/noisefit/ui/aiwatchface/aidiy/AiDiyRecyclerViewHolder$ColorListViewHolder;->K:Lcom/noisefit/databinding/LayoutDiyColorListBinding;
+
+    return-object p0
+.end method
+
+.method public static final W(Lcom/noisefit/ui/aiwatchface/aidiy/AiDiyRecyclerViewHolder$ColorListViewHolder;I)Lkotlin/Unit;
+    .locals 0
+
+    iget-object p0, p0, Lcom/noisefit/ui/aiwatchface/aidiy/AiDiyRecyclerViewHolder$ColorListViewHolder;->K:Lcom/noisefit/databinding/LayoutDiyColorListBinding;
+
+    iget-object p0, p0, Lcom/noisefit/databinding/LayoutDiyColorListBinding;->X:Landroidx/recyclerview/widget/RecyclerView;
+
+    invoke-virtual {p0, p1}, Landroidx/recyclerview/widget/RecyclerView;->Q1(I)V
+
+    sget-object p0, Lkotlin/Unit;->a:Lkotlin/Unit;
+
+    return-object p0
+.end method
+
+
+# virtual methods
+.method public final V(Lcom/noisefit/data/model/DiyWatchFaceModal$ColorList;I)V
+    .locals 3
+    .param p1    # Lcom/noisefit/data/model/DiyWatchFaceModal$ColorList;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+
+    const-string p2, "data"
+
+    invoke-static {p1, p2}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    iget-object p2, p0, Lcom/noisefit/ui/aiwatchface/aidiy/AiDiyRecyclerViewHolder$ColorListViewHolder;->K:Lcom/noisefit/databinding/LayoutDiyColorListBinding;
+
+    iget-object p2, p2, Lcom/noisefit/databinding/LayoutDiyColorListBinding;->Y:Landroid/widget/TextView;
+
+    invoke-virtual {p1}, Lcom/noisefit/data/model/DiyWatchFaceModal$ColorList;->getTitle()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {p2, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    new-instance p2, Lcom/noisefit/ui/diy/DiyColorAdapter;
+
+    new-instance v0, Lcom/noisefit/ui/aiwatchface/aidiy/AiDiyRecyclerViewHolder$ColorListViewHolder$bind$diyWatchFaceAdapter$1;
+
+    invoke-direct {v0, p0}, Lcom/noisefit/ui/aiwatchface/aidiy/AiDiyRecyclerViewHolder$ColorListViewHolder$bind$diyWatchFaceAdapter$1;-><init>(Lcom/noisefit/ui/aiwatchface/aidiy/AiDiyRecyclerViewHolder$ColorListViewHolder;)V
+
+    invoke-direct {p2, v0}, Lcom/noisefit/ui/diy/DiyColorAdapter;-><init>(Lcom/noisefit/ui/diy/DiyColorAdapter$DiyWatchFaceBgListener;)V
+
+    new-instance v0, Landroidx/recyclerview/widget/LinearLayoutManager;
+
+    iget-object v1, p0, Lcom/noisefit/ui/aiwatchface/aidiy/AiDiyRecyclerViewHolder$ColorListViewHolder;->K:Lcom/noisefit/databinding/LayoutDiyColorListBinding;
+
+    iget-object v1, v1, Lcom/noisefit/databinding/LayoutDiyColorListBinding;->X:Landroidx/recyclerview/widget/RecyclerView;
+
+    invoke-virtual {v1}, Landroid/view/View;->getContext()Landroid/content/Context;
+
+    move-result-object v1
+
+    const/4 v2, 0x0
+
+    invoke-direct {v0, v1, v2, v2}, Landroidx/recyclerview/widget/LinearLayoutManager;-><init>(Landroid/content/Context;IZ)V
+
+    iget-object v1, p0, Lcom/noisefit/ui/aiwatchface/aidiy/AiDiyRecyclerViewHolder$ColorListViewHolder;->K:Lcom/noisefit/databinding/LayoutDiyColorListBinding;
+
+    iget-object v1, v1, Lcom/noisefit/databinding/LayoutDiyColorListBinding;->X:Landroidx/recyclerview/widget/RecyclerView;
+
+    invoke-virtual {v1, v0}, Landroidx/recyclerview/widget/RecyclerView;->setLayoutManager(Landroidx/recyclerview/widget/RecyclerView$LayoutManager;)V
+
+    invoke-virtual {v1, p2}, Landroidx/recyclerview/widget/RecyclerView;->setAdapter(Landroidx/recyclerview/widget/RecyclerView$Adapter;)V
+
+    const/4 v0, 0x0
+
+    invoke-virtual {v1, v0}, Landroidx/recyclerview/widget/RecyclerView;->setItemAnimator(Landroidx/recyclerview/widget/RecyclerView$ItemAnimator;)V
+
+    new-instance v2, Landroidx/recyclerview/widget/RecyclerView$RecycledViewPool;
+
+    invoke-direct {v2}, Landroidx/recyclerview/widget/RecyclerView$RecycledViewPool;-><init>()V
+
+    invoke-virtual {v1, v2}, Landroidx/recyclerview/widget/RecyclerView;->setRecycledViewPool(Landroidx/recyclerview/widget/RecyclerView$RecycledViewPool;)V
+
+    iget-object v1, p0, Lcom/noisefit/ui/aiwatchface/aidiy/AiDiyRecyclerViewHolder$ColorListViewHolder;->K:Lcom/noisefit/databinding/LayoutDiyColorListBinding;
+
+    iget-object v1, v1, Lcom/noisefit/databinding/LayoutDiyColorListBinding;->Y:Landroid/widget/TextView;
+
+    invoke-virtual {p1}, Lcom/noisefit/data/model/DiyWatchFaceModal$ColorList;->getTitle()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    invoke-virtual {p1}, Lcom/noisefit/data/model/DiyWatchFaceModal$ColorList;->getColorList()Ljava/util/ArrayList;
+
+    move-result-object p1
+
+    invoke-virtual {p2, p1}, Lcom/noisefit/ui/diy/DiyColorAdapter;->X(Ljava/util/List;)V
+
+    invoke-virtual {p2}, Lcom/noisefit/ui/diy/DiyColorAdapter;->S()I
+
+    move-result p1
+
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/Number;->intValue()I
+
+    move-result p2
+
+    const/4 v1, -0x1
+
+    if-eq p2, v1, :cond_0
+
+    move-object v0, p1
+
+    :cond_0
+    if-eqz v0, :cond_1
+
+    invoke-virtual {v0}, Ljava/lang/Number;->intValue()I
+
+    move-result p1
+
+    new-instance p2, Lcom/noisefit/ui/aiwatchface/aidiy/c;
+
+    invoke-direct {p2, p0, p1}, Lcom/noisefit/ui/aiwatchface/aidiy/c;-><init>(Lcom/noisefit/ui/aiwatchface/aidiy/AiDiyRecyclerViewHolder$ColorListViewHolder;I)V
+
+    invoke-static {p2}, Lcom/noisefit/ui/common/ViewExtensionsKt;->W1(Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;
+
+    :cond_1
+    return-void
+.end method

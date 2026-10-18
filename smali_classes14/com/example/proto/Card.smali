@@ -1,0 +1,38 @@
+.class public final Lcom/example/proto/Card;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/example/proto/Card$protocol_quick_card_inquire_reply;,
+        Lcom/example/proto/Card$protocol_quick_card_inquire_replyOrBuilder;,
+        Lcom/example/proto/Card$protocol_quick_card_operate;,
+        Lcom/example/proto/Card$protocol_quick_card_operateOrBuilder;,
+        Lcom/example/proto/Card$quick_card_func;,
+        Lcom/example/proto/Card$quick_card_funcOrBuilder;
+    }
+.end annotation
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 0
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method public static registerAllExtensions(Lcom/google/protobuf/ExtensionRegistryLite;)V
+    .locals 0
+
+    return-void
+.end method

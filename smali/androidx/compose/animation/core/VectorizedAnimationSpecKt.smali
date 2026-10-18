@@ -1,0 +1,259 @@
+.class public final Landroidx/compose/animation/core/VectorizedAnimationSpecKt;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/SourceDebugExtension;
+    value = "SMAP\nVectorizedAnimationSpec.kt\nKotlin\n*S Kotlin\n*F\n+ 1 VectorizedAnimationSpec.kt\nandroidx/compose/animation/core/VectorizedAnimationSpecKt\n+ 2 MathHelpers.kt\nandroidx/compose/ui/util/MathHelpersKt\n*L\n1#1,1038:1\n119#2,10:1039\n*S KotlinDebug\n*F\n+ 1 VectorizedAnimationSpec.kt\nandroidx/compose/animation/core/VectorizedAnimationSpecKt\n*L\n187#1:1039,10\n*E\n"
+.end annotation
+
+.annotation build Lkotlin/jvm/internal/SourceDebugExtension;
+    value = {
+        "SMAP\nVectorizedAnimationSpec.kt\nKotlin\n*S Kotlin\n*F\n+ 1 VectorizedAnimationSpec.kt\nandroidx/compose/animation/core/VectorizedAnimationSpecKt\n+ 2 MathHelpers.kt\nandroidx/compose/ui/util/MathHelpersKt\n*L\n1#1,1038:1\n119#2,10:1039\n*S KotlinDebug\n*F\n+ 1 VectorizedAnimationSpec.kt\nandroidx/compose/animation/core/VectorizedAnimationSpecKt\n*L\n187#1:1039,10\n*E\n"
+    }
+.end annotation
+
+
+# static fields
+.field private static final EmptyArcSpline:Landroidx/compose/animation/core/ArcSpline;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+.field private static final EmptyFloatArray:[F
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+.field private static final EmptyIntArray:[I
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 5
+
+    const/4 v0, 0x0
+
+    new-array v1, v0, [I
+
+    sput-object v1, Landroidx/compose/animation/core/VectorizedAnimationSpecKt;->EmptyIntArray:[I
+
+    new-array v0, v0, [F
+
+    sput-object v0, Landroidx/compose/animation/core/VectorizedAnimationSpecKt;->EmptyFloatArray:[F
+
+    new-instance v0, Landroidx/compose/animation/core/ArcSpline;
+
+    const/4 v1, 0x2
+
+    new-array v2, v1, [I
+
+    new-array v3, v1, [F
+
+    new-array v4, v1, [F
+
+    new-array v1, v1, [F
+
+    filled-new-array {v4, v1}, [[F
+
+    move-result-object v1
+
+    invoke-direct {v0, v2, v3, v1}, Landroidx/compose/animation/core/ArcSpline;-><init>([I[F[[F)V
+
+    sput-object v0, Landroidx/compose/animation/core/VectorizedAnimationSpecKt;->EmptyArcSpline:Landroidx/compose/animation/core/ArcSpline;
+
+    return-void
+.end method
+
+.method public static final synthetic access$createSpringAnimations(Landroidx/compose/animation/core/AnimationVector;FF)Landroidx/compose/animation/core/Animations;
+    .locals 0
+
+    invoke-static {p0, p1, p2}, Landroidx/compose/animation/core/VectorizedAnimationSpecKt;->createSpringAnimations(Landroidx/compose/animation/core/AnimationVector;FF)Landroidx/compose/animation/core/Animations;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static final synthetic access$getEmptyArcSpline$p()Landroidx/compose/animation/core/ArcSpline;
+    .locals 1
+
+    sget-object v0, Landroidx/compose/animation/core/VectorizedAnimationSpecKt;->EmptyArcSpline:Landroidx/compose/animation/core/ArcSpline;
+
+    return-object v0
+.end method
+
+.method public static final synthetic access$getEmptyFloatArray$p()[F
+    .locals 1
+
+    sget-object v0, Landroidx/compose/animation/core/VectorizedAnimationSpecKt;->EmptyFloatArray:[F
+
+    return-object v0
+.end method
+
+.method public static final synthetic access$getEmptyIntArray$p()[I
+    .locals 1
+
+    sget-object v0, Landroidx/compose/animation/core/VectorizedAnimationSpecKt;->EmptyIntArray:[I
+
+    return-object v0
+.end method
+
+.method public static final clampPlayTime(Landroidx/compose/animation/core/VectorizedDurationBasedAnimationSpec;J)J
+    .locals 4
+    .param p0    # Landroidx/compose/animation/core/VectorizedDurationBasedAnimationSpec;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroidx/compose/animation/core/VectorizedDurationBasedAnimationSpec<",
+            "*>;J)J"
+        }
+    .end annotation
+
+    invoke-interface {p0}, Landroidx/compose/animation/core/VectorizedDurationBasedAnimationSpec;->getDelayMillis()I
+
+    move-result v0
+
+    int-to-long v0, v0
+
+    sub-long/2addr p1, v0
+
+    invoke-interface {p0}, Landroidx/compose/animation/core/VectorizedDurationBasedAnimationSpec;->getDurationMillis()I
+
+    move-result p0
+
+    int-to-long v0, p0
+
+    const-wide/16 v2, 0x0
+
+    cmp-long p0, p1, v2
+
+    if-gez p0, :cond_0
+
+    move-wide p1, v2
+
+    :cond_0
+    cmp-long p0, p1, v0
+
+    if-lez p0, :cond_1
+
+    return-wide v0
+
+    :cond_1
+    return-wide p1
+.end method
+
+.method private static final createSpringAnimations(Landroidx/compose/animation/core/AnimationVector;FF)Landroidx/compose/animation/core/Animations;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<V:",
+            "Landroidx/compose/animation/core/AnimationVector;",
+            ">(TV;FF)",
+            "Landroidx/compose/animation/core/Animations;"
+        }
+    .end annotation
+
+    if-eqz p0, :cond_0
+
+    new-instance v0, Landroidx/compose/animation/core/VectorizedAnimationSpecKt$createSpringAnimations$1;
+
+    invoke-direct {v0, p0, p1, p2}, Landroidx/compose/animation/core/VectorizedAnimationSpecKt$createSpringAnimations$1;-><init>(Landroidx/compose/animation/core/AnimationVector;FF)V
+
+    return-object v0
+
+    :cond_0
+    new-instance p0, Landroidx/compose/animation/core/VectorizedAnimationSpecKt$createSpringAnimations$2;
+
+    invoke-direct {p0, p1, p2}, Landroidx/compose/animation/core/VectorizedAnimationSpecKt$createSpringAnimations$2;-><init>(FF)V
+
+    return-object p0
+.end method
+
+.method public static final getDurationMillis(Landroidx/compose/animation/core/VectorizedAnimationSpec;Landroidx/compose/animation/core/AnimationVector;Landroidx/compose/animation/core/AnimationVector;Landroidx/compose/animation/core/AnimationVector;)J
+    .locals 0
+    .param p0    # Landroidx/compose/animation/core/VectorizedAnimationSpec;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p1    # Landroidx/compose/animation/core/AnimationVector;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p2    # Landroidx/compose/animation/core/AnimationVector;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p3    # Landroidx/compose/animation/core/AnimationVector;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<V:",
+            "Landroidx/compose/animation/core/AnimationVector;",
+            ">(",
+            "Landroidx/compose/animation/core/VectorizedAnimationSpec<",
+            "TV;>;TV;TV;TV;)J"
+        }
+    .end annotation
+
+    invoke-interface {p0, p1, p2, p3}, Landroidx/compose/animation/core/VectorizedAnimationSpec;->getDurationNanos(Landroidx/compose/animation/core/AnimationVector;Landroidx/compose/animation/core/AnimationVector;Landroidx/compose/animation/core/AnimationVector;)J
+
+    move-result-wide p0
+
+    const-wide/32 p2, 0xf4240
+
+    div-long/2addr p0, p2
+
+    return-wide p0
+.end method
+
+.method public static final getValueFromMillis(Landroidx/compose/animation/core/VectorizedAnimationSpec;JLandroidx/compose/animation/core/AnimationVector;Landroidx/compose/animation/core/AnimationVector;Landroidx/compose/animation/core/AnimationVector;)Landroidx/compose/animation/core/AnimationVector;
+    .locals 2
+    .param p0    # Landroidx/compose/animation/core/VectorizedAnimationSpec;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p3    # Landroidx/compose/animation/core/AnimationVector;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p4    # Landroidx/compose/animation/core/AnimationVector;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p5    # Landroidx/compose/animation/core/AnimationVector;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<V:",
+            "Landroidx/compose/animation/core/AnimationVector;",
+            ">(",
+            "Landroidx/compose/animation/core/VectorizedAnimationSpec<",
+            "TV;>;JTV;TV;TV;)TV;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    const-wide/32 v0, 0xf4240
+
+    mul-long/2addr p1, v0
+
+    invoke-interface/range {p0 .. p5}, Landroidx/compose/animation/core/VectorizedAnimationSpec;->getValueFromNanos(JLandroidx/compose/animation/core/AnimationVector;Landroidx/compose/animation/core/AnimationVector;Landroidx/compose/animation/core/AnimationVector;)Landroidx/compose/animation/core/AnimationVector;
+
+    move-result-object p0
+
+    return-object p0
+.end method

@@ -1,0 +1,64 @@
+.class final Lcom/example/proto/Enums$CommonErrorCode$CommonErrorCodeVerifier;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lcom/google/protobuf/Internal$EnumVerifier;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/example/proto/Enums$CommonErrorCode;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "CommonErrorCodeVerifier"
+.end annotation
+
+
+# static fields
+.field static final INSTANCE:Lcom/google/protobuf/Internal$EnumVerifier;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    new-instance v0, Lcom/example/proto/Enums$CommonErrorCode$CommonErrorCodeVerifier;
+
+    invoke-direct {v0}, Lcom/example/proto/Enums$CommonErrorCode$CommonErrorCodeVerifier;-><init>()V
+
+    sput-object v0, Lcom/example/proto/Enums$CommonErrorCode$CommonErrorCodeVerifier;->INSTANCE:Lcom/google/protobuf/Internal$EnumVerifier;
+
+    return-void
+.end method
+
+.method private constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public isInRange(I)Z
+    .locals 0
+
+    invoke-static {p1}, Lcom/example/proto/Enums$CommonErrorCode;->forNumber(I)Lcom/example/proto/Enums$CommonErrorCode;
+
+    move-result-object p1
+
+    if-eqz p1, :cond_0
+
+    const/4 p1, 0x1
+
+    return p1
+
+    :cond_0
+    const/4 p1, 0x0
+
+    return p1
+.end method

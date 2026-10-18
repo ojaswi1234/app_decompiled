@@ -1,0 +1,191 @@
+.class public final Lcom/fasterxml/jackson/databind/deser/std/NumberDeserializers$LongDeserializer;
+.super Lcom/fasterxml/jackson/databind/deser/std/NumberDeserializers$PrimitiveOrWrapperDeserializer;
+.source "SourceFile"
+
+
+# annotations
+.annotation runtime Lcom/fasterxml/jackson/databind/annotation/JacksonStdImpl;
+.end annotation
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/fasterxml/jackson/databind/deser/std/NumberDeserializers;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "LongDeserializer"
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lcom/fasterxml/jackson/databind/deser/std/NumberDeserializers$PrimitiveOrWrapperDeserializer<",
+        "Ljava/lang/Long;",
+        ">;"
+    }
+.end annotation
+
+
+# static fields
+.field public static final A:Lcom/fasterxml/jackson/databind/deser/std/NumberDeserializers$LongDeserializer;
+
+.field public static final B:Lcom/fasterxml/jackson/databind/deser/std/NumberDeserializers$LongDeserializer;
+
+.field private static final serialVersionUID:J = 0x1L
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 3
+
+    new-instance v0, Lcom/fasterxml/jackson/databind/deser/std/NumberDeserializers$LongDeserializer;
+
+    const-wide/16 v1, 0x0
+
+    invoke-static {v1, v2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object v1
+
+    sget-object v2, Ljava/lang/Long;->TYPE:Ljava/lang/Class;
+
+    invoke-direct {v0, v2, v1}, Lcom/fasterxml/jackson/databind/deser/std/NumberDeserializers$LongDeserializer;-><init>(Ljava/lang/Class;Ljava/lang/Long;)V
+
+    sput-object v0, Lcom/fasterxml/jackson/databind/deser/std/NumberDeserializers$LongDeserializer;->A:Lcom/fasterxml/jackson/databind/deser/std/NumberDeserializers$LongDeserializer;
+
+    new-instance v0, Lcom/fasterxml/jackson/databind/deser/std/NumberDeserializers$LongDeserializer;
+
+    const-class v1, Ljava/lang/Long;
+
+    const/4 v2, 0x0
+
+    invoke-direct {v0, v1, v2}, Lcom/fasterxml/jackson/databind/deser/std/NumberDeserializers$LongDeserializer;-><init>(Ljava/lang/Class;Ljava/lang/Long;)V
+
+    sput-object v0, Lcom/fasterxml/jackson/databind/deser/std/NumberDeserializers$LongDeserializer;->B:Lcom/fasterxml/jackson/databind/deser/std/NumberDeserializers$LongDeserializer;
+
+    return-void
+.end method
+
+.method public constructor <init>(Ljava/lang/Class;Ljava/lang/Long;)V
+    .locals 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/Class<",
+            "Ljava/lang/Long;",
+            ">;",
+            "Ljava/lang/Long;",
+            ")V"
+        }
+    .end annotation
+
+    sget-object v0, Lcom/fasterxml/jackson/databind/type/LogicalType;->x:Lcom/fasterxml/jackson/databind/type/LogicalType;
+
+    const-wide/16 v1, 0x0
+
+    invoke-static {v1, v2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object v1
+
+    invoke-direct {p0, p1, v0, p2, v1}, Lcom/fasterxml/jackson/databind/deser/std/NumberDeserializers$PrimitiveOrWrapperDeserializer;-><init>(Ljava/lang/Class;Lcom/fasterxml/jackson/databind/type/LogicalType;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public bridge synthetic e()Lcom/fasterxml/jackson/databind/util/AccessPattern;
+    .locals 1
+
+    invoke-super {p0}, Lcom/fasterxml/jackson/databind/deser/std/NumberDeserializers$PrimitiveOrWrapperDeserializer;->e()Lcom/fasterxml/jackson/databind/util/AccessPattern;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public bridge synthetic h(Lcom/fasterxml/jackson/core/JsonParser;Lcom/fasterxml/jackson/databind/DeserializationContext;)Ljava/lang/Object;
+    .locals 0
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;,
+            Lcom/fasterxml/jackson/core/JacksonException;
+        }
+    .end annotation
+
+    invoke-virtual {p0, p1, p2}, Lcom/fasterxml/jackson/databind/deser/std/NumberDeserializers$LongDeserializer;->s1(Lcom/fasterxml/jackson/core/JsonParser;Lcom/fasterxml/jackson/databind/DeserializationContext;)Ljava/lang/Long;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public bridge synthetic p(Lcom/fasterxml/jackson/databind/DeserializationContext;)Ljava/lang/Object;
+    .locals 0
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcom/fasterxml/jackson/databind/JsonMappingException;
+        }
+    .end annotation
+
+    invoke-super {p0, p1}, Lcom/fasterxml/jackson/databind/deser/std/NumberDeserializers$PrimitiveOrWrapperDeserializer;->p(Lcom/fasterxml/jackson/databind/DeserializationContext;)Ljava/lang/Object;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public s1(Lcom/fasterxml/jackson/core/JsonParser;Lcom/fasterxml/jackson/databind/DeserializationContext;)Ljava/lang/Long;
+    .locals 1
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+
+    invoke-virtual {p1}, Lcom/fasterxml/jackson/core/JsonParser;->A1()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    invoke-virtual {p1}, Lcom/fasterxml/jackson/core/JsonParser;->B0()J
+
+    move-result-wide p1
+
+    invoke-static {p1, p2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object p1
+
+    return-object p1
+
+    :cond_0
+    iget-boolean v0, p0, Lcom/fasterxml/jackson/databind/deser/std/NumberDeserializers$PrimitiveOrWrapperDeserializer;->z:Z
+
+    if-eqz v0, :cond_1
+
+    invoke-virtual {p0, p1, p2}, Lcom/fasterxml/jackson/databind/deser/std/StdDeserializer;->O0(Lcom/fasterxml/jackson/core/JsonParser;Lcom/fasterxml/jackson/databind/DeserializationContext;)J
+
+    move-result-wide p1
+
+    invoke-static {p1, p2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object p1
+
+    return-object p1
+
+    :cond_1
+    const-class v0, Ljava/lang/Long;
+
+    invoke-virtual {p0, p1, p2, v0}, Lcom/fasterxml/jackson/databind/deser/std/StdDeserializer;->M0(Lcom/fasterxml/jackson/core/JsonParser;Lcom/fasterxml/jackson/databind/DeserializationContext;Ljava/lang/Class;)Ljava/lang/Long;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public u()Z
+    .locals 1
+
+    const/4 v0, 0x1
+
+    return v0
+.end method

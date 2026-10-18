@@ -1,0 +1,68 @@
+.class public interface abstract Lcom/example/proto/Message$protocol_message_notify_switchOrBuilder;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lcom/google/protobuf/MessageLiteOrBuilder;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/example/proto/Message;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x609
+    name = "protocol_message_notify_switchOrBuilder"
+.end annotation
+
+
+# virtual methods
+.method public abstract getAccessDetailsDirectSwitch()Z
+.end method
+
+.method public abstract getExtItems(I)Lcom/example/proto/Message$protocol_message_notify_switch_ext_item;
+.end method
+
+.method public abstract getExtItemsCount()I
+.end method
+
+.method public abstract getExtItemsList()Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List<",
+            "Lcom/example/proto/Message$protocol_message_notify_switch_ext_item;",
+            ">;"
+        }
+    .end annotation
+.end method
+
+.method public abstract getItems(I)Lcom/example/proto/Message$protocol_message_notify_switch_item;
+.end method
+
+.method public abstract getItemsCount()I
+.end method
+
+.method public abstract getItemsList()Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List<",
+            "Lcom/example/proto/Message$protocol_message_notify_switch_item;",
+            ">;"
+        }
+    .end annotation
+.end method
+
+.method public abstract getNotifySwitch()Z
+.end method
+
+.method public abstract getOperate()Lcom/example/proto/Enums$operate_type;
+.end method
+
+.method public abstract getOperateValue()I
+.end method
+
+.method public abstract getWearingNotifySwitch()Z
+.end method

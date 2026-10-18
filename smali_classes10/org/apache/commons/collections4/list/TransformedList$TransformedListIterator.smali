@@ -1,0 +1,103 @@
+.class public Lorg/apache/commons/collections4/list/TransformedList$TransformedListIterator;
+.super Lorg/apache/commons/collections4/iterators/AbstractListIteratorDecorator;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lorg/apache/commons/collections4/list/TransformedList;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = "TransformedListIterator"
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lorg/apache/commons/collections4/iterators/AbstractListIteratorDecorator<",
+        "TE;>;"
+    }
+.end annotation
+
+
+# instance fields
+.field public final synthetic t:Lorg/apache/commons/collections4/list/TransformedList;
+
+
+# direct methods
+.method public constructor <init>(Lorg/apache/commons/collections4/list/TransformedList;Ljava/util/ListIterator;)V
+    .locals 0
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x8010,
+            0x10
+        }
+        names = {
+            null,
+            null
+        }
+    .end annotation
+
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/ListIterator<",
+            "TE;>;)V"
+        }
+    .end annotation
+
+    iput-object p1, p0, Lorg/apache/commons/collections4/list/TransformedList$TransformedListIterator;->t:Lorg/apache/commons/collections4/list/TransformedList;
+
+    invoke-direct {p0, p2}, Lorg/apache/commons/collections4/iterators/AbstractListIteratorDecorator;-><init>(Ljava/util/ListIterator;)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public add(Ljava/lang/Object;)V
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(TE;)V"
+        }
+    .end annotation
+
+    iget-object v0, p0, Lorg/apache/commons/collections4/list/TransformedList$TransformedListIterator;->t:Lorg/apache/commons/collections4/list/TransformedList;
+
+    invoke-static {v0, p1}, Lorg/apache/commons/collections4/list/TransformedList;->m(Lorg/apache/commons/collections4/list/TransformedList;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object p1
+
+    invoke-virtual {p0}, Lorg/apache/commons/collections4/iterators/AbstractListIteratorDecorator;->b()Ljava/util/ListIterator;
+
+    move-result-object v0
+
+    invoke-interface {v0, p1}, Ljava/util/ListIterator;->add(Ljava/lang/Object;)V
+
+    return-void
+.end method
+
+.method public set(Ljava/lang/Object;)V
+    .locals 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(TE;)V"
+        }
+    .end annotation
+
+    invoke-virtual {p0}, Lorg/apache/commons/collections4/iterators/AbstractListIteratorDecorator;->b()Ljava/util/ListIterator;
+
+    move-result-object v0
+
+    iget-object v1, p0, Lorg/apache/commons/collections4/list/TransformedList$TransformedListIterator;->t:Lorg/apache/commons/collections4/list/TransformedList;
+
+    invoke-static {v1, p1}, Lorg/apache/commons/collections4/list/TransformedList;->n(Lorg/apache/commons/collections4/list/TransformedList;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object p1
+
+    invoke-interface {v0, p1}, Ljava/util/ListIterator;->set(Ljava/lang/Object;)V
+
+    return-void
+.end method

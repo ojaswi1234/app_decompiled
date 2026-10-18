@@ -1,0 +1,270 @@
+.class public final Landroidx/collection/IntIntPair;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/SourceDebugExtension;
+    value = "SMAP\nIntIntPair.kt\nKotlin\n*S Kotlin\n*F\n+ 1 IntIntPair.kt\nandroidx/collection/IntIntPair\n+ 2 PackingUtils.kt\nandroidx/collection/PackingUtilsKt\n*L\n1#1,82:1\n29#2:83\n*S KotlinDebug\n*F\n+ 1 IntIntPair.kt\nandroidx/collection/IntIntPair\n*L\n46#1:83\n*E\n"
+.end annotation
+
+.annotation runtime Lkotlin/jvm/JvmInline;
+.end annotation
+
+.annotation build Lkotlin/jvm/internal/SourceDebugExtension;
+    value = {
+        "SMAP\nIntIntPair.kt\nKotlin\n*S Kotlin\n*F\n+ 1 IntIntPair.kt\nandroidx/collection/IntIntPair\n+ 2 PackingUtils.kt\nandroidx/collection/PackingUtilsKt\n*L\n1#1,82:1\n29#2:83\n*S KotlinDebug\n*F\n+ 1 IntIntPair.kt\nandroidx/collection/IntIntPair\n*L\n46#1:83\n*E\n"
+    }
+.end annotation
+
+
+# instance fields
+.field public final a:J
+    .annotation build Lkotlin/jvm/JvmField;
+    .end annotation
+.end field
+
+
+# direct methods
+.method public synthetic constructor <init>(J)V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-wide p1, p0, Landroidx/collection/IntIntPair;->a:J
+
+    return-void
+.end method
+
+.method public static final synthetic a(J)Landroidx/collection/IntIntPair;
+    .locals 1
+
+    new-instance v0, Landroidx/collection/IntIntPair;
+
+    invoke-direct {v0, p0, p1}, Landroidx/collection/IntIntPair;-><init>(J)V
+
+    return-object v0
+.end method
+
+.method public static final b(J)I
+    .locals 1
+
+    const/16 v0, 0x20
+
+    shr-long/2addr p0, v0
+
+    long-to-int p0, p0
+
+    return p0
+.end method
+
+.method public static final c(J)I
+    .locals 2
+
+    const-wide v0, 0xffffffffL
+
+    and-long/2addr p0, v0
+
+    long-to-int p0, p0
+
+    return p0
+.end method
+
+.method public static d(II)J
+    .locals 4
+
+    int-to-long v0, p0
+
+    const/16 p0, 0x20
+
+    shl-long/2addr v0, p0
+
+    int-to-long p0, p1
+
+    const-wide v2, 0xffffffffL
+
+    and-long/2addr p0, v2
+
+    or-long/2addr p0, v0
+
+    invoke-static {p0, p1}, Landroidx/collection/IntIntPair;->e(J)J
+
+    move-result-wide p0
+
+    return-wide p0
+.end method
+
+.method public static e(J)J
+    .locals 0
+
+    return-wide p0
+.end method
+
+.method public static f(JLjava/lang/Object;)Z
+    .locals 4
+
+    instance-of v0, p2, Landroidx/collection/IntIntPair;
+
+    const/4 v1, 0x0
+
+    if-nez v0, :cond_0
+
+    return v1
+
+    :cond_0
+    check-cast p2, Landroidx/collection/IntIntPair;
+
+    invoke-virtual {p2}, Landroidx/collection/IntIntPair;->l()J
+
+    move-result-wide v2
+
+    cmp-long p0, p0, v2
+
+    if-eqz p0, :cond_1
+
+    return v1
+
+    :cond_1
+    const/4 p0, 0x1
+
+    return p0
+.end method
+
+.method public static final g(JJ)Z
+    .locals 0
+
+    cmp-long p0, p0, p2
+
+    if-nez p0, :cond_0
+
+    const/4 p0, 0x1
+
+    return p0
+
+    :cond_0
+    const/4 p0, 0x0
+
+    return p0
+.end method
+
+.method public static final h(J)I
+    .locals 1
+
+    const/16 v0, 0x20
+
+    shr-long/2addr p0, v0
+
+    long-to-int p0, p0
+
+    return p0
+.end method
+
+.method public static final i(J)I
+    .locals 2
+
+    const-wide v0, 0xffffffffL
+
+    and-long/2addr p0, v0
+
+    long-to-int p0, p0
+
+    return p0
+.end method
+
+.method public static j(J)I
+    .locals 0
+
+    invoke-static {p0, p1}, Ljava/lang/Long;->hashCode(J)I
+
+    move-result p0
+
+    return p0
+.end method
+
+.method public static k(J)Ljava/lang/String;
+    .locals 2
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const/16 v1, 0x28
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    invoke-static {p0, p1}, Landroidx/collection/IntIntPair;->h(J)I
+
+    move-result v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v1, ", "
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-static {p0, p1}, Landroidx/collection/IntIntPair;->i(J)I
+
+    move-result p0
+
+    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const/16 p0, 0x29
+
+    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+
+# virtual methods
+.method public equals(Ljava/lang/Object;)Z
+    .locals 2
+
+    iget-wide v0, p0, Landroidx/collection/IntIntPair;->a:J
+
+    invoke-static {v0, v1, p1}, Landroidx/collection/IntIntPair;->f(JLjava/lang/Object;)Z
+
+    move-result p1
+
+    return p1
+.end method
+
+.method public hashCode()I
+    .locals 2
+
+    iget-wide v0, p0, Landroidx/collection/IntIntPair;->a:J
+
+    invoke-static {v0, v1}, Landroidx/collection/IntIntPair;->j(J)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public final synthetic l()J
+    .locals 2
+
+    iget-wide v0, p0, Landroidx/collection/IntIntPair;->a:J
+
+    return-wide v0
+.end method
+
+.method public toString()Ljava/lang/String;
+    .locals 2
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-wide v0, p0, Landroidx/collection/IntIntPair;->a:J
+
+    invoke-static {v0, v1}, Landroidx/collection/IntIntPair;->k(J)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method

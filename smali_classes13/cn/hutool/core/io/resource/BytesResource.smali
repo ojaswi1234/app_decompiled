@@ -1,0 +1,105 @@
+.class public Lcn/hutool/core/io/resource/BytesResource;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lcn/hutool/core/io/resource/Resource;
+.implements Ljava/io/Serializable;
+
+
+# static fields
+.field private static final serialVersionUID:J = 0x1L
+
+
+# instance fields
+.field public final s:[B
+
+.field public final t:Ljava/lang/String;
+
+
+# direct methods
+.method public constructor <init>([B)V
+    .locals 1
+
+    const/4 v0, 0x0
+
+    .line 1
+    invoke-direct {p0, p1, v0}, Lcn/hutool/core/io/resource/BytesResource;-><init>([BLjava/lang/String;)V
+
+    return-void
+.end method
+
+.method public constructor <init>([BLjava/lang/String;)V
+    .locals 0
+
+    .line 2
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 3
+    iput-object p1, p0, Lcn/hutool/core/io/resource/BytesResource;->s:[B
+
+    .line 4
+    iput-object p2, p0, Lcn/hutool/core/io/resource/BytesResource;->t:Ljava/lang/String;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public g(Ljava/nio/charset/Charset;)Ljava/lang/String;
+    .locals 1
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcn/hutool/core/io/IORuntimeException;
+        }
+    .end annotation
+
+    iget-object v0, p0, Lcn/hutool/core/io/resource/BytesResource;->s:[B
+
+    invoke-static {v0, p1}, Lcn/hutool/core/util/StrUtil;->M3([BLjava/nio/charset/Charset;)Ljava/lang/String;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public getName()Ljava/lang/String;
+    .locals 1
+
+    iget-object v0, p0, Lcn/hutool/core/io/resource/BytesResource;->t:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public getStream()Ljava/io/InputStream;
+    .locals 2
+
+    new-instance v0, Ljava/io/ByteArrayInputStream;
+
+    iget-object v1, p0, Lcn/hutool/core/io/resource/BytesResource;->s:[B
+
+    invoke-direct {v0, v1}, Ljava/io/ByteArrayInputStream;-><init>([B)V
+
+    return-object v0
+.end method
+
+.method public getUrl()Ljava/net/URL;
+    .locals 1
+
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
+.method public readBytes()[B
+    .locals 1
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcn/hutool/core/io/IORuntimeException;
+        }
+    .end annotation
+
+    iget-object v0, p0, Lcn/hutool/core/io/resource/BytesResource;->s:[B
+
+    return-object v0
+.end method

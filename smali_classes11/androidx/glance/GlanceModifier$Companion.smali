@@ -1,0 +1,153 @@
+.class public final Landroidx/glance/GlanceModifier$Companion;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Landroidx/glance/GlanceModifier;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/glance/GlanceModifier;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "Companion"
+.end annotation
+
+
+# static fields
+.field public static final synthetic b:Landroidx/glance/GlanceModifier$Companion;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    new-instance v0, Landroidx/glance/GlanceModifier$Companion;
+
+    invoke-direct {v0}, Landroidx/glance/GlanceModifier$Companion;-><init>()V
+
+    sput-object v0, Landroidx/glance/GlanceModifier$Companion;->b:Landroidx/glance/GlanceModifier$Companion;
+
+    return-void
+.end method
+
+.method private constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public all(Lkotlin/jvm/functions/Function1;)Z
+    .locals 0
+    .param p1    # Lkotlin/jvm/functions/Function1;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lkotlin/jvm/functions/Function1<",
+            "-",
+            "Landroidx/glance/GlanceModifier$Element;",
+            "Ljava/lang/Boolean;",
+            ">;)Z"
+        }
+    .end annotation
+
+    const/4 p1, 0x1
+
+    return p1
+.end method
+
+.method public any(Lkotlin/jvm/functions/Function1;)Z
+    .locals 0
+    .param p1    # Lkotlin/jvm/functions/Function1;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lkotlin/jvm/functions/Function1<",
+            "-",
+            "Landroidx/glance/GlanceModifier$Element;",
+            "Ljava/lang/Boolean;",
+            ">;)Z"
+        }
+    .end annotation
+
+    const/4 p1, 0x0
+
+    return p1
+.end method
+
+.method public b(Landroidx/glance/GlanceModifier;)Landroidx/glance/GlanceModifier;
+    .locals 0
+    .param p1    # Landroidx/glance/GlanceModifier;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    return-object p1
+.end method
+
+.method public foldIn(Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;
+    .locals 0
+    .param p2    # Lkotlin/jvm/functions/Function2;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<R:",
+            "Ljava/lang/Object;",
+            ">(TR;",
+            "Lkotlin/jvm/functions/Function2<",
+            "-TR;-",
+            "Landroidx/glance/GlanceModifier$Element;",
+            "+TR;>;)TR;"
+        }
+    .end annotation
+
+    return-object p1
+.end method
+
+.method public foldOut(Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;
+    .locals 0
+    .param p2    # Lkotlin/jvm/functions/Function2;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<R:",
+            "Ljava/lang/Object;",
+            ">(TR;",
+            "Lkotlin/jvm/functions/Function2<",
+            "-",
+            "Landroidx/glance/GlanceModifier$Element;",
+            "-TR;+TR;>;)TR;"
+        }
+    .end annotation
+
+    return-object p1
+.end method
+
+.method public toString()Ljava/lang/String;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    const-string v0, "Modifier"
+
+    return-object v0
+.end method

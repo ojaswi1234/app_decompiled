@@ -1,0 +1,669 @@
+.class public final Lcom/noisefit/data/model/AlbumWfStyle;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Landroid/os/Parcelable;
+
+
+# annotations
+.annotation build Landroidx/compose/runtime/internal/StabilityInferred;
+    parameters = 0x0
+.end annotation
+
+.annotation build Lkotlinx/parcelize/Parcelize;
+.end annotation
+
+
+# static fields
+.field public static final $stable:I
+
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Landroid/os/Parcelable$Creator<",
+            "Lcom/noisefit/data/model/AlbumWfStyle;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+
+# instance fields
+.field private final id:Ljava/lang/String;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+.field private isSelected:Z
+
+.field private final position:Lcom/noisefit/data/model/AlbumTimePosition;
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+.end field
+
+.field private final previewRes:Ljava/lang/Integer;
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+.end field
+
+.field private final previewUrl:Ljava/lang/String;
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+.end field
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    new-instance v0, Lcom/noisefit/data/model/AlbumWfStyle$Creator;
+
+    invoke-direct {v0}, Lcom/noisefit/data/model/AlbumWfStyle$Creator;-><init>()V
+
+    sput-object v0, Lcom/noisefit/data/model/AlbumWfStyle;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    const/16 v0, 0x8
+
+    sput v0, Lcom/noisefit/data/model/AlbumWfStyle;->$stable:I
+
+    return-void
+.end method
+
+.method public constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Lcom/noisefit/data/model/AlbumTimePosition;Z)V
+    .locals 1
+    .param p1    # Ljava/lang/String;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p2    # Ljava/lang/String;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p3    # Ljava/lang/Integer;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p4    # Lcom/noisefit/data/model/AlbumTimePosition;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+
+    const-string v0, "id"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    iput-object p1, p0, Lcom/noisefit/data/model/AlbumWfStyle;->id:Ljava/lang/String;
+
+    .line 3
+    iput-object p2, p0, Lcom/noisefit/data/model/AlbumWfStyle;->previewUrl:Ljava/lang/String;
+
+    .line 4
+    iput-object p3, p0, Lcom/noisefit/data/model/AlbumWfStyle;->previewRes:Ljava/lang/Integer;
+
+    .line 5
+    iput-object p4, p0, Lcom/noisefit/data/model/AlbumWfStyle;->position:Lcom/noisefit/data/model/AlbumTimePosition;
+
+    .line 6
+    iput-boolean p5, p0, Lcom/noisefit/data/model/AlbumWfStyle;->isSelected:Z
+
+    return-void
+.end method
+
+.method public synthetic constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Lcom/noisefit/data/model/AlbumTimePosition;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+    .locals 1
+
+    and-int/lit8 p7, p6, 0x2
+
+    const/4 v0, 0x0
+
+    if-eqz p7, :cond_0
+
+    move-object p2, v0
+
+    :cond_0
+    and-int/lit8 p7, p6, 0x4
+
+    if-eqz p7, :cond_1
+
+    move-object p3, v0
+
+    :cond_1
+    and-int/lit8 p7, p6, 0x8
+
+    if-eqz p7, :cond_2
+
+    move-object p4, v0
+
+    :cond_2
+    and-int/lit8 p6, p6, 0x10
+
+    if-eqz p6, :cond_3
+
+    const/4 p5, 0x0
+
+    :cond_3
+    move p6, p5
+
+    move-object p5, p4
+
+    move-object p4, p3
+
+    move-object p3, p2
+
+    move-object p2, p1
+
+    move-object p1, p0
+
+    .line 7
+    invoke-direct/range {p1 .. p6}, Lcom/noisefit/data/model/AlbumWfStyle;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Lcom/noisefit/data/model/AlbumTimePosition;Z)V
+
+    return-void
+.end method
+
+.method public static synthetic copy$default(Lcom/noisefit/data/model/AlbumWfStyle;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Lcom/noisefit/data/model/AlbumTimePosition;ZILjava/lang/Object;)Lcom/noisefit/data/model/AlbumWfStyle;
+    .locals 0
+
+    and-int/lit8 p7, p6, 0x1
+
+    if-eqz p7, :cond_0
+
+    iget-object p1, p0, Lcom/noisefit/data/model/AlbumWfStyle;->id:Ljava/lang/String;
+
+    :cond_0
+    and-int/lit8 p7, p6, 0x2
+
+    if-eqz p7, :cond_1
+
+    iget-object p2, p0, Lcom/noisefit/data/model/AlbumWfStyle;->previewUrl:Ljava/lang/String;
+
+    :cond_1
+    and-int/lit8 p7, p6, 0x4
+
+    if-eqz p7, :cond_2
+
+    iget-object p3, p0, Lcom/noisefit/data/model/AlbumWfStyle;->previewRes:Ljava/lang/Integer;
+
+    :cond_2
+    and-int/lit8 p7, p6, 0x8
+
+    if-eqz p7, :cond_3
+
+    iget-object p4, p0, Lcom/noisefit/data/model/AlbumWfStyle;->position:Lcom/noisefit/data/model/AlbumTimePosition;
+
+    :cond_3
+    and-int/lit8 p6, p6, 0x10
+
+    if-eqz p6, :cond_4
+
+    iget-boolean p5, p0, Lcom/noisefit/data/model/AlbumWfStyle;->isSelected:Z
+
+    :cond_4
+    move-object p6, p4
+
+    move p7, p5
+
+    move-object p4, p2
+
+    move-object p5, p3
+
+    move-object p2, p0
+
+    move-object p3, p1
+
+    invoke-virtual/range {p2 .. p7}, Lcom/noisefit/data/model/AlbumWfStyle;->copy(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Lcom/noisefit/data/model/AlbumTimePosition;Z)Lcom/noisefit/data/model/AlbumWfStyle;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+
+# virtual methods
+.method public final component1()Ljava/lang/String;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/AlbumWfStyle;->id:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public final component2()Ljava/lang/String;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/AlbumWfStyle;->previewUrl:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public final component3()Ljava/lang/Integer;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/AlbumWfStyle;->previewRes:Ljava/lang/Integer;
+
+    return-object v0
+.end method
+
+.method public final component4()Lcom/noisefit/data/model/AlbumTimePosition;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/AlbumWfStyle;->position:Lcom/noisefit/data/model/AlbumTimePosition;
+
+    return-object v0
+.end method
+
+.method public final component5()Z
+    .locals 1
+
+    iget-boolean v0, p0, Lcom/noisefit/data/model/AlbumWfStyle;->isSelected:Z
+
+    return v0
+.end method
+
+.method public final copy(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Lcom/noisefit/data/model/AlbumTimePosition;Z)Lcom/noisefit/data/model/AlbumWfStyle;
+    .locals 7
+    .param p1    # Ljava/lang/String;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p2    # Ljava/lang/String;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p3    # Ljava/lang/Integer;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p4    # Lcom/noisefit/data/model/AlbumTimePosition;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    const-string v0, "id"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    new-instance v1, Lcom/noisefit/data/model/AlbumWfStyle;
+
+    move-object v2, p1
+
+    move-object v3, p2
+
+    move-object v4, p3
+
+    move-object v5, p4
+
+    move v6, p5
+
+    invoke-direct/range {v1 .. v6}, Lcom/noisefit/data/model/AlbumWfStyle;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Lcom/noisefit/data/model/AlbumTimePosition;Z)V
+
+    return-object v1
+.end method
+
+.method public final describeContents()I
+    .locals 1
+
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method public equals(Ljava/lang/Object;)Z
+    .locals 4
+    .param p1    # Ljava/lang/Object;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+
+    const/4 v0, 0x1
+
+    if-ne p0, p1, :cond_0
+
+    return v0
+
+    :cond_0
+    instance-of v1, p1, Lcom/noisefit/data/model/AlbumWfStyle;
+
+    const/4 v2, 0x0
+
+    if-nez v1, :cond_1
+
+    return v2
+
+    :cond_1
+    check-cast p1, Lcom/noisefit/data/model/AlbumWfStyle;
+
+    iget-object v1, p0, Lcom/noisefit/data/model/AlbumWfStyle;->id:Ljava/lang/String;
+
+    iget-object v3, p1, Lcom/noisefit/data/model/AlbumWfStyle;->id:Ljava/lang/String;
+
+    invoke-static {v1, v3}, Lkotlin/jvm/internal/Intrinsics;->g(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_2
+
+    return v2
+
+    :cond_2
+    iget-object v1, p0, Lcom/noisefit/data/model/AlbumWfStyle;->previewUrl:Ljava/lang/String;
+
+    iget-object v3, p1, Lcom/noisefit/data/model/AlbumWfStyle;->previewUrl:Ljava/lang/String;
+
+    invoke-static {v1, v3}, Lkotlin/jvm/internal/Intrinsics;->g(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_3
+
+    return v2
+
+    :cond_3
+    iget-object v1, p0, Lcom/noisefit/data/model/AlbumWfStyle;->previewRes:Ljava/lang/Integer;
+
+    iget-object v3, p1, Lcom/noisefit/data/model/AlbumWfStyle;->previewRes:Ljava/lang/Integer;
+
+    invoke-static {v1, v3}, Lkotlin/jvm/internal/Intrinsics;->g(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_4
+
+    return v2
+
+    :cond_4
+    iget-object v1, p0, Lcom/noisefit/data/model/AlbumWfStyle;->position:Lcom/noisefit/data/model/AlbumTimePosition;
+
+    iget-object v3, p1, Lcom/noisefit/data/model/AlbumWfStyle;->position:Lcom/noisefit/data/model/AlbumTimePosition;
+
+    if-eq v1, v3, :cond_5
+
+    return v2
+
+    :cond_5
+    iget-boolean v1, p0, Lcom/noisefit/data/model/AlbumWfStyle;->isSelected:Z
+
+    iget-boolean p1, p1, Lcom/noisefit/data/model/AlbumWfStyle;->isSelected:Z
+
+    if-eq v1, p1, :cond_6
+
+    return v2
+
+    :cond_6
+    return v0
+.end method
+
+.method public final getId()Ljava/lang/String;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/AlbumWfStyle;->id:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public final getPosition()Lcom/noisefit/data/model/AlbumTimePosition;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/AlbumWfStyle;->position:Lcom/noisefit/data/model/AlbumTimePosition;
+
+    return-object v0
+.end method
+
+.method public final getPreviewRes()Ljava/lang/Integer;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/AlbumWfStyle;->previewRes:Ljava/lang/Integer;
+
+    return-object v0
+.end method
+
+.method public final getPreviewUrl()Ljava/lang/String;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/AlbumWfStyle;->previewUrl:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public hashCode()I
+    .locals 3
+
+    iget-object v0, p0, Lcom/noisefit/data/model/AlbumWfStyle;->id:Ljava/lang/String;
+
+    invoke-virtual {v0}, Ljava/lang/String;->hashCode()I
+
+    move-result v0
+
+    mul-int/lit8 v0, v0, 0x1f
+
+    iget-object v1, p0, Lcom/noisefit/data/model/AlbumWfStyle;->previewUrl:Ljava/lang/String;
+
+    const/4 v2, 0x0
+
+    if-nez v1, :cond_0
+
+    move v1, v2
+
+    goto :goto_0
+
+    :cond_0
+    invoke-virtual {v1}, Ljava/lang/String;->hashCode()I
+
+    move-result v1
+
+    :goto_0
+    add-int/2addr v0, v1
+
+    mul-int/lit8 v0, v0, 0x1f
+
+    iget-object v1, p0, Lcom/noisefit/data/model/AlbumWfStyle;->previewRes:Ljava/lang/Integer;
+
+    if-nez v1, :cond_1
+
+    move v1, v2
+
+    goto :goto_1
+
+    :cond_1
+    invoke-virtual {v1}, Ljava/lang/Object;->hashCode()I
+
+    move-result v1
+
+    :goto_1
+    add-int/2addr v0, v1
+
+    mul-int/lit8 v0, v0, 0x1f
+
+    iget-object v1, p0, Lcom/noisefit/data/model/AlbumWfStyle;->position:Lcom/noisefit/data/model/AlbumTimePosition;
+
+    if-nez v1, :cond_2
+
+    goto :goto_2
+
+    :cond_2
+    invoke-virtual {v1}, Ljava/lang/Object;->hashCode()I
+
+    move-result v2
+
+    :goto_2
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x1f
+
+    iget-boolean v1, p0, Lcom/noisefit/data/model/AlbumWfStyle;->isSelected:Z
+
+    invoke-static {v1}, Ljava/lang/Boolean;->hashCode(Z)I
+
+    move-result v1
+
+    add-int/2addr v0, v1
+
+    return v0
+.end method
+
+.method public final isSelected()Z
+    .locals 1
+
+    iget-boolean v0, p0, Lcom/noisefit/data/model/AlbumWfStyle;->isSelected:Z
+
+    return v0
+.end method
+
+.method public final setSelected(Z)V
+    .locals 0
+
+    iput-boolean p1, p0, Lcom/noisefit/data/model/AlbumWfStyle;->isSelected:Z
+
+    return-void
+.end method
+
+.method public toString()Ljava/lang/String;
+    .locals 7
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/AlbumWfStyle;->id:Ljava/lang/String;
+
+    iget-object v1, p0, Lcom/noisefit/data/model/AlbumWfStyle;->previewUrl:Ljava/lang/String;
+
+    iget-object v2, p0, Lcom/noisefit/data/model/AlbumWfStyle;->previewRes:Ljava/lang/Integer;
+
+    iget-object v3, p0, Lcom/noisefit/data/model/AlbumWfStyle;->position:Lcom/noisefit/data/model/AlbumTimePosition;
+
+    iget-boolean v4, p0, Lcom/noisefit/data/model/AlbumWfStyle;->isSelected:Z
+
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v6, "AlbumWfStyle(id="
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v5, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v0, ", previewUrl="
+
+    invoke-virtual {v5, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const-string v0, ", previewRes="
+
+    invoke-virtual {v5, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v5, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const-string v0, ", position="
+
+    invoke-virtual {v5, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const-string v0, ", isSelected="
+
+    invoke-virtual {v5, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v5, v4}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    const-string v0, ")"
+
+    invoke-virtual {v5, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public final writeToParcel(Landroid/os/Parcel;I)V
+    .locals 2
+    .param p1    # Landroid/os/Parcel;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+
+    const-string p2, "dest"
+
+    invoke-static {p1, p2}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    iget-object p2, p0, Lcom/noisefit/data/model/AlbumWfStyle;->id:Ljava/lang/String;
+
+    invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    iget-object p2, p0, Lcom/noisefit/data/model/AlbumWfStyle;->previewUrl:Ljava/lang/String;
+
+    invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    iget-object p2, p0, Lcom/noisefit/data/model/AlbumWfStyle;->previewRes:Ljava/lang/Integer;
+
+    const/4 v0, 0x1
+
+    const/4 v1, 0x0
+
+    if-nez p2, :cond_0
+
+    invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
+
+    goto :goto_0
+
+    :cond_0
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
+
+    invoke-virtual {p2}, Ljava/lang/Integer;->intValue()I
+
+    move-result p2
+
+    invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeInt(I)V
+
+    :goto_0
+    iget-object p2, p0, Lcom/noisefit/data/model/AlbumWfStyle;->position:Lcom/noisefit/data/model/AlbumTimePosition;
+
+    if-nez p2, :cond_1
+
+    invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
+
+    goto :goto_1
+
+    :cond_1
+    invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
+
+    invoke-virtual {p2}, Ljava/lang/Enum;->name()Ljava/lang/String;
+
+    move-result-object p2
+
+    invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    :goto_1
+    iget-boolean p2, p0, Lcom/noisefit/data/model/AlbumWfStyle;->isSelected:Z
+
+    invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeInt(I)V
+
+    return-void
+.end method

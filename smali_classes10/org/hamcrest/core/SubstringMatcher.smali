@@ -1,0 +1,119 @@
+.class public abstract Lorg/hamcrest/core/SubstringMatcher;
+.super Lorg/hamcrest/TypeSafeMatcher;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lorg/hamcrest/TypeSafeMatcher<",
+        "Ljava/lang/String;",
+        ">;"
+    }
+.end annotation
+
+
+# instance fields
+.field public final u:Ljava/lang/String;
+
+
+# direct methods
+.method public constructor <init>(Ljava/lang/String;)V
+    .locals 0
+
+    invoke-direct {p0}, Lorg/hamcrest/TypeSafeMatcher;-><init>()V
+
+    iput-object p1, p0, Lorg/hamcrest/core/SubstringMatcher;->u:Ljava/lang/String;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public a(Lorg/hamcrest/Description;)V
+    .locals 1
+
+    const-string v0, "a string "
+
+    invoke-interface {p1, v0}, Lorg/hamcrest/Description;->c(Ljava/lang/String;)Lorg/hamcrest/Description;
+
+    move-result-object p1
+
+    invoke-virtual {p0}, Lorg/hamcrest/core/SubstringMatcher;->k()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-interface {p1, v0}, Lorg/hamcrest/Description;->c(Ljava/lang/String;)Lorg/hamcrest/Description;
+
+    move-result-object p1
+
+    const-string v0, " "
+
+    invoke-interface {p1, v0}, Lorg/hamcrest/Description;->c(Ljava/lang/String;)Lorg/hamcrest/Description;
+
+    move-result-object p1
+
+    iget-object v0, p0, Lorg/hamcrest/core/SubstringMatcher;->u:Ljava/lang/String;
+
+    invoke-interface {p1, v0}, Lorg/hamcrest/Description;->d(Ljava/lang/Object;)Lorg/hamcrest/Description;
+
+    return-void
+.end method
+
+.method public bridge synthetic e(Ljava/lang/Object;Lorg/hamcrest/Description;)V
+    .locals 0
+
+    check-cast p1, Ljava/lang/String;
+
+    invoke-virtual {p0, p1, p2}, Lorg/hamcrest/core/SubstringMatcher;->h(Ljava/lang/String;Lorg/hamcrest/Description;)V
+
+    return-void
+.end method
+
+.method public bridge synthetic g(Ljava/lang/Object;)Z
+    .locals 0
+
+    check-cast p1, Ljava/lang/String;
+
+    invoke-virtual {p0, p1}, Lorg/hamcrest/core/SubstringMatcher;->j(Ljava/lang/String;)Z
+
+    move-result p1
+
+    return p1
+.end method
+
+.method public h(Ljava/lang/String;Lorg/hamcrest/Description;)V
+    .locals 1
+
+    const-string v0, "was \""
+
+    invoke-interface {p2, v0}, Lorg/hamcrest/Description;->c(Ljava/lang/String;)Lorg/hamcrest/Description;
+
+    move-result-object p2
+
+    invoke-interface {p2, p1}, Lorg/hamcrest/Description;->c(Ljava/lang/String;)Lorg/hamcrest/Description;
+
+    move-result-object p1
+
+    const-string p2, "\""
+
+    invoke-interface {p1, p2}, Lorg/hamcrest/Description;->c(Ljava/lang/String;)Lorg/hamcrest/Description;
+
+    return-void
+.end method
+
+.method public abstract i(Ljava/lang/String;)Z
+.end method
+
+.method public j(Ljava/lang/String;)Z
+    .locals 0
+
+    invoke-virtual {p0, p1}, Lorg/hamcrest/core/SubstringMatcher;->i(Ljava/lang/String;)Z
+
+    move-result p1
+
+    return p1
+.end method
+
+.method public abstract k()Ljava/lang/String;
+.end method

@@ -1,0 +1,71 @@
+.class Lcom/airbnb/lottie/LottieConfig$Builder$1;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lcom/airbnb/lottie/network/LottieNetworkCacheProvider;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/airbnb/lottie/LottieConfig$Builder;->f(Ljava/io/File;)Lcom/airbnb/lottie/LottieConfig$Builder;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = null
+.end annotation
+
+
+# instance fields
+.field public final synthetic a:Ljava/io/File;
+
+.field public final synthetic b:Lcom/airbnb/lottie/LottieConfig$Builder;
+
+
+# direct methods
+.method public constructor <init>(Lcom/airbnb/lottie/LottieConfig$Builder;Ljava/io/File;)V
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()V"
+        }
+    .end annotation
+
+    iput-object p1, p0, Lcom/airbnb/lottie/LottieConfig$Builder$1;->b:Lcom/airbnb/lottie/LottieConfig$Builder;
+
+    iput-object p2, p0, Lcom/airbnb/lottie/LottieConfig$Builder$1;->a:Ljava/io/File;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public a()Ljava/io/File;
+    .locals 2
+    .annotation build Landroidx/annotation/NonNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/airbnb/lottie/LottieConfig$Builder$1;->a:Ljava/io/File;
+
+    invoke-virtual {v0}, Ljava/io/File;->isDirectory()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/airbnb/lottie/LottieConfig$Builder$1;->a:Ljava/io/File;
+
+    return-object v0
+
+    :cond_0
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    const-string v1, "cache file must be a directory"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+.end method

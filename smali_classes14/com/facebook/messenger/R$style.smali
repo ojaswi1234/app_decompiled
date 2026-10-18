@@ -1,0 +1,67 @@
+.class public final Lcom/facebook/messenger/R$style;
+.super Ljava/lang/Object;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/facebook/messenger/R;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "style"
+.end annotation
+
+
+# static fields
+.field public static a:I = 0x7f1401af
+
+.field public static b:I = 0x7f1401b6
+
+.field public static c:I = 0x7f1401b7
+
+.field public static d:I = 0x7f1401b8
+
+.field public static e:I = 0x7f1401b9
+
+.field public static f:I = 0x7f1401ba
+
+.field public static g:I = 0x7f1401bb
+
+.field public static h:I = 0x7f1401bc
+
+.field public static i:I = 0x7f1401b0
+
+.field public static j:I = 0x7f1401b1
+
+.field public static k:I = 0x7f1401b2
+
+.field public static l:I = 0x7f1401b3
+
+.field public static m:I = 0x7f1401b4
+
+.field public static n:I = 0x7f1401b5
+
+.field public static o:I = 0x7f1402f1
+
+.field public static p:I = 0x7f1402f2
+
+.field public static q:I = 0x7f1402f4
+
+.field public static r:I = 0x7f1402f7
+
+.field public static s:I = 0x7f1402f9
+
+.field public static t:I = 0x7f14046b
+
+.field public static u:I = 0x7f14046c
+
+
+# direct methods
+.method private constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method

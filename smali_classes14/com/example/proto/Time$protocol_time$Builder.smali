@@ -1,0 +1,421 @@
+.class public final Lcom/example/proto/Time$protocol_time$Builder;
+.super Lcom/google/protobuf/GeneratedMessageLite$Builder;
+.source "SourceFile"
+
+# interfaces
+.implements Lcom/example/proto/Time$protocol_timeOrBuilder;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/example/proto/Time$protocol_time;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "Builder"
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lcom/google/protobuf/GeneratedMessageLite$Builder<",
+        "Lcom/example/proto/Time$protocol_time;",
+        "Lcom/example/proto/Time$protocol_time$Builder;",
+        ">;",
+        "Lcom/example/proto/Time$protocol_timeOrBuilder;"
+    }
+.end annotation
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 1
+
+    invoke-static {}, Lcom/example/proto/Time$protocol_time;->access$000()Lcom/example/proto/Time$protocol_time;
+
+    move-result-object v0
+
+    invoke-direct {p0, v0}, Lcom/google/protobuf/GeneratedMessageLite$Builder;-><init>(Lcom/google/protobuf/GeneratedMessageLite;)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public clearDay()Lcom/example/proto/Time$protocol_time$Builder;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/google/protobuf/GeneratedMessageLite$Builder;->copyOnWrite()V
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0}, Lcom/example/proto/Time$protocol_time;->clearDay()V
+
+    return-object p0
+.end method
+
+.method public clearHour()Lcom/example/proto/Time$protocol_time$Builder;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/google/protobuf/GeneratedMessageLite$Builder;->copyOnWrite()V
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0}, Lcom/example/proto/Time$protocol_time;->clearHour()V
+
+    return-object p0
+.end method
+
+.method public clearMinute()Lcom/example/proto/Time$protocol_time$Builder;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/google/protobuf/GeneratedMessageLite$Builder;->copyOnWrite()V
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0}, Lcom/example/proto/Time$protocol_time;->clearMinute()V
+
+    return-object p0
+.end method
+
+.method public clearMonth()Lcom/example/proto/Time$protocol_time$Builder;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/google/protobuf/GeneratedMessageLite$Builder;->copyOnWrite()V
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0}, Lcom/example/proto/Time$protocol_time;->clearMonth()V
+
+    return-object p0
+.end method
+
+.method public clearSecond()Lcom/example/proto/Time$protocol_time$Builder;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/google/protobuf/GeneratedMessageLite$Builder;->copyOnWrite()V
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0}, Lcom/example/proto/Time$protocol_time;->clearSecond()V
+
+    return-object p0
+.end method
+
+.method public clearTimeZone()Lcom/example/proto/Time$protocol_time$Builder;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/google/protobuf/GeneratedMessageLite$Builder;->copyOnWrite()V
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0}, Lcom/example/proto/Time$protocol_time;->clearTimeZone()V
+
+    return-object p0
+.end method
+
+.method public clearUtcTime()Lcom/example/proto/Time$protocol_time$Builder;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/google/protobuf/GeneratedMessageLite$Builder;->copyOnWrite()V
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0}, Lcom/example/proto/Time$protocol_time;->clearUtcTime()V
+
+    return-object p0
+.end method
+
+.method public clearWeek()Lcom/example/proto/Time$protocol_time$Builder;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/google/protobuf/GeneratedMessageLite$Builder;->copyOnWrite()V
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0}, Lcom/example/proto/Time$protocol_time;->clearWeek()V
+
+    return-object p0
+.end method
+
+.method public clearYear()Lcom/example/proto/Time$protocol_time$Builder;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/google/protobuf/GeneratedMessageLite$Builder;->copyOnWrite()V
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0}, Lcom/example/proto/Time$protocol_time;->clearYear()V
+
+    return-object p0
+.end method
+
+.method public getDay()I
+    .locals 1
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0}, Lcom/example/proto/Time$protocol_time;->getDay()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public getHour()I
+    .locals 1
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0}, Lcom/example/proto/Time$protocol_time;->getHour()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public getMinute()I
+    .locals 1
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0}, Lcom/example/proto/Time$protocol_time;->getMinute()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public getMonth()I
+    .locals 1
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0}, Lcom/example/proto/Time$protocol_time;->getMonth()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public getSecond()I
+    .locals 1
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0}, Lcom/example/proto/Time$protocol_time;->getSecond()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public getTimeZone()I
+    .locals 1
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0}, Lcom/example/proto/Time$protocol_time;->getTimeZone()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public getUtcTime()I
+    .locals 1
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0}, Lcom/example/proto/Time$protocol_time;->getUtcTime()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public getWeek()I
+    .locals 1
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0}, Lcom/example/proto/Time$protocol_time;->getWeek()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public getYear()I
+    .locals 1
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0}, Lcom/example/proto/Time$protocol_time;->getYear()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public setDay(I)Lcom/example/proto/Time$protocol_time$Builder;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/google/protobuf/GeneratedMessageLite$Builder;->copyOnWrite()V
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0, p1}, Lcom/example/proto/Time$protocol_time;->setDay(I)V
+
+    return-object p0
+.end method
+
+.method public setHour(I)Lcom/example/proto/Time$protocol_time$Builder;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/google/protobuf/GeneratedMessageLite$Builder;->copyOnWrite()V
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0, p1}, Lcom/example/proto/Time$protocol_time;->setHour(I)V
+
+    return-object p0
+.end method
+
+.method public setMinute(I)Lcom/example/proto/Time$protocol_time$Builder;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/google/protobuf/GeneratedMessageLite$Builder;->copyOnWrite()V
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0, p1}, Lcom/example/proto/Time$protocol_time;->setMinute(I)V
+
+    return-object p0
+.end method
+
+.method public setMonth(I)Lcom/example/proto/Time$protocol_time$Builder;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/google/protobuf/GeneratedMessageLite$Builder;->copyOnWrite()V
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0, p1}, Lcom/example/proto/Time$protocol_time;->setMonth(I)V
+
+    return-object p0
+.end method
+
+.method public setSecond(I)Lcom/example/proto/Time$protocol_time$Builder;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/google/protobuf/GeneratedMessageLite$Builder;->copyOnWrite()V
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0, p1}, Lcom/example/proto/Time$protocol_time;->setSecond(I)V
+
+    return-object p0
+.end method
+
+.method public setTimeZone(I)Lcom/example/proto/Time$protocol_time$Builder;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/google/protobuf/GeneratedMessageLite$Builder;->copyOnWrite()V
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0, p1}, Lcom/example/proto/Time$protocol_time;->setTimeZone(I)V
+
+    return-object p0
+.end method
+
+.method public setUtcTime(I)Lcom/example/proto/Time$protocol_time$Builder;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/google/protobuf/GeneratedMessageLite$Builder;->copyOnWrite()V
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0, p1}, Lcom/example/proto/Time$protocol_time;->setUtcTime(I)V
+
+    return-object p0
+.end method
+
+.method public setWeek(I)Lcom/example/proto/Time$protocol_time$Builder;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/google/protobuf/GeneratedMessageLite$Builder;->copyOnWrite()V
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0, p1}, Lcom/example/proto/Time$protocol_time;->setWeek(I)V
+
+    return-object p0
+.end method
+
+.method public setYear(I)Lcom/example/proto/Time$protocol_time$Builder;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/google/protobuf/GeneratedMessageLite$Builder;->copyOnWrite()V
+
+    iget-object v0, p0, Lcom/google/protobuf/GeneratedMessageLite$Builder;->instance:Lcom/google/protobuf/GeneratedMessageLite;
+
+    check-cast v0, Lcom/example/proto/Time$protocol_time;
+
+    invoke-virtual {v0, p1}, Lcom/example/proto/Time$protocol_time;->setYear(I)V
+
+    return-object p0
+.end method

@@ -1,0 +1,127 @@
+.class public Lcom/zhapp/ble/bean/DiyWatchFaceConfigBean$FunctionsConfig$FunctionsConfigType;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/lang/Cloneable;
+.implements Ljava/io/Serializable;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/zhapp/ble/bean/DiyWatchFaceConfigBean$FunctionsConfig;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x9
+    name = "FunctionsConfigType"
+.end annotation
+
+
+# instance fields
+.field private type:I
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method public constructor <init>(I)V
+    .locals 0
+
+    .line 2
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 3
+    iput p1, p0, Lcom/zhapp/ble/bean/DiyWatchFaceConfigBean$FunctionsConfig$FunctionsConfigType;->type:I
+
+    return-void
+.end method
+
+.method public constructor <init>(Lcom/zh/ble/wear/protobuf/WatchFaceProtos$SEComplexFunctionsConfigType;)V
+    .locals 0
+
+    .line 4
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 5
+    invoke-virtual {p1}, Lcom/zh/ble/wear/protobuf/WatchFaceProtos$SEComplexFunctionsConfigType;->getComplexFunctionsConfigType()I
+
+    move-result p1
+
+    iput p1, p0, Lcom/zhapp/ble/bean/DiyWatchFaceConfigBean$FunctionsConfig$FunctionsConfigType;->type:I
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public clone()Lcom/zhapp/ble/bean/DiyWatchFaceConfigBean$FunctionsConfig$FunctionsConfigType;
+    .locals 1
+
+    .line 2
+    invoke-super {p0}, Ljava/lang/Object;->clone()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/zhapp/ble/bean/DiyWatchFaceConfigBean$FunctionsConfig$FunctionsConfigType;
+
+    return-object v0
+.end method
+
+.method public bridge synthetic clone()Ljava/lang/Object;
+    .locals 1
+
+    .line 1
+    invoke-virtual {p0}, Lcom/zhapp/ble/bean/DiyWatchFaceConfigBean$FunctionsConfig$FunctionsConfigType;->clone()Lcom/zhapp/ble/bean/DiyWatchFaceConfigBean$FunctionsConfig$FunctionsConfigType;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getType()I
+    .locals 1
+
+    iget v0, p0, Lcom/zhapp/ble/bean/DiyWatchFaceConfigBean$FunctionsConfig$FunctionsConfigType;->type:I
+
+    return v0
+.end method
+
+.method public setType(I)V
+    .locals 0
+
+    iput p1, p0, Lcom/zhapp/ble/bean/DiyWatchFaceConfigBean$FunctionsConfig$FunctionsConfigType;->type:I
+
+    return-void
+.end method
+
+.method public toString()Ljava/lang/String;
+    .locals 2
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    const-string v1, "ComplexFunctionsConfigType{type="
+
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    iget v1, p0, Lcom/zhapp/ble/bean/DiyWatchFaceConfigBean$FunctionsConfig$FunctionsConfigType;->type:I
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const/16 v1, 0x7d
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method

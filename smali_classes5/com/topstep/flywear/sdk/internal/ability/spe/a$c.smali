@@ -1,0 +1,127 @@
+.class public final Lcom/topstep/flywear/sdk/internal/ability/spe/a$c;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lio/reactivex/rxjava3/functions/Function;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/topstep/flywear/sdk/internal/ability/spe/a;->e(Lcom/topstep/flywear/sdk/model/spe/FwWebRequest;)Lio/reactivex/rxjava3/core/Maybe;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "<T:",
+        "Ljava/lang/Object;",
+        "R:",
+        "Ljava/lang/Object;",
+        ">",
+        "Ljava/lang/Object;",
+        "Lio/reactivex/rxjava3/functions/Function;"
+    }
+.end annotation
+
+
+# instance fields
+.field public final synthetic s:Ljava/io/File;
+
+.field public final synthetic t:Lcom/topstep/flywear/sdk/internal/ability/spe/a;
+
+
+# direct methods
+.method public constructor <init>(Ljava/io/File;Lcom/topstep/flywear/sdk/internal/ability/spe/a;)V
+    .locals 0
+
+    iput-object p1, p0, Lcom/topstep/flywear/sdk/internal/ability/spe/a$c;->s:Ljava/io/File;
+
+    iput-object p2, p0, Lcom/topstep/flywear/sdk/internal/ability/spe/a$c;->t:Lcom/topstep/flywear/sdk/internal/ability/spe/a;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(Ljava/lang/String;)Lio/reactivex/rxjava3/core/SingleSource;
+    .locals 3
+    .param p1    # Ljava/lang/String;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/String;",
+            ")",
+            "Lio/reactivex/rxjava3/core/SingleSource<",
+            "+",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    const-string v0, "remotePath"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    new-instance v0, Ljava/io/File;
+
+    iget-object v1, p0, Lcom/topstep/flywear/sdk/internal/ability/spe/a$c;->s:Ljava/io/File;
+
+    iget-object v2, p0, Lcom/topstep/flywear/sdk/internal/ability/spe/a$c;->t:Lcom/topstep/flywear/sdk/internal/ability/spe/a;
+
+    invoke-virtual {v2, p1}, Lcom/topstep/flywear/sdk/internal/ability/spe/a;->i(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-direct {v0, v1, v2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+
+    iget-object v1, p0, Lcom/topstep/flywear/sdk/internal/ability/spe/a$c;->t:Lcom/topstep/flywear/sdk/internal/ability/spe/a;
+
+    iget-object v1, v1, Lcom/topstep/flywear/sdk/internal/ability/spe/a;->a:Lcom/topstep/flywear/sdk/internal/a;
+
+    invoke-static {v1, v0, p1}, Lcom/topstep/flywear/sdk/internal/persim/f;->h(Lcom/topstep/flywear/sdk/internal/a;Ljava/io/File;Ljava/lang/String;)Lio/reactivex/rxjava3/core/Observable;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Lio/reactivex/rxjava3/core/Observable;->x3()Lio/reactivex/rxjava3/core/Completable;
+
+    move-result-object p1
+
+    invoke-virtual {v0}, Ljava/io/File;->getPath()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lio/reactivex/rxjava3/core/Single;->P0(Ljava/lang/Object;)Lio/reactivex/rxjava3/core/Single;
+
+    move-result-object v0
+
+    invoke-virtual {p1, v0}, Lio/reactivex/rxjava3/core/Completable;->m(Lio/reactivex/rxjava3/core/SingleSource;)Lio/reactivex/rxjava3/core/Single;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public bridge synthetic apply(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 0
+
+    check-cast p1, Ljava/lang/String;
+
+    invoke-virtual {p0, p1}, Lcom/topstep/flywear/sdk/internal/ability/spe/a$c;->a(Ljava/lang/String;)Lio/reactivex/rxjava3/core/SingleSource;
+
+    move-result-object p1
+
+    return-object p1
+.end method

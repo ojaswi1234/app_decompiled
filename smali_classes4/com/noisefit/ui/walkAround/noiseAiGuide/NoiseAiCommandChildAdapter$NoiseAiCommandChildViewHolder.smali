@@ -1,0 +1,92 @@
+.class public final Lcom/noisefit/ui/walkAround/noiseAiGuide/NoiseAiCommandChildAdapter$NoiseAiCommandChildViewHolder;
+.super Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/noisefit/ui/walkAround/noiseAiGuide/NoiseAiCommandChildAdapter;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x11
+    name = "NoiseAiCommandChildViewHolder"
+.end annotation
+
+
+# instance fields
+.field public final I:Lcom/noisefit/databinding/ItemNoiseAiCommandChildBinding;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+.field public final synthetic J:Lcom/noisefit/ui/walkAround/noiseAiGuide/NoiseAiCommandChildAdapter;
+
+
+# direct methods
+.method public constructor <init>(Lcom/noisefit/ui/walkAround/noiseAiGuide/NoiseAiCommandChildAdapter;Lcom/noisefit/databinding/ItemNoiseAiCommandChildBinding;)V
+    .locals 1
+    .param p1    # Lcom/noisefit/ui/walkAround/noiseAiGuide/NoiseAiCommandChildAdapter;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lcom/noisefit/databinding/ItemNoiseAiCommandChildBinding;",
+            ")V"
+        }
+    .end annotation
+
+    const-string v0, "binding"
+
+    invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    iput-object p1, p0, Lcom/noisefit/ui/walkAround/noiseAiGuide/NoiseAiCommandChildAdapter$NoiseAiCommandChildViewHolder;->J:Lcom/noisefit/ui/walkAround/noiseAiGuide/NoiseAiCommandChildAdapter;
+
+    invoke-virtual {p2}, Lcom/noisefit/databinding/ItemNoiseAiCommandChildBinding;->b()Landroidx/constraintlayout/widget/ConstraintLayout;
+
+    move-result-object p1
+
+    invoke-direct {p0, p1}, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;-><init>(Landroid/view/View;)V
+
+    iput-object p2, p0, Lcom/noisefit/ui/walkAround/noiseAiGuide/NoiseAiCommandChildAdapter$NoiseAiCommandChildViewHolder;->I:Lcom/noisefit/databinding/ItemNoiseAiCommandChildBinding;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final R(Lcom/noisefit/data/model/NoiseAiCommandItem;)V
+    .locals 2
+    .param p1    # Lcom/noisefit/data/model/NoiseAiCommandItem;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+
+    const-string v0, "item"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    iget-object v0, p0, Lcom/noisefit/ui/walkAround/noiseAiGuide/NoiseAiCommandChildAdapter$NoiseAiCommandChildViewHolder;->I:Lcom/noisefit/databinding/ItemNoiseAiCommandChildBinding;
+
+    iget-object v0, v0, Lcom/noisefit/databinding/ItemNoiseAiCommandChildBinding;->u:Landroid/widget/TextView;
+
+    invoke-virtual {p1}, Lcom/noisefit/data/model/NoiseAiCommandItem;->getTitle()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    iget-object v0, p0, Lcom/noisefit/ui/walkAround/noiseAiGuide/NoiseAiCommandChildAdapter$NoiseAiCommandChildViewHolder;->I:Lcom/noisefit/databinding/ItemNoiseAiCommandChildBinding;
+
+    iget-object v0, v0, Lcom/noisefit/databinding/ItemNoiseAiCommandChildBinding;->t:Landroid/widget/TextView;
+
+    invoke-virtual {p1}, Lcom/noisefit/data/model/NoiseAiCommandItem;->getSample()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    return-void
+.end method

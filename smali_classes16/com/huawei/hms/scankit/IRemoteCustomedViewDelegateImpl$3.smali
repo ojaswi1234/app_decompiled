@@ -1,0 +1,47 @@
+.class Lcom/huawei/hms/scankit/IRemoteCustomedViewDelegateImpl$3;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Landroid/view/View$OnClickListener;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/huawei/hms/scankit/IRemoteCustomedViewDelegateImpl;->h()V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = null
+.end annotation
+
+
+# instance fields
+.field final synthetic a:Lcom/huawei/hms/scankit/IRemoteCustomedViewDelegateImpl;
+
+
+# direct methods
+.method public constructor <init>(Lcom/huawei/hms/scankit/IRemoteCustomedViewDelegateImpl;)V
+    .locals 0
+
+    iput-object p1, p0, Lcom/huawei/hms/scankit/IRemoteCustomedViewDelegateImpl$3;->a:Lcom/huawei/hms/scankit/IRemoteCustomedViewDelegateImpl;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public onClick(Landroid/view/View;)V
+    .locals 0
+
+    iget-object p1, p0, Lcom/huawei/hms/scankit/IRemoteCustomedViewDelegateImpl$3;->a:Lcom/huawei/hms/scankit/IRemoteCustomedViewDelegateImpl;
+
+    iget-object p1, p1, Lcom/huawei/hms/scankit/IRemoteCustomedViewDelegateImpl;->m:Landroid/app/AlertDialog;
+
+    invoke-virtual {p1}, Landroid/app/Dialog;->dismiss()V
+
+    return-void
+.end method

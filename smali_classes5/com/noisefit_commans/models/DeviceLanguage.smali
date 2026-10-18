@@ -1,0 +1,356 @@
+.class public final enum Lcom/noisefit_commans/models/DeviceLanguage;
+.super Ljava/lang/Enum;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Ljava/lang/Enum<",
+        "Lcom/noisefit_commans/models/DeviceLanguage;",
+        ">;"
+    }
+.end annotation
+
+
+# static fields
+.field private static final synthetic $ENTRIES:Lkotlin/enums/EnumEntries;
+
+.field private static final synthetic $VALUES:[Lcom/noisefit_commans/models/DeviceLanguage;
+
+.field public static final enum CHINESE:Lcom/noisefit_commans/models/DeviceLanguage;
+
+.field public static final enum DUTCH:Lcom/noisefit_commans/models/DeviceLanguage;
+
+.field public static final enum ENGLISH:Lcom/noisefit_commans/models/DeviceLanguage;
+
+.field public static final enum FRENCH:Lcom/noisefit_commans/models/DeviceLanguage;
+
+.field public static final enum GERMAN:Lcom/noisefit_commans/models/DeviceLanguage;
+
+.field public static final enum HINDI:Lcom/noisefit_commans/models/DeviceLanguage;
+
+.field public static final enum INDONESIAN:Lcom/noisefit_commans/models/DeviceLanguage;
+
+.field public static final enum ITALIAN:Lcom/noisefit_commans/models/DeviceLanguage;
+
+.field public static final enum KHEMAR:Lcom/noisefit_commans/models/DeviceLanguage;
+
+.field public static final enum MALAY:Lcom/noisefit_commans/models/DeviceLanguage;
+
+.field public static final enum PORTUGUESE:Lcom/noisefit_commans/models/DeviceLanguage;
+
+.field public static final enum RUSSIAN:Lcom/noisefit_commans/models/DeviceLanguage;
+
+.field public static final enum SPANISH:Lcom/noisefit_commans/models/DeviceLanguage;
+
+.field public static final enum THAI:Lcom/noisefit_commans/models/DeviceLanguage;
+
+
+# instance fields
+.field private final type:Ljava/lang/String;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+
+# direct methods
+.method private static final synthetic $values()[Lcom/noisefit_commans/models/DeviceLanguage;
+    .locals 14
+
+    sget-object v0, Lcom/noisefit_commans/models/DeviceLanguage;->ENGLISH:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    sget-object v1, Lcom/noisefit_commans/models/DeviceLanguage;->CHINESE:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    sget-object v2, Lcom/noisefit_commans/models/DeviceLanguage;->HINDI:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    sget-object v3, Lcom/noisefit_commans/models/DeviceLanguage;->SPANISH:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    sget-object v4, Lcom/noisefit_commans/models/DeviceLanguage;->PORTUGUESE:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    sget-object v5, Lcom/noisefit_commans/models/DeviceLanguage;->INDONESIAN:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    sget-object v6, Lcom/noisefit_commans/models/DeviceLanguage;->THAI:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    sget-object v7, Lcom/noisefit_commans/models/DeviceLanguage;->KHEMAR:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    sget-object v8, Lcom/noisefit_commans/models/DeviceLanguage;->MALAY:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    sget-object v9, Lcom/noisefit_commans/models/DeviceLanguage;->FRENCH:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    sget-object v10, Lcom/noisefit_commans/models/DeviceLanguage;->GERMAN:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    sget-object v11, Lcom/noisefit_commans/models/DeviceLanguage;->RUSSIAN:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    sget-object v12, Lcom/noisefit_commans/models/DeviceLanguage;->ITALIAN:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    sget-object v13, Lcom/noisefit_commans/models/DeviceLanguage;->DUTCH:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    filled-new-array/range {v0 .. v13}, [Lcom/noisefit_commans/models/DeviceLanguage;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method static constructor <clinit>()V
+    .locals 4
+
+    new-instance v0, Lcom/noisefit_commans/models/DeviceLanguage;
+
+    const/4 v1, 0x0
+
+    const-string v2, "english"
+
+    const-string v3, "ENGLISH"
+
+    invoke-direct {v0, v3, v1, v2}, Lcom/noisefit_commans/models/DeviceLanguage;-><init>(Ljava/lang/String;ILjava/lang/String;)V
+
+    sput-object v0, Lcom/noisefit_commans/models/DeviceLanguage;->ENGLISH:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    new-instance v0, Lcom/noisefit_commans/models/DeviceLanguage;
+
+    const/4 v1, 0x1
+
+    const-string v2, "chinese"
+
+    const-string v3, "CHINESE"
+
+    invoke-direct {v0, v3, v1, v2}, Lcom/noisefit_commans/models/DeviceLanguage;-><init>(Ljava/lang/String;ILjava/lang/String;)V
+
+    sput-object v0, Lcom/noisefit_commans/models/DeviceLanguage;->CHINESE:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    new-instance v0, Lcom/noisefit_commans/models/DeviceLanguage;
+
+    const/4 v1, 0x2
+
+    const-string v2, "hindi"
+
+    const-string v3, "HINDI"
+
+    invoke-direct {v0, v3, v1, v2}, Lcom/noisefit_commans/models/DeviceLanguage;-><init>(Ljava/lang/String;ILjava/lang/String;)V
+
+    sput-object v0, Lcom/noisefit_commans/models/DeviceLanguage;->HINDI:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    new-instance v0, Lcom/noisefit_commans/models/DeviceLanguage;
+
+    const/4 v1, 0x3
+
+    const-string v2, "spanish"
+
+    const-string v3, "SPANISH"
+
+    invoke-direct {v0, v3, v1, v2}, Lcom/noisefit_commans/models/DeviceLanguage;-><init>(Ljava/lang/String;ILjava/lang/String;)V
+
+    sput-object v0, Lcom/noisefit_commans/models/DeviceLanguage;->SPANISH:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    new-instance v0, Lcom/noisefit_commans/models/DeviceLanguage;
+
+    const/4 v1, 0x4
+
+    const-string v2, "portuguese"
+
+    const-string v3, "PORTUGUESE"
+
+    invoke-direct {v0, v3, v1, v2}, Lcom/noisefit_commans/models/DeviceLanguage;-><init>(Ljava/lang/String;ILjava/lang/String;)V
+
+    sput-object v0, Lcom/noisefit_commans/models/DeviceLanguage;->PORTUGUESE:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    new-instance v0, Lcom/noisefit_commans/models/DeviceLanguage;
+
+    const/4 v1, 0x5
+
+    const-string v2, "indonesian"
+
+    const-string v3, "INDONESIAN"
+
+    invoke-direct {v0, v3, v1, v2}, Lcom/noisefit_commans/models/DeviceLanguage;-><init>(Ljava/lang/String;ILjava/lang/String;)V
+
+    sput-object v0, Lcom/noisefit_commans/models/DeviceLanguage;->INDONESIAN:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    new-instance v0, Lcom/noisefit_commans/models/DeviceLanguage;
+
+    const/4 v1, 0x6
+
+    const-string v2, "thai"
+
+    const-string v3, "THAI"
+
+    invoke-direct {v0, v3, v1, v2}, Lcom/noisefit_commans/models/DeviceLanguage;-><init>(Ljava/lang/String;ILjava/lang/String;)V
+
+    sput-object v0, Lcom/noisefit_commans/models/DeviceLanguage;->THAI:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    new-instance v0, Lcom/noisefit_commans/models/DeviceLanguage;
+
+    const/4 v1, 0x7
+
+    const-string v2, "khemar"
+
+    const-string v3, "KHEMAR"
+
+    invoke-direct {v0, v3, v1, v2}, Lcom/noisefit_commans/models/DeviceLanguage;-><init>(Ljava/lang/String;ILjava/lang/String;)V
+
+    sput-object v0, Lcom/noisefit_commans/models/DeviceLanguage;->KHEMAR:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    new-instance v0, Lcom/noisefit_commans/models/DeviceLanguage;
+
+    const/16 v1, 0x8
+
+    const-string v2, "malay"
+
+    const-string v3, "MALAY"
+
+    invoke-direct {v0, v3, v1, v2}, Lcom/noisefit_commans/models/DeviceLanguage;-><init>(Ljava/lang/String;ILjava/lang/String;)V
+
+    sput-object v0, Lcom/noisefit_commans/models/DeviceLanguage;->MALAY:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    new-instance v0, Lcom/noisefit_commans/models/DeviceLanguage;
+
+    const/16 v1, 0x9
+
+    const-string v2, "french"
+
+    const-string v3, "FRENCH"
+
+    invoke-direct {v0, v3, v1, v2}, Lcom/noisefit_commans/models/DeviceLanguage;-><init>(Ljava/lang/String;ILjava/lang/String;)V
+
+    sput-object v0, Lcom/noisefit_commans/models/DeviceLanguage;->FRENCH:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    new-instance v0, Lcom/noisefit_commans/models/DeviceLanguage;
+
+    const/16 v1, 0xa
+
+    const-string v2, "german"
+
+    const-string v3, "GERMAN"
+
+    invoke-direct {v0, v3, v1, v2}, Lcom/noisefit_commans/models/DeviceLanguage;-><init>(Ljava/lang/String;ILjava/lang/String;)V
+
+    sput-object v0, Lcom/noisefit_commans/models/DeviceLanguage;->GERMAN:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    new-instance v0, Lcom/noisefit_commans/models/DeviceLanguage;
+
+    const/16 v1, 0xb
+
+    const-string v2, "russian"
+
+    const-string v3, "RUSSIAN"
+
+    invoke-direct {v0, v3, v1, v2}, Lcom/noisefit_commans/models/DeviceLanguage;-><init>(Ljava/lang/String;ILjava/lang/String;)V
+
+    sput-object v0, Lcom/noisefit_commans/models/DeviceLanguage;->RUSSIAN:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    new-instance v0, Lcom/noisefit_commans/models/DeviceLanguage;
+
+    const/16 v1, 0xc
+
+    const-string v2, "italian"
+
+    const-string v3, "ITALIAN"
+
+    invoke-direct {v0, v3, v1, v2}, Lcom/noisefit_commans/models/DeviceLanguage;-><init>(Ljava/lang/String;ILjava/lang/String;)V
+
+    sput-object v0, Lcom/noisefit_commans/models/DeviceLanguage;->ITALIAN:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    new-instance v0, Lcom/noisefit_commans/models/DeviceLanguage;
+
+    const/16 v1, 0xd
+
+    const-string v2, "dutch"
+
+    const-string v3, "DUTCH"
+
+    invoke-direct {v0, v3, v1, v2}, Lcom/noisefit_commans/models/DeviceLanguage;-><init>(Ljava/lang/String;ILjava/lang/String;)V
+
+    sput-object v0, Lcom/noisefit_commans/models/DeviceLanguage;->DUTCH:Lcom/noisefit_commans/models/DeviceLanguage;
+
+    invoke-static {}, Lcom/noisefit_commans/models/DeviceLanguage;->$values()[Lcom/noisefit_commans/models/DeviceLanguage;
+
+    move-result-object v0
+
+    sput-object v0, Lcom/noisefit_commans/models/DeviceLanguage;->$VALUES:[Lcom/noisefit_commans/models/DeviceLanguage;
+
+    invoke-static {v0}, Lkotlin/enums/EnumEntriesKt;->c([Ljava/lang/Enum;)Lkotlin/enums/EnumEntries;
+
+    move-result-object v0
+
+    sput-object v0, Lcom/noisefit_commans/models/DeviceLanguage;->$ENTRIES:Lkotlin/enums/EnumEntries;
+
+    return-void
+.end method
+
+.method private constructor <init>(Ljava/lang/String;ILjava/lang/String;)V
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/String;",
+            ")V"
+        }
+    .end annotation
+
+    invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
+
+    iput-object p3, p0, Lcom/noisefit_commans/models/DeviceLanguage;->type:Ljava/lang/String;
+
+    return-void
+.end method
+
+.method public static getEntries()Lkotlin/enums/EnumEntries;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Lkotlin/enums/EnumEntries<",
+            "Lcom/noisefit_commans/models/DeviceLanguage;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    sget-object v0, Lcom/noisefit_commans/models/DeviceLanguage;->$ENTRIES:Lkotlin/enums/EnumEntries;
+
+    return-object v0
+.end method
+
+.method public static valueOf(Ljava/lang/String;)Lcom/noisefit_commans/models/DeviceLanguage;
+    .locals 1
+
+    const-class v0, Lcom/noisefit_commans/models/DeviceLanguage;
+
+    invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+
+    move-result-object p0
+
+    check-cast p0, Lcom/noisefit_commans/models/DeviceLanguage;
+
+    return-object p0
+.end method
+
+.method public static values()[Lcom/noisefit_commans/models/DeviceLanguage;
+    .locals 1
+
+    sget-object v0, Lcom/noisefit_commans/models/DeviceLanguage;->$VALUES:[Lcom/noisefit_commans/models/DeviceLanguage;
+
+    invoke-virtual {v0}, Ljava/lang/Object;->clone()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, [Lcom/noisefit_commans/models/DeviceLanguage;
+
+    return-object v0
+.end method
+
+
+# virtual methods
+.method public final getType()Ljava/lang/String;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit_commans/models/DeviceLanguage;->type:Ljava/lang/String;
+
+    return-object v0
+.end method

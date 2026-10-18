@@ -1,0 +1,49 @@
+.class public interface abstract Lcn/hutool/core/lang/hash/Hash128;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lcn/hutool/core/lang/hash/Hash;
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "<T:",
+        "Ljava/lang/Object;",
+        ">",
+        "Ljava/lang/Object;",
+        "Lcn/hutool/core/lang/hash/Hash<",
+        "TT;>;"
+    }
+.end annotation
+
+.annotation runtime Ljava/lang/FunctionalInterface;
+.end annotation
+
+
+# virtual methods
+.method public a(Ljava/lang/Object;)Ljava/lang/Number;
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(TT;)",
+            "Ljava/lang/Number;"
+        }
+    .end annotation
+
+    invoke-interface {p0, p1}, Lcn/hutool/core/lang/hash/Hash128;->c(Ljava/lang/Object;)Lcn/hutool/core/lang/hash/Number128;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public abstract c(Ljava/lang/Object;)Lcn/hutool/core/lang/hash/Number128;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(TT;)",
+            "Lcn/hutool/core/lang/hash/Number128;"
+        }
+    .end annotation
+.end method

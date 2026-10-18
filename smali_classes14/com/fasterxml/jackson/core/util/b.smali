@@ -1,0 +1,28 @@
+.class public final synthetic Lcom/fasterxml/jackson/core/util/b;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/util/function/Supplier;
+
+
+# direct methods
+.method public synthetic constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final get()Ljava/lang/Object;
+    .locals 1
+
+    invoke-static {}, Lcom/fasterxml/jackson/core/util/JsonRecyclerPools$ConcurrentDequePool;->c()Lcom/fasterxml/jackson/core/util/RecyclerPool$StatefulImplBase;
+
+    move-result-object v0
+
+    return-object v0
+.end method

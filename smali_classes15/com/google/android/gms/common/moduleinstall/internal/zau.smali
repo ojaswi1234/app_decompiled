@@ -1,0 +1,95 @@
+.class final Lcom/google/android/gms/common/moduleinstall/internal/zau;
+.super Lcom/google/android/gms/common/moduleinstall/internal/zaa;
+.source "SourceFile"
+
+
+# instance fields
+.field public final synthetic s:Ljava/util/concurrent/atomic/AtomicReference;
+
+.field public final synthetic t:Lcom/google/android/gms/tasks/TaskCompletionSource;
+
+.field public final synthetic u:Lcom/google/android/gms/common/moduleinstall/InstallStatusListener;
+
+.field public final synthetic v:Lcom/google/android/gms/common/moduleinstall/internal/zay;
+
+
+# direct methods
+.method public constructor <init>(Lcom/google/android/gms/common/moduleinstall/internal/zay;Ljava/util/concurrent/atomic/AtomicReference;Lcom/google/android/gms/tasks/TaskCompletionSource;Lcom/google/android/gms/common/moduleinstall/InstallStatusListener;)V
+    .locals 0
+
+    iput-object p1, p0, Lcom/google/android/gms/common/moduleinstall/internal/zau;->v:Lcom/google/android/gms/common/moduleinstall/internal/zay;
+
+    iput-object p2, p0, Lcom/google/android/gms/common/moduleinstall/internal/zau;->s:Ljava/util/concurrent/atomic/AtomicReference;
+
+    iput-object p3, p0, Lcom/google/android/gms/common/moduleinstall/internal/zau;->t:Lcom/google/android/gms/tasks/TaskCompletionSource;
+
+    iput-object p4, p0, Lcom/google/android/gms/common/moduleinstall/internal/zau;->u:Lcom/google/android/gms/common/moduleinstall/InstallStatusListener;
+
+    invoke-direct {p0}, Lcom/google/android/gms/common/moduleinstall/internal/zaa;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final c3(Lcom/google/android/gms/common/api/Status;Lcom/google/android/gms/common/moduleinstall/ModuleInstallResponse;)V
+    .locals 2
+    .param p2    # Lcom/google/android/gms/common/moduleinstall/ModuleInstallResponse;
+        .annotation build Landroidx/annotation/Nullable;
+        .end annotation
+    .end param
+
+    if-eqz p2, :cond_0
+
+    iget-object v0, p0, Lcom/google/android/gms/common/moduleinstall/internal/zau;->s:Ljava/util/concurrent/atomic/AtomicReference;
+
+    invoke-virtual {v0, p2}, Ljava/util/concurrent/atomic/AtomicReference;->set(Ljava/lang/Object;)V
+
+    :cond_0
+    const/4 v0, 0x0
+
+    iget-object v1, p0, Lcom/google/android/gms/common/moduleinstall/internal/zau;->t:Lcom/google/android/gms/tasks/TaskCompletionSource;
+
+    invoke-static {p1, v0, v1}, Lcom/google/android/gms/common/api/internal/TaskUtil;->d(Lcom/google/android/gms/common/api/Status;Ljava/lang/Object;Lcom/google/android/gms/tasks/TaskCompletionSource;)Z
+
+    invoke-virtual {p1}, Lcom/google/android/gms/common/api/Status;->m0()Z
+
+    move-result p1
+
+    if-eqz p1, :cond_2
+
+    if-eqz p2, :cond_1
+
+    invoke-virtual {p2}, Lcom/google/android/gms/common/moduleinstall/ModuleInstallResponse;->V()Z
+
+    move-result p1
+
+    if-eqz p1, :cond_1
+
+    goto :goto_0
+
+    :cond_1
+    return-void
+
+    :cond_2
+    :goto_0
+    iget-object p1, p0, Lcom/google/android/gms/common/moduleinstall/internal/zau;->v:Lcom/google/android/gms/common/moduleinstall/internal/zay;
+
+    iget-object p2, p0, Lcom/google/android/gms/common/moduleinstall/internal/zau;->u:Lcom/google/android/gms/common/moduleinstall/InstallStatusListener;
+
+    const-class v0, Lcom/google/android/gms/common/moduleinstall/InstallStatusListener;
+
+    invoke-virtual {v0}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {p2, v0}, Lcom/google/android/gms/common/api/internal/ListenerHolders;->c(Ljava/lang/Object;Ljava/lang/String;)Lcom/google/android/gms/common/api/internal/ListenerHolder$ListenerKey;
+
+    move-result-object p2
+
+    const/16 v0, 0x6aaa
+
+    invoke-virtual {p1, p2, v0}, Lcom/google/android/gms/common/api/GoogleApi;->Q(Lcom/google/android/gms/common/api/internal/ListenerHolder$ListenerKey;I)Lcom/google/android/gms/tasks/Task;
+
+    return-void
+.end method

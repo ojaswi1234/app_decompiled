@@ -1,0 +1,1116 @@
+.class public final Lcom/noisefit/data/model/rally/RallyProfileResponseData;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation build Landroidx/compose/runtime/internal/StabilityInferred;
+    parameters = 0x0
+.end annotation
+
+
+# static fields
+.field public static final $stable:I = 0x8
+
+
+# instance fields
+.field private final badges:Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List<",
+            "Lcom/noisefit/data/model/rally/BadgeData;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+.end field
+
+.field private final collectedBadge:Ljava/util/List;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "collected_badge"
+    .end annotation
+
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List<",
+            "Lcom/noisefit/data/model/rally/CollectBadge;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+.end field
+
+.field private final isRallyJoined:Ljava/lang/Boolean;
+    .annotation runtime Lcom/google/gson/annotations/SerializedName;
+        value = "is_rally_joined"
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+.end field
+
+.field private final join:Lcom/noisefit/data/model/rally/Join;
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+.end field
+
+.field private final league:Lcom/noisefit/data/model/rally/League;
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+.end field
+
+.field private final pause:Lcom/noisefit/data/model/rally/Pause;
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+.end field
+
+.field private final performance:Lcom/noisefit/data/model/rally/Performance;
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+.end field
+
+.field private final rally:Lcom/noisefit/data/model/rally/Rally;
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+.end field
+
+.field private final timestamp:Ljava/lang/Long;
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+.end field
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 0
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .locals 12
+
+    .line 1
+    const/16 v10, 0x1ff
+
+    const/4 v11, 0x0
+
+    const/4 v1, 0x0
+
+    const/4 v2, 0x0
+
+    const/4 v3, 0x0
+
+    const/4 v4, 0x0
+
+    const/4 v5, 0x0
+
+    const/4 v6, 0x0
+
+    const/4 v7, 0x0
+
+    const/4 v8, 0x0
+
+    const/4 v9, 0x0
+
+    move-object v0, p0
+
+    invoke-direct/range {v0 .. v11}, Lcom/noisefit/data/model/rally/RallyProfileResponseData;-><init>(Lcom/noisefit/data/model/rally/Join;Lcom/noisefit/data/model/rally/Rally;Lcom/noisefit/data/model/rally/League;Ljava/util/List;Lcom/noisefit/data/model/rally/Performance;Ljava/lang/Boolean;Lcom/noisefit/data/model/rally/Pause;Ljava/util/List;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+
+    return-void
+.end method
+
+.method public constructor <init>(Lcom/noisefit/data/model/rally/Join;Lcom/noisefit/data/model/rally/Rally;Lcom/noisefit/data/model/rally/League;Ljava/util/List;Lcom/noisefit/data/model/rally/Performance;Ljava/lang/Boolean;Lcom/noisefit/data/model/rally/Pause;Ljava/util/List;Ljava/lang/Long;)V
+    .locals 0
+    .param p1    # Lcom/noisefit/data/model/rally/Join;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p2    # Lcom/noisefit/data/model/rally/Rally;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p3    # Lcom/noisefit/data/model/rally/League;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p4    # Ljava/util/List;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p5    # Lcom/noisefit/data/model/rally/Performance;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p6    # Ljava/lang/Boolean;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p7    # Lcom/noisefit/data/model/rally/Pause;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p8    # Ljava/util/List;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p9    # Ljava/lang/Long;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lcom/noisefit/data/model/rally/Join;",
+            "Lcom/noisefit/data/model/rally/Rally;",
+            "Lcom/noisefit/data/model/rally/League;",
+            "Ljava/util/List<",
+            "Lcom/noisefit/data/model/rally/BadgeData;",
+            ">;",
+            "Lcom/noisefit/data/model/rally/Performance;",
+            "Ljava/lang/Boolean;",
+            "Lcom/noisefit/data/model/rally/Pause;",
+            "Ljava/util/List<",
+            "Lcom/noisefit/data/model/rally/CollectBadge;",
+            ">;",
+            "Ljava/lang/Long;",
+            ")V"
+        }
+    .end annotation
+
+    .line 2
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 3
+    iput-object p1, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->join:Lcom/noisefit/data/model/rally/Join;
+
+    .line 4
+    iput-object p2, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->rally:Lcom/noisefit/data/model/rally/Rally;
+
+    .line 5
+    iput-object p3, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->league:Lcom/noisefit/data/model/rally/League;
+
+    .line 6
+    iput-object p4, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->badges:Ljava/util/List;
+
+    .line 7
+    iput-object p5, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->performance:Lcom/noisefit/data/model/rally/Performance;
+
+    .line 8
+    iput-object p6, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->isRallyJoined:Ljava/lang/Boolean;
+
+    .line 9
+    iput-object p7, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->pause:Lcom/noisefit/data/model/rally/Pause;
+
+    .line 10
+    iput-object p8, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->collectedBadge:Ljava/util/List;
+
+    .line 11
+    iput-object p9, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->timestamp:Ljava/lang/Long;
+
+    return-void
+.end method
+
+.method public synthetic constructor <init>(Lcom/noisefit/data/model/rally/Join;Lcom/noisefit/data/model/rally/Rally;Lcom/noisefit/data/model/rally/League;Ljava/util/List;Lcom/noisefit/data/model/rally/Performance;Ljava/lang/Boolean;Lcom/noisefit/data/model/rally/Pause;Ljava/util/List;Ljava/lang/Long;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+    .locals 1
+
+    and-int/lit8 p11, p10, 0x1
+
+    const/4 v0, 0x0
+
+    if-eqz p11, :cond_0
+
+    move-object p1, v0
+
+    :cond_0
+    and-int/lit8 p11, p10, 0x2
+
+    if-eqz p11, :cond_1
+
+    move-object p2, v0
+
+    :cond_1
+    and-int/lit8 p11, p10, 0x4
+
+    if-eqz p11, :cond_2
+
+    move-object p3, v0
+
+    :cond_2
+    and-int/lit8 p11, p10, 0x8
+
+    if-eqz p11, :cond_3
+
+    move-object p4, v0
+
+    :cond_3
+    and-int/lit8 p11, p10, 0x10
+
+    if-eqz p11, :cond_4
+
+    move-object p5, v0
+
+    :cond_4
+    and-int/lit8 p11, p10, 0x20
+
+    if-eqz p11, :cond_5
+
+    .line 12
+    sget-object p6, Ljava/lang/Boolean;->FALSE:Ljava/lang/Boolean;
+
+    :cond_5
+    and-int/lit8 p11, p10, 0x40
+
+    if-eqz p11, :cond_6
+
+    move-object p7, v0
+
+    :cond_6
+    and-int/lit16 p11, p10, 0x80
+
+    if-eqz p11, :cond_7
+
+    move-object p8, v0
+
+    :cond_7
+    and-int/lit16 p10, p10, 0x100
+
+    if-eqz p10, :cond_8
+
+    move-object p10, v0
+
+    :goto_0
+    move-object p9, p8
+
+    move-object p8, p7
+
+    move-object p7, p6
+
+    move-object p6, p5
+
+    move-object p5, p4
+
+    move-object p4, p3
+
+    move-object p3, p2
+
+    move-object p2, p1
+
+    move-object p1, p0
+
+    goto :goto_1
+
+    :cond_8
+    move-object p10, p9
+
+    goto :goto_0
+
+    .line 13
+    :goto_1
+    invoke-direct/range {p1 .. p10}, Lcom/noisefit/data/model/rally/RallyProfileResponseData;-><init>(Lcom/noisefit/data/model/rally/Join;Lcom/noisefit/data/model/rally/Rally;Lcom/noisefit/data/model/rally/League;Ljava/util/List;Lcom/noisefit/data/model/rally/Performance;Ljava/lang/Boolean;Lcom/noisefit/data/model/rally/Pause;Ljava/util/List;Ljava/lang/Long;)V
+
+    return-void
+.end method
+
+.method public static synthetic copy$default(Lcom/noisefit/data/model/rally/RallyProfileResponseData;Lcom/noisefit/data/model/rally/Join;Lcom/noisefit/data/model/rally/Rally;Lcom/noisefit/data/model/rally/League;Ljava/util/List;Lcom/noisefit/data/model/rally/Performance;Ljava/lang/Boolean;Lcom/noisefit/data/model/rally/Pause;Ljava/util/List;Ljava/lang/Long;ILjava/lang/Object;)Lcom/noisefit/data/model/rally/RallyProfileResponseData;
+    .locals 0
+
+    and-int/lit8 p11, p10, 0x1
+
+    if-eqz p11, :cond_0
+
+    iget-object p1, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->join:Lcom/noisefit/data/model/rally/Join;
+
+    :cond_0
+    and-int/lit8 p11, p10, 0x2
+
+    if-eqz p11, :cond_1
+
+    iget-object p2, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->rally:Lcom/noisefit/data/model/rally/Rally;
+
+    :cond_1
+    and-int/lit8 p11, p10, 0x4
+
+    if-eqz p11, :cond_2
+
+    iget-object p3, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->league:Lcom/noisefit/data/model/rally/League;
+
+    :cond_2
+    and-int/lit8 p11, p10, 0x8
+
+    if-eqz p11, :cond_3
+
+    iget-object p4, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->badges:Ljava/util/List;
+
+    :cond_3
+    and-int/lit8 p11, p10, 0x10
+
+    if-eqz p11, :cond_4
+
+    iget-object p5, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->performance:Lcom/noisefit/data/model/rally/Performance;
+
+    :cond_4
+    and-int/lit8 p11, p10, 0x20
+
+    if-eqz p11, :cond_5
+
+    iget-object p6, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->isRallyJoined:Ljava/lang/Boolean;
+
+    :cond_5
+    and-int/lit8 p11, p10, 0x40
+
+    if-eqz p11, :cond_6
+
+    iget-object p7, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->pause:Lcom/noisefit/data/model/rally/Pause;
+
+    :cond_6
+    and-int/lit16 p11, p10, 0x80
+
+    if-eqz p11, :cond_7
+
+    iget-object p8, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->collectedBadge:Ljava/util/List;
+
+    :cond_7
+    and-int/lit16 p10, p10, 0x100
+
+    if-eqz p10, :cond_8
+
+    iget-object p9, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->timestamp:Ljava/lang/Long;
+
+    :cond_8
+    move-object p10, p8
+
+    move-object p11, p9
+
+    move-object p8, p6
+
+    move-object p9, p7
+
+    move-object p6, p4
+
+    move-object p7, p5
+
+    move-object p4, p2
+
+    move-object p5, p3
+
+    move-object p2, p0
+
+    move-object p3, p1
+
+    invoke-virtual/range {p2 .. p11}, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->copy(Lcom/noisefit/data/model/rally/Join;Lcom/noisefit/data/model/rally/Rally;Lcom/noisefit/data/model/rally/League;Ljava/util/List;Lcom/noisefit/data/model/rally/Performance;Ljava/lang/Boolean;Lcom/noisefit/data/model/rally/Pause;Ljava/util/List;Ljava/lang/Long;)Lcom/noisefit/data/model/rally/RallyProfileResponseData;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+
+# virtual methods
+.method public final component1()Lcom/noisefit/data/model/rally/Join;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->join:Lcom/noisefit/data/model/rally/Join;
+
+    return-object v0
+.end method
+
+.method public final component2()Lcom/noisefit/data/model/rally/Rally;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->rally:Lcom/noisefit/data/model/rally/Rally;
+
+    return-object v0
+.end method
+
+.method public final component3()Lcom/noisefit/data/model/rally/League;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->league:Lcom/noisefit/data/model/rally/League;
+
+    return-object v0
+.end method
+
+.method public final component4()Ljava/util/List;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List<",
+            "Lcom/noisefit/data/model/rally/BadgeData;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->badges:Ljava/util/List;
+
+    return-object v0
+.end method
+
+.method public final component5()Lcom/noisefit/data/model/rally/Performance;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->performance:Lcom/noisefit/data/model/rally/Performance;
+
+    return-object v0
+.end method
+
+.method public final component6()Ljava/lang/Boolean;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->isRallyJoined:Ljava/lang/Boolean;
+
+    return-object v0
+.end method
+
+.method public final component7()Lcom/noisefit/data/model/rally/Pause;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->pause:Lcom/noisefit/data/model/rally/Pause;
+
+    return-object v0
+.end method
+
+.method public final component8()Ljava/util/List;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List<",
+            "Lcom/noisefit/data/model/rally/CollectBadge;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->collectedBadge:Ljava/util/List;
+
+    return-object v0
+.end method
+
+.method public final component9()Ljava/lang/Long;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->timestamp:Ljava/lang/Long;
+
+    return-object v0
+.end method
+
+.method public final copy(Lcom/noisefit/data/model/rally/Join;Lcom/noisefit/data/model/rally/Rally;Lcom/noisefit/data/model/rally/League;Ljava/util/List;Lcom/noisefit/data/model/rally/Performance;Ljava/lang/Boolean;Lcom/noisefit/data/model/rally/Pause;Ljava/util/List;Ljava/lang/Long;)Lcom/noisefit/data/model/rally/RallyProfileResponseData;
+    .locals 10
+    .param p1    # Lcom/noisefit/data/model/rally/Join;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p2    # Lcom/noisefit/data/model/rally/Rally;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p3    # Lcom/noisefit/data/model/rally/League;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p4    # Ljava/util/List;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p5    # Lcom/noisefit/data/model/rally/Performance;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p6    # Ljava/lang/Boolean;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p7    # Lcom/noisefit/data/model/rally/Pause;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p8    # Ljava/util/List;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p9    # Ljava/lang/Long;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lcom/noisefit/data/model/rally/Join;",
+            "Lcom/noisefit/data/model/rally/Rally;",
+            "Lcom/noisefit/data/model/rally/League;",
+            "Ljava/util/List<",
+            "Lcom/noisefit/data/model/rally/BadgeData;",
+            ">;",
+            "Lcom/noisefit/data/model/rally/Performance;",
+            "Ljava/lang/Boolean;",
+            "Lcom/noisefit/data/model/rally/Pause;",
+            "Ljava/util/List<",
+            "Lcom/noisefit/data/model/rally/CollectBadge;",
+            ">;",
+            "Ljava/lang/Long;",
+            ")",
+            "Lcom/noisefit/data/model/rally/RallyProfileResponseData;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    new-instance v0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;
+
+    move-object v1, p1
+
+    move-object v2, p2
+
+    move-object v3, p3
+
+    move-object v4, p4
+
+    move-object v5, p5
+
+    move-object/from16 v6, p6
+
+    move-object/from16 v7, p7
+
+    move-object/from16 v8, p8
+
+    move-object/from16 v9, p9
+
+    invoke-direct/range {v0 .. v9}, Lcom/noisefit/data/model/rally/RallyProfileResponseData;-><init>(Lcom/noisefit/data/model/rally/Join;Lcom/noisefit/data/model/rally/Rally;Lcom/noisefit/data/model/rally/League;Ljava/util/List;Lcom/noisefit/data/model/rally/Performance;Ljava/lang/Boolean;Lcom/noisefit/data/model/rally/Pause;Ljava/util/List;Ljava/lang/Long;)V
+
+    return-object v0
+.end method
+
+.method public equals(Ljava/lang/Object;)Z
+    .locals 4
+    .param p1    # Ljava/lang/Object;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+
+    const/4 v0, 0x1
+
+    if-ne p0, p1, :cond_0
+
+    return v0
+
+    :cond_0
+    instance-of v1, p1, Lcom/noisefit/data/model/rally/RallyProfileResponseData;
+
+    const/4 v2, 0x0
+
+    if-nez v1, :cond_1
+
+    return v2
+
+    :cond_1
+    check-cast p1, Lcom/noisefit/data/model/rally/RallyProfileResponseData;
+
+    iget-object v1, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->join:Lcom/noisefit/data/model/rally/Join;
+
+    iget-object v3, p1, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->join:Lcom/noisefit/data/model/rally/Join;
+
+    invoke-static {v1, v3}, Lkotlin/jvm/internal/Intrinsics;->g(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_2
+
+    return v2
+
+    :cond_2
+    iget-object v1, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->rally:Lcom/noisefit/data/model/rally/Rally;
+
+    iget-object v3, p1, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->rally:Lcom/noisefit/data/model/rally/Rally;
+
+    invoke-static {v1, v3}, Lkotlin/jvm/internal/Intrinsics;->g(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_3
+
+    return v2
+
+    :cond_3
+    iget-object v1, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->league:Lcom/noisefit/data/model/rally/League;
+
+    iget-object v3, p1, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->league:Lcom/noisefit/data/model/rally/League;
+
+    invoke-static {v1, v3}, Lkotlin/jvm/internal/Intrinsics;->g(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_4
+
+    return v2
+
+    :cond_4
+    iget-object v1, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->badges:Ljava/util/List;
+
+    iget-object v3, p1, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->badges:Ljava/util/List;
+
+    invoke-static {v1, v3}, Lkotlin/jvm/internal/Intrinsics;->g(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_5
+
+    return v2
+
+    :cond_5
+    iget-object v1, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->performance:Lcom/noisefit/data/model/rally/Performance;
+
+    iget-object v3, p1, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->performance:Lcom/noisefit/data/model/rally/Performance;
+
+    invoke-static {v1, v3}, Lkotlin/jvm/internal/Intrinsics;->g(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_6
+
+    return v2
+
+    :cond_6
+    iget-object v1, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->isRallyJoined:Ljava/lang/Boolean;
+
+    iget-object v3, p1, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->isRallyJoined:Ljava/lang/Boolean;
+
+    invoke-static {v1, v3}, Lkotlin/jvm/internal/Intrinsics;->g(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_7
+
+    return v2
+
+    :cond_7
+    iget-object v1, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->pause:Lcom/noisefit/data/model/rally/Pause;
+
+    iget-object v3, p1, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->pause:Lcom/noisefit/data/model/rally/Pause;
+
+    invoke-static {v1, v3}, Lkotlin/jvm/internal/Intrinsics;->g(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_8
+
+    return v2
+
+    :cond_8
+    iget-object v1, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->collectedBadge:Ljava/util/List;
+
+    iget-object v3, p1, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->collectedBadge:Ljava/util/List;
+
+    invoke-static {v1, v3}, Lkotlin/jvm/internal/Intrinsics;->g(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_9
+
+    return v2
+
+    :cond_9
+    iget-object v1, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->timestamp:Ljava/lang/Long;
+
+    iget-object p1, p1, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->timestamp:Ljava/lang/Long;
+
+    invoke-static {v1, p1}, Lkotlin/jvm/internal/Intrinsics;->g(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result p1
+
+    if-nez p1, :cond_a
+
+    return v2
+
+    :cond_a
+    return v0
+.end method
+
+.method public final getBadges()Ljava/util/List;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List<",
+            "Lcom/noisefit/data/model/rally/BadgeData;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->badges:Ljava/util/List;
+
+    return-object v0
+.end method
+
+.method public final getCollectedBadge()Ljava/util/List;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List<",
+            "Lcom/noisefit/data/model/rally/CollectBadge;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->collectedBadge:Ljava/util/List;
+
+    return-object v0
+.end method
+
+.method public final getJoin()Lcom/noisefit/data/model/rally/Join;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->join:Lcom/noisefit/data/model/rally/Join;
+
+    return-object v0
+.end method
+
+.method public final getLeague()Lcom/noisefit/data/model/rally/League;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->league:Lcom/noisefit/data/model/rally/League;
+
+    return-object v0
+.end method
+
+.method public final getPause()Lcom/noisefit/data/model/rally/Pause;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->pause:Lcom/noisefit/data/model/rally/Pause;
+
+    return-object v0
+.end method
+
+.method public final getPerformance()Lcom/noisefit/data/model/rally/Performance;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->performance:Lcom/noisefit/data/model/rally/Performance;
+
+    return-object v0
+.end method
+
+.method public final getRally()Lcom/noisefit/data/model/rally/Rally;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->rally:Lcom/noisefit/data/model/rally/Rally;
+
+    return-object v0
+.end method
+
+.method public final getTimestamp()Ljava/lang/Long;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->timestamp:Ljava/lang/Long;
+
+    return-object v0
+.end method
+
+.method public hashCode()I
+    .locals 3
+
+    iget-object v0, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->join:Lcom/noisefit/data/model/rally/Join;
+
+    const/4 v1, 0x0
+
+    if-nez v0, :cond_0
+
+    move v0, v1
+
+    goto :goto_0
+
+    :cond_0
+    invoke-virtual {v0}, Lcom/noisefit/data/model/rally/Join;->hashCode()I
+
+    move-result v0
+
+    :goto_0
+    mul-int/lit8 v0, v0, 0x1f
+
+    iget-object v2, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->rally:Lcom/noisefit/data/model/rally/Rally;
+
+    if-nez v2, :cond_1
+
+    move v2, v1
+
+    goto :goto_1
+
+    :cond_1
+    invoke-virtual {v2}, Lcom/noisefit/data/model/rally/Rally;->hashCode()I
+
+    move-result v2
+
+    :goto_1
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x1f
+
+    iget-object v2, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->league:Lcom/noisefit/data/model/rally/League;
+
+    if-nez v2, :cond_2
+
+    move v2, v1
+
+    goto :goto_2
+
+    :cond_2
+    invoke-virtual {v2}, Lcom/noisefit/data/model/rally/League;->hashCode()I
+
+    move-result v2
+
+    :goto_2
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x1f
+
+    iget-object v2, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->badges:Ljava/util/List;
+
+    if-nez v2, :cond_3
+
+    move v2, v1
+
+    goto :goto_3
+
+    :cond_3
+    invoke-virtual {v2}, Ljava/lang/Object;->hashCode()I
+
+    move-result v2
+
+    :goto_3
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x1f
+
+    iget-object v2, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->performance:Lcom/noisefit/data/model/rally/Performance;
+
+    if-nez v2, :cond_4
+
+    move v2, v1
+
+    goto :goto_4
+
+    :cond_4
+    invoke-virtual {v2}, Lcom/noisefit/data/model/rally/Performance;->hashCode()I
+
+    move-result v2
+
+    :goto_4
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x1f
+
+    iget-object v2, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->isRallyJoined:Ljava/lang/Boolean;
+
+    if-nez v2, :cond_5
+
+    move v2, v1
+
+    goto :goto_5
+
+    :cond_5
+    invoke-virtual {v2}, Ljava/lang/Object;->hashCode()I
+
+    move-result v2
+
+    :goto_5
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x1f
+
+    iget-object v2, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->pause:Lcom/noisefit/data/model/rally/Pause;
+
+    if-nez v2, :cond_6
+
+    move v2, v1
+
+    goto :goto_6
+
+    :cond_6
+    invoke-virtual {v2}, Lcom/noisefit/data/model/rally/Pause;->hashCode()I
+
+    move-result v2
+
+    :goto_6
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x1f
+
+    iget-object v2, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->collectedBadge:Ljava/util/List;
+
+    if-nez v2, :cond_7
+
+    move v2, v1
+
+    goto :goto_7
+
+    :cond_7
+    invoke-virtual {v2}, Ljava/lang/Object;->hashCode()I
+
+    move-result v2
+
+    :goto_7
+    add-int/2addr v0, v2
+
+    mul-int/lit8 v0, v0, 0x1f
+
+    iget-object v2, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->timestamp:Ljava/lang/Long;
+
+    if-nez v2, :cond_8
+
+    goto :goto_8
+
+    :cond_8
+    invoke-virtual {v2}, Ljava/lang/Object;->hashCode()I
+
+    move-result v1
+
+    :goto_8
+    add-int/2addr v0, v1
+
+    return v0
+.end method
+
+.method public final isRallyJoined()Ljava/lang/Boolean;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->isRallyJoined:Ljava/lang/Boolean;
+
+    return-object v0
+.end method
+
+.method public toString()Ljava/lang/String;
+    .locals 11
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->join:Lcom/noisefit/data/model/rally/Join;
+
+    iget-object v1, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->rally:Lcom/noisefit/data/model/rally/Rally;
+
+    iget-object v2, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->league:Lcom/noisefit/data/model/rally/League;
+
+    iget-object v3, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->badges:Ljava/util/List;
+
+    iget-object v4, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->performance:Lcom/noisefit/data/model/rally/Performance;
+
+    iget-object v5, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->isRallyJoined:Ljava/lang/Boolean;
+
+    iget-object v6, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->pause:Lcom/noisefit/data/model/rally/Pause;
+
+    iget-object v7, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->collectedBadge:Ljava/util/List;
+
+    iget-object v8, p0, Lcom/noisefit/data/model/rally/RallyProfileResponseData;->timestamp:Ljava/lang/Long;
+
+    new-instance v9, Ljava/lang/StringBuilder;
+
+    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v10, "RallyProfileResponseData(join="
+
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v9, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const-string v0, ", rally="
+
+    invoke-virtual {v9, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v9, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const-string v0, ", league="
+
+    invoke-virtual {v9, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v9, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const-string v0, ", badges="
+
+    invoke-virtual {v9, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v9, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const-string v0, ", performance="
+
+    invoke-virtual {v9, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v9, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const-string v0, ", isRallyJoined="
+
+    invoke-virtual {v9, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v9, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const-string v0, ", pause="
+
+    invoke-virtual {v9, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v9, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const-string v0, ", collectedBadge="
+
+    invoke-virtual {v9, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v9, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const-string v0, ", timestamp="
+
+    invoke-virtual {v9, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v9, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const-string v0, ")"
+
+    invoke-virtual {v9, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method

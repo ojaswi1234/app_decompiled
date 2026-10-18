@@ -1,0 +1,25 @@
+.class public interface abstract Lcom/google/android/gms/internal/play_billing/zzgl;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lcom/google/android/gms/internal/play_billing/zzgm;
+
+
+# virtual methods
+.method public abstract a(Lcom/google/android/gms/internal/play_billing/zzep;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+.end method
+
+.method public abstract g()Lcom/google/android/gms/internal/play_billing/zzgk;
+.end method
+
+.method public abstract zzf()Lcom/google/android/gms/internal/play_billing/zzei;
+.end method
+
+.method public abstract zzj()I
+.end method

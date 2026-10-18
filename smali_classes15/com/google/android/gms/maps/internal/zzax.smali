@@ -1,0 +1,32 @@
+.class public interface abstract Lcom/google/android/gms/maps/internal/zzax;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Landroid/os/IInterface;
+
+
+# virtual methods
+.method public abstract A0(Lcom/google/android/gms/internal/maps/zzaj;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract c(Lcom/google/android/gms/internal/maps/zzaj;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract fa(Lcom/google/android/gms/internal/maps/zzaj;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method

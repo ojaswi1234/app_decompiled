@@ -1,0 +1,160 @@
+.class public final Landroidx/window/area/WindowAreaCapability$Status;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation build Landroidx/window/core/ExperimentalWindowApi;
+.end annotation
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/window/area/WindowAreaCapability;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "Status"
+.end annotation
+
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroidx/window/area/WindowAreaCapability$Status$Companion;
+    }
+.end annotation
+
+
+# static fields
+.field public static final b:Landroidx/window/area/WindowAreaCapability$Status$Companion;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+.field public static final c:Landroidx/window/area/WindowAreaCapability$Status;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+.field public static final d:Landroidx/window/area/WindowAreaCapability$Status;
+    .annotation build Lkotlin/jvm/JvmField;
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+.field public static final e:Landroidx/window/area/WindowAreaCapability$Status;
+    .annotation build Lkotlin/jvm/JvmField;
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+.field public static final f:Landroidx/window/area/WindowAreaCapability$Status;
+    .annotation build Lkotlin/jvm/JvmField;
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+.field public static final g:Landroidx/window/area/WindowAreaCapability$Status;
+    .annotation build Lkotlin/jvm/JvmField;
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+
+# instance fields
+.field public final a:Ljava/lang/String;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 2
+
+    new-instance v0, Landroidx/window/area/WindowAreaCapability$Status$Companion;
+
+    const/4 v1, 0x0
+
+    invoke-direct {v0, v1}, Landroidx/window/area/WindowAreaCapability$Status$Companion;-><init>(Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+
+    sput-object v0, Landroidx/window/area/WindowAreaCapability$Status;->b:Landroidx/window/area/WindowAreaCapability$Status$Companion;
+
+    new-instance v0, Landroidx/window/area/WindowAreaCapability$Status;
+
+    const-string v1, "UNKNOWN"
+
+    invoke-direct {v0, v1}, Landroidx/window/area/WindowAreaCapability$Status;-><init>(Ljava/lang/String;)V
+
+    sput-object v0, Landroidx/window/area/WindowAreaCapability$Status;->c:Landroidx/window/area/WindowAreaCapability$Status;
+
+    new-instance v0, Landroidx/window/area/WindowAreaCapability$Status;
+
+    const-string v1, "UNSUPPORTED"
+
+    invoke-direct {v0, v1}, Landroidx/window/area/WindowAreaCapability$Status;-><init>(Ljava/lang/String;)V
+
+    sput-object v0, Landroidx/window/area/WindowAreaCapability$Status;->d:Landroidx/window/area/WindowAreaCapability$Status;
+
+    new-instance v0, Landroidx/window/area/WindowAreaCapability$Status;
+
+    const-string v1, "UNAVAILABLE"
+
+    invoke-direct {v0, v1}, Landroidx/window/area/WindowAreaCapability$Status;-><init>(Ljava/lang/String;)V
+
+    sput-object v0, Landroidx/window/area/WindowAreaCapability$Status;->e:Landroidx/window/area/WindowAreaCapability$Status;
+
+    new-instance v0, Landroidx/window/area/WindowAreaCapability$Status;
+
+    const-string v1, "AVAILABLE"
+
+    invoke-direct {v0, v1}, Landroidx/window/area/WindowAreaCapability$Status;-><init>(Ljava/lang/String;)V
+
+    sput-object v0, Landroidx/window/area/WindowAreaCapability$Status;->f:Landroidx/window/area/WindowAreaCapability$Status;
+
+    new-instance v0, Landroidx/window/area/WindowAreaCapability$Status;
+
+    const-string v1, "ACTIVE"
+
+    invoke-direct {v0, v1}, Landroidx/window/area/WindowAreaCapability$Status;-><init>(Ljava/lang/String;)V
+
+    sput-object v0, Landroidx/window/area/WindowAreaCapability$Status;->g:Landroidx/window/area/WindowAreaCapability$Status;
+
+    return-void
+.end method
+
+.method public constructor <init>(Ljava/lang/String;)V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Landroidx/window/area/WindowAreaCapability$Status;->a:Ljava/lang/String;
+
+    return-void
+.end method
+
+.method public static final synthetic a()Landroidx/window/area/WindowAreaCapability$Status;
+    .locals 1
+
+    sget-object v0, Landroidx/window/area/WindowAreaCapability$Status;->c:Landroidx/window/area/WindowAreaCapability$Status;
+
+    return-object v0
+.end method
+
+
+# virtual methods
+.method public toString()Ljava/lang/String;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Landroidx/window/area/WindowAreaCapability$Status;->a:Ljava/lang/String;
+
+    return-object v0
+.end method

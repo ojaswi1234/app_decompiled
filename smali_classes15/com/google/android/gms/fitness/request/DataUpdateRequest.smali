@@ -1,0 +1,425 @@
+.class public Lcom/google/android/gms/fitness/request/DataUpdateRequest;
+.super Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;
+.source "SourceFile"
+
+
+# annotations
+.annotation build Lcom/google/android/gms/common/internal/safeparcel/SafeParcelable$Class;
+    creator = "DataUpdateRequestCreator"
+.end annotation
+
+.annotation build Lcom/google/android/gms/common/internal/safeparcel/SafeParcelable$Reserved;
+    value = {
+        0x3e8
+    }
+.end annotation
+
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/google/android/gms/fitness/request/DataUpdateRequest$Builder;
+    }
+.end annotation
+
+
+# static fields
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
+    .annotation build Landroidx/annotation/NonNull;
+    .end annotation
+
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Landroid/os/Parcelable$Creator<",
+            "Lcom/google/android/gms/fitness/request/DataUpdateRequest;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+
+# instance fields
+.field public final s:J
+    .annotation build Lcom/google/android/gms/common/internal/safeparcel/SafeParcelable$Field;
+        getter = "getStartTimeMillis"
+        id = 0x1
+    .end annotation
+.end field
+
+.field public final t:J
+    .annotation build Lcom/google/android/gms/common/internal/safeparcel/SafeParcelable$Field;
+        getter = "getEndTimeMillis"
+        id = 0x2
+    .end annotation
+.end field
+
+.field public final u:Lcom/google/android/gms/fitness/data/DataSet;
+    .annotation build Lcom/google/android/gms/common/internal/safeparcel/SafeParcelable$Field;
+        getter = "getDataSet"
+        id = 0x3
+    .end annotation
+.end field
+
+.field public final v:Lcom/google/android/gms/internal/fitness/zzcw;
+    .annotation build Landroidx/annotation/Nullable;
+    .end annotation
+
+    .annotation build Lcom/google/android/gms/common/internal/safeparcel/SafeParcelable$Field;
+        getter = "getCallbackBinder"
+        id = 0x4
+        type = "android.os.IBinder"
+    .end annotation
+.end field
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    new-instance v0, Lcom/google/android/gms/fitness/request/zzu;
+
+    invoke-direct {v0}, Lcom/google/android/gms/fitness/request/zzu;-><init>()V
+
+    sput-object v0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    return-void
+.end method
+
+.method public constructor <init>(JJLcom/google/android/gms/fitness/data/DataSet;Landroid/os/IBinder;)V
+    .locals 0
+    .param p1    # J
+        .annotation build Lcom/google/android/gms/common/internal/safeparcel/SafeParcelable$Param;
+            id = 0x1
+        .end annotation
+    .end param
+    .param p3    # J
+        .annotation build Lcom/google/android/gms/common/internal/safeparcel/SafeParcelable$Param;
+            id = 0x2
+        .end annotation
+    .end param
+    .param p5    # Lcom/google/android/gms/fitness/data/DataSet;
+        .annotation build Landroidx/annotation/NonNull;
+        .end annotation
+
+        .annotation build Lcom/google/android/gms/common/internal/safeparcel/SafeParcelable$Param;
+            id = 0x3
+        .end annotation
+    .end param
+    .param p6    # Landroid/os/IBinder;
+        .annotation build Landroidx/annotation/Nullable;
+        .end annotation
+
+        .annotation build Lcom/google/android/gms/common/internal/safeparcel/SafeParcelable$Param;
+            id = 0x4
+        .end annotation
+    .end param
+    .annotation build Lcom/google/android/gms/common/internal/safeparcel/SafeParcelable$Constructor;
+    .end annotation
+
+    .line 1
+    invoke-direct {p0}, Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;-><init>()V
+
+    iput-wide p1, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->s:J
+
+    iput-wide p3, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->t:J
+
+    iput-object p5, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->u:Lcom/google/android/gms/fitness/data/DataSet;
+
+    if-nez p6, :cond_0
+
+    const/4 p1, 0x0
+
+    goto :goto_0
+
+    .line 2
+    :cond_0
+    invoke-static {p6}, Lcom/google/android/gms/internal/fitness/zzcv;->m(Landroid/os/IBinder;)Lcom/google/android/gms/internal/fitness/zzcw;
+
+    move-result-object p1
+
+    .line 3
+    :goto_0
+    iput-object p1, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->v:Lcom/google/android/gms/internal/fitness/zzcw;
+
+    return-void
+.end method
+
+.method public constructor <init>(Lcom/google/android/gms/fitness/request/DataUpdateRequest;Landroid/os/IBinder;)V
+    .locals 7
+    .param p1    # Lcom/google/android/gms/fitness/request/DataUpdateRequest;
+        .annotation build Landroidx/annotation/NonNull;
+        .end annotation
+    .end param
+    .param p2    # Landroid/os/IBinder;
+        .annotation build Landroidx/annotation/NonNull;
+        .end annotation
+    .end param
+
+    .line 4
+    iget-wide v1, p1, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->s:J
+
+    iget-wide v3, p1, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->t:J
+
+    invoke-virtual {p1}, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->P()Lcom/google/android/gms/fitness/data/DataSet;
+
+    move-result-object v5
+
+    move-object v0, p0
+
+    move-object v6, p2
+
+    invoke-direct/range {v0 .. v6}, Lcom/google/android/gms/fitness/request/DataUpdateRequest;-><init>(JJLcom/google/android/gms/fitness/data/DataSet;Landroid/os/IBinder;)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public P()Lcom/google/android/gms/fitness/data/DataSet;
+    .locals 1
+    .annotation build Landroidx/annotation/NonNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->u:Lcom/google/android/gms/fitness/data/DataSet;
+
+    return-object v0
+.end method
+
+.method public R(Ljava/util/concurrent/TimeUnit;)J
+    .locals 3
+    .param p1    # Ljava/util/concurrent/TimeUnit;
+        .annotation build Landroidx/annotation/NonNull;
+        .end annotation
+    .end param
+
+    iget-wide v0, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->t:J
+
+    sget-object v2, Ljava/util/concurrent/TimeUnit;->MILLISECONDS:Ljava/util/concurrent/TimeUnit;
+
+    invoke-virtual {p1, v0, v1, v2}, Ljava/util/concurrent/TimeUnit;->convert(JLjava/util/concurrent/TimeUnit;)J
+
+    move-result-wide v0
+
+    return-wide v0
+.end method
+
+.method public V(Ljava/util/concurrent/TimeUnit;)J
+    .locals 3
+    .param p1    # Ljava/util/concurrent/TimeUnit;
+        .annotation build Landroidx/annotation/NonNull;
+        .end annotation
+    .end param
+
+    iget-wide v0, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->s:J
+
+    sget-object v2, Ljava/util/concurrent/TimeUnit;->MILLISECONDS:Ljava/util/concurrent/TimeUnit;
+
+    invoke-virtual {p1, v0, v1, v2}, Ljava/util/concurrent/TimeUnit;->convert(JLjava/util/concurrent/TimeUnit;)J
+
+    move-result-wide v0
+
+    return-wide v0
+.end method
+
+.method public final Z()J
+    .locals 2
+
+    iget-wide v0, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->s:J
+
+    return-wide v0
+.end method
+
+.method public equals(Ljava/lang/Object;)Z
+    .locals 7
+    .param p1    # Ljava/lang/Object;
+        .annotation build Landroidx/annotation/Nullable;
+        .end annotation
+    .end param
+
+    const/4 v0, 0x1
+
+    if-ne p1, p0, :cond_0
+
+    return v0
+
+    :cond_0
+    instance-of v1, p1, Lcom/google/android/gms/fitness/request/DataUpdateRequest;
+
+    const/4 v2, 0x0
+
+    if-nez v1, :cond_1
+
+    return v2
+
+    :cond_1
+    check-cast p1, Lcom/google/android/gms/fitness/request/DataUpdateRequest;
+
+    iget-wide v3, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->s:J
+
+    iget-wide v5, p1, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->s:J
+
+    cmp-long v1, v3, v5
+
+    if-nez v1, :cond_2
+
+    iget-wide v3, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->t:J
+
+    iget-wide v5, p1, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->t:J
+
+    cmp-long v1, v3, v5
+
+    if-nez v1, :cond_2
+
+    iget-object v1, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->u:Lcom/google/android/gms/fitness/data/DataSet;
+
+    iget-object p1, p1, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->u:Lcom/google/android/gms/fitness/data/DataSet;
+
+    invoke-static {v1, p1}, Lcom/google/android/gms/common/internal/Objects;->b(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result p1
+
+    if-eqz p1, :cond_2
+
+    return v0
+
+    :cond_2
+    return v2
+.end method
+
+.method public hashCode()I
+    .locals 3
+
+    iget-wide v0, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->s:J
+
+    invoke-static {v0, v1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object v0
+
+    iget-wide v1, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->t:J
+
+    invoke-static {v1, v2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object v1
+
+    iget-object v2, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->u:Lcom/google/android/gms/fitness/data/DataSet;
+
+    filled-new-array {v0, v1, v2}, [Ljava/lang/Object;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/Objects;->c([Ljava/lang/Object;)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public toString()Ljava/lang/String;
+    .locals 4
+    .annotation build Landroidx/annotation/NonNull;
+    .end annotation
+
+    invoke-static {p0}, Lcom/google/android/gms/common/internal/Objects;->d(Ljava/lang/Object;)Lcom/google/android/gms/common/internal/Objects$ToStringHelper;
+
+    move-result-object v0
+
+    iget-wide v1, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->s:J
+
+    const-string v3, "startTimeMillis"
+
+    invoke-static {v1, v2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v3, v1}, Lcom/google/android/gms/common/internal/Objects$ToStringHelper;->a(Ljava/lang/String;Ljava/lang/Object;)Lcom/google/android/gms/common/internal/Objects$ToStringHelper;
+
+    move-result-object v0
+
+    iget-wide v1, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->t:J
+
+    const-string v3, "endTimeMillis"
+
+    invoke-static {v1, v2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v3, v1}, Lcom/google/android/gms/common/internal/Objects$ToStringHelper;->a(Ljava/lang/String;Ljava/lang/Object;)Lcom/google/android/gms/common/internal/Objects$ToStringHelper;
+
+    move-result-object v0
+
+    const-string v1, "dataSet"
+
+    iget-object v2, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->u:Lcom/google/android/gms/fitness/data/DataSet;
+
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/gms/common/internal/Objects$ToStringHelper;->a(Ljava/lang/String;Ljava/lang/Object;)Lcom/google/android/gms/common/internal/Objects$ToStringHelper;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Lcom/google/android/gms/common/internal/Objects$ToStringHelper;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public writeToParcel(Landroid/os/Parcel;I)V
+    .locals 4
+    .param p1    # Landroid/os/Parcel;
+        .annotation build Landroidx/annotation/NonNull;
+        .end annotation
+    .end param
+
+    invoke-static {p1}, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->a(Landroid/os/Parcel;)I
+
+    move-result v0
+
+    const/4 v1, 0x1
+
+    iget-wide v2, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->s:J
+
+    invoke-static {p1, v1, v2, v3}, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->K(Landroid/os/Parcel;IJ)V
+
+    const/4 v1, 0x2
+
+    iget-wide v2, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->t:J
+
+    invoke-static {p1, v1, v2, v3}, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->K(Landroid/os/Parcel;IJ)V
+
+    invoke-virtual {p0}, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->P()Lcom/google/android/gms/fitness/data/DataSet;
+
+    move-result-object v1
+
+    const/4 v2, 0x3
+
+    const/4 v3, 0x0
+
+    invoke-static {p1, v2, v1, p2, v3}, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->S(Landroid/os/Parcel;ILandroid/os/Parcelable;IZ)V
+
+    iget-object p2, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->v:Lcom/google/android/gms/internal/fitness/zzcw;
+
+    if-nez p2, :cond_0
+
+    const/4 p2, 0x0
+
+    goto :goto_0
+
+    :cond_0
+    invoke-interface {p2}, Landroid/os/IInterface;->asBinder()Landroid/os/IBinder;
+
+    move-result-object p2
+
+    :goto_0
+    const/4 v1, 0x4
+
+    invoke-static {p1, v1, p2, v3}, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->B(Landroid/os/Parcel;ILandroid/os/IBinder;Z)V
+
+    invoke-static {p1, v0}, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->b(Landroid/os/Parcel;I)V
+
+    return-void
+.end method
+
+.method public final zza()J
+    .locals 2
+
+    iget-wide v0, p0, Lcom/google/android/gms/fitness/request/DataUpdateRequest;->t:J
+
+    return-wide v0
+.end method

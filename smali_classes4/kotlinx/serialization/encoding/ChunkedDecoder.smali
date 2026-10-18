@@ -1,0 +1,30 @@
+.class public interface abstract Lkotlinx/serialization/encoding/ChunkedDecoder;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation runtime Lkotlinx/serialization/ExperimentalSerializationApi;
+.end annotation
+
+
+# virtual methods
+.method public abstract z(Lkotlin/jvm/functions/Function1;)V
+    .param p1    # Lkotlin/jvm/functions/Function1;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lkotlin/jvm/functions/Function1<",
+            "-",
+            "Ljava/lang/String;",
+            "Lkotlin/Unit;",
+            ">;)V"
+        }
+    .end annotation
+
+    .annotation runtime Lkotlinx/serialization/ExperimentalSerializationApi;
+    .end annotation
+.end method

@@ -1,0 +1,26 @@
+.class public interface abstract Lio/sentry/Scope$IWithSession;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lio/sentry/Scope;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x609
+    name = "IWithSession"
+.end annotation
+
+.annotation build Lorg/jetbrains/annotations/ApiStatus$Internal;
+.end annotation
+
+
+# virtual methods
+.method public abstract a(Lio/sentry/Session;)V
+    .param p1    # Lio/sentry/Session;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+.end method

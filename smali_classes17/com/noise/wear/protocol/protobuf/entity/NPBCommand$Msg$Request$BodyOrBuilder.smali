@@ -1,0 +1,25 @@
+.class public interface abstract Lcom/noise/wear/protocol/protobuf/entity/NPBCommand$Msg$Request$BodyOrBuilder;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lcom/google/protobuf/MessageOrBuilder;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/noise/wear/protocol/protobuf/entity/NPBCommand$Msg$Request;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x609
+    name = "BodyOrBuilder"
+.end annotation
+
+
+# virtual methods
+.method public abstract getVal()Lcom/google/protobuf/ByteString;
+.end method
+
+.method public abstract hasVal()Z
+.end method

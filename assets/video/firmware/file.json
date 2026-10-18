@@ -1,0 +1,34 @@
+{
+  "item": [
+  	{
+      "name": "Ani",
+      "format": "jpg"
+    },
+	{
+      "name": "Date",
+      "format": "png"
+    },
+	{
+      "name": "Time",
+      "format": "png"
+    },
+	{
+      "name": "Week",
+      "format": "png"
+    }
+  ],
+  "fade_item": [
+	{
+      "name": "Fade/Date",
+      "format": "png"
+    },
+	{
+      "name": "Fade/Time",
+      "format": "png"
+    },
+	{
+      "name": "Fade/Week",
+      "format": "png"
+    }
+  ]
+}

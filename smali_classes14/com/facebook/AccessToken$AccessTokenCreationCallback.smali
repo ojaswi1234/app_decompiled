@@ -1,0 +1,30 @@
+.class public interface abstract Lcom/facebook/AccessToken$AccessTokenCreationCallback;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/facebook/AccessToken;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x609
+    name = "AccessTokenCreationCallback"
+.end annotation
+
+
+# virtual methods
+.method public abstract b(Lcom/facebook/FacebookException;)V
+    .param p1    # Lcom/facebook/FacebookException;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+.end method
+
+.method public abstract c(Lcom/facebook/AccessToken;)V
+    .param p1    # Lcom/facebook/AccessToken;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+.end method

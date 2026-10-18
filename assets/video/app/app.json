@@ -1,0 +1,109 @@
+{
+    "preview_ratio":"256x256",
+    "background": {
+        "widget": "array",
+        "serial_number": 30
+    },
+    "clock_position": {
+        "widget_list": [
+            "text",
+            "array",
+            "text"
+        ],
+        "serial_number_list": [
+            3,
+            11,
+            13
+        ],
+        "position_number_list": [
+            2,
+            6,
+            8
+        ],
+        "position_list": [
+            [
+                [
+                    259,
+                    49
+                ],
+                [
+                    159,
+                    49
+                ],
+                [
+                    126, 
+                    97
+                ]
+            ],
+            [
+                [
+                    259,
+                    257
+                ],
+                [
+                    159,
+                    257
+                ],
+                [
+                    126,
+                    179
+                ]
+            ],
+            [
+                [
+                    259,
+                    387
+                ],
+                [
+                    159,
+                    387
+                ],
+                [
+                    126,
+                    309
+                ]
+            ]
+        ]
+    },
+    "color": {
+        "on_color_list": [
+            1,
+            1,
+            1
+        ],
+        "widget_list": [
+            "text",
+            "array",
+            "text"
+        ],
+        "serial_number_list": [
+            3,
+            11,
+            13
+        ],
+        "pure_color": [
+            "#EA424A",
+            "#E56E50",
+            "#F19B37",
+            "#F9DF61",
+            "#FCED8B",
+            "#BFF1A8",
+            "#65DB7C",
+            "#79C4F5",
+            "#4791F1",
+            "#585F99",
+            "#797AF7",
+            "#B4A5DD",
+            "#DA5378",
+            "#EA3956",
+            "#D6B48C",
+            "#C3ABA7",
+            "#DDDDDD",
+            "#8F829C",
+            "#E5A7A2"
+        ],
+        "color_picture": [
+            ""
+        ]
+    }
+}

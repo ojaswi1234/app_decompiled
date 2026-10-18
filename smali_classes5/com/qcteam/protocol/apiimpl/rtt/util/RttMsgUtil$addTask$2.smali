@@ -1,0 +1,518 @@
+.class final Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;
+.super Lkotlin/coroutines/jvm/internal/SuspendLambda;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function2;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil;->a(ILcom/qcteam/protocol/apiimpl/rtt/util/MsgAppIdEnum;Lorg/json/JSONObject;JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lkotlin/coroutines/jvm/internal/SuspendLambda;",
+        "Lkotlin/jvm/functions/Function2<",
+        "Lkotlinx/coroutines/CoroutineScope;",
+        "Lkotlin/coroutines/Continuation<",
+        "-",
+        "Lorg/json/JSONObject;",
+        ">;",
+        "Ljava/lang/Object;",
+        ">;"
+    }
+.end annotation
+
+.annotation system Ldalvik/annotation/SourceDebugExtension;
+    value = "SMAP\nRttMsgUtil.kt\nKotlin\n*S Kotlin\n*F\n+ 1 RttMsgUtil.kt\ncom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2\n+ 2 RttManager.kt\ncom/qcteam/protocol/apiimpl/rtt/RttManager\n+ 3 JsonUtil.kt\ncom/qcteam/protocol/api/util/JsonUtil\n+ 4 fake.kt\nkotlin/jvm/internal/FakeKt\n+ 5 CancellableContinuation.kt\nkotlinx/coroutines/CancellableContinuationKt\n*L\n1#1,206:1\n138#2,9:207\n148#2:225\n150#2,10:227\n20#3,9:216\n1#4:226\n314#5,11:237\n*S KotlinDebug\n*F\n+ 1 RttMsgUtil.kt\ncom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2\n*L\n54#1:207,9\n54#1:225\n54#1:227,10\n54#1:216,9\n54#1:226\n58#1:237,11\n*E\n"
+.end annotation
+
+.annotation runtime Lkotlin/coroutines/jvm/internal/DebugMetadata;
+    c = "com.qcteam.protocol.apiimpl.rtt.util.RttMsgUtil$addTask$2"
+    f = "RttMsgUtil.kt"
+    i = {}
+    l = {
+        0x35,
+        0xed
+    }
+    m = "invokeSuspend"
+    n = {}
+    s = {}
+.end annotation
+
+
+# instance fields
+.field public a:Ljava/lang/Object;
+
+.field public b:I
+
+.field public c:I
+
+.field public final synthetic d:Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil;
+
+.field public final synthetic e:Lcom/qcteam/protocol/apiimpl/rtt/util/MsgAppIdEnum;
+
+.field public final synthetic f:Lorg/json/JSONObject;
+
+.field public final synthetic g:I
+
+
+# direct methods
+.method public constructor <init>(Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil;Lcom/qcteam/protocol/apiimpl/rtt/util/MsgAppIdEnum;Lorg/json/JSONObject;ILkotlin/coroutines/Continuation;)V
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil;",
+            "Lcom/qcteam/protocol/apiimpl/rtt/util/MsgAppIdEnum;",
+            "Lorg/json/JSONObject;",
+            "I",
+            "Lkotlin/coroutines/Continuation<",
+            "-",
+            "Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;",
+            ">;)V"
+        }
+    .end annotation
+
+    iput-object p1, p0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->d:Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil;
+
+    iput-object p2, p0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->e:Lcom/qcteam/protocol/apiimpl/rtt/util/MsgAppIdEnum;
+
+    iput-object p3, p0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->f:Lorg/json/JSONObject;
+
+    iput p4, p0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->g:I
+
+    const/4 p1, 0x2
+
+    invoke-direct {p0, p1, p5}, Lkotlin/coroutines/jvm/internal/SuspendLambda;-><init>(ILkotlin/coroutines/Continuation;)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+    .locals 0
+    .param p1    # Lkotlinx/coroutines/CoroutineScope;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p2    # Lkotlin/coroutines/Continuation;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lkotlinx/coroutines/CoroutineScope;",
+            "Lkotlin/coroutines/Continuation<",
+            "-",
+            "Lorg/json/JSONObject;",
+            ">;)",
+            "Ljava/lang/Object;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    invoke-virtual {p0, p1, p2}, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->create(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+
+    move-result-object p1
+
+    check-cast p1, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;
+
+    sget-object p2, Lkotlin/Unit;->a:Lkotlin/Unit;
+
+    invoke-virtual {p1, p2}, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public final create(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+    .locals 6
+    .param p1    # Ljava/lang/Object;
+        .annotation build Lorg/jetbrains/annotations/Nullable;
+        .end annotation
+    .end param
+    .param p2    # Lkotlin/coroutines/Continuation;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/Object;",
+            "Lkotlin/coroutines/Continuation<",
+            "*>;)",
+            "Lkotlin/coroutines/Continuation<",
+            "Lkotlin/Unit;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    new-instance v0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;
+
+    iget-object v1, p0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->d:Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil;
+
+    iget-object v2, p0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->e:Lcom/qcteam/protocol/apiimpl/rtt/util/MsgAppIdEnum;
+
+    iget-object v3, p0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->f:Lorg/json/JSONObject;
+
+    iget v4, p0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->g:I
+
+    move-object v5, p2
+
+    invoke-direct/range {v0 .. v5}, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;-><init>(Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil;Lcom/qcteam/protocol/apiimpl/rtt/util/MsgAppIdEnum;Lorg/json/JSONObject;ILkotlin/coroutines/Continuation;)V
+
+    return-object v0
+.end method
+
+.method public bridge synthetic invoke(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 0
+
+    check-cast p1, Lkotlinx/coroutines/CoroutineScope;
+
+    check-cast p2, Lkotlin/coroutines/Continuation;
+
+    invoke-virtual {p0, p1, p2}, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->a(Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public final invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 10
+    .param p1    # Ljava/lang/Object;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    const-string v0, "key was get value failed"
+
+    const-string v1, "values"
+
+    invoke-static {}, Lkotlin/coroutines/intrinsics/IntrinsicsKt;->l()Ljava/lang/Object;
+
+    move-result-object v2
+
+    iget v3, p0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->c:I
+
+    const/4 v4, 0x2
+
+    const/4 v5, 0x1
+
+    if-eqz v3, :cond_2
+
+    if-eq v3, v5, :cond_1
+
+    if-ne v3, v4, :cond_0
+
+    iget-object v0, p0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->a:Ljava/lang/Object;
+
+    check-cast v0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil;
+
+    invoke-static {p1}, Lkotlin/ResultKt;->n(Ljava/lang/Object;)V
+
+    return-object p1
+
+    :cond_0
+    new-instance p1, Ljava/lang/IllegalStateException;
+
+    const-string v0, "call to \'resume\' before \'invoke\' with coroutine"
+
+    invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw p1
+
+    :cond_1
+    invoke-static {p1}, Lkotlin/ResultKt;->n(Ljava/lang/Object;)V
+
+    goto :goto_0
+
+    :cond_2
+    invoke-static {p1}, Lkotlin/ResultKt;->n(Ljava/lang/Object;)V
+
+    iget-object p1, p0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->d:Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil;
+
+    iget-object v3, p0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->e:Lcom/qcteam/protocol/apiimpl/rtt/util/MsgAppIdEnum;
+
+    iget-object v6, p0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->f:Lorg/json/JSONObject;
+
+    iput v5, p0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->c:I
+
+    invoke-static {p1, v3, v6, p0}, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil;->a(Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil;Lcom/qcteam/protocol/apiimpl/rtt/util/MsgAppIdEnum;Lorg/json/JSONObject;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+
+    move-result-object p1
+
+    if-ne p1, v2, :cond_3
+
+    goto/16 :goto_6
+
+    :cond_3
+    :goto_0
+    check-cast p1, Lorg/json/JSONObject;
+
+    sget-object v3, Lcom/qcteam/protocol/apiimpl/rtt/RttManager;->e:Lcom/qcteam/protocol/apiimpl/rtt/RttManager$Companion;
+
+    invoke-virtual {v3}, Lcom/qcteam/protocol/apiimpl/rtt/RttManager$Companion;->a()Lcom/qcteam/protocol/apiimpl/rtt/RttManager;
+
+    new-instance v3, Lcom/qcteam/protocol/api/interfaces/ProtocolResponse;
+
+    invoke-direct {v3}, Lcom/qcteam/protocol/api/interfaces/ProtocolResponse;-><init>()V
+
+    const/16 v6, 0x258
+
+    if-eqz p1, :cond_4
+
+    :try_start_0
+    const-string v7, "code"
+
+    invoke-virtual {p1, v7}, Lorg/json/JSONObject;->optInt(Ljava/lang/String;)I
+
+    move-result v7
+
+    goto :goto_1
+
+    :cond_4
+    move v7, v6
+
+    :goto_1
+    invoke-virtual {v3, v7}, Lcom/qcteam/protocol/api/interfaces/ProtocolResponse;->setCode(I)V
+
+    invoke-virtual {v3}, Lcom/qcteam/protocol/api/interfaces/ProtocolResponse;->isSuccess()Z
+
+    move-result v7
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    const-string v8, "msg"
+
+    if-eqz v7, :cond_8
+
+    :try_start_1
+    invoke-static {p1}, Lkotlin/jvm/internal/Intrinsics;->m(Ljava/lang/Object;)V
+
+    invoke-virtual {p1, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v7
+
+    const-string v9, "data!!.optString(\"values\")"
+
+    invoke-static {v7, v9}, Lkotlin/jvm/internal/Intrinsics;->o(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-static {v7, v0, v5}, Lkotlin/text/StringsKt;->k3(Ljava/lang/CharSequence;Ljava/lang/CharSequence;Z)Z
+
+    move-result v7
+
+    if-eqz v7, :cond_5
+
+    invoke-virtual {v3, v6}, Lcom/qcteam/protocol/api/interfaces/ProtocolResponse;->setCode(I)V
+
+    invoke-virtual {v3, v0}, Lcom/qcteam/protocol/api/interfaces/ProtocolResponse;->setMsg(Ljava/lang/String;)V
+
+    goto/16 :goto_5
+
+    :cond_5
+    sget-object v0, Lcom/qcteam/protocol/api/util/JsonUtil;->INSTANCE:Lcom/qcteam/protocol/api/util/JsonUtil;
+
+    invoke-virtual {p1, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    const-string v6, "data.optString(\"values\")"
+
+    invoke-static {v1, v6}, Lkotlin/jvm/internal/Intrinsics;->o(Ljava/lang/Object;Ljava/lang/String;)V
+
+    const-class v6, Ljava/lang/Object;
+
+    invoke-static {v6}, Lkotlin/jvm/internal/Reflection;->d(Ljava/lang/Class;)Lkotlin/reflect/KClass;
+
+    move-result-object v6
+
+    const-class v7, Ljava/lang/String;
+
+    invoke-static {v7}, Lkotlin/jvm/internal/Reflection;->d(Ljava/lang/Class;)Lkotlin/reflect/KClass;
+
+    move-result-object v7
+
+    invoke-static {v6, v7}, Lkotlin/jvm/internal/Intrinsics;->g(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v7
+
+    if-eqz v7, :cond_6
+
+    goto :goto_2
+
+    :cond_6
+    sget-object v7, Ljava/lang/Integer;->TYPE:Ljava/lang/Class;
+
+    invoke-static {v7}, Lkotlin/jvm/internal/Reflection;->d(Ljava/lang/Class;)Lkotlin/reflect/KClass;
+
+    move-result-object v7
+
+    invoke-static {v6, v7}, Lkotlin/jvm/internal/Intrinsics;->g(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    move-result v6
+
+    if-eqz v6, :cond_7
+
+    invoke-static {v1}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+
+    move-result v0
+
+    invoke-static {v0}, Lkotlin/coroutines/jvm/internal/Boxing;->f(I)Ljava/lang/Integer;
+
+    move-result-object v1
+
+    goto :goto_2
+
+    :cond_7
+    invoke-virtual {v0}, Lcom/qcteam/protocol/api/util/JsonUtil;->getMGson()Lcom/google/gson/Gson;
+
+    move-result-object v0
+
+    new-instance v6, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2$invokeSuspend$$inlined$parseRttResponse$1;
+
+    invoke-direct {v6}, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2$invokeSuspend$$inlined$parseRttResponse$1;-><init>()V
+
+    invoke-virtual {v6}, Lcom/google/gson/reflect/TypeToken;->getType()Ljava/lang/reflect/Type;
+
+    move-result-object v6
+
+    invoke-virtual {v0, v1, v6}, Lcom/google/gson/Gson;->fromJson(Ljava/lang/String;Ljava/lang/reflect/Type;)Ljava/lang/Object;
+
+    move-result-object v1
+
+    :goto_2
+    invoke-virtual {v3, v1}, Lcom/qcteam/protocol/api/interfaces/ProtocolResponse;->setData(Ljava/lang/Object;)V
+
+    invoke-virtual {p1, v8}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    const-string v1, "data.optString(\"msg\")"
+
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->o(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-virtual {v3, v0}, Lcom/qcteam/protocol/api/interfaces/ProtocolResponse;->setMsg(Ljava/lang/String;)V
+
+    goto :goto_5
+
+    :cond_8
+    invoke-virtual {v3}, Lcom/qcteam/protocol/api/interfaces/ProtocolResponse;->getCode()I
+
+    move-result v0
+
+    if-ne v0, v6, :cond_9
+
+    const-string v0, "parseRttResponse fail: data is null"
+
+    goto :goto_4
+
+    :cond_9
+    if-eqz p1, :cond_a
+
+    invoke-virtual {p1, v8}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    goto :goto_3
+
+    :cond_a
+    const/4 v0, 0x0
+
+    :goto_3
+    if-nez v0, :cond_b
+
+    const-string v0, ""
+
+    goto :goto_4
+
+    :cond_b
+    const-string v1, "data?.optString(\"msg\") ?: \"\""
+
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->o(Ljava/lang/Object;Ljava/lang/String;)V
+
+    :goto_4
+    invoke-virtual {v3, v0}, Lcom/qcteam/protocol/api/interfaces/ProtocolResponse;->setMsg(Ljava/lang/String;)V
+    :try_end_1
+    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
+
+    :catch_0
+    :goto_5
+    invoke-virtual {v3}, Lcom/qcteam/protocol/api/interfaces/ProtocolResponse;->isSuccess()Z
+
+    move-result v0
+
+    if-nez v0, :cond_c
+
+    return-object p1
+
+    :cond_c
+    iget-object p1, p0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->d:Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil;
+
+    iget v0, p0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->g:I
+
+    iput-object p1, p0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->a:Ljava/lang/Object;
+
+    iput v0, p0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->b:I
+
+    iput v4, p0, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil$addTask$2;->c:I
+
+    new-instance v1, Lkotlinx/coroutines/CancellableContinuationImpl;
+
+    invoke-static {p0}, Lkotlin/coroutines/intrinsics/IntrinsicsKt;->e(Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+
+    move-result-object v3
+
+    invoke-direct {v1, v3, v5}, Lkotlinx/coroutines/CancellableContinuationImpl;-><init>(Lkotlin/coroutines/Continuation;I)V
+
+    invoke-virtual {v1}, Lkotlinx/coroutines/CancellableContinuationImpl;->N()V
+
+    invoke-static {v0}, Lkotlin/coroutines/jvm/internal/Boxing;->f(I)Ljava/lang/Integer;
+
+    move-result-object v0
+
+    invoke-static {p1}, Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil;->a(Lcom/qcteam/protocol/apiimpl/rtt/util/RttMsgUtil;)Ljava/util/Map;
+
+    move-result-object p1
+
+    invoke-interface {p1, v0, v1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    invoke-virtual {v1}, Lkotlinx/coroutines/CancellableContinuationImpl;->v()Ljava/lang/Object;
+
+    move-result-object p1
+
+    invoke-static {}, Lkotlin/coroutines/intrinsics/IntrinsicsKt;->l()Ljava/lang/Object;
+
+    move-result-object v0
+
+    if-ne p1, v0, :cond_d
+
+    invoke-static {p0}, Lkotlin/coroutines/jvm/internal/DebugProbesKt;->c(Lkotlin/coroutines/Continuation;)V
+
+    :cond_d
+    if-ne p1, v2, :cond_e
+
+    :goto_6
+    return-object v2
+
+    :cond_e
+    return-object p1
+.end method

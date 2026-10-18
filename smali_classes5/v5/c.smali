@@ -1,0 +1,34 @@
+.class public final synthetic Lv5/c;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lio/reactivex/rxjava3/functions/Action;
+
+
+# instance fields
+.field public final synthetic s:Lcom/topstep/flywear/sdk/model/file/FwFileInfo;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcom/topstep/flywear/sdk/model/file/FwFileInfo;)V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lv5/c;->s:Lcom/topstep/flywear/sdk/model/file/FwFileInfo;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final run()V
+    .locals 1
+
+    iget-object v0, p0, Lv5/c;->s:Lcom/topstep/flywear/sdk/model/file/FwFileInfo;
+
+    invoke-static {v0}, Lcom/topstep/flywear/sdk/internal/ability/file/a;->j(Lcom/topstep/flywear/sdk/model/file/FwFileInfo;)V
+
+    return-void
+.end method

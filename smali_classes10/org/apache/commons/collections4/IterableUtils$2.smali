@@ -1,0 +1,68 @@
+.class Lorg/apache/commons/collections4/IterableUtils$2;
+.super Lorg/apache/commons/collections4/FluentIterable;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lorg/apache/commons/collections4/IterableUtils;->b(Ljava/lang/Iterable;J)Ljava/lang/Iterable;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lorg/apache/commons/collections4/FluentIterable<",
+        "TE;>;"
+    }
+.end annotation
+
+
+# instance fields
+.field public final synthetic t:Ljava/lang/Iterable;
+
+.field public final synthetic u:J
+
+
+# direct methods
+.method public constructor <init>(Ljava/lang/Iterable;J)V
+    .locals 0
+
+    iput-object p1, p0, Lorg/apache/commons/collections4/IterableUtils$2;->t:Ljava/lang/Iterable;
+
+    iput-wide p2, p0, Lorg/apache/commons/collections4/IterableUtils$2;->u:J
+
+    invoke-direct {p0}, Lorg/apache/commons/collections4/FluentIterable;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public iterator()Ljava/util/Iterator;
+    .locals 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/Iterator<",
+            "TE;>;"
+        }
+    .end annotation
+
+    iget-object v0, p0, Lorg/apache/commons/collections4/IterableUtils$2;->t:Ljava/lang/Iterable;
+
+    invoke-interface {v0}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    move-result-object v0
+
+    iget-wide v1, p0, Lorg/apache/commons/collections4/IterableUtils$2;->u:J
+
+    invoke-static {v0, v1, v2}, Lorg/apache/commons/collections4/IteratorUtils;->t(Ljava/util/Iterator;J)Lorg/apache/commons/collections4/iterators/BoundedIterator;
+
+    move-result-object v0
+
+    return-object v0
+.end method

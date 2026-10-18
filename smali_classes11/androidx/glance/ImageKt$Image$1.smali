@@ -1,0 +1,88 @@
+.class final synthetic Landroidx/glance/ImageKt$Image$1;
+.super Lkotlin/jvm/internal/FunctionReferenceImpl;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function0;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Landroidx/glance/ImageKt;->Image-GCr5PR4(Landroidx/glance/ImageProvider;Ljava/lang/String;Landroidx/glance/GlanceModifier;ILandroidx/glance/ColorFilter;Landroidx/compose/runtime/Composer;II)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1001
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lkotlin/jvm/internal/FunctionReferenceImpl;",
+        "Lkotlin/jvm/functions/Function0<",
+        "Landroidx/glance/EmittableImage;",
+        ">;"
+    }
+.end annotation
+
+
+# static fields
+.field public static final s:Landroidx/glance/ImageKt$Image$1;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    new-instance v0, Landroidx/glance/ImageKt$Image$1;
+
+    invoke-direct {v0}, Landroidx/glance/ImageKt$Image$1;-><init>()V
+
+    sput-object v0, Landroidx/glance/ImageKt$Image$1;->s:Landroidx/glance/ImageKt$Image$1;
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .locals 6
+
+    const-string v4, "<init>()V"
+
+    const/4 v5, 0x0
+
+    const/4 v1, 0x0
+
+    const-class v2, Landroidx/glance/EmittableImage;
+
+    const-string v3, "<init>"
+
+    move-object v0, p0
+
+    invoke-direct/range {v0 .. v5}, Lkotlin/jvm/internal/FunctionReferenceImpl;-><init>(ILjava/lang/Class;Ljava/lang/String;Ljava/lang/String;I)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final d()Landroidx/glance/EmittableImage;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    new-instance v0, Landroidx/glance/EmittableImage;
+
+    invoke-direct {v0}, Landroidx/glance/EmittableImage;-><init>()V
+
+    return-object v0
+.end method
+
+.method public bridge synthetic invoke()Ljava/lang/Object;
+    .locals 1
+
+    invoke-virtual {p0}, Landroidx/glance/ImageKt$Image$1;->d()Landroidx/glance/EmittableImage;
+
+    move-result-object v0
+
+    return-object v0
+.end method

@@ -1,0 +1,89 @@
+.class public final Lcom/posthog/internal/surveys/GsonSurveyQuestionTypeAdapter;
+.super Lcom/posthog/internal/surveys/GsonSurveyEnumAdapter;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lcom/posthog/internal/surveys/GsonSurveyEnumAdapter<",
+        "Lcom/posthog/surveys/SurveyQuestionType;",
+        ">;"
+    }
+.end annotation
+
+
+# direct methods
+.method public constructor <init>(Lcom/posthog/PostHogConfig;)V
+    .locals 2
+    .param p1    # Lcom/posthog/PostHogConfig;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+
+    const-string v0, "config"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    new-instance v0, Lp4/g;
+
+    invoke-direct {v0}, Lp4/g;-><init>()V
+
+    new-instance v1, Lp4/h;
+
+    invoke-direct {v1}, Lp4/h;-><init>()V
+
+    invoke-direct {p0, p1, v0, v1}, Lcom/posthog/internal/surveys/GsonSurveyEnumAdapter;-><init>(Lcom/posthog/PostHogConfig;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)V
+
+    return-void
+.end method
+
+.method public static synthetic a(Lcom/posthog/surveys/SurveyQuestionType;)Ljava/lang/String;
+    .locals 0
+
+    invoke-static {p0}, Lcom/posthog/internal/surveys/GsonSurveyQuestionTypeAdapter;->c(Lcom/posthog/surveys/SurveyQuestionType;)Ljava/lang/String;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static synthetic b(Ljava/lang/String;)Lcom/posthog/surveys/SurveyQuestionType;
+    .locals 0
+
+    invoke-static {p0}, Lcom/posthog/internal/surveys/GsonSurveyQuestionTypeAdapter;->d(Ljava/lang/String;)Lcom/posthog/surveys/SurveyQuestionType;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static final c(Lcom/posthog/surveys/SurveyQuestionType;)Ljava/lang/String;
+    .locals 1
+
+    const-string v0, "it"
+
+    invoke-static {p0, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-virtual {p0}, Lcom/posthog/surveys/SurveyQuestionType;->getValue()Ljava/lang/String;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static final d(Ljava/lang/String;)Lcom/posthog/surveys/SurveyQuestionType;
+    .locals 1
+
+    const-string v0, "it"
+
+    invoke-static {p0, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    sget-object v0, Lcom/posthog/surveys/SurveyQuestionType;->Companion:Lcom/posthog/surveys/SurveyQuestionType$Companion;
+
+    invoke-virtual {v0, p0}, Lcom/posthog/surveys/SurveyQuestionType$Companion;->fromValue(Ljava/lang/String;)Lcom/posthog/surveys/SurveyQuestionType;
+
+    move-result-object p0
+
+    return-object p0
+.end method

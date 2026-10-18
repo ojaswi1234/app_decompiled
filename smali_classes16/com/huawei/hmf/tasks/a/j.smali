@@ -1,0 +1,329 @@
+.class public Lcom/huawei/hmf/tasks/a/j;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/huawei/hmf/tasks/a/j$d;
+    }
+.end annotation
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method public static a(Ljava/util/Collection;)Lcom/huawei/hmf/tasks/Task;
+    .locals 4
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/Collection<",
+            "+",
+            "Lcom/huawei/hmf/tasks/Task<",
+            "*>;>;)",
+            "Lcom/huawei/hmf/tasks/Task<",
+            "Ljava/util/List<",
+            "Lcom/huawei/hmf/tasks/Task<",
+            "*>;>;>;"
+        }
+    .end annotation
+
+    invoke-static {p0}, Lcom/huawei/hmf/tasks/a/j;->d(Ljava/util/Collection;)Lcom/huawei/hmf/tasks/Task;
+
+    move-result-object v0
+
+    new-instance v1, Lcom/huawei/hmf/tasks/a/j$b;
+
+    invoke-direct {v1, p0}, Lcom/huawei/hmf/tasks/a/j$b;-><init>(Ljava/util/Collection;)V
+
+    check-cast v0, Lcom/huawei/hmf/tasks/a/i;
+
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    invoke-static {}, Lcom/huawei/hmf/tasks/TaskExecutors;->c()Ljava/util/concurrent/Executor;
+
+    move-result-object p0
+
+    new-instance v2, Lcom/huawei/hmf/tasks/a/i;
+
+    invoke-direct {v2}, Lcom/huawei/hmf/tasks/a/i;-><init>()V
+
+    new-instance v3, Lcom/huawei/hmf/tasks/a/i$e;
+
+    invoke-direct {v3, v0, v2, v1}, Lcom/huawei/hmf/tasks/a/i$e;-><init>(Lcom/huawei/hmf/tasks/a/i;Lcom/huawei/hmf/tasks/a/i;Lcom/huawei/hmf/tasks/Continuation;)V
+
+    invoke-virtual {v0, p0, v3}, Lcom/huawei/hmf/tasks/a/i;->f(Ljava/util/concurrent/Executor;Lcom/huawei/hmf/tasks/OnCompleteListener;)Lcom/huawei/hmf/tasks/Task;
+
+    return-object v2
+.end method
+
+.method public static d(Ljava/util/Collection;)Lcom/huawei/hmf/tasks/Task;
+    .locals 5
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/Collection<",
+            "+",
+            "Lcom/huawei/hmf/tasks/Task<",
+            "*>;>;)",
+            "Lcom/huawei/hmf/tasks/Task<",
+            "Ljava/lang/Void;",
+            ">;"
+        }
+    .end annotation
+
+    invoke-interface {p0}, Ljava/util/Collection;->isEmpty()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    new-instance p0, Lcom/huawei/hmf/tasks/TaskCompletionSource;
+
+    invoke-direct {p0}, Lcom/huawei/hmf/tasks/TaskCompletionSource;-><init>()V
+
+    const/4 v0, 0x0
+
+    invoke-virtual {p0, v0}, Lcom/huawei/hmf/tasks/TaskCompletionSource;->d(Ljava/lang/Object;)V
+
+    invoke-virtual {p0}, Lcom/huawei/hmf/tasks/TaskCompletionSource;->b()Lcom/huawei/hmf/tasks/Task;
+
+    move-result-object p0
+
+    return-object p0
+
+    :cond_0
+    invoke-interface {p0}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+
+    move-result-object v0
+
+    :goto_0
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_2
+
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Lcom/huawei/hmf/tasks/Task;
+
+    if-eqz v1, :cond_1
+
+    goto :goto_0
+
+    :cond_1
+    new-instance p0, Ljava/lang/NullPointerException;
+
+    const-string v0, "task can not is null"
+
+    invoke-direct {p0, v0}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+
+    throw p0
+
+    :cond_2
+    new-instance v0, Lcom/huawei/hmf/tasks/a/i;
+
+    invoke-direct {v0}, Lcom/huawei/hmf/tasks/a/i;-><init>()V
+
+    new-instance v1, Lcom/huawei/hmf/tasks/a/e;
+
+    invoke-interface {p0}, Ljava/util/Collection;->size()I
+
+    move-result v2
+
+    invoke-direct {v1, v2, v0}, Lcom/huawei/hmf/tasks/a/e;-><init>(ILcom/huawei/hmf/tasks/a/i;)V
+
+    invoke-interface {p0}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+
+    move-result-object p0
+
+    :goto_1
+    invoke-interface {p0}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_3
+
+    invoke-interface {p0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Lcom/huawei/hmf/tasks/Task;
+
+    invoke-static {}, Lcom/huawei/hmf/tasks/TaskExecutors;->b()Ljava/util/concurrent/Executor;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3, v1}, Lcom/huawei/hmf/tasks/Task;->l(Ljava/util/concurrent/Executor;Lcom/huawei/hmf/tasks/OnSuccessListener;)Lcom/huawei/hmf/tasks/Task;
+
+    invoke-static {}, Lcom/huawei/hmf/tasks/TaskExecutors;->b()Ljava/util/concurrent/Executor;
+
+    move-result-object v3
+
+    check-cast v2, Lcom/huawei/hmf/tasks/a/i;
+
+    new-instance v4, Lcom/huawei/hmf/tasks/a/f;
+
+    invoke-direct {v4, v3, v1}, Lcom/huawei/hmf/tasks/a/f;-><init>(Ljava/util/concurrent/Executor;Lcom/huawei/hmf/tasks/OnFailureListener;)V
+
+    invoke-virtual {v2, v4}, Lcom/huawei/hmf/tasks/a/i;->y(Lcom/huawei/hmf/tasks/ExecuteResult;)Lcom/huawei/hmf/tasks/Task;
+
+    invoke-static {}, Lcom/huawei/hmf/tasks/TaskExecutors;->b()Ljava/util/concurrent/Executor;
+
+    move-result-object v3
+
+    new-instance v4, Lcom/huawei/hmf/tasks/a/b;
+
+    invoke-direct {v4, v3, v1}, Lcom/huawei/hmf/tasks/a/b;-><init>(Ljava/util/concurrent/Executor;Lcom/huawei/hmf/tasks/OnCanceledListener;)V
+
+    invoke-virtual {v2, v4}, Lcom/huawei/hmf/tasks/a/i;->y(Lcom/huawei/hmf/tasks/ExecuteResult;)Lcom/huawei/hmf/tasks/Task;
+
+    goto :goto_1
+
+    :cond_3
+    return-object v0
+.end method
+
+.method public static e(Ljava/util/Collection;)Lcom/huawei/hmf/tasks/Task;
+    .locals 4
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<TResult:",
+            "Ljava/lang/Object;",
+            ">(",
+            "Ljava/util/Collection<",
+            "+",
+            "Lcom/huawei/hmf/tasks/Task<",
+            "*>;>;)",
+            "Lcom/huawei/hmf/tasks/Task<",
+            "Ljava/util/List<",
+            "TTResult;>;>;"
+        }
+    .end annotation
+
+    invoke-static {p0}, Lcom/huawei/hmf/tasks/a/j;->d(Ljava/util/Collection;)Lcom/huawei/hmf/tasks/Task;
+
+    move-result-object v0
+
+    new-instance v1, Lcom/huawei/hmf/tasks/a/j$c;
+
+    invoke-direct {v1, p0}, Lcom/huawei/hmf/tasks/a/j$c;-><init>(Ljava/util/Collection;)V
+
+    check-cast v0, Lcom/huawei/hmf/tasks/a/i;
+
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    invoke-static {}, Lcom/huawei/hmf/tasks/TaskExecutors;->c()Ljava/util/concurrent/Executor;
+
+    move-result-object p0
+
+    new-instance v2, Lcom/huawei/hmf/tasks/a/i;
+
+    invoke-direct {v2}, Lcom/huawei/hmf/tasks/a/i;-><init>()V
+
+    new-instance v3, Lcom/huawei/hmf/tasks/a/i$e;
+
+    invoke-direct {v3, v0, v2, v1}, Lcom/huawei/hmf/tasks/a/i$e;-><init>(Lcom/huawei/hmf/tasks/a/i;Lcom/huawei/hmf/tasks/a/i;Lcom/huawei/hmf/tasks/Continuation;)V
+
+    invoke-virtual {v0, p0, v3}, Lcom/huawei/hmf/tasks/a/i;->f(Ljava/util/concurrent/Executor;Lcom/huawei/hmf/tasks/OnCompleteListener;)Lcom/huawei/hmf/tasks/Task;
+
+    return-object v2
+.end method
+
+
+# virtual methods
+.method public b(Ljava/util/concurrent/Executor;Ljava/util/concurrent/Callable;)Lcom/huawei/hmf/tasks/Task;
+    .locals 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<TResult:",
+            "Ljava/lang/Object;",
+            ">(",
+            "Ljava/util/concurrent/Executor;",
+            "Ljava/util/concurrent/Callable<",
+            "TTResult;>;)",
+            "Lcom/huawei/hmf/tasks/Task<",
+            "TTResult;>;"
+        }
+    .end annotation
+
+    new-instance v0, Lcom/huawei/hmf/tasks/TaskCompletionSource;
+
+    invoke-direct {v0}, Lcom/huawei/hmf/tasks/TaskCompletionSource;-><init>()V
+
+    :try_start_0
+    new-instance v1, Lcom/huawei/hmf/tasks/a/j$a;
+
+    invoke-direct {v1, p0, v0, p2}, Lcom/huawei/hmf/tasks/a/j$a;-><init>(Lcom/huawei/hmf/tasks/a/j;Lcom/huawei/hmf/tasks/TaskCompletionSource;Ljava/util/concurrent/Callable;)V
+
+    invoke-interface {p1, v1}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    goto :goto_0
+
+    :catch_0
+    move-exception p1
+
+    invoke-virtual {v0, p1}, Lcom/huawei/hmf/tasks/TaskCompletionSource;->c(Ljava/lang/Exception;)V
+
+    :goto_0
+    invoke-virtual {v0}, Lcom/huawei/hmf/tasks/TaskCompletionSource;->b()Lcom/huawei/hmf/tasks/Task;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public final c(Lcom/huawei/hmf/tasks/Task;)Ljava/lang/Object;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<TResult:",
+            "Ljava/lang/Object;",
+            ">(",
+            "Lcom/huawei/hmf/tasks/Task<",
+            "TTResult;>;)TTResult;"
+        }
+    .end annotation
+
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/util/concurrent/ExecutionException;
+        }
+    .end annotation
+
+    invoke-virtual {p1}, Lcom/huawei/hmf/tasks/Task;->v()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    invoke-virtual {p1}, Lcom/huawei/hmf/tasks/Task;->r()Ljava/lang/Object;
+
+    move-result-object p1
+
+    return-object p1
+
+    :cond_0
+    new-instance v0, Ljava/util/concurrent/ExecutionException;
+
+    invoke-virtual {p1}, Lcom/huawei/hmf/tasks/Task;->q()Ljava/lang/Exception;
+
+    move-result-object p1
+
+    invoke-direct {v0, p1}, Ljava/util/concurrent/ExecutionException;-><init>(Ljava/lang/Throwable;)V
+
+    throw v0
+.end method

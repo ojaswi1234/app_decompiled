@@ -1,0 +1,68 @@
+.class public final Lcom/noisefit/di/RoomModule$MIGRATION_12_13$1;
+.super Landroidx/room/migration/Migration;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/noisefit/di/RoomModule;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = null
+.end annotation
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 2
+
+    const/16 v0, 0xc
+
+    const/16 v1, 0xd
+
+    invoke-direct {p0, v0, v1}, Landroidx/room/migration/Migration;-><init>(II)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public b(Landroidx/sqlite/db/SupportSQLiteDatabase;)V
+    .locals 1
+
+    const-string v0, "db"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    const-string v0, "Alter TABLE `sleep_data` ADD COLUMN sync_date INTEGER"
+
+    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->execSQL(Ljava/lang/String;)V
+
+    const-string v0, "Alter TABLE `heart_rate` ADD COLUMN sync_date INTEGER"
+
+    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->execSQL(Ljava/lang/String;)V
+
+    const-string v0, "Alter TABLE `blood_oxygen` ADD COLUMN sync_date INTEGER"
+
+    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->execSQL(Ljava/lang/String;)V
+
+    const-string v0, "Alter TABLE `body_temperature` ADD COLUMN sync_date INTEGER"
+
+    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->execSQL(Ljava/lang/String;)V
+
+    const-string v0, "Alter TABLE `stress_data` ADD COLUMN sync_date INTEGER"
+
+    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->execSQL(Ljava/lang/String;)V
+
+    const-string v0, "CREATE UNIQUE INDEX IF NOT EXISTS index_activities_date_endTime ON  activities(date, endTime)"
+
+    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->execSQL(Ljava/lang/String;)V
+
+    const-string v0, "ALTER TABLE `activities` ADD COLUMN gps_cord TEXT"
+
+    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->execSQL(Ljava/lang/String;)V
+
+    return-void
+.end method

@@ -1,0 +1,123 @@
+.class public final Lcom/noisefit_commans/NoisefitApplication_MembersInjector;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ldagger/MembersInjector;
+
+
+# annotations
+.annotation build Ldagger/internal/DaggerGenerated;
+.end annotation
+
+.annotation build Ldagger/internal/QualifierMetadata;
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Ljava/lang/Object;",
+        "Ldagger/MembersInjector<",
+        "Lcom/noisefit_commans/NoisefitApplication;",
+        ">;"
+    }
+.end annotation
+
+
+# instance fields
+.field public final s:Ldagger/internal/Provider;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ldagger/internal/Provider<",
+            "Lcom/google/gson/Gson;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+
+# direct methods
+.method public constructor <init>(Ldagger/internal/Provider;)V
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ldagger/internal/Provider<",
+            "Lcom/google/gson/Gson;",
+            ">;)V"
+        }
+    .end annotation
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lcom/noisefit_commans/NoisefitApplication_MembersInjector;->s:Ldagger/internal/Provider;
+
+    return-void
+.end method
+
+.method public static b(Ldagger/internal/Provider;)Ldagger/MembersInjector;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ldagger/internal/Provider<",
+            "Lcom/google/gson/Gson;",
+            ">;)",
+            "Ldagger/MembersInjector<",
+            "Lcom/noisefit_commans/NoisefitApplication;",
+            ">;"
+        }
+    .end annotation
+
+    new-instance v0, Lcom/noisefit_commans/NoisefitApplication_MembersInjector;
+
+    invoke-direct {v0, p0}, Lcom/noisefit_commans/NoisefitApplication_MembersInjector;-><init>(Ldagger/internal/Provider;)V
+
+    return-object v0
+.end method
+
+.method public static c(Lcom/noisefit_commans/NoisefitApplication;Lcom/google/gson/Gson;)V
+    .locals 0
+    .annotation build Ldagger/internal/InjectedFieldSignature;
+        value = "com.noisefit_commans.NoisefitApplication.gson"
+    .end annotation
+
+    iput-object p1, p0, Lcom/noisefit_commans/NoisefitApplication;->s:Lcom/google/gson/Gson;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public bridge synthetic a(Ljava/lang/Object;)V
+    .locals 0
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x1000
+        }
+        names = {
+            null
+        }
+    .end annotation
+
+    check-cast p1, Lcom/noisefit_commans/NoisefitApplication;
+
+    invoke-virtual {p0, p1}, Lcom/noisefit_commans/NoisefitApplication_MembersInjector;->d(Lcom/noisefit_commans/NoisefitApplication;)V
+
+    return-void
+.end method
+
+.method public d(Lcom/noisefit_commans/NoisefitApplication;)V
+    .locals 1
+
+    iget-object v0, p0, Lcom/noisefit_commans/NoisefitApplication_MembersInjector;->s:Ldagger/internal/Provider;
+
+    invoke-interface {v0}, Ljavax/inject/Provider;->get()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/google/gson/Gson;
+
+    invoke-static {p1, v0}, Lcom/noisefit_commans/NoisefitApplication_MembersInjector;->c(Lcom/noisefit_commans/NoisefitApplication;Lcom/google/gson/Gson;)V
+
+    return-void
+.end method

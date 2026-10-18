@@ -1,0 +1,34 @@
+.class public final synthetic Lcom/noisefit/ui/friends/profile/a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Landroid/view/View$OnClickListener;
+
+
+# instance fields
+.field public final synthetic s:Lcom/noisefit/ui/friends/profile/BottomSheetBlockUser;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcom/noisefit/ui/friends/profile/BottomSheetBlockUser;)V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lcom/noisefit/ui/friends/profile/a;->s:Lcom/noisefit/ui/friends/profile/BottomSheetBlockUser;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final onClick(Landroid/view/View;)V
+    .locals 1
+
+    iget-object v0, p0, Lcom/noisefit/ui/friends/profile/a;->s:Lcom/noisefit/ui/friends/profile/BottomSheetBlockUser;
+
+    invoke-static {v0, p1}, Lcom/noisefit/ui/friends/profile/BottomSheetBlockUser;->M1(Lcom/noisefit/ui/friends/profile/BottomSheetBlockUser;Landroid/view/View;)V
+
+    return-void
+.end method

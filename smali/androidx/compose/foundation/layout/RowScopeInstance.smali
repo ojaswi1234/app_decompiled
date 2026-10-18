@@ -1,0 +1,226 @@
+.class public final Landroidx/compose/foundation/layout/RowScopeInstance;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Landroidx/compose/foundation/layout/RowScope;
+
+
+# annotations
+.annotation build Landroidx/compose/runtime/internal/StabilityInferred;
+    parameters = 0x1
+.end annotation
+
+.annotation system Ldalvik/annotation/SourceDebugExtension;
+    value = "SMAP\nRow.kt\nKotlin\n*S Kotlin\n*F\n+ 1 Row.kt\nandroidx/compose/foundation/layout/RowScopeInstance\n+ 2 InlineClassHelper.kt\nandroidx/compose/foundation/layout/internal/InlineClassHelperKt\n*L\n1#1,406:1\n93#2,4:407\n*S KotlinDebug\n*F\n+ 1 Row.kt\nandroidx/compose/foundation/layout/RowScopeInstance\n*L\n383#1:407,4\n*E\n"
+.end annotation
+
+.annotation build Lkotlin/PublishedApi;
+.end annotation
+
+.annotation build Lkotlin/jvm/internal/SourceDebugExtension;
+    value = {
+        "SMAP\nRow.kt\nKotlin\n*S Kotlin\n*F\n+ 1 Row.kt\nandroidx/compose/foundation/layout/RowScopeInstance\n+ 2 InlineClassHelper.kt\nandroidx/compose/foundation/layout/internal/InlineClassHelperKt\n*L\n1#1,406:1\n93#2,4:407\n*S KotlinDebug\n*F\n+ 1 Row.kt\nandroidx/compose/foundation/layout/RowScopeInstance\n*L\n383#1:407,4\n*E\n"
+    }
+.end annotation
+
+
+# static fields
+.field public static final $stable:I
+
+.field public static final INSTANCE:Landroidx/compose/foundation/layout/RowScopeInstance;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    new-instance v0, Landroidx/compose/foundation/layout/RowScopeInstance;
+
+    invoke-direct {v0}, Landroidx/compose/foundation/layout/RowScopeInstance;-><init>()V
+
+    sput-object v0, Landroidx/compose/foundation/layout/RowScopeInstance;->INSTANCE:Landroidx/compose/foundation/layout/RowScopeInstance;
+
+    return-void
+.end method
+
+.method private constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public align(Landroidx/compose/ui/Modifier;Landroidx/compose/ui/Alignment$Vertical;)Landroidx/compose/ui/Modifier;
+    .locals 1
+    .param p1    # Landroidx/compose/ui/Modifier;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p2    # Landroidx/compose/ui/Alignment$Vertical;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation build Landroidx/compose/runtime/Stable;
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    new-instance v0, Landroidx/compose/foundation/layout/VerticalAlignElement;
+
+    invoke-direct {v0, p2}, Landroidx/compose/foundation/layout/VerticalAlignElement;-><init>(Landroidx/compose/ui/Alignment$Vertical;)V
+
+    invoke-interface {p1, v0}, Landroidx/compose/ui/Modifier;->then(Landroidx/compose/ui/Modifier;)Landroidx/compose/ui/Modifier;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public alignBy(Landroidx/compose/ui/Modifier;Landroidx/compose/ui/layout/HorizontalAlignmentLine;)Landroidx/compose/ui/Modifier;
+    .locals 1
+    .param p1    # Landroidx/compose/ui/Modifier;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p2    # Landroidx/compose/ui/layout/HorizontalAlignmentLine;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation build Landroidx/compose/runtime/Stable;
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    .line 1
+    new-instance v0, Landroidx/compose/foundation/layout/WithAlignmentLineElement;
+
+    invoke-direct {v0, p2}, Landroidx/compose/foundation/layout/WithAlignmentLineElement;-><init>(Landroidx/compose/ui/layout/AlignmentLine;)V
+
+    invoke-interface {p1, v0}, Landroidx/compose/ui/Modifier;->then(Landroidx/compose/ui/Modifier;)Landroidx/compose/ui/Modifier;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public alignBy(Landroidx/compose/ui/Modifier;Lkotlin/jvm/functions/Function1;)Landroidx/compose/ui/Modifier;
+    .locals 1
+    .param p1    # Landroidx/compose/ui/Modifier;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p2    # Lkotlin/jvm/functions/Function1;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroidx/compose/ui/Modifier;",
+            "Lkotlin/jvm/functions/Function1<",
+            "-",
+            "Landroidx/compose/ui/layout/Measured;",
+            "Ljava/lang/Integer;",
+            ">;)",
+            "Landroidx/compose/ui/Modifier;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    .line 2
+    new-instance v0, Landroidx/compose/foundation/layout/WithAlignmentLineBlockElement;
+
+    invoke-direct {v0, p2}, Landroidx/compose/foundation/layout/WithAlignmentLineBlockElement;-><init>(Lkotlin/jvm/functions/Function1;)V
+
+    invoke-interface {p1, v0}, Landroidx/compose/ui/Modifier;->then(Landroidx/compose/ui/Modifier;)Landroidx/compose/ui/Modifier;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public alignByBaseline(Landroidx/compose/ui/Modifier;)Landroidx/compose/ui/Modifier;
+    .locals 1
+    .param p1    # Landroidx/compose/ui/Modifier;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation build Landroidx/compose/runtime/Stable;
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    invoke-static {}, Landroidx/compose/ui/layout/AlignmentLineKt;->getFirstBaseline()Landroidx/compose/ui/layout/HorizontalAlignmentLine;
+
+    move-result-object v0
+
+    invoke-virtual {p0, p1, v0}, Landroidx/compose/foundation/layout/RowScopeInstance;->alignBy(Landroidx/compose/ui/Modifier;Landroidx/compose/ui/layout/HorizontalAlignmentLine;)Landroidx/compose/ui/Modifier;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public weight(Landroidx/compose/ui/Modifier;FZ)Landroidx/compose/ui/Modifier;
+    .locals 4
+    .param p1    # Landroidx/compose/ui/Modifier;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation build Landroidx/compose/runtime/Stable;
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    float-to-double v0, p2
+
+    const-wide/16 v2, 0x0
+
+    cmpl-double v0, v0, v2
+
+    if-lez v0, :cond_0
+
+    const/4 v0, 0x1
+
+    goto :goto_0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    :goto_0
+    if-nez v0, :cond_1
+
+    const-string v0, "invalid weight; must be greater than zero"
+
+    invoke-static {v0}, Landroidx/compose/foundation/layout/internal/InlineClassHelperKt;->throwIllegalArgumentException(Ljava/lang/String;)V
+
+    :cond_1
+    new-instance v0, Landroidx/compose/foundation/layout/LayoutWeightElement;
+
+    const v1, 0x7f7fffff    # Float.MAX_VALUE
+
+    invoke-static {p2, v1}, Lkotlin/ranges/RangesKt;->A(FF)F
+
+    move-result p2
+
+    invoke-direct {v0, p2, p3}, Landroidx/compose/foundation/layout/LayoutWeightElement;-><init>(FZ)V
+
+    invoke-interface {p1, v0}, Landroidx/compose/ui/Modifier;->then(Landroidx/compose/ui/Modifier;)Landroidx/compose/ui/Modifier;
+
+    move-result-object p1
+
+    return-object p1
+.end method

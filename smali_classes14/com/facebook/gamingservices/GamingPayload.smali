@@ -1,0 +1,294 @@
+.class public Lcom/facebook/gamingservices/GamingPayload;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# static fields
+.field public static final a:Ljava/lang/String; = "GamingPayload"
+
+.field public static final b:Ljava/lang/String; = "context_token_id"
+
+.field public static final c:Ljava/lang/String; = "game_request_id"
+
+.field public static final d:Ljava/lang/String; = "payload"
+
+.field public static final e:Ljava/lang/String; = "al_applink_data"
+
+.field public static final f:Ljava/lang/String; = "extras"
+
+.field public static final g:Ljava/lang/String; = "tournament_id"
+
+.field public static h:Ljava/util/Map;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/Map<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 0
+
+    return-void
+.end method
+
+.method private constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method public static a()Ljava/lang/String;
+    .locals 3
+    .annotation build Landroidx/annotation/Nullable;
+    .end annotation
+
+    sget-object v0, Lcom/facebook/gamingservices/GamingPayload;->h:Ljava/util/Map;
+
+    const/4 v1, 0x0
+
+    if-nez v0, :cond_0
+
+    return-object v1
+
+    :cond_0
+    const-string v2, "game_request_id"
+
+    invoke-interface {v0, v2}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    sget-object v0, Lcom/facebook/gamingservices/GamingPayload;->h:Ljava/util/Map;
+
+    invoke-interface {v0, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljava/lang/String;
+
+    return-object v0
+
+    :cond_1
+    return-object v1
+.end method
+
+.method public static b()Ljava/lang/String;
+    .locals 3
+    .annotation build Landroidx/annotation/Nullable;
+    .end annotation
+
+    sget-object v0, Lcom/facebook/gamingservices/GamingPayload;->h:Ljava/util/Map;
+
+    const/4 v1, 0x0
+
+    if-nez v0, :cond_0
+
+    return-object v1
+
+    :cond_0
+    const-string v2, "payload"
+
+    invoke-interface {v0, v2}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    sget-object v0, Lcom/facebook/gamingservices/GamingPayload;->h:Ljava/util/Map;
+
+    invoke-interface {v0, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljava/lang/String;
+
+    return-object v0
+
+    :cond_1
+    return-object v1
+.end method
+
+.method public static c()Ljava/lang/String;
+    .locals 3
+    .annotation build Landroidx/annotation/Nullable;
+    .end annotation
+
+    sget-object v0, Lcom/facebook/gamingservices/GamingPayload;->h:Ljava/util/Map;
+
+    const/4 v1, 0x0
+
+    if-nez v0, :cond_0
+
+    return-object v1
+
+    :cond_0
+    const-string v2, "tournament_id"
+
+    invoke-interface {v0, v2}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    sget-object v0, Lcom/facebook/gamingservices/GamingPayload;->h:Ljava/util/Map;
+
+    invoke-interface {v0, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljava/lang/String;
+
+    return-object v0
+
+    :cond_1
+    return-object v1
+.end method
+
+.method public static d(Ljava/lang/String;)V
+    .locals 5
+
+    const-string v0, "tournament_id"
+
+    const-string v1, "payload"
+
+    const-string v2, "game_request_id"
+
+    new-instance v3, Ljava/util/HashMap;
+
+    invoke-direct {v3}, Ljava/util/HashMap;-><init>()V
+
+    :try_start_0
+    new-instance v4, Lorg/json/JSONObject;
+
+    invoke-direct {v4, p0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v4, v2}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-interface {v3, v2, p0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    invoke-virtual {v4, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-interface {v3, v1, p0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    invoke-virtual {v4, v0}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-interface {v3, v0, p0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    sput-object v3, Lcom/facebook/gamingservices/GamingPayload;->h:Ljava/util/Map;
+    :try_end_0
+    .catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_0
+
+    return-void
+
+    :catch_0
+    move-exception p0
+
+    sget-object v0, Lcom/facebook/gamingservices/GamingPayload;->a:Ljava/lang/String;
+
+    invoke-virtual {p0}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1, p0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    return-void
+.end method
+
+.method public static e(Landroid/content/Intent;)V
+    .locals 8
+
+    new-instance v0, Ljava/util/HashMap;
+
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+
+    if-nez p0, :cond_0
+
+    goto :goto_0
+
+    :cond_0
+    invoke-virtual {p0}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+
+    move-result-object p0
+
+    if-eqz p0, :cond_2
+
+    const-string v1, "al_applink_data"
+
+    invoke-virtual {p0, v1}, Landroid/os/BaseBundle;->containsKey(Ljava/lang/String;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_2
+
+    invoke-virtual {p0, v1}, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;
+
+    move-result-object p0
+
+    const-string v1, "extras"
+
+    invoke-virtual {p0, v1}, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;
+
+    move-result-object p0
+
+    if-eqz p0, :cond_2
+
+    const-string v1, "game_request_id"
+
+    invoke-virtual {p0, v1}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    const-string v3, "payload"
+
+    invoke-virtual {p0, v3}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v4
+
+    const-string v5, "context_token_id"
+
+    invoke-virtual {p0, v5}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v5
+
+    const-string v6, "tournament_id"
+
+    invoke-virtual {p0, v6}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p0
+
+    if-eqz v5, :cond_1
+
+    new-instance v7, Lcom/facebook/gamingservices/GamingContext;
+
+    invoke-direct {v7, v5}, Lcom/facebook/gamingservices/GamingContext;-><init>(Ljava/lang/String;)V
+
+    invoke-static {v7}, Lcom/facebook/gamingservices/GamingContext;->h(Lcom/facebook/gamingservices/GamingContext;)V
+
+    :cond_1
+    invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    invoke-interface {v0, v3, v4}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    invoke-interface {v0, v6, p0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    sput-object v0, Lcom/facebook/gamingservices/GamingPayload;->h:Ljava/util/Map;
+
+    :cond_2
+    :goto_0
+    return-void
+.end method

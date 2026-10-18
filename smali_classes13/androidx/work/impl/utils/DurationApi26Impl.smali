@@ -1,0 +1,33 @@
+.class public final Landroidx/work/impl/utils/DurationApi26Impl;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation build Landroidx/annotation/RequiresApi;
+    value = 0x1a
+.end annotation
+
+.annotation build Lkotlin/jvm/JvmName;
+    name = "DurationApi26Impl"
+.end annotation
+
+
+# direct methods
+.method public static final a(Ljava/time/Duration;)J
+    .locals 2
+    .param p0    # Ljava/time/Duration;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+
+    const-string v0, "<this>"
+
+    invoke-static {p0, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-virtual {p0}, Ljava/time/Duration;->toMillis()J
+
+    move-result-wide v0
+
+    return-wide v0
+.end method

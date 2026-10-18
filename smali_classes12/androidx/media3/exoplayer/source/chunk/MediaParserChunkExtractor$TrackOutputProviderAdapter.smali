@@ -1,0 +1,110 @@
+.class Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor$TrackOutputProviderAdapter;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Landroidx/media3/extractor/ExtractorOutput;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = "TrackOutputProviderAdapter"
+.end annotation
+
+
+# instance fields
+.field public final synthetic s:Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor;
+
+
+# direct methods
+.method public constructor <init>(Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor;)V
+    .locals 0
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x1010
+        }
+        names = {
+            null
+        }
+    .end annotation
+
+    .line 1
+    iput-object p1, p0, Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor$TrackOutputProviderAdapter;->s:Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method public synthetic constructor <init>(Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor;Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor$1;)V
+    .locals 0
+
+    .line 2
+    invoke-direct {p0, p1}, Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor$TrackOutputProviderAdapter;-><init>(Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor;)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public b(II)Landroidx/media3/extractor/TrackOutput;
+    .locals 1
+
+    iget-object v0, p0, Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor$TrackOutputProviderAdapter;->s:Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor;
+
+    invoke-static {v0}, Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor;->b(Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor;)Landroidx/media3/exoplayer/source/chunk/ChunkExtractor$TrackOutputProvider;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor$TrackOutputProviderAdapter;->s:Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor;
+
+    invoke-static {v0}, Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor;->b(Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor;)Landroidx/media3/exoplayer/source/chunk/ChunkExtractor$TrackOutputProvider;
+
+    move-result-object v0
+
+    invoke-interface {v0, p1, p2}, Landroidx/media3/exoplayer/source/chunk/ChunkExtractor$TrackOutputProvider;->b(II)Landroidx/media3/extractor/TrackOutput;
+
+    move-result-object p1
+
+    return-object p1
+
+    :cond_0
+    iget-object p1, p0, Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor$TrackOutputProviderAdapter;->s:Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor;
+
+    invoke-static {p1}, Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor;->f(Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor;)Landroidx/media3/extractor/DiscardingTrackOutput;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public k()V
+    .locals 2
+
+    iget-object v0, p0, Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor$TrackOutputProviderAdapter;->s:Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor;
+
+    invoke-static {v0}, Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor;->h(Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor;)Landroidx/media3/exoplayer/source/mediaparser/OutputConsumerAdapterV30;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Landroidx/media3/exoplayer/source/mediaparser/OutputConsumerAdapterV30;->h()[Landroidx/media3/common/Format;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor;->g(Landroidx/media3/exoplayer/source/chunk/MediaParserChunkExtractor;[Landroidx/media3/common/Format;)[Landroidx/media3/common/Format;
+
+    return-void
+.end method
+
+.method public m(Landroidx/media3/extractor/SeekMap;)V
+    .locals 0
+
+    return-void
+.end method

@@ -1,0 +1,250 @@
+.class public final enum Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+.super Ljava/lang/Enum;
+.source "SourceFile"
+
+# interfaces
+.implements Landroidx/health/platform/client/proto/Internal$EnumLite;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Landroidx/health/platform/client/proto/PermissionProto;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x4019
+    name = "AccessType"
+.end annotation
+
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroidx/health/platform/client/proto/PermissionProto$AccessType$AccessTypeVerifier;
+    }
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Ljava/lang/Enum<",
+        "Landroidx/health/platform/client/proto/PermissionProto$AccessType;",
+        ">;",
+        "Landroidx/health/platform/client/proto/Internal$EnumLite;"
+    }
+.end annotation
+
+
+# static fields
+.field public static final synthetic A:[Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+.field public static final enum t:Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+.field public static final enum u:Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+.field public static final enum v:Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+.field public static final w:I = 0x0
+
+.field public static final x:I = 0x1
+
+.field public static final y:I = 0x2
+
+.field public static final z:Landroidx/health/platform/client/proto/Internal$EnumLiteMap;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Landroidx/health/platform/client/proto/Internal$EnumLiteMap<",
+            "Landroidx/health/platform/client/proto/PermissionProto$AccessType;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+
+# instance fields
+.field public final s:I
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 3
+
+    new-instance v0, Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+    const-string v1, "ACCESS_TYPE_UNKNOWN"
+
+    const/4 v2, 0x0
+
+    invoke-direct {v0, v1, v2, v2}, Landroidx/health/platform/client/proto/PermissionProto$AccessType;-><init>(Ljava/lang/String;II)V
+
+    sput-object v0, Landroidx/health/platform/client/proto/PermissionProto$AccessType;->t:Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+    new-instance v0, Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+    const-string v1, "ACCESS_TYPE_READ"
+
+    const/4 v2, 0x1
+
+    invoke-direct {v0, v1, v2, v2}, Landroidx/health/platform/client/proto/PermissionProto$AccessType;-><init>(Ljava/lang/String;II)V
+
+    sput-object v0, Landroidx/health/platform/client/proto/PermissionProto$AccessType;->u:Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+    new-instance v0, Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+    const-string v1, "ACCESS_TYPE_WRITE"
+
+    const/4 v2, 0x2
+
+    invoke-direct {v0, v1, v2, v2}, Landroidx/health/platform/client/proto/PermissionProto$AccessType;-><init>(Ljava/lang/String;II)V
+
+    sput-object v0, Landroidx/health/platform/client/proto/PermissionProto$AccessType;->v:Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+    invoke-static {}, Landroidx/health/platform/client/proto/PermissionProto$AccessType;->b()[Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+    move-result-object v0
+
+    sput-object v0, Landroidx/health/platform/client/proto/PermissionProto$AccessType;->A:[Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+    new-instance v0, Landroidx/health/platform/client/proto/PermissionProto$AccessType$1;
+
+    invoke-direct {v0}, Landroidx/health/platform/client/proto/PermissionProto$AccessType$1;-><init>()V
+
+    sput-object v0, Landroidx/health/platform/client/proto/PermissionProto$AccessType;->z:Landroidx/health/platform/client/proto/Internal$EnumLiteMap;
+
+    return-void
+.end method
+
+.method public constructor <init>(Ljava/lang/String;II)V
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(I)V"
+        }
+    .end annotation
+
+    invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
+
+    iput p3, p0, Landroidx/health/platform/client/proto/PermissionProto$AccessType;->s:I
+
+    return-void
+.end method
+
+.method public static synthetic b()[Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+    .locals 3
+
+    sget-object v0, Landroidx/health/platform/client/proto/PermissionProto$AccessType;->t:Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+    sget-object v1, Landroidx/health/platform/client/proto/PermissionProto$AccessType;->u:Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+    sget-object v2, Landroidx/health/platform/client/proto/PermissionProto$AccessType;->v:Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+    filled-new-array {v0, v1, v2}, [Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public static d(I)Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+    .locals 1
+
+    if-eqz p0, :cond_2
+
+    const/4 v0, 0x1
+
+    if-eq p0, v0, :cond_1
+
+    const/4 v0, 0x2
+
+    if-eq p0, v0, :cond_0
+
+    const/4 p0, 0x0
+
+    return-object p0
+
+    :cond_0
+    sget-object p0, Landroidx/health/platform/client/proto/PermissionProto$AccessType;->v:Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+    return-object p0
+
+    :cond_1
+    sget-object p0, Landroidx/health/platform/client/proto/PermissionProto$AccessType;->u:Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+    return-object p0
+
+    :cond_2
+    sget-object p0, Landroidx/health/platform/client/proto/PermissionProto$AccessType;->t:Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+    return-object p0
+.end method
+
+.method public static e()Landroidx/health/platform/client/proto/Internal$EnumLiteMap;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Landroidx/health/platform/client/proto/Internal$EnumLiteMap<",
+            "Landroidx/health/platform/client/proto/PermissionProto$AccessType;",
+            ">;"
+        }
+    .end annotation
+
+    sget-object v0, Landroidx/health/platform/client/proto/PermissionProto$AccessType;->z:Landroidx/health/platform/client/proto/Internal$EnumLiteMap;
+
+    return-object v0
+.end method
+
+.method public static g()Landroidx/health/platform/client/proto/Internal$EnumVerifier;
+    .locals 1
+
+    sget-object v0, Landroidx/health/platform/client/proto/PermissionProto$AccessType$AccessTypeVerifier;->a:Landroidx/health/platform/client/proto/Internal$EnumVerifier;
+
+    return-object v0
+.end method
+
+.method public static h(I)Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+    .locals 0
+    .annotation runtime Ljava/lang/Deprecated;
+    .end annotation
+
+    invoke-static {p0}, Landroidx/health/platform/client/proto/PermissionProto$AccessType;->d(I)Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method public static valueOf(Ljava/lang/String;)Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+    .locals 1
+
+    const-class v0, Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+    invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+
+    move-result-object p0
+
+    check-cast p0, Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+    return-object p0
+.end method
+
+.method public static values()[Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+    .locals 1
+
+    sget-object v0, Landroidx/health/platform/client/proto/PermissionProto$AccessType;->A:[Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+    invoke-virtual {v0}, [Landroidx/health/platform/client/proto/PermissionProto$AccessType;->clone()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, [Landroidx/health/platform/client/proto/PermissionProto$AccessType;
+
+    return-object v0
+.end method
+
+
+# virtual methods
+.method public final getNumber()I
+    .locals 1
+
+    iget v0, p0, Landroidx/health/platform/client/proto/PermissionProto$AccessType;->s:I
+
+    return v0
+.end method

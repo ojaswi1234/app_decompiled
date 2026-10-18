@@ -1,0 +1,404 @@
+.class public final Landroidx/glance/appwidget/protobuf/RuntimeVersion;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroidx/glance/appwidget/protobuf/RuntimeVersion$ProtobufRuntimeVersionException;,
+        Landroidx/glance/appwidget/protobuf/RuntimeVersion$RuntimeDomain;
+    }
+.end annotation
+
+
+# static fields
+.field public static final a:Landroidx/glance/appwidget/protobuf/RuntimeVersion$RuntimeDomain;
+
+.field public static final b:I = 0x4
+
+.field public static final c:I = 0x1c
+
+.field public static final d:I = 0x2
+
+.field public static final e:Ljava/lang/String; = ""
+
+.field public static final f:Landroidx/glance/appwidget/protobuf/RuntimeVersion$RuntimeDomain;
+
+.field public static final g:I = 0x4
+
+.field public static final h:I = 0x1c
+
+.field public static final i:I = 0x2
+
+.field public static final j:Ljava/lang/String; = ""
+
+.field public static final k:Ljava/lang/String;
+
+.field public static final l:Ljava/util/logging/Logger;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 4
+
+    sget-object v0, Landroidx/glance/appwidget/protobuf/RuntimeVersion$RuntimeDomain;->t:Landroidx/glance/appwidget/protobuf/RuntimeVersion$RuntimeDomain;
+
+    sput-object v0, Landroidx/glance/appwidget/protobuf/RuntimeVersion;->a:Landroidx/glance/appwidget/protobuf/RuntimeVersion$RuntimeDomain;
+
+    sput-object v0, Landroidx/glance/appwidget/protobuf/RuntimeVersion;->f:Landroidx/glance/appwidget/protobuf/RuntimeVersion$RuntimeDomain;
+
+    const/4 v0, 0x2
+
+    const-string v1, ""
+
+    const/4 v2, 0x4
+
+    const/16 v3, 0x1c
+
+    invoke-static {v2, v3, v0, v1}, Landroidx/glance/appwidget/protobuf/RuntimeVersion;->d(IIILjava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    sput-object v0, Landroidx/glance/appwidget/protobuf/RuntimeVersion;->k:Ljava/lang/String;
+
+    const-class v0, Landroidx/glance/appwidget/protobuf/RuntimeVersion;
+
+    invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v0}, Ljava/util/logging/Logger;->getLogger(Ljava/lang/String;)Ljava/util/logging/Logger;
+
+    move-result-object v0
+
+    sput-object v0, Landroidx/glance/appwidget/protobuf/RuntimeVersion;->l:Ljava/util/logging/Logger;
+
+    return-void
+.end method
+
+.method private constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method public static a()Z
+    .locals 2
+
+    const-string v0, "TEMORARILY_DISABLE_PROTOBUF_VERSION_CHECK"
+
+    invoke-static {v0}, Ljava/lang/System;->getenv(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_0
+
+    const-string v1, "true"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x1
+
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method public static b(Landroidx/glance/appwidget/protobuf/RuntimeVersion$RuntimeDomain;IIILjava/lang/String;Ljava/lang/String;)V
+    .locals 1
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0
+        }
+        names = {
+            "domain",
+            "major",
+            "minor",
+            "patch",
+            "suffix",
+            "location"
+        }
+    .end annotation
+
+    invoke-static {}, Landroidx/glance/appwidget/protobuf/RuntimeVersion;->a()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    return-void
+
+    :cond_0
+    invoke-static/range {p0 .. p5}, Landroidx/glance/appwidget/protobuf/RuntimeVersion;->c(Landroidx/glance/appwidget/protobuf/RuntimeVersion$RuntimeDomain;IIILjava/lang/String;Ljava/lang/String;)V
+
+    return-void
+.end method
+
+.method public static c(Landroidx/glance/appwidget/protobuf/RuntimeVersion$RuntimeDomain;IIILjava/lang/String;Ljava/lang/String;)V
+    .locals 2
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0,
+            0x0
+        }
+        names = {
+            "domain",
+            "major",
+            "minor",
+            "patch",
+            "suffix",
+            "location"
+        }
+    .end annotation
+
+    invoke-static {}, Landroidx/glance/appwidget/protobuf/RuntimeVersion;->a()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    goto :goto_1
+
+    :cond_0
+    invoke-static {p1, p2, p3, p4}, Landroidx/glance/appwidget/protobuf/RuntimeVersion;->d(IIILjava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    if-ltz p1, :cond_9
+
+    if-ltz p2, :cond_9
+
+    if-ltz p3, :cond_9
+
+    sget-object v1, Landroidx/glance/appwidget/protobuf/RuntimeVersion;->f:Landroidx/glance/appwidget/protobuf/RuntimeVersion$RuntimeDomain;
+
+    if-ne p0, v1, :cond_8
+
+    const/4 p0, 0x4
+
+    if-eq p1, p0, :cond_2
+
+    const/4 p0, 0x3
+
+    if-ne p1, p0, :cond_1
+
+    sget-object p0, Landroidx/glance/appwidget/protobuf/RuntimeVersion;->l:Ljava/util/logging/Logger;
+
+    sget-object p1, Landroidx/glance/appwidget/protobuf/RuntimeVersion;->k:Ljava/lang/String;
+
+    filled-new-array {v0, p1, p5}, [Ljava/lang/Object;
+
+    move-result-object p1
+
+    const-string v1, " Protobuf gencode version %s is exactly one major version older than the runtime version %s at %s. Please update the gencode to avoid compatibility violations in the next runtime release."
+
+    invoke-static {v1, p1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {p0, p1}, Ljava/util/logging/Logger;->warning(Ljava/lang/String;)V
+
+    goto :goto_0
+
+    :cond_1
+    new-instance p0, Landroidx/glance/appwidget/protobuf/RuntimeVersion$ProtobufRuntimeVersionException;
+
+    sget-object p1, Landroidx/glance/appwidget/protobuf/RuntimeVersion;->k:Ljava/lang/String;
+
+    filled-new-array {p5, v0, p1}, [Ljava/lang/Object;
+
+    move-result-object p1
+
+    const-string p2, "Detected mismatched Protobuf Gencode/Runtime major versions when loading %s: gencode %s, runtime %s. Same major version is required."
+
+    invoke-static {p2, p1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-direct {p0, p1}, Landroidx/glance/appwidget/protobuf/RuntimeVersion$ProtobufRuntimeVersionException;-><init>(Ljava/lang/String;)V
+
+    throw p0
+
+    :cond_2
+    :goto_0
+    const/16 p0, 0x1c
+
+    if-lt p0, p2, :cond_7
+
+    const/4 p1, 0x2
+
+    if-ne p2, p0, :cond_3
+
+    if-lt p1, p3, :cond_7
+
+    :cond_3
+    if-gt p0, p2, :cond_4
+
+    if-le p1, p3, :cond_5
+
+    :cond_4
+    sget-object p0, Landroidx/glance/appwidget/protobuf/RuntimeVersion;->l:Ljava/util/logging/Logger;
+
+    sget-object p1, Landroidx/glance/appwidget/protobuf/RuntimeVersion;->k:Ljava/lang/String;
+
+    filled-new-array {v0, p1, p5}, [Ljava/lang/Object;
+
+    move-result-object p1
+
+    const-string p2, " Protobuf gencode version %s is older than the runtime version %s at %s. Please avoid checked-in Protobuf gencode that can be obsolete."
+
+    invoke-static {p2, p1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-virtual {p0, p1}, Ljava/util/logging/Logger;->warning(Ljava/lang/String;)V
+
+    :cond_5
+    const-string p0, ""
+
+    invoke-virtual {p4, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result p0
+
+    if-eqz p0, :cond_6
+
+    :goto_1
+    return-void
+
+    :cond_6
+    new-instance p0, Landroidx/glance/appwidget/protobuf/RuntimeVersion$ProtobufRuntimeVersionException;
+
+    sget-object p1, Landroidx/glance/appwidget/protobuf/RuntimeVersion;->k:Ljava/lang/String;
+
+    filled-new-array {p5, v0, p1}, [Ljava/lang/Object;
+
+    move-result-object p1
+
+    const-string p2, "Detected mismatched Protobuf Gencode/Runtime version suffixes when loading %s: gencode %s, runtime %s. Version suffixes must be the same."
+
+    invoke-static {p2, p1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-direct {p0, p1}, Landroidx/glance/appwidget/protobuf/RuntimeVersion$ProtobufRuntimeVersionException;-><init>(Ljava/lang/String;)V
+
+    throw p0
+
+    :cond_7
+    new-instance p0, Landroidx/glance/appwidget/protobuf/RuntimeVersion$ProtobufRuntimeVersionException;
+
+    sget-object p1, Landroidx/glance/appwidget/protobuf/RuntimeVersion;->k:Ljava/lang/String;
+
+    filled-new-array {p5, v0, p1}, [Ljava/lang/Object;
+
+    move-result-object p1
+
+    const-string p2, "Detected incompatible Protobuf Gencode/Runtime versions when loading %s: gencode %s, runtime %s. Runtime version cannot be older than the linked gencode version."
+
+    invoke-static {p2, p1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-direct {p0, p1}, Landroidx/glance/appwidget/protobuf/RuntimeVersion$ProtobufRuntimeVersionException;-><init>(Ljava/lang/String;)V
+
+    throw p0
+
+    :cond_8
+    new-instance p1, Landroidx/glance/appwidget/protobuf/RuntimeVersion$ProtobufRuntimeVersionException;
+
+    const-string p2, "Detected mismatched Protobuf Gencode/Runtime domains when loading %s: gencode %s, runtime %s. Cross-domain usage of Protobuf is not supported."
+
+    filled-new-array {p5, p0, v1}, [Ljava/lang/Object;
+
+    move-result-object p0
+
+    invoke-static {p2, p0}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object p0
+
+    invoke-direct {p1, p0}, Landroidx/glance/appwidget/protobuf/RuntimeVersion$ProtobufRuntimeVersionException;-><init>(Ljava/lang/String;)V
+
+    throw p1
+
+    :cond_9
+    new-instance p0, Landroidx/glance/appwidget/protobuf/RuntimeVersion$ProtobufRuntimeVersionException;
+
+    new-instance p1, Ljava/lang/StringBuilder;
+
+    invoke-direct {p1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string p2, "Invalid gencode version: "
+
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    invoke-direct {p0, p1}, Landroidx/glance/appwidget/protobuf/RuntimeVersion$ProtobufRuntimeVersionException;-><init>(Ljava/lang/String;)V
+
+    throw p0
+.end method
+
+.method public static d(IIILjava/lang/String;)Ljava/lang/String;
+    .locals 0
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x0,
+            0x0,
+            0x0,
+            0x0
+        }
+        names = {
+            "major",
+            "minor",
+            "patch",
+            "suffix"
+        }
+    .end annotation
+
+    invoke-static {p0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object p0
+
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object p1
+
+    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object p2
+
+    filled-new-array {p0, p1, p2, p3}, [Ljava/lang/Object;
+
+    move-result-object p0
+
+    const-string p1, "%d.%d.%d%s"
+
+    invoke-static {p1, p0}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object p0
+
+    return-object p0
+.end method

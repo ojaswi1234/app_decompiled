@@ -1,0 +1,515 @@
+.class final Landroidx/room/driver/SupportSQLitePooledConnection;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Landroidx/room/Transactor;
+.implements Landroidx/room/coroutines/RawConnectionAccessor;
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroidx/room/driver/SupportSQLitePooledConnection$SupportSQLiteTransactor;,
+        Landroidx/room/driver/SupportSQLitePooledConnection$WhenMappings;
+    }
+.end annotation
+
+.annotation system Ldalvik/annotation/SourceDebugExtension;
+    value = "SMAP\nSupportSQLiteConnectionPool.android.kt\nKotlin\n*S Kotlin\n*F\n+ 1 SupportSQLiteConnectionPool.android.kt\nandroidx/room/driver/SupportSQLitePooledConnection\n+ 2 fake.kt\nkotlin/jvm/internal/FakeKt\n*L\n1#1,120:1\n1#2:121\n*E\n"
+.end annotation
+
+.annotation build Lkotlin/jvm/internal/SourceDebugExtension;
+    value = {
+        "SMAP\nSupportSQLiteConnectionPool.android.kt\nKotlin\n*S Kotlin\n*F\n+ 1 SupportSQLiteConnectionPool.android.kt\nandroidx/room/driver/SupportSQLitePooledConnection\n+ 2 fake.kt\nkotlin/jvm/internal/FakeKt\n*L\n1#1,120:1\n1#2:121\n*E\n"
+    }
+.end annotation
+
+
+# instance fields
+.field public final a:Landroidx/room/driver/SupportSQLiteConnection;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+.field public b:Landroidx/room/Transactor$SQLiteTransactionType;
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+.end field
+
+
+# direct methods
+.method public constructor <init>(Landroidx/room/driver/SupportSQLiteConnection;)V
+    .locals 1
+    .param p1    # Landroidx/room/driver/SupportSQLiteConnection;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+
+    const-string v0, "delegate"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Landroidx/room/driver/SupportSQLitePooledConnection;->a:Landroidx/room/driver/SupportSQLiteConnection;
+
+    return-void
+.end method
+
+.method public static final synthetic g(Landroidx/room/driver/SupportSQLitePooledConnection;)Landroidx/room/Transactor$SQLiteTransactionType;
+    .locals 0
+
+    iget-object p0, p0, Landroidx/room/driver/SupportSQLitePooledConnection;->b:Landroidx/room/Transactor$SQLiteTransactionType;
+
+    return-object p0
+.end method
+
+.method public static final synthetic h(Landroidx/room/driver/SupportSQLitePooledConnection;Landroidx/room/Transactor$SQLiteTransactionType;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+    .locals 0
+
+    invoke-direct {p0, p1, p2, p3}, Landroidx/room/driver/SupportSQLitePooledConnection;->j(Landroidx/room/Transactor$SQLiteTransactionType;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method private final j(Landroidx/room/Transactor$SQLiteTransactionType;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+    .locals 5
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<R:",
+            "Ljava/lang/Object;",
+            ">(",
+            "Landroidx/room/Transactor$SQLiteTransactionType;",
+            "Lkotlin/jvm/functions/Function2<",
+            "-",
+            "Landroidx/room/TransactionScope<",
+            "TR;>;-",
+            "Lkotlin/coroutines/Continuation<",
+            "-TR;>;+",
+            "Ljava/lang/Object;",
+            ">;",
+            "Lkotlin/coroutines/Continuation<",
+            "-TR;>;)",
+            "Ljava/lang/Object;"
+        }
+    .end annotation
+
+    instance-of v0, p3, Landroidx/room/driver/SupportSQLitePooledConnection$transaction$1;
+
+    if-eqz v0, :cond_0
+
+    move-object v0, p3
+
+    check-cast v0, Landroidx/room/driver/SupportSQLitePooledConnection$transaction$1;
+
+    iget v1, v0, Landroidx/room/driver/SupportSQLitePooledConnection$transaction$1;->w:I
+
+    const/high16 v2, -0x80000000
+
+    and-int v3, v1, v2
+
+    if-eqz v3, :cond_0
+
+    sub-int/2addr v1, v2
+
+    iput v1, v0, Landroidx/room/driver/SupportSQLitePooledConnection$transaction$1;->w:I
+
+    goto :goto_0
+
+    :cond_0
+    new-instance v0, Landroidx/room/driver/SupportSQLitePooledConnection$transaction$1;
+
+    invoke-direct {v0, p0, p3}, Landroidx/room/driver/SupportSQLitePooledConnection$transaction$1;-><init>(Landroidx/room/driver/SupportSQLitePooledConnection;Lkotlin/coroutines/Continuation;)V
+
+    :goto_0
+    iget-object p3, v0, Landroidx/room/driver/SupportSQLitePooledConnection$transaction$1;->u:Ljava/lang/Object;
+
+    invoke-static {}, Lkotlin/coroutines/intrinsics/IntrinsicsKt;->l()Ljava/lang/Object;
+
+    move-result-object v1
+
+    iget v2, v0, Landroidx/room/driver/SupportSQLitePooledConnection$transaction$1;->w:I
+
+    const/4 v3, 0x0
+
+    const/4 v4, 0x1
+
+    if-eqz v2, :cond_2
+
+    if-ne v2, v4, :cond_1
+
+    iget-object p1, v0, Landroidx/room/driver/SupportSQLitePooledConnection$transaction$1;->t:Ljava/lang/Object;
+
+    check-cast p1, Landroidx/sqlite/db/SupportSQLiteDatabase;
+
+    iget-object p2, v0, Landroidx/room/driver/SupportSQLitePooledConnection$transaction$1;->s:Ljava/lang/Object;
+
+    check-cast p2, Landroidx/room/driver/SupportSQLitePooledConnection;
+
+    :try_start_0
+    invoke-static {p3}, Lkotlin/ResultKt;->n(Ljava/lang/Object;)V
+    :try_end_0
+    .catch Landroidx/room/coroutines/ConnectionPool$RollbackException; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    goto :goto_2
+
+    :catchall_0
+    move-exception p3
+
+    goto/16 :goto_4
+
+    :catch_0
+    move-exception p3
+
+    goto/16 :goto_3
+
+    :cond_1
+    new-instance p1, Ljava/lang/IllegalStateException;
+
+    const-string p2, "call to \'resume\' before \'invoke\' with coroutine"
+
+    invoke-direct {p1, p2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw p1
+
+    :cond_2
+    invoke-static {p3}, Lkotlin/ResultKt;->n(Ljava/lang/Object;)V
+
+    iget-object p3, p0, Landroidx/room/driver/SupportSQLitePooledConnection;->a:Landroidx/room/driver/SupportSQLiteConnection;
+
+    invoke-virtual {p3}, Landroidx/room/driver/SupportSQLiteConnection;->s()Landroidx/sqlite/db/SupportSQLiteDatabase;
+
+    move-result-object p3
+
+    invoke-interface {p3}, Landroidx/sqlite/db/SupportSQLiteDatabase;->inTransaction()Z
+
+    move-result v2
+
+    if-nez v2, :cond_3
+
+    iput-object p1, p0, Landroidx/room/driver/SupportSQLitePooledConnection;->b:Landroidx/room/Transactor$SQLiteTransactionType;
+
+    :cond_3
+    sget-object v2, Landroidx/room/driver/SupportSQLitePooledConnection$WhenMappings;->a:[I
+
+    invoke-virtual {p1}, Ljava/lang/Enum;->ordinal()I
+
+    move-result p1
+
+    aget p1, v2, p1
+
+    if-eq p1, v4, :cond_6
+
+    const/4 v2, 0x2
+
+    if-eq p1, v2, :cond_5
+
+    const/4 v2, 0x3
+
+    if-ne p1, v2, :cond_4
+
+    invoke-interface {p3}, Landroidx/sqlite/db/SupportSQLiteDatabase;->beginTransaction()V
+
+    goto :goto_1
+
+    :cond_4
+    new-instance p1, Lkotlin/NoWhenBranchMatchedException;
+
+    invoke-direct {p1}, Lkotlin/NoWhenBranchMatchedException;-><init>()V
+
+    throw p1
+
+    :cond_5
+    invoke-interface {p3}, Landroidx/sqlite/db/SupportSQLiteDatabase;->f5()V
+
+    goto :goto_1
+
+    :cond_6
+    invoke-interface {p3}, Landroidx/sqlite/db/SupportSQLiteDatabase;->f2()V
+
+    :goto_1
+    :try_start_1
+    new-instance p1, Landroidx/room/driver/SupportSQLitePooledConnection$SupportSQLiteTransactor;
+
+    invoke-direct {p1, p0}, Landroidx/room/driver/SupportSQLitePooledConnection$SupportSQLiteTransactor;-><init>(Landroidx/room/driver/SupportSQLitePooledConnection;)V
+
+    iput-object p0, v0, Landroidx/room/driver/SupportSQLitePooledConnection$transaction$1;->s:Ljava/lang/Object;
+
+    iput-object p3, v0, Landroidx/room/driver/SupportSQLitePooledConnection$transaction$1;->t:Ljava/lang/Object;
+
+    iput v4, v0, Landroidx/room/driver/SupportSQLitePooledConnection$transaction$1;->w:I
+
+    invoke-interface {p2, p1, v0}, Lkotlin/jvm/functions/Function2;->invoke(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object p1
+    :try_end_1
+    .catch Landroidx/room/coroutines/ConnectionPool$RollbackException; {:try_start_1 .. :try_end_1} :catch_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_1
+
+    if-ne p1, v1, :cond_7
+
+    return-object v1
+
+    :cond_7
+    move-object p2, p3
+
+    move-object p3, p1
+
+    move-object p1, p2
+
+    move-object p2, p0
+
+    :goto_2
+    :try_start_2
+    invoke-interface {p1}, Landroidx/sqlite/db/SupportSQLiteDatabase;->setTransactionSuccessful()V
+    :try_end_2
+    .catch Landroidx/room/coroutines/ConnectionPool$RollbackException; {:try_start_2 .. :try_end_2} :catch_0
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+
+    invoke-interface {p1}, Landroidx/sqlite/db/SupportSQLiteDatabase;->endTransaction()V
+
+    invoke-interface {p1}, Landroidx/sqlite/db/SupportSQLiteDatabase;->inTransaction()Z
+
+    move-result p1
+
+    if-nez p1, :cond_8
+
+    iput-object v3, p2, Landroidx/room/driver/SupportSQLitePooledConnection;->b:Landroidx/room/Transactor$SQLiteTransactionType;
+
+    :cond_8
+    return-object p3
+
+    :catchall_1
+    move-exception p1
+
+    move-object p2, p3
+
+    move-object p3, p1
+
+    move-object p1, p2
+
+    move-object p2, p0
+
+    goto :goto_4
+
+    :catch_1
+    move-exception p1
+
+    move-object p2, p3
+
+    move-object p3, p1
+
+    move-object p1, p2
+
+    move-object p2, p0
+
+    :goto_3
+    :try_start_3
+    invoke-virtual {p3}, Landroidx/room/coroutines/ConnectionPool$RollbackException;->b()Ljava/lang/Object;
+
+    move-result-object p3
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
+
+    invoke-interface {p1}, Landroidx/sqlite/db/SupportSQLiteDatabase;->endTransaction()V
+
+    invoke-interface {p1}, Landroidx/sqlite/db/SupportSQLiteDatabase;->inTransaction()Z
+
+    move-result p1
+
+    if-nez p1, :cond_9
+
+    iput-object v3, p2, Landroidx/room/driver/SupportSQLitePooledConnection;->b:Landroidx/room/Transactor$SQLiteTransactionType;
+
+    :cond_9
+    return-object p3
+
+    :goto_4
+    invoke-interface {p1}, Landroidx/sqlite/db/SupportSQLiteDatabase;->endTransaction()V
+
+    invoke-interface {p1}, Landroidx/sqlite/db/SupportSQLiteDatabase;->inTransaction()Z
+
+    move-result p1
+
+    if-nez p1, :cond_a
+
+    iput-object v3, p2, Landroidx/room/driver/SupportSQLitePooledConnection;->b:Landroidx/room/Transactor$SQLiteTransactionType;
+
+    :cond_a
+    throw p3
+.end method
+
+
+# virtual methods
+.method public b()Landroidx/sqlite/SQLiteConnection;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Landroidx/room/driver/SupportSQLitePooledConnection;->a:Landroidx/room/driver/SupportSQLiteConnection;
+
+    return-object v0
+.end method
+
+.method public c(Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+    .locals 0
+    .param p1    # Ljava/lang/String;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p2    # Lkotlin/jvm/functions/Function1;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p3    # Lkotlin/coroutines/Continuation;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<R:",
+            "Ljava/lang/Object;",
+            ">(",
+            "Ljava/lang/String;",
+            "Lkotlin/jvm/functions/Function1<",
+            "-",
+            "Landroidx/sqlite/SQLiteStatement;",
+            "+TR;>;",
+            "Lkotlin/coroutines/Continuation<",
+            "-TR;>;)",
+            "Ljava/lang/Object;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object p3, p0, Landroidx/room/driver/SupportSQLitePooledConnection;->a:Landroidx/room/driver/SupportSQLiteConnection;
+
+    invoke-virtual {p3, p1}, Landroidx/room/driver/SupportSQLiteConnection;->t(Ljava/lang/String;)Landroidx/room/driver/SupportSQLiteStatement;
+
+    move-result-object p1
+
+    :try_start_0
+    invoke-interface {p2, p1}, Lkotlin/jvm/functions/Function1;->invoke(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object p2
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    const/4 p3, 0x0
+
+    invoke-static {p1, p3}, Lkotlin/jdk7/AutoCloseableKt;->c(Ljava/lang/AutoCloseable;Ljava/lang/Throwable;)V
+
+    return-object p2
+
+    :catchall_0
+    move-exception p2
+
+    :try_start_1
+    throw p2
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_1
+
+    :catchall_1
+    move-exception p3
+
+    invoke-static {p1, p2}, Lkotlin/jdk7/AutoCloseableKt;->c(Ljava/lang/AutoCloseable;Ljava/lang/Throwable;)V
+
+    throw p3
+.end method
+
+.method public d(Landroidx/room/Transactor$SQLiteTransactionType;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+    .locals 0
+    .param p1    # Landroidx/room/Transactor$SQLiteTransactionType;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p2    # Lkotlin/jvm/functions/Function2;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p3    # Lkotlin/coroutines/Continuation;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "<R:",
+            "Ljava/lang/Object;",
+            ">(",
+            "Landroidx/room/Transactor$SQLiteTransactionType;",
+            "Lkotlin/jvm/functions/Function2<",
+            "-",
+            "Landroidx/room/TransactionScope<",
+            "TR;>;-",
+            "Lkotlin/coroutines/Continuation<",
+            "-TR;>;+",
+            "Ljava/lang/Object;",
+            ">;",
+            "Lkotlin/coroutines/Continuation<",
+            "-TR;>;)",
+            "Ljava/lang/Object;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    invoke-direct {p0, p1, p2, p3}, Landroidx/room/driver/SupportSQLitePooledConnection;->j(Landroidx/room/Transactor$SQLiteTransactionType;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public e(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+    .locals 0
+    .param p1    # Lkotlin/coroutines/Continuation;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lkotlin/coroutines/Continuation<",
+            "-",
+            "Ljava/lang/Boolean;",
+            ">;)",
+            "Ljava/lang/Object;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/Nullable;
+    .end annotation
+
+    iget-object p1, p0, Landroidx/room/driver/SupportSQLitePooledConnection;->a:Landroidx/room/driver/SupportSQLiteConnection;
+
+    invoke-virtual {p1}, Landroidx/room/driver/SupportSQLiteConnection;->s()Landroidx/sqlite/db/SupportSQLiteDatabase;
+
+    move-result-object p1
+
+    invoke-interface {p1}, Landroidx/sqlite/db/SupportSQLiteDatabase;->inTransaction()Z
+
+    move-result p1
+
+    invoke-static {p1}, Lkotlin/coroutines/jvm/internal/Boxing;->a(Z)Ljava/lang/Boolean;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public final i()Landroidx/room/driver/SupportSQLiteConnection;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Landroidx/room/driver/SupportSQLitePooledConnection;->a:Landroidx/room/driver/SupportSQLiteConnection;
+
+    return-object v0
+.end method

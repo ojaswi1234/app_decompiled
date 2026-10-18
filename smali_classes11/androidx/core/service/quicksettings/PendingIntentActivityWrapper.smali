@@ -1,0 +1,177 @@
+.class public Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# instance fields
+.field public final a:Landroid/content/Context;
+
+.field public final b:I
+
+.field public final c:Landroid/content/Intent;
+
+.field public final d:I
+
+.field public final e:Landroid/os/Bundle;
+
+.field public final f:Landroid/app/PendingIntent;
+
+.field public final g:Z
+
+
+# direct methods
+.method public constructor <init>(Landroid/content/Context;ILandroid/content/Intent;ILandroid/os/Bundle;Z)V
+    .locals 0
+
+    .line 2
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 3
+    iput-object p1, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->a:Landroid/content/Context;
+
+    .line 4
+    iput p2, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->b:I
+
+    .line 5
+    iput-object p3, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->c:Landroid/content/Intent;
+
+    .line 6
+    iput p4, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->d:I
+
+    .line 7
+    iput-object p5, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->e:Landroid/os/Bundle;
+
+    .line 8
+    iput-boolean p6, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->g:Z
+
+    .line 9
+    invoke-virtual {p0}, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->a()Landroid/app/PendingIntent;
+
+    move-result-object p1
+
+    iput-object p1, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->f:Landroid/app/PendingIntent;
+
+    return-void
+.end method
+
+.method public constructor <init>(Landroid/content/Context;ILandroid/content/Intent;IZ)V
+    .locals 7
+
+    const/4 v5, 0x0
+
+    move-object v0, p0
+
+    move-object v1, p1
+
+    move v2, p2
+
+    move-object v3, p3
+
+    move v4, p4
+
+    move v6, p5
+
+    .line 1
+    invoke-direct/range {v0 .. v6}, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;-><init>(Landroid/content/Context;ILandroid/content/Intent;ILandroid/os/Bundle;Z)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a()Landroid/app/PendingIntent;
+    .locals 6
+
+    iget-object v4, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->e:Landroid/os/Bundle;
+
+    if-nez v4, :cond_0
+
+    iget-object v0, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->a:Landroid/content/Context;
+
+    iget v1, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->b:I
+
+    iget-object v2, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->c:Landroid/content/Intent;
+
+    iget v3, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->d:I
+
+    iget-boolean v4, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->g:Z
+
+    invoke-static {v0, v1, v2, v3, v4}, Landroidx/core/app/PendingIntentCompat;->e(Landroid/content/Context;ILandroid/content/Intent;IZ)Landroid/app/PendingIntent;
+
+    move-result-object v0
+
+    return-object v0
+
+    :cond_0
+    iget-object v0, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->a:Landroid/content/Context;
+
+    iget v1, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->b:I
+
+    iget-object v2, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->c:Landroid/content/Intent;
+
+    iget v3, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->d:I
+
+    iget-boolean v5, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->g:Z
+
+    invoke-static/range {v0 .. v5}, Landroidx/core/app/PendingIntentCompat;->d(Landroid/content/Context;ILandroid/content/Intent;ILandroid/os/Bundle;Z)Landroid/app/PendingIntent;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public b()Landroid/content/Context;
+    .locals 1
+
+    iget-object v0, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->a:Landroid/content/Context;
+
+    return-object v0
+.end method
+
+.method public c()I
+    .locals 1
+
+    iget v0, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->d:I
+
+    return v0
+.end method
+
+.method public d()Landroid/content/Intent;
+    .locals 1
+
+    iget-object v0, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->c:Landroid/content/Intent;
+
+    return-object v0
+.end method
+
+.method public e()Landroid/os/Bundle;
+    .locals 1
+
+    iget-object v0, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->e:Landroid/os/Bundle;
+
+    return-object v0
+.end method
+
+.method public f()Landroid/app/PendingIntent;
+    .locals 1
+
+    iget-object v0, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->f:Landroid/app/PendingIntent;
+
+    return-object v0
+.end method
+
+.method public g()I
+    .locals 1
+
+    iget v0, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->b:I
+
+    return v0
+.end method
+
+.method public h()Z
+    .locals 1
+
+    iget-boolean v0, p0, Landroidx/core/service/quicksettings/PendingIntentActivityWrapper;->g:Z
+
+    return v0
+.end method

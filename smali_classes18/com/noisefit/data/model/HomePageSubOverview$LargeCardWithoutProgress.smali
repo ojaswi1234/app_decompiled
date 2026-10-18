@@ -1,0 +1,141 @@
+.class public final Lcom/noisefit/data/model/HomePageSubOverview$LargeCardWithoutProgress;
+.super Lcom/noisefit/data/model/HomePageSubOverview;
+.source "SourceFile"
+
+
+# annotations
+.annotation build Landroidx/compose/runtime/internal/StabilityInferred;
+    parameters = 0x0
+.end annotation
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/noisefit/data/model/HomePageSubOverview;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "LargeCardWithoutProgress"
+.end annotation
+
+
+# static fields
+.field public static final $stable:I = 0x8
+
+
+# instance fields
+.field private final fixedSpan:Z
+
+.field private final largeCard:Lcom/noisefit/data/model/LargeCardUiModel;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+.field private final position:I
+
+.field private spanSize:I
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 0
+
+    return-void
+.end method
+
+.method public constructor <init>(ILcom/noisefit/data/model/LargeCardUiModel;IZ)V
+    .locals 1
+    .param p2    # Lcom/noisefit/data/model/LargeCardUiModel;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+
+    const-string v0, "largeCard"
+
+    invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    const/4 v0, 0x0
+
+    .line 2
+    invoke-direct {p0, v0}, Lcom/noisefit/data/model/HomePageSubOverview;-><init>(Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+
+    .line 3
+    iput p1, p0, Lcom/noisefit/data/model/HomePageSubOverview$LargeCardWithoutProgress;->position:I
+
+    .line 4
+    iput-object p2, p0, Lcom/noisefit/data/model/HomePageSubOverview$LargeCardWithoutProgress;->largeCard:Lcom/noisefit/data/model/LargeCardUiModel;
+
+    .line 5
+    iput p3, p0, Lcom/noisefit/data/model/HomePageSubOverview$LargeCardWithoutProgress;->spanSize:I
+
+    .line 6
+    iput-boolean p4, p0, Lcom/noisefit/data/model/HomePageSubOverview$LargeCardWithoutProgress;->fixedSpan:Z
+
+    return-void
+.end method
+
+.method public synthetic constructor <init>(ILcom/noisefit/data/model/LargeCardUiModel;IZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+    .locals 0
+
+    and-int/lit8 p6, p5, 0x4
+
+    if-eqz p6, :cond_0
+
+    const/4 p3, 0x2
+
+    :cond_0
+    and-int/lit8 p5, p5, 0x8
+
+    if-eqz p5, :cond_1
+
+    const/4 p4, 0x1
+
+    .line 1
+    :cond_1
+    invoke-direct {p0, p1, p2, p3, p4}, Lcom/noisefit/data/model/HomePageSubOverview$LargeCardWithoutProgress;-><init>(ILcom/noisefit/data/model/LargeCardUiModel;IZ)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public getFixedSpan()Z
+    .locals 1
+
+    iget-boolean v0, p0, Lcom/noisefit/data/model/HomePageSubOverview$LargeCardWithoutProgress;->fixedSpan:Z
+
+    return v0
+.end method
+
+.method public final getLargeCard()Lcom/noisefit/data/model/LargeCardUiModel;
+    .locals 1
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/data/model/HomePageSubOverview$LargeCardWithoutProgress;->largeCard:Lcom/noisefit/data/model/LargeCardUiModel;
+
+    return-object v0
+.end method
+
+.method public getPosition()I
+    .locals 1
+
+    iget v0, p0, Lcom/noisefit/data/model/HomePageSubOverview$LargeCardWithoutProgress;->position:I
+
+    return v0
+.end method
+
+.method public getSpanSize()I
+    .locals 1
+
+    iget v0, p0, Lcom/noisefit/data/model/HomePageSubOverview$LargeCardWithoutProgress;->spanSize:I
+
+    return v0
+.end method
+
+.method public setSpanSize(I)V
+    .locals 0
+
+    iput p1, p0, Lcom/noisefit/data/model/HomePageSubOverview$LargeCardWithoutProgress;->spanSize:I
+
+    return-void
+.end method

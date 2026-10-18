@@ -1,0 +1,34 @@
+.class public final synthetic Lcn/hutool/core/text/csv/g;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/lang/Runnable;
+
+
+# instance fields
+.field public final synthetic s:Lcn/hutool/core/text/csv/CsvReader;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcn/hutool/core/text/csv/CsvReader;)V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lcn/hutool/core/text/csv/g;->s:Lcn/hutool/core/text/csv/CsvReader;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final run()V
+    .locals 1
+
+    iget-object v0, p0, Lcn/hutool/core/text/csv/g;->s:Lcn/hutool/core/text/csv/CsvReader;
+
+    invoke-static {v0}, Lcn/hutool/core/text/csv/CsvReader;->Z(Lcn/hutool/core/text/csv/CsvReader;)V
+
+    return-void
+.end method

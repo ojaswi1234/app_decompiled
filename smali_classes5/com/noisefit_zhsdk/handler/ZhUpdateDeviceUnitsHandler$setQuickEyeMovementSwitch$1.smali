@@ -1,0 +1,105 @@
+.class public final Lcom/noisefit_zhsdk/handler/ZhUpdateDeviceUnitsHandler$setQuickEyeMovementSwitch$1;
+.super Lcom/zhapp/ble/parsing/ParsingStateManager$SendCmdStateListener;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/noisefit_zhsdk/handler/ZhUpdateDeviceUnitsHandler;->P0(Z)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/noisefit_zhsdk/handler/ZhUpdateDeviceUnitsHandler$setQuickEyeMovementSwitch$1$WhenMappings;
+    }
+.end annotation
+
+
+# instance fields
+.field public final synthetic s:Lcom/noisefit_zhsdk/handler/ZhUpdateDeviceUnitsHandler;
+
+
+# direct methods
+.method public constructor <init>(Lcom/noisefit_zhsdk/handler/ZhUpdateDeviceUnitsHandler;)V
+    .locals 0
+
+    iput-object p1, p0, Lcom/noisefit_zhsdk/handler/ZhUpdateDeviceUnitsHandler$setQuickEyeMovementSwitch$1;->s:Lcom/noisefit_zhsdk/handler/ZhUpdateDeviceUnitsHandler;
+
+    invoke-direct {p0}, Lcom/zhapp/ble/parsing/ParsingStateManager$SendCmdStateListener;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public onState(Lcom/zhapp/ble/parsing/SendCmdState;)V
+    .locals 3
+
+    const-string v0, "state"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    sget-object v0, Lcom/noisefit_zhsdk/handler/ZhUpdateDeviceUnitsHandler$setQuickEyeMovementSwitch$1$WhenMappings;->a:[I
+
+    invoke-virtual {p1}, Ljava/lang/Enum;->ordinal()I
+
+    move-result p1
+
+    aget p1, v0, p1
+
+    const-string v0, "QuickEyeMovement Reminder: Failed"
+
+    const/4 v1, 0x1
+
+    if-ne p1, v1, :cond_1
+
+    iget-object p1, p0, Lcom/noisefit_zhsdk/handler/ZhUpdateDeviceUnitsHandler$setQuickEyeMovementSwitch$1;->s:Lcom/noisefit_zhsdk/handler/ZhUpdateDeviceUnitsHandler;
+
+    invoke-static {p1}, Lcom/noisefit_zhsdk/handler/ZhUpdateDeviceUnitsHandler;->l2(Lcom/noisefit_zhsdk/handler/ZhUpdateDeviceUnitsHandler;)Lcom/noisefit_commans/interfaces/device_data/IUpdateDeviceDataCallback;
+
+    move-result-object p1
+
+    if-eqz p1, :cond_0
+
+    new-instance v2, Lcom/noisefit_commans/interfaces/device_data/UpdateDeviceDataCallback$QuickEyeMovementSwitchUpdated;
+
+    invoke-direct {v2, v1}, Lcom/noisefit_commans/interfaces/device_data/UpdateDeviceDataCallback$QuickEyeMovementSwitchUpdated;-><init>(Z)V
+
+    invoke-interface {p1, v2}, Lcom/noisefit_commans/interfaces/device_data/IUpdateDeviceDataCallback;->a(Lcom/noisefit_commans/interfaces/device_data/UpdateDeviceDataCallback;)V
+
+    :cond_0
+    sget-object p1, Lcom/noisefit_commans/utils/AppLogs;->a:Lcom/noisefit_commans/utils/AppLogs;
+
+    invoke-virtual {p1, v0}, Lcom/noisefit_commans/utils/AppLogs;->q(Ljava/lang/String;)V
+
+    return-void
+
+    :cond_1
+    iget-object p1, p0, Lcom/noisefit_zhsdk/handler/ZhUpdateDeviceUnitsHandler$setQuickEyeMovementSwitch$1;->s:Lcom/noisefit_zhsdk/handler/ZhUpdateDeviceUnitsHandler;
+
+    invoke-static {p1}, Lcom/noisefit_zhsdk/handler/ZhUpdateDeviceUnitsHandler;->l2(Lcom/noisefit_zhsdk/handler/ZhUpdateDeviceUnitsHandler;)Lcom/noisefit_commans/interfaces/device_data/IUpdateDeviceDataCallback;
+
+    move-result-object p1
+
+    if-eqz p1, :cond_2
+
+    new-instance v1, Lcom/noisefit_commans/interfaces/device_data/UpdateDeviceDataCallback$QuickEyeMovementSwitchUpdated;
+
+    const/4 v2, 0x0
+
+    invoke-direct {v1, v2}, Lcom/noisefit_commans/interfaces/device_data/UpdateDeviceDataCallback$QuickEyeMovementSwitchUpdated;-><init>(Z)V
+
+    invoke-interface {p1, v1}, Lcom/noisefit_commans/interfaces/device_data/IUpdateDeviceDataCallback;->a(Lcom/noisefit_commans/interfaces/device_data/UpdateDeviceDataCallback;)V
+
+    :cond_2
+    sget-object p1, Lcom/noisefit_commans/utils/AppLogs;->a:Lcom/noisefit_commans/utils/AppLogs;
+
+    invoke-virtual {p1, v0}, Lcom/noisefit_commans/utils/AppLogs;->q(Ljava/lang/String;)V
+
+    return-void
+.end method

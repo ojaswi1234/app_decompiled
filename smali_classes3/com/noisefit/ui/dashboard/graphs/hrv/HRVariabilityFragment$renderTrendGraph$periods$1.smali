@@ -1,0 +1,97 @@
+.class final synthetic Lcom/noisefit/ui/dashboard/graphs/hrv/HRVariabilityFragment$renderTrendGraph$periods$1;
+.super Lkotlin/jvm/internal/FunctionReferenceImpl;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function1;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/noisefit/ui/dashboard/graphs/hrv/HRVariabilityFragment;->m3(Lcom/noisefit/data/remote/response/HMHRVariabilityHistoryResponse;)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1019
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lkotlin/jvm/internal/FunctionReferenceImpl;",
+        "Lkotlin/jvm/functions/Function1<",
+        "Lcom/noisefit/data/remote/response/HRVActivity;",
+        "Ljava/lang/Integer;",
+        ">;"
+    }
+.end annotation
+
+
+# static fields
+.field public static final s:Lcom/noisefit/ui/dashboard/graphs/hrv/HRVariabilityFragment$renderTrendGraph$periods$1;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    new-instance v0, Lcom/noisefit/ui/dashboard/graphs/hrv/HRVariabilityFragment$renderTrendGraph$periods$1;
+
+    invoke-direct {v0}, Lcom/noisefit/ui/dashboard/graphs/hrv/HRVariabilityFragment$renderTrendGraph$periods$1;-><init>()V
+
+    sput-object v0, Lcom/noisefit/ui/dashboard/graphs/hrv/HRVariabilityFragment$renderTrendGraph$periods$1;->s:Lcom/noisefit/ui/dashboard/graphs/hrv/HRVariabilityFragment$renderTrendGraph$periods$1;
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .locals 6
+
+    const-string v4, "renderTrendGraph$valueOf(Lcom/noisefit/data/remote/response/HRVActivity;)I"
+
+    const/4 v5, 0x0
+
+    const/4 v1, 0x1
+
+    const-class v2, Lkotlin/jvm/internal/Intrinsics$Kotlin;
+
+    const-string v3, "valueOf"
+
+    move-object v0, p0
+
+    invoke-direct/range {v0 .. v5}, Lkotlin/jvm/internal/FunctionReferenceImpl;-><init>(ILjava/lang/Class;Ljava/lang/String;Ljava/lang/String;I)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(Lcom/noisefit/data/remote/response/HRVActivity;)Ljava/lang/Integer;
+    .locals 1
+
+    const-string v0, "p0"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-static {p1}, Lcom/noisefit/ui/dashboard/graphs/hrv/HRVariabilityFragment;->z2(Lcom/noisefit/data/remote/response/HRVActivity;)I
+
+    move-result p1
+
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public bridge synthetic invoke(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 0
+
+    check-cast p1, Lcom/noisefit/data/remote/response/HRVActivity;
+
+    invoke-virtual {p0, p1}, Lcom/noisefit/ui/dashboard/graphs/hrv/HRVariabilityFragment$renderTrendGraph$periods$1;->a(Lcom/noisefit/data/remote/response/HRVActivity;)Ljava/lang/Integer;
+
+    move-result-object p1
+
+    return-object p1
+.end method

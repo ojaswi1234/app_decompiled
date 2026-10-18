@@ -1,0 +1,46 @@
+.class public final synthetic Lk5/m;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lio/reactivex/rxjava3/core/ObservableOnSubscribe;
+
+
+# instance fields
+.field public final synthetic a:Lcom/topstep/fitcloud/sdk/v2/operation/m;
+
+.field public final synthetic b:Lcom/topstep/fitcloud/sdk/internal/protocol/serialization/FcProtocolQueue;
+
+.field public final synthetic c:Lcom/topstep/fitcloud/sdk/internal/semaphore/FcReleaseSemaphore;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcom/topstep/fitcloud/sdk/v2/operation/m;Lcom/topstep/fitcloud/sdk/internal/protocol/serialization/FcProtocolQueue;Lcom/topstep/fitcloud/sdk/internal/semaphore/FcReleaseSemaphore;)V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lk5/m;->a:Lcom/topstep/fitcloud/sdk/v2/operation/m;
+
+    iput-object p2, p0, Lk5/m;->b:Lcom/topstep/fitcloud/sdk/internal/protocol/serialization/FcProtocolQueue;
+
+    iput-object p3, p0, Lk5/m;->c:Lcom/topstep/fitcloud/sdk/internal/semaphore/FcReleaseSemaphore;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(Lio/reactivex/rxjava3/core/ObservableEmitter;)V
+    .locals 3
+
+    iget-object v0, p0, Lk5/m;->a:Lcom/topstep/fitcloud/sdk/v2/operation/m;
+
+    iget-object v1, p0, Lk5/m;->b:Lcom/topstep/fitcloud/sdk/internal/protocol/serialization/FcProtocolQueue;
+
+    iget-object v2, p0, Lk5/m;->c:Lcom/topstep/fitcloud/sdk/internal/semaphore/FcReleaseSemaphore;
+
+    invoke-static {v0, v1, v2, p1}, Lcom/topstep/fitcloud/sdk/v2/operation/m;->M0(Lcom/topstep/fitcloud/sdk/v2/operation/m;Lcom/topstep/fitcloud/sdk/internal/protocol/serialization/FcProtocolQueue;Lcom/topstep/fitcloud/sdk/internal/semaphore/FcReleaseSemaphore;Lio/reactivex/rxjava3/core/ObservableEmitter;)V
+
+    return-void
+.end method

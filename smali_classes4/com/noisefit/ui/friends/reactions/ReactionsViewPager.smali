@@ -1,0 +1,130 @@
+.class public final Lcom/noisefit/ui/friends/reactions/ReactionsViewPager;
+.super Landroidx/viewpager2/adapter/FragmentStateAdapter;
+.source "SourceFile"
+
+
+# annotations
+.annotation build Landroidx/compose/runtime/internal/StabilityInferred;
+    parameters = 0x0
+.end annotation
+
+
+# static fields
+.field public static final I:I = 0x8
+
+
+# instance fields
+.field public final H:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList<",
+            "Lcom/noisefit/data/model/ReactionsWrapper;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+.end field
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 0
+
+    return-void
+.end method
+
+.method public constructor <init>(Landroidx/fragment/app/Fragment;Ljava/util/ArrayList;)V
+    .locals 1
+    .param p1    # Landroidx/fragment/app/Fragment;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .param p2    # Ljava/util/ArrayList;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroidx/fragment/app/Fragment;",
+            "Ljava/util/ArrayList<",
+            "Lcom/noisefit/data/model/ReactionsWrapper;",
+            ">;)V"
+        }
+    .end annotation
+
+    const-string v0, "fm"
+
+    invoke-static {p1, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    const-string v0, "emojiList"
+
+    invoke-static {p2, v0}, Lkotlin/jvm/internal/Intrinsics;->p(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-direct {p0, p1}, Landroidx/viewpager2/adapter/FragmentStateAdapter;-><init>(Landroidx/fragment/app/Fragment;)V
+
+    iput-object p2, p0, Lcom/noisefit/ui/friends/reactions/ReactionsViewPager;->H:Ljava/util/ArrayList;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public Q(I)Landroidx/fragment/app/Fragment;
+    .locals 2
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    sget-object v0, Lcom/noisefit/ui/friends/reactions/ReactionsFragment;->I:Lcom/noisefit/ui/friends/reactions/ReactionsFragment$Companion;
+
+    iget-object v1, p0, Lcom/noisefit/ui/friends/reactions/ReactionsViewPager;->H:Ljava/util/ArrayList;
+
+    invoke-virtual {v1, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object p1
+
+    const-string v1, "get(...)"
+
+    invoke-static {p1, v1}, Lkotlin/jvm/internal/Intrinsics;->o(Ljava/lang/Object;Ljava/lang/String;)V
+
+    check-cast p1, Lcom/noisefit/data/model/ReactionsWrapper;
+
+    invoke-virtual {v0, p1}, Lcom/noisefit/ui/friends/reactions/ReactionsFragment$Companion;->a(Lcom/noisefit/data/model/ReactionsWrapper;)Lcom/noisefit/ui/friends/reactions/ReactionsFragment;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public final k0()Ljava/util/ArrayList;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/ArrayList<",
+            "Lcom/noisefit/data/model/ReactionsWrapper;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+
+    iget-object v0, p0, Lcom/noisefit/ui/friends/reactions/ReactionsViewPager;->H:Ljava/util/ArrayList;
+
+    return-object v0
+.end method
+
+.method public l()I
+    .locals 1
+
+    iget-object v0, p0, Lcom/noisefit/ui/friends/reactions/ReactionsViewPager;->H:Ljava/util/ArrayList;
+
+    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
+
+    move-result v0
+
+    return v0
+.end method

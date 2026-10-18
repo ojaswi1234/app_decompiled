@@ -1,0 +1,92 @@
+.class final Lcom/google/android/play/core/ktx/ReviewManagerKtxKt$runTask$3$2;
+.super Lkotlin/jvm/internal/Lambda;
+.source "SourceFile"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function1;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/google/android/play/core/ktx/ReviewManagerKtxKt;->c(Lcom/google/android/gms/tasks/Task;Lkotlin/jvm/functions/Function0;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lkotlin/jvm/internal/Lambda;",
+        "Lkotlin/jvm/functions/Function1<",
+        "TT;",
+        "Lkotlin/Unit;",
+        ">;"
+    }
+.end annotation
+
+
+# instance fields
+.field public final synthetic s:Lkotlinx/coroutines/CancellableContinuation;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lkotlinx/coroutines/CancellableContinuation<",
+            "TT;>;"
+        }
+    .end annotation
+.end field
+
+
+# direct methods
+.method public constructor <init>(Lkotlinx/coroutines/CancellableContinuation;)V
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lkotlinx/coroutines/CancellableContinuation<",
+            "-TT;>;)V"
+        }
+    .end annotation
+
+    iput-object p1, p0, Lcom/google/android/play/core/ktx/ReviewManagerKtxKt$runTask$3$2;->s:Lkotlinx/coroutines/CancellableContinuation;
+
+    const/4 p1, 0x1
+
+    invoke-direct {p0, p1}, Lkotlin/jvm/internal/Lambda;-><init>(I)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final bridge synthetic invoke(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0, p1}, Lcom/google/android/play/core/ktx/ReviewManagerKtxKt$runTask$3$2;->invoke(Ljava/lang/Object;)V
+
+    sget-object p1, Lkotlin/Unit;->a:Lkotlin/Unit;
+
+    return-object p1
+.end method
+
+.method public final invoke(Ljava/lang/Object;)V
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(TT;)V"
+        }
+    .end annotation
+
+    .line 2
+    iget-object v0, p0, Lcom/google/android/play/core/ktx/ReviewManagerKtxKt$runTask$3$2;->s:Lkotlinx/coroutines/CancellableContinuation;
+
+    invoke-static {p1}, Lkotlin/Result;->b(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object p1
+
+    invoke-interface {v0, p1}, Lkotlin/coroutines/Continuation;->resumeWith(Ljava/lang/Object;)V
+
+    return-void
+.end method

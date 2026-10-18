@@ -1,0 +1,164 @@
+.class public Lcom/crrepa/ble/spp/hisilicon/write/map/bean/CRPReverseGeoCodeInfo$DetailInfo;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/crrepa/ble/spp/hisilicon/write/map/bean/CRPReverseGeoCodeInfo;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x9
+    name = "DetailInfo"
+.end annotation
+
+
+# instance fields
+.field private distance:I
+
+.field private naviLocation:Lcom/crrepa/ble/spp/hisilicon/write/map/bean/LocationBean;
+
+.field private tag:Ljava/lang/String;
+
+.field private type:Ljava/lang/String;
+
+
+# direct methods
+.method public constructor <init>(ILjava/lang/String;Ljava/lang/String;Lcom/crrepa/ble/spp/hisilicon/write/map/bean/LocationBean;)V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput p1, p0, Lcom/crrepa/ble/spp/hisilicon/write/map/bean/CRPReverseGeoCodeInfo$DetailInfo;->distance:I
+
+    iput-object p2, p0, Lcom/crrepa/ble/spp/hisilicon/write/map/bean/CRPReverseGeoCodeInfo$DetailInfo;->type:Ljava/lang/String;
+
+    iput-object p3, p0, Lcom/crrepa/ble/spp/hisilicon/write/map/bean/CRPReverseGeoCodeInfo$DetailInfo;->tag:Ljava/lang/String;
+
+    iput-object p4, p0, Lcom/crrepa/ble/spp/hisilicon/write/map/bean/CRPReverseGeoCodeInfo$DetailInfo;->naviLocation:Lcom/crrepa/ble/spp/hisilicon/write/map/bean/LocationBean;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public getDistance()I
+    .locals 1
+
+    iget v0, p0, Lcom/crrepa/ble/spp/hisilicon/write/map/bean/CRPReverseGeoCodeInfo$DetailInfo;->distance:I
+
+    return v0
+.end method
+
+.method public getNaviLocation()Lcom/crrepa/ble/spp/hisilicon/write/map/bean/LocationBean;
+    .locals 1
+
+    iget-object v0, p0, Lcom/crrepa/ble/spp/hisilicon/write/map/bean/CRPReverseGeoCodeInfo$DetailInfo;->naviLocation:Lcom/crrepa/ble/spp/hisilicon/write/map/bean/LocationBean;
+
+    return-object v0
+.end method
+
+.method public getTag()Ljava/lang/String;
+    .locals 1
+
+    iget-object v0, p0, Lcom/crrepa/ble/spp/hisilicon/write/map/bean/CRPReverseGeoCodeInfo$DetailInfo;->tag:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public getType()Ljava/lang/String;
+    .locals 1
+
+    iget-object v0, p0, Lcom/crrepa/ble/spp/hisilicon/write/map/bean/CRPReverseGeoCodeInfo$DetailInfo;->type:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public setDistance(I)V
+    .locals 0
+
+    iput p1, p0, Lcom/crrepa/ble/spp/hisilicon/write/map/bean/CRPReverseGeoCodeInfo$DetailInfo;->distance:I
+
+    return-void
+.end method
+
+.method public setNaviLocation(Lcom/crrepa/ble/spp/hisilicon/write/map/bean/LocationBean;)V
+    .locals 0
+
+    iput-object p1, p0, Lcom/crrepa/ble/spp/hisilicon/write/map/bean/CRPReverseGeoCodeInfo$DetailInfo;->naviLocation:Lcom/crrepa/ble/spp/hisilicon/write/map/bean/LocationBean;
+
+    return-void
+.end method
+
+.method public setTag(Ljava/lang/String;)V
+    .locals 0
+
+    iput-object p1, p0, Lcom/crrepa/ble/spp/hisilicon/write/map/bean/CRPReverseGeoCodeInfo$DetailInfo;->tag:Ljava/lang/String;
+
+    return-void
+.end method
+
+.method public setType(Ljava/lang/String;)V
+    .locals 0
+
+    iput-object p1, p0, Lcom/crrepa/ble/spp/hisilicon/write/map/bean/CRPReverseGeoCodeInfo$DetailInfo;->type:Ljava/lang/String;
+
+    return-void
+.end method
+
+.method public toString()Ljava/lang/String;
+    .locals 3
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "DetailInfo{distance="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget v1, p0, Lcom/crrepa/ble/spp/hisilicon/write/map/bean/CRPReverseGeoCodeInfo$DetailInfo;->distance:I
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    const-string v1, ", type=\'"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v1, p0, Lcom/crrepa/ble/spp/hisilicon/write/map/bean/CRPReverseGeoCodeInfo$DetailInfo;->type:Ljava/lang/String;
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    const/16 v1, 0x27
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    const-string v2, ", tag=\'"
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v2, p0, Lcom/crrepa/ble/spp/hisilicon/write/map/bean/CRPReverseGeoCodeInfo$DetailInfo;->tag:Ljava/lang/String;
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    const-string v1, ", naviLocation="
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    iget-object v1, p0, Lcom/crrepa/ble/spp/hisilicon/write/map/bean/CRPReverseGeoCodeInfo$DetailInfo;->naviLocation:Lcom/crrepa/ble/spp/hisilicon/write/map/bean/LocationBean;
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    const/16 v1, 0x7d
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method

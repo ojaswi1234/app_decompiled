@@ -1,0 +1,46 @@
+.class public final Lcom/example/proto/ZsWeather;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/example/proto/ZsWeather$protocol_zs_weather_inquire_reply;,
+        Lcom/example/proto/ZsWeather$protocol_zs_weather_inquire_replyOrBuilder;,
+        Lcom/example/proto/ZsWeather$protocol_zs_weather_operate;,
+        Lcom/example/proto/ZsWeather$protocol_zs_weather_operateOrBuilder;,
+        Lcom/example/proto/ZsWeather$protocol_zs_weather_detail_data_item;,
+        Lcom/example/proto/ZsWeather$protocol_zs_weather_detail_data_itemOrBuilder;,
+        Lcom/example/proto/ZsWeather$protocol_zs_weather_moon_item;,
+        Lcom/example/proto/ZsWeather$protocol_zs_weather_moon_itemOrBuilder;,
+        Lcom/example/proto/ZsWeather$protocol_zs_weather_sunrise_item;,
+        Lcom/example/proto/ZsWeather$protocol_zs_weather_sunrise_itemOrBuilder;,
+        Lcom/example/proto/ZsWeather$protocol_zs_weather_hour_weather_item;,
+        Lcom/example/proto/ZsWeather$protocol_zs_weather_hour_weather_itemOrBuilder;,
+        Lcom/example/proto/ZsWeather$protocol_zs_weather_future_item;,
+        Lcom/example/proto/ZsWeather$protocol_zs_weather_future_itemOrBuilder;
+    }
+.end annotation
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 0
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method public static registerAllExtensions(Lcom/google/protobuf/ExtensionRegistryLite;)V
+    .locals 0
+
+    return-void
+.end method

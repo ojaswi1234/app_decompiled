@@ -1,0 +1,17 @@
+.class public final Landroidx/collection/internal/PackingHelpers_jvmKt;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# direct methods
+.method public static final a(I)F
+    .locals 0
+    .annotation build Lkotlin/PublishedApi;
+    .end annotation
+
+    invoke-static {p0}, Ljava/lang/Float;->intBitsToFloat(I)F
+
+    move-result p0
+
+    return p0
+.end method

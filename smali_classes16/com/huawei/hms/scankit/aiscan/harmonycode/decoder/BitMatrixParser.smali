@@ -1,0 +1,621 @@
+.class final Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# instance fields
+.field private final a:Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;
+
+.field private b:Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/Version;
+
+.field private c:Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/FormatInformation;
+
+.field private d:Z
+
+
+# direct methods
+.method public constructor <init>(Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;)V
+    .locals 2
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    invoke-virtual {p1}, Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;->b()I
+
+    move-result v0
+
+    const/16 v1, 0x15
+
+    if-lt v0, v1, :cond_0
+
+    and-int/lit8 v0, v0, 0x3
+
+    const/4 v1, 0x1
+
+    if-ne v0, v1, :cond_0
+
+    iput-object p1, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a:Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;
+
+    return-void
+
+    :cond_0
+    invoke-static {}, Lcom/huawei/hms/scankit/aiscan/common/AIScanException;->a()Lcom/huawei/hms/scankit/aiscan/common/AIScanException;
+
+    move-result-object p1
+
+    throw p1
+.end method
+
+.method private a(III)I
+    .locals 1
+
+    .line 1
+    iget-boolean v0, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->d:Z
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a:Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;
+
+    invoke-virtual {v0, p2, p1}, Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;->b(II)Z
+
+    move-result p1
+
+    goto :goto_0
+
+    :cond_0
+    iget-object v0, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a:Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;
+
+    invoke-virtual {v0, p1, p2}, Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;->b(II)Z
+
+    move-result p1
+
+    :goto_0
+    if-eqz p1, :cond_1
+
+    shl-int/lit8 p1, p3, 0x1
+
+    or-int/lit8 p1, p1, 0x1
+
+    return p1
+
+    :cond_1
+    shl-int/lit8 p1, p3, 0x1
+
+    return p1
+.end method
+
+
+# virtual methods
+.method public a()V
+    .locals 5
+
+    .line 5
+    iget-object v0, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a:Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;
+
+    if-eqz v0, :cond_3
+
+    const/4 v0, 0x0
+
+    .line 6
+    :goto_0
+    iget-object v1, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a:Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;
+
+    invoke-virtual {v1}, Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;->d()I
+
+    move-result v1
+
+    if-ge v0, v1, :cond_2
+
+    add-int/lit8 v1, v0, 0x1
+
+    move v2, v1
+
+    .line 7
+    :goto_1
+    iget-object v3, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a:Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;
+
+    invoke-virtual {v3}, Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;->b()I
+
+    move-result v3
+
+    if-ge v2, v3, :cond_1
+
+    .line 8
+    iget-object v3, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a:Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;
+
+    invoke-virtual {v3, v0, v2}, Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;->b(II)Z
+
+    move-result v3
+
+    iget-object v4, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a:Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;
+
+    invoke-virtual {v4, v2, v0}, Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;->b(II)Z
+
+    move-result v4
+
+    if-eq v3, v4, :cond_0
+
+    .line 9
+    iget-object v3, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a:Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;
+
+    invoke-virtual {v3, v2, v0}, Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;->a(II)V
+
+    .line 10
+    iget-object v3, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a:Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;
+
+    invoke-virtual {v3, v0, v2}, Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;->a(II)V
+
+    :cond_0
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_1
+
+    :cond_1
+    move v0, v1
+
+    goto :goto_0
+
+    :cond_2
+    return-void
+
+    .line 11
+    :cond_3
+    invoke-static {}, Lcom/huawei/hms/scankit/aiscan/common/AIScanException;->a()Lcom/huawei/hms/scankit/aiscan/common/AIScanException;
+
+    move-result-object v0
+
+    throw v0
+.end method
+
+.method public a(Z)V
+    .locals 1
+
+    const/4 v0, 0x0
+
+    .line 2
+    iput-object v0, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->b:Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/Version;
+
+    .line 3
+    iput-object v0, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->c:Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/FormatInformation;
+
+    .line 4
+    iput-boolean p1, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->d:Z
+
+    return-void
+.end method
+
+.method public b()[B
+    .locals 17
+
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->c()Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/FormatInformation;
+
+    move-result-object v1
+
+    invoke-virtual {v0}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->d()Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/Version;
+
+    move-result-object v2
+
+    invoke-static {}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/DataMask;->values()[Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/DataMask;
+
+    move-result-object v3
+
+    invoke-virtual {v1}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/FormatInformation;->b()B
+
+    move-result v1
+
+    aget-object v1, v3, v1
+
+    iget-object v3, v0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a:Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;
+
+    invoke-virtual {v3}, Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;->b()I
+
+    move-result v3
+
+    iget-object v4, v0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a:Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;
+
+    invoke-virtual {v1, v4, v3}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/DataMask;->a(Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;I)V
+
+    invoke-virtual {v2}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/Version;->a()Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;
+
+    move-result-object v1
+
+    invoke-virtual {v2}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/Version;->l()I
+
+    move-result v4
+
+    new-array v4, v4, [B
+
+    add-int/lit8 v5, v3, -0x1
+
+    const/4 v6, 0x1
+
+    move v8, v5
+
+    const/4 v9, 0x0
+
+    const/4 v10, 0x0
+
+    const/4 v11, 0x0
+
+    :goto_0
+    if-lez v8, :cond_6
+
+    const/4 v12, 0x6
+
+    if-ne v8, v12, :cond_0
+
+    add-int/lit8 v8, v8, -0x1
+
+    :cond_0
+    const/4 v12, 0x0
+
+    :goto_1
+    if-ge v12, v3, :cond_5
+
+    if-eqz v6, :cond_1
+
+    sub-int v13, v5, v12
+
+    goto :goto_2
+
+    :cond_1
+    move v13, v12
+
+    :goto_2
+    const/4 v14, 0x0
+
+    :goto_3
+    const/4 v15, 0x2
+
+    if-ge v14, v15, :cond_4
+
+    sub-int v15, v8, v14
+
+    invoke-virtual {v1, v15, v13}, Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;->b(II)Z
+
+    move-result v16
+
+    if-nez v16, :cond_3
+
+    add-int/lit8 v11, v11, 0x1
+
+    shl-int/lit8 v10, v10, 0x1
+
+    iget-object v7, v0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a:Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;
+
+    invoke-virtual {v7, v15, v13}, Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;->b(II)Z
+
+    move-result v7
+
+    if-eqz v7, :cond_2
+
+    or-int/lit8 v7, v10, 0x1
+
+    move v10, v7
+
+    :cond_2
+    const/16 v7, 0x8
+
+    if-ne v11, v7, :cond_3
+
+    add-int/lit8 v7, v9, 0x1
+
+    int-to-byte v10, v10
+
+    aput-byte v10, v4, v9
+
+    move v9, v7
+
+    const/4 v10, 0x0
+
+    const/4 v11, 0x0
+
+    :cond_3
+    add-int/lit8 v14, v14, 0x1
+
+    goto :goto_3
+
+    :cond_4
+    add-int/lit8 v12, v12, 0x1
+
+    goto :goto_1
+
+    :cond_5
+    xor-int/lit8 v6, v6, 0x1
+
+    add-int/lit8 v8, v8, -0x2
+
+    goto :goto_0
+
+    :cond_6
+    invoke-virtual {v2}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/Version;->l()I
+
+    move-result v1
+
+    if-ne v9, v1, :cond_7
+
+    return-object v4
+
+    :cond_7
+    invoke-static {}, Lcom/huawei/hms/scankit/aiscan/common/AIScanException;->a()Lcom/huawei/hms/scankit/aiscan/common/AIScanException;
+
+    move-result-object v1
+
+    throw v1
+.end method
+
+.method public c()Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/FormatInformation;
+    .locals 6
+
+    iget-object v0, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->c:Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/FormatInformation;
+
+    if-eqz v0, :cond_0
+
+    return-object v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    move v1, v0
+
+    move v2, v1
+
+    :goto_0
+    const/4 v3, 0x6
+
+    const/16 v4, 0x8
+
+    if-ge v1, v3, :cond_1
+
+    invoke-direct {p0, v1, v4, v2}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a(III)I
+
+    move-result v2
+
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_0
+
+    :cond_1
+    const/4 v1, 0x7
+
+    invoke-direct {p0, v1, v4, v2}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a(III)I
+
+    move-result v2
+
+    invoke-direct {p0, v4, v4, v2}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a(III)I
+
+    move-result v2
+
+    invoke-direct {p0, v4, v1, v2}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a(III)I
+
+    move-result v1
+
+    const/4 v2, 0x5
+
+    :goto_1
+    if-ltz v2, :cond_2
+
+    invoke-direct {p0, v4, v2, v1}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a(III)I
+
+    move-result v1
+
+    add-int/lit8 v2, v2, -0x1
+
+    goto :goto_1
+
+    :cond_2
+    iget-object v2, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a:Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;
+
+    invoke-virtual {v2}, Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;->b()I
+
+    move-result v2
+
+    add-int/lit8 v3, v2, -0x7
+
+    add-int/lit8 v5, v2, -0x1
+
+    :goto_2
+    if-lt v5, v3, :cond_3
+
+    invoke-direct {p0, v4, v5, v0}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a(III)I
+
+    move-result v0
+
+    add-int/lit8 v5, v5, -0x1
+
+    goto :goto_2
+
+    :cond_3
+    add-int/lit8 v3, v2, -0x8
+
+    :goto_3
+    if-ge v3, v2, :cond_4
+
+    invoke-direct {p0, v3, v4, v0}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a(III)I
+
+    move-result v0
+
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_3
+
+    :cond_4
+    invoke-static {v1, v0}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/FormatInformation;->a(II)Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/FormatInformation;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->c:Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/FormatInformation;
+
+    if-eqz v0, :cond_5
+
+    return-object v0
+
+    :cond_5
+    invoke-static {}, Lcom/huawei/hms/scankit/aiscan/common/AIScanException;->a()Lcom/huawei/hms/scankit/aiscan/common/AIScanException;
+
+    move-result-object v0
+
+    throw v0
+.end method
+
+.method public d()Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/Version;
+    .locals 7
+
+    iget-object v0, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->b:Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/Version;
+
+    if-eqz v0, :cond_0
+
+    return-object v0
+
+    :cond_0
+    iget-object v0, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a:Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;
+
+    invoke-virtual {v0}, Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;->b()I
+
+    move-result v0
+
+    add-int/lit8 v1, v0, -0x11
+
+    div-int/lit8 v1, v1, 0x4
+
+    const/4 v2, 0x6
+
+    if-gt v1, v2, :cond_1
+
+    invoke-static {v1}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/Version;->b(I)Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/Version;
+
+    move-result-object v0
+
+    return-object v0
+
+    :cond_1
+    add-int/lit8 v1, v0, -0xb
+
+    const/4 v2, 0x5
+
+    const/4 v3, 0x0
+
+    move v4, v2
+
+    move v5, v3
+
+    :goto_0
+    if-ltz v4, :cond_3
+
+    add-int/lit8 v6, v0, -0x9
+
+    :goto_1
+    if-lt v6, v1, :cond_2
+
+    invoke-direct {p0, v6, v4, v5}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a(III)I
+
+    move-result v5
+
+    add-int/lit8 v6, v6, -0x1
+
+    goto :goto_1
+
+    :cond_2
+    add-int/lit8 v4, v4, -0x1
+
+    goto :goto_0
+
+    :cond_3
+    invoke-static {v5}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/Version;->a(I)Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/Version;
+
+    move-result-object v4
+
+    if-eqz v4, :cond_4
+
+    invoke-virtual {v4}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/Version;->k()I
+
+    move-result v5
+
+    if-ne v5, v0, :cond_4
+
+    iput-object v4, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->b:Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/Version;
+
+    return-object v4
+
+    :cond_4
+    :goto_2
+    if-ltz v2, :cond_6
+
+    add-int/lit8 v4, v0, -0x9
+
+    :goto_3
+    if-lt v4, v1, :cond_5
+
+    invoke-direct {p0, v2, v4, v3}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a(III)I
+
+    move-result v3
+
+    add-int/lit8 v4, v4, -0x1
+
+    goto :goto_3
+
+    :cond_5
+    add-int/lit8 v2, v2, -0x1
+
+    goto :goto_2
+
+    :cond_6
+    invoke-static {v3}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/Version;->a(I)Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/Version;
+
+    move-result-object v1
+
+    if-eqz v1, :cond_7
+
+    invoke-virtual {v1}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/Version;->k()I
+
+    move-result v2
+
+    if-ne v2, v0, :cond_7
+
+    iput-object v1, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->b:Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/Version;
+
+    return-object v1
+
+    :cond_7
+    invoke-static {}, Lcom/huawei/hms/scankit/aiscan/common/AIScanException;->a()Lcom/huawei/hms/scankit/aiscan/common/AIScanException;
+
+    move-result-object v0
+
+    throw v0
+.end method
+
+.method public e()V
+    .locals 3
+
+    iget-object v0, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->c:Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/FormatInformation;
+
+    if-nez v0, :cond_0
+
+    return-void
+
+    :cond_0
+    invoke-static {}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/DataMask;->values()[Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/DataMask;
+
+    move-result-object v0
+
+    iget-object v1, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->c:Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/FormatInformation;
+
+    invoke-virtual {v1}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/FormatInformation;->b()B
+
+    move-result v1
+
+    aget-object v0, v0, v1
+
+    iget-object v1, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a:Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;
+
+    invoke-virtual {v1}, Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;->b()I
+
+    move-result v1
+
+    iget-object v2, p0, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/BitMatrixParser;->a:Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;
+
+    invoke-virtual {v0, v2, v1}, Lcom/huawei/hms/scankit/aiscan/harmonycode/decoder/DataMask;->a(Lcom/huawei/hms/scankit/aiscan/common/binarizer/BitMatrix;I)V
+
+    return-void
+.end method

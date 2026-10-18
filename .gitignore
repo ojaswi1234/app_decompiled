@@ -1,14 +1,33 @@
+# APKs and installation packages
 *.apk
+**/*.apk
 *.idsig
+
+# DEX and bytecode
+*.dex
+*.class
+
+# Keystores and certificates
+*.keystore
+*.jks
+
+# Tools and binary archives
+*.jar
+
+# Temporary and build artifacts
 *.tmp
 *.png
 *.xml
 *.txt
 apktool_res/
 apktool_src/
+classes17_smali/
+decoded_manifest/
 jadx_source/
 gemini_build/
 gemini_dex/
+lib/
 temp_manifest/
 temp_xxhdpi/
+temp_lib/
 xapk_extracted/

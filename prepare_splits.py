@@ -34,13 +34,15 @@ def strip_and_repack(input_apk, output_unsigned, extra_files=None, replace_files
 
         # Add replaced files
         for fn, data in replace_files.items():
-            zout.writestr(fn, data, compress_type=zipfile.ZIP_DEFLATED)
-            print(f"  Replaced {fn} ({len(data)} bytes)")
+            comp_type = zipfile.ZIP_STORED if fn.endswith('.arsc') else zipfile.ZIP_DEFLATED
+            zout.writestr(fn, data, compress_type=comp_type)
+            print(f"  Replaced {fn} ({len(data)} bytes, compress_type={comp_type})")
 
         # Add extra files
         for fn, data in extra_files.items():
-            zout.writestr(fn, data, compress_type=zipfile.ZIP_DEFLATED)
-            print(f"  Added {fn} ({len(data)} bytes)")
+            comp_type = zipfile.ZIP_STORED if fn.endswith('.arsc') else zipfile.ZIP_DEFLATED
+            zout.writestr(fn, data, compress_type=comp_type)
+            print(f"  Added {fn} ({len(data)} bytes, compress_type={comp_type})")
 
 def align_and_sign(unsigned_apk, aligned_apk, signed_apk, is_so_aligned=False):
     if os.path.exists(aligned_apk):

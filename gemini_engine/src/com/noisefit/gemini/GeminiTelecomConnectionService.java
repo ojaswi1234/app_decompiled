@@ -40,7 +40,7 @@ public class GeminiTelecomConnectionService extends ConnectionService {
 
             PhoneAccountHandle handle = getPhoneAccountHandle(context);
             PhoneAccount.Builder builder = PhoneAccount.builder(handle, "Gemini AI")
-                    .setCapabilities(PhoneAccount.CAPABILITY_SELF_MANAGED | PhoneAccount.CAPABILITY_CALL_PROVIDER)
+                    .setCapabilities(PhoneAccount.CAPABILITY_SELF_MANAGED)
                     .setHighlightColor(0xFF1A73E8)
                     .setShortDescription("Gemini Smartwatch Voice Assistant");
 

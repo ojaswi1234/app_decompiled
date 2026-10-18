@@ -251,9 +251,9 @@ public class GeminiAccessibilityService extends AccessibilityService {
             return;
         }
 
-        // Wait at least 500ms for Gemini app window to draw before clicking
-        if (elapsed < 500) {
-            scheduleRetry(150);
+        // Wait at least 300ms for Gemini app window to draw before clicking
+        if (elapsed < 300) {
+            scheduleRetry(100);
             return;
         }
 
@@ -262,7 +262,7 @@ public class GeminiAccessibilityService extends AccessibilityService {
         try {
             AccessibilityNodeInfo root = getRootInActiveWindow();
             if (root != null) {
-                liveNode = findNode(root, "Open Gemini Live", "assistant_robin_input_voice_chat_button_compose");
+                liveNode = findNode(root, "Open Gemini Live", "assistant_robin_input_voice_chat_button_compose", "Gemini Live");
                 root.recycle();
             }
         } catch (Throwable t) {
@@ -277,7 +277,7 @@ public class GeminiAccessibilityService extends AccessibilityService {
                         for (android.view.accessibility.AccessibilityWindowInfo window : windows) {
                             AccessibilityNodeInfo wRoot = window.getRoot();
                             if (wRoot != null) {
-                                liveNode = findNode(wRoot, "Open Gemini Live", "assistant_robin_input_voice_chat_button_compose");
+                                liveNode = findNode(wRoot, "Open Gemini Live", "assistant_robin_input_voice_chat_button_compose", "Gemini Live");
                                 wRoot.recycle();
                                 if (liveNode != null) break;
                             }
@@ -289,8 +289,8 @@ public class GeminiAccessibilityService extends AccessibilityService {
             }
         }
 
-        int tapX = 855;
-        int tapY = 2126;
+        int tapX = 911;
+        int tapY = 1343;
 
         if (liveNode != null) {
             Rect bounds = new Rect();
@@ -298,6 +298,7 @@ public class GeminiAccessibilityService extends AccessibilityService {
             if (!bounds.isEmpty()) {
                 tapX = bounds.centerX();
                 tapY = bounds.centerY();
+                Log.i(TAG, "Found Live node at exact screen bounds: " + bounds + " -> center (" + tapX + ", " + tapY + ")");
             }
 
             // Click the node or parent if clickable
@@ -318,7 +319,7 @@ public class GeminiAccessibilityService extends AccessibilityService {
 
             liveNode.recycle();
         } else {
-            // Calculate pixel-accurate coordinates for Galaxy M33 (1080x2408)
+            // Screen metrics for Galaxy M33 (1080x2408)
             int screenWidth = 1080;
             int screenHeight = 2408;
             try {
@@ -336,16 +337,27 @@ public class GeminiAccessibilityService extends AccessibilityService {
                     }
                 }
             } catch (Throwable ignored) {}
-            tapX = (screenWidth == 1080) ? 855 : (int) (screenWidth * 0.792f);
-            tapY = (screenHeight == 2408) ? 2126 : (int) (screenHeight * 0.883f);
+
+            // Alternate between Zero-State Half-Sheet position (911, 1343) and Full-Screen Chat position (855, 2126)
+            if (tapAttempts % 2 == 0) {
+                // Half-Sheet Zero-State position: Center of Live button (911, 1343)
+                tapX = (screenWidth == 1080) ? 911 : (int) (screenWidth * 0.843f);
+                tapY = (screenHeight == 2408) ? 1343 : (int) (screenHeight * 0.558f);
+                Log.i(TAG, "Fallback targeting Half-Sheet Zero-State Live button at (" + tapX + ", " + tapY + ")");
+            } else {
+                // Full-Screen Chat position: Center of Live button (855, 2126)
+                tapX = (screenWidth == 1080) ? 855 : (int) (screenWidth * 0.792f);
+                tapY = (screenHeight == 2408) ? 2126 : (int) (screenHeight * 0.883f);
+                Log.i(TAG, "Fallback targeting Full-Screen Chat Live button at (" + tapX + ", " + tapY + ")");
+            }
         }
 
         Log.i(TAG, ">>> Dispatching verified Live gesture tap at (" + tapX + ", " + tapY + ") [attempt " + (tapAttempts + 1) + "] <<<");
         dispatchTapGesture(tapX, tapY);
         tapAttempts++;
 
-        // Schedule check 400ms later to see if Live opened, or retry
-        scheduleRetry(400);
+        // Schedule check 350ms later to see if Live opened, or retry
+        scheduleRetry(350);
     }
 
     private void scheduleRetry(long delayMs) {

@@ -37,16 +37,27 @@ Write-Host ""
 
 Write-Host "[3/5] Granting required runtime permissions..." -ForegroundColor Yellow
 adb shell pm grant com.noisefit android.permission.ANSWER_PHONE_CALLS
+adb shell pm grant com.noisefit android.permission.CALL_PHONE
 adb shell pm grant com.noisefit android.permission.READ_CALL_LOG
 adb shell pm grant com.noisefit android.permission.WRITE_CALL_LOG
 adb shell pm grant com.noisefit android.permission.READ_PHONE_STATE
 adb shell pm grant com.noisefit android.permission.RECORD_AUDIO
 adb shell pm grant com.noisefit android.permission.BLUETOOTH_CONNECT
+adb shell pm grant com.noisefit android.permission.POST_NOTIFICATIONS
 Write-Host "[OK] Permissions granted!" -ForegroundColor Green
 Write-Host ""
 
 Write-Host "[4/5] Enabling Gemini Live Automation Accessibility Service..." -ForegroundColor Yellow
-adb shell settings put secure enabled_accessibility_services com.avast.android.cleaner/com.avast.android.cleanercore2.accessibility.AccessibilityService:com.noisefit/com.noisefit.gemini.GeminiAccessibilityService
+$svcName = "com.noisefit/com.noisefit.gemini.GeminiAccessibilityService"
+$existingServices = (adb shell settings get secure enabled_accessibility_services).Trim()
+if ($existingServices -and $existingServices -ne "null") {
+    if (-not $existingServices.Contains($svcName)) {
+        $newServices = "$existingServices:$svcName"
+        adb shell settings put secure enabled_accessibility_services $newServices
+    }
+} else {
+    adb shell settings put secure enabled_accessibility_services $svcName
+}
 adb shell settings put secure accessibility_enabled 1
 Write-Host "[OK] Accessibility service enabled automatically via ADB!" -ForegroundColor Green
 Write-Host ""
@@ -58,11 +69,11 @@ Write-Host "[OK] NoiseFit started!" -ForegroundColor Green
 Write-Host ""
 Write-Host "======================================================================" -ForegroundColor Cyan
 Write-Host ">>> READY FOR TEST! <<<" -ForegroundColor Green
-Write-Host "1. Keep your Noise smartwatch NSW-433 connected to NoiseFit."
-Write-Host "2. From your watch dialpad or contacts, call 'Gemini' (9999999999)."
-Write-Host "3. The cellular call will be immediately aborted, screen will wake,"
-Write-Host "   and Gemini Live will be triggered automatically over Bluetooth SCO!"
+Write-Host "1. Keep your Noise smartwatch NSW-433 connected to NoiseFit via Bluetooth."
+Write-Host "2. From your watch contacts or dialpad, call 'Gemini' (9999999999)."
+Write-Host "3. Watch call screen will remain active with timer and End Call button."
+Write-Host "4. Gemini Live opens instantaneously with audio duplexed to your watch!"
 Write-Host ""
 Write-Host "Monitoring live logs (Press Ctrl+C to stop)..." -ForegroundColor Yellow
 Write-Host "======================================================================" -ForegroundColor Cyan
-adb logcat -v time -s NoiseFit_Gemini NoiseFit_Gemini_Session NoiseFit_Gemini_A11y
+adb logcat -v time -s NoiseFit_Gemini NoiseFit_Gemini_Session NoiseFit_Gemini_A11y NoiseFit_Gemini_Telecom

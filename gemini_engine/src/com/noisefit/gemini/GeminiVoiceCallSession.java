@@ -8,24 +8,16 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.media.AudioAttributes;
+import android.media.AudioDeviceInfo;
 import android.media.AudioManager;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.PowerManager;
-import android.speech.RecognitionListener;
-import android.speech.RecognizerIntent;
-import android.speech.SpeechRecognizer;
-import android.speech.tts.TextToSpeech;
-import android.speech.tts.UtteranceProgressListener;
 import android.util.Log;
+import java.util.List;
 
-import java.util.ArrayList;
-import java.util.Locale;
-
-public class GeminiVoiceCallSession implements TextToSpeech.OnInitListener {
+public class GeminiVoiceCallSession {
     private static final String TAG = "NoiseFit_Gemini_Session";
     private static final String NOTIF_CHANNEL_ID = "gemini_voice_call_channel";
     private static final int NOTIF_ID = 998811;
@@ -35,14 +27,9 @@ public class GeminiVoiceCallSession implements TextToSpeech.OnInitListener {
     private Context appContext;
     private AudioManager audioManager;
     private PowerManager.WakeLock wakeLock;
-    private TextToSpeech tts;
-    private SpeechRecognizer speechRecognizer;
-    private Intent recognizerIntent;
 
     private boolean isCallActive = false;
-    private boolean isTtsReady = false;
     private boolean isScoConnected = false;
-    private boolean isListening = false;
     private String activeNumber = "";
 
     private Handler mainHandler = new Handler(Looper.getMainLooper());
@@ -67,12 +54,12 @@ public class GeminiVoiceCallSession implements TextToSpeech.OnInitListener {
         this.activeNumber = (number != null) ? number : "Gemini";
 
         if (isCallActive) {
-            Log.w(TAG, "Gemini call is already active.");
+            Log.w(TAG, "Gemini call session is already active.");
             return;
         }
 
         isCallActive = true;
-        Log.i(TAG, "Starting Gemini Smartwatch Call Session for: " + activeNumber);
+        Log.i(TAG, "Starting Gemini Watch Bluetooth SCO Audio Session for: " + activeNumber);
 
         // 1. Acquire WakeLock
         acquireWakeLock();
@@ -80,11 +67,8 @@ public class GeminiVoiceCallSession implements TextToSpeech.OnInitListener {
         // 2. Setup Notification
         showOngoingNotification();
 
-        // 3. Setup Audio & Bluetooth SCO
+        // 3. Setup Audio & Bluetooth SCO (routes watch mic & speaker)
         setupBluetoothSco();
-
-        // 4. Initialize TTS
-        initTextToSpeech();
     }
 
     private void acquireWakeLock() {
@@ -113,9 +97,8 @@ public class GeminiVoiceCallSession implements TextToSpeech.OnInitListener {
                         Log.d(TAG, "Bluetooth SCO state changed: " + state);
 
                         if (state == AudioManager.SCO_AUDIO_STATE_CONNECTED) {
-                            Log.i(TAG, ">>> Bluetooth SCO CONNECTED! Watch mic & speaker ACTIVE <<<");
+                            Log.i(TAG, ">>> Bluetooth SCO CONNECTED! Watch mic & speaker ACTIVE for Gemini Live <<<");
                             isScoConnected = true;
-                            onScoConnected();
                         } else if (state == AudioManager.SCO_AUDIO_STATE_DISCONNECTED) {
                             Log.i(TAG, "Bluetooth SCO disconnected");
                             isScoConnected = false;
@@ -126,334 +109,81 @@ public class GeminiVoiceCallSession implements TextToSpeech.OnInitListener {
                 appContext.registerReceiver(scoReceiver, filter);
             }
 
-            // Set communication mode and start SCO link
+            // Set communication mode
             audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
-            audioManager.startBluetoothSco();
-            audioManager.setBluetoothScoOn(true);
 
-            // Timeout fallback: If SCO takes too long, proceed anyway after 1.5 seconds
-            mainHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if (isCallActive && !isScoConnected) {
-                        Log.w(TAG, "SCO connection timeout. Proceeding with voice engine.");
-                        onScoConnected();
+            // Android 12+ (API 31+) direct communication device routing
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                try {
+                    List<AudioDeviceInfo> devices = audioManager.getAvailableCommunicationDevices();
+                    AudioDeviceInfo targetDevice = null;
+                    for (AudioDeviceInfo dev : devices) {
+                        int type = dev.getType();
+                        if (type == AudioDeviceInfo.TYPE_BLUETOOTH_SCO || type == AudioDeviceInfo.TYPE_BLE_HEADSET) {
+                            targetDevice = dev;
+                            break;
+                        }
                     }
+                    if (targetDevice != null) {
+                        boolean routed = audioManager.setCommunicationDevice(targetDevice);
+                        Log.i(TAG, "audioManager.setCommunicationDevice(TYPE_BLUETOOTH_SCO): " + routed);
+                    } else {
+                        Log.w(TAG, "No Bluetooth SCO device found in getAvailableCommunicationDevices");
+                    }
+                } catch (Throwable t) {
+                    Log.e(TAG, "Error routing via setCommunicationDevice", t);
                 }
-            }, 1500);
+            }
+
+            // Fallback for legacy/hybrid Android versions
+            try {
+                audioManager.startBluetoothSco();
+                audioManager.setBluetoothScoOn(true);
+            } catch (Throwable t) {
+                Log.w(TAG, "Legacy startBluetoothSco invocation exception", t);
+            }
 
         } catch (Exception e) {
             Log.e(TAG, "Error setting up Bluetooth SCO", e);
         }
     }
 
-    private void initTextToSpeech() {
-        mainHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    tts = new TextToSpeech(appContext, GeminiVoiceCallSession.this);
-                } catch (Exception e) {
-                    Log.e(TAG, "Error initializing TTS", e);
-                }
-            }
-        });
-    }
-
-    @Override
-    public void onInit(int status) {
-        if (status == TextToSpeech.SUCCESS && tts != null) {
-            int result = tts.setLanguage(Locale.getDefault());
-            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                tts.setLanguage(Locale.US);
-            }
-
-            // Route TTS audio to voice communication stream (watch speaker)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                AudioAttributes attributes = new AudioAttributes.Builder()
-                        .setUsage(AudioAttributes.USAGE_VOICE_COMMUNICATION)
-                        .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH)
-                        .build();
-                tts.setAudioAttributes(attributes);
-            }
-
-            tts.setOnUtteranceProgressListener(new UtteranceProgressListener() {
-                @Override
-                public void onStart(String utteranceId) {
-                    Log.d(TAG, "TTS speaking started: " + utteranceId);
-                }
-
-                @Override
-                public void onDone(final String utteranceId) {
-                    Log.d(TAG, "TTS speaking finished: " + utteranceId);
-                    mainHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (isCallActive) {
-                                // After TTS finishes speaking, immediately start listening to watch mic
-                                startListening();
-                            }
-                        }
-                    });
-                }
-
-                @Override
-                public void onError(String utteranceId) {
-                    Log.e(TAG, "TTS error on utterance: " + utteranceId);
-                    mainHandler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (isCallActive) {
-                                startListening();
-                            }
-                        }
-                    });
-                }
-            });
-
-            isTtsReady = true;
-            Log.i(TAG, "TTS initialized successfully");
-
-            if (isScoConnected) {
-                speakGreeting();
-            }
-        } else {
-            Log.e(TAG, "TTS initialization failed: " + status);
-        }
-    }
-
-    private void onScoConnected() {
-        if (isTtsReady) {
-            speakGreeting();
-        }
-    }
-
-    private void speakGreeting() {
-        mainHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                speakText("Hello! I am Gemini. I can hear you through your watch. How can I help you?");
-            }
-        });
-    }
-
-    public synchronized void speakText(String text) {
-        if (!isCallActive || tts == null || !isTtsReady) {
-            Log.w(TAG, "Cannot speak: call active=" + isCallActive + " tts ready=" + isTtsReady);
-            return;
-        }
-
-        stopListening();
-
-        Bundle params = new Bundle();
-        params.putInt(TextToSpeech.Engine.KEY_PARAM_STREAM, AudioManager.STREAM_VOICE_CALL);
-        String utteranceId = "gemini_reply_" + System.currentTimeMillis();
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            tts.speak(text, TextToSpeech.QUEUE_FLUSH, params, utteranceId);
-        } else {
-            tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
-        }
-        Log.i(TAG, "Speaking to watch: " + text);
-    }
-
-    private void startListening() {
-        mainHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                if (!isCallActive) return;
-
-                try {
-                    if (speechRecognizer == null) {
-                        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(appContext);
-                        speechRecognizer.setRecognitionListener(new RecognitionListener() {
-                            @Override
-                            public void onReadyForSpeech(Bundle params) {
-                                Log.i(TAG, "SpeechRecognizer: Ready for speech from watch mic");
-                                isListening = true;
-                            }
-
-                            @Override
-                            public void onBeginningOfSpeech() {
-                                Log.d(TAG, "SpeechRecognizer: User started speaking");
-                            }
-
-                            @Override
-                            public void onRmsChanged(float rmsdB) {}
-
-                            @Override
-                            public void onBufferReceived(byte[] buffer) {}
-
-                            @Override
-                            public void onEndOfSpeech() {
-                                Log.d(TAG, "SpeechRecognizer: User finished speaking");
-                                isListening = false;
-                            }
-
-                            @Override
-                            public void onError(int error) {
-                                Log.w(TAG, "SpeechRecognizer error: " + error);
-                                isListening = false;
-                                if (isCallActive) {
-                                    // Retry listening after a brief pause
-                                    mainHandler.postDelayed(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            if (isCallActive) startListening();
-                                        }
-                                    }, 800);
-                                }
-                            }
-
-                            @Override
-                            public void onResults(Bundle results) {
-                                isListening = false;
-                                ArrayList<String> matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
-                                if (matches != null && !matches.isEmpty()) {
-                                    String userQuery = matches.get(0);
-                                    Log.i(TAG, "User query received: " + userQuery);
-                                    handleUserSpeech(userQuery);
-                                } else {
-                                    if (isCallActive) startListening();
-                                }
-                            }
-
-                            @Override
-                            public void onPartialResults(Bundle partialResults) {}
-
-                            @Override
-                            public void onEvent(int eventType, Bundle params) {}
-                        });
-                    }
-
-                    if (recognizerIntent == null) {
-                        recognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-                        recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-                        recognizerIntent.putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, false);
-                        recognizerIntent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 1);
-                    }
-
-                    speechRecognizer.startListening(recognizerIntent);
-
-                } catch (Exception e) {
-                    Log.e(TAG, "Error starting speech recognition", e);
-                }
-            }
-        });
-    }
-
-    private void stopListening() {
-        mainHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    if (speechRecognizer != null) {
-                        speechRecognizer.stopListening();
-                        speechRecognizer.cancel();
-                    }
-                } catch (Exception e) {
-                    Log.e(TAG, "Error stopping recognizer", e);
-                }
-                isListening = false;
-            }
-        });
-    }
-
-    private void handleUserSpeech(String userText) {
-        if (userText == null || userText.trim().isEmpty()) {
-            if (isCallActive) startListening();
-            return;
-        }
-
-        String lower = userText.toLowerCase();
-        if (lower.contains("goodbye") || lower.contains("bye") || lower.contains("hang up") || lower.contains("end call")) {
-            speakText("Goodbye!");
-            mainHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    endCall();
-                }
-            }, 1200);
-            return;
-        }
-
-        // Query Gemini API
-        GeminiApiClient.query(appContext, userText, new GeminiApiClient.ResponseCallback() {
-            @Override
-            public void onSuccess(String reply) {
-                if (isCallActive) {
-                    speakText(reply);
-                }
-            }
-
-            @Override
-            public void onError(String errorMessage) {
-                if (isCallActive) {
-                    speakText("Sorry, I encountered an error: " + errorMessage);
-                }
-            }
-        });
-    }
-
     public synchronized void endCall() {
         if (!isCallActive) return;
         isCallActive = false;
-        Log.i(TAG, "Ending Gemini Smartwatch Call Session");
+        Log.i(TAG, "Ending Gemini Call Session and releasing audio resources...");
 
-        // 1. Stop Speech Recognizer
-        stopListening();
-        mainHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    if (speechRecognizer != null) {
-                        speechRecognizer.destroy();
-                        speechRecognizer = null;
-                    }
-                } catch (Exception e) {
-                    Log.e(TAG, "Error destroying speech recognizer", e);
-                }
-            }
-        });
-
-        // 2. Stop TTS
-        mainHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    if (tts != null) {
-                        tts.stop();
-                        tts.shutdown();
-                        tts = null;
-                    }
-                } catch (Exception e) {
-                    Log.e(TAG, "Error stopping TTS", e);
-                }
-                isTtsReady = false;
-            }
-        });
-
-        // 3. Reset Audio & Bluetooth SCO
+        // 1. Reset Audio & Bluetooth SCO
         try {
             if (audioManager != null) {
-                audioManager.stopBluetoothSco();
-                audioManager.setBluetoothScoOn(false);
-                audioManager.setMode(AudioManager.MODE_NORMAL);
-            }
-            if (scoReceiver != null) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    try {
+                        audioManager.clearCommunicationDevice();
+                        Log.i(TAG, "audioManager.clearCommunicationDevice() executed");
+                    } catch (Throwable ignored) {}
+                }
                 try {
-                    appContext.unregisterReceiver(scoReceiver);
-                } catch (Exception ignored) {}
-                scoReceiver = null;
+                    audioManager.stopBluetoothSco();
+                    audioManager.setBluetoothScoOn(false);
+                } catch (Throwable ignored) {}
+                audioManager.setMode(AudioManager.MODE_NORMAL);
             }
         } catch (Exception e) {
             Log.e(TAG, "Error resetting SCO audio", e);
         }
 
-        // 4. Dismiss Notification
+        // 2. Unregister SCO receiver
+        try {
+            if (scoReceiver != null && appContext != null) {
+                appContext.unregisterReceiver(scoReceiver);
+                scoReceiver = null;
+            }
+        } catch (Exception ignored) {}
+
+        // 3. Dismiss Notification
         dismissNotification();
 
-        // 5. Release WakeLock
+        // 4. Release WakeLock
         try {
             if (wakeLock != null && wakeLock.isHeld()) {
                 wakeLock.release();
@@ -461,7 +191,7 @@ public class GeminiVoiceCallSession implements TextToSpeech.OnInitListener {
             }
         } catch (Exception ignored) {}
 
-        Log.i(TAG, "Gemini Call Session completely ended and cleaned up.");
+        Log.i(TAG, "Gemini Audio Session completely ended and audio mode restored to NORMAL.");
     }
 
     private void showOngoingNotification() {
@@ -493,8 +223,8 @@ public class GeminiVoiceCallSession implements TextToSpeech.OnInitListener {
                 builder = new Notification.Builder(appContext);
             }
 
-            builder.setContentTitle("Gemini Voice Call Active")
-                    .setContentText("Connected to Noise smartwatch over Bluetooth SCO")
+            builder.setContentTitle("Gemini Live Smartwatch Call")
+                    .setContentText("Connected to Noise smartwatch mic & speaker")
                     .setSmallIcon(android.R.drawable.sym_call_incoming)
                     .setOngoing(true)
                     .addAction(android.R.drawable.ic_menu_close_clear_cancel, "End Call", endPendingIntent);

@@ -2,13 +2,16 @@ package com.noisefit.gemini;
 
 import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.AccessibilityServiceInfo;
+import android.accessibilityservice.GestureDescription;
+import android.graphics.Path;
+import android.graphics.Rect;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
-
-import java.util.List;
 
 public class GeminiAccessibilityService extends AccessibilityService {
     private static final String TAG = "NoiseFit_Gemini_A11y";
@@ -32,18 +35,24 @@ public class GeminiAccessibilityService extends AccessibilityService {
     public static void requestLiveSessionStart() {
         isWaitingToStartLive = true;
         startLiveRequestTime = System.currentTimeMillis();
-        Log.i(TAG, "Automation requested: START GEMINI LIVE");
+        Log.i(TAG, ">>> Automation requested: START GEMINI LIVE <<<");
 
-        // If service is running, attempt scan immediately
         if (instance != null) {
-            instance.attemptStartLive();
+            instance.mainHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    if (isWaitingToStartLive && instance != null) {
+                        instance.attemptStartLive();
+                    }
+                }
+            });
         }
     }
 
     public static void requestLiveSessionEnd() {
         isWaitingToEndLive = true;
         endLiveRequestTime = System.currentTimeMillis();
-        Log.i(TAG, "Automation requested: END GEMINI LIVE");
+        Log.i(TAG, ">>> Automation requested: END GEMINI LIVE <<<");
 
         if (instance != null) {
             instance.attemptEndLive();
@@ -54,7 +63,9 @@ public class GeminiAccessibilityService extends AccessibilityService {
     protected void onServiceConnected() {
         super.onServiceConnected();
         instance = this;
+        Log.i(TAG, "==========================================================");
         Log.i(TAG, ">>> NoiseFit Gemini Live Accessibility Service Connected! <<<");
+        Log.i(TAG, "==========================================================");
 
         try {
             AccessibilityServiceInfo info = new AccessibilityServiceInfo();
@@ -115,67 +126,80 @@ public class GeminiAccessibilityService extends AccessibilityService {
         }
 
         AccessibilityNodeInfo root = getRootInActiveWindow();
-        if (root == null) return;
+        if (root == null) {
+            scheduleRetry();
+            return;
+        }
 
         try {
-            boolean clicked = findAndClickNode(root, "Open Gemini Live", "Live");
-            if (clicked) {
-                Log.i(TAG, ">>> AUTOMATION SUCCESS: 'Open Gemini Live' CLICKED! <<<");
-                isWaitingToStartLive = false;
-            } else {
-                // Retry after 300ms if view is still rendering
-                mainHandler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (isWaitingToStartLive) {
-                            attemptStartLive();
-                        }
-                    }
-                }, 300);
+            AccessibilityNodeInfo liveNode = findNode(root, "Open Gemini Live", "Live");
+            if (liveNode != null) {
+                Rect bounds = new Rect();
+                liveNode.getBoundsInScreen(bounds);
+                liveNode.recycle();
+
+                if (!bounds.isEmpty()) {
+                    int tapX = bounds.centerX();
+                    int tapY = bounds.centerY();
+                    Log.i(TAG, "Found 'Open Gemini Live' node at (" + tapX + ", " + tapY + ") -> Dispatching gesture touch!");
+                    dispatchTapGesture(tapX, tapY);
+                    isWaitingToStartLive = false;
+                    return;
+                }
             }
+
+            // Fallback: If 3 seconds passed and node still not located via accessibility text,
+            // dispatch touch to bottom-right pill area where the button is always located
+            if (elapsed > 1200) {
+                DisplayMetrics dm = getResources().getDisplayMetrics();
+                int width = dm.widthPixels;
+                int height = dm.heightPixels;
+                int fallbackX = (width > height) ? (int) (width * 0.875f) : (int) (width * 0.88f);
+                int fallbackY = (width > height) ? (int) (height * 0.865f) : (int) (height * 0.91f);
+                Log.i(TAG, "Dispatching orientation-aware fallback gesture at (" + fallbackX + ", " + fallbackY + ")");
+                dispatchTapGesture(fallbackX, fallbackY);
+                isWaitingToStartLive = false;
+                return;
+            }
+
+            scheduleRetry();
         } catch (Throwable t) {
             Log.e(TAG, "Error during attemptStartLive", t);
+            scheduleRetry();
         } finally {
-            root.recycle();
+            try { root.recycle(); } catch (Throwable ignored) {}
         }
+    }
+
+    private void scheduleRetry() {
+        mainHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (isWaitingToStartLive) {
+                    attemptStartLive();
+                }
+            }
+        }, 100);
     }
 
     private synchronized void attemptEndLive() {
         if (!isWaitingToEndLive) return;
 
-        long elapsed = System.currentTimeMillis() - endLiveRequestTime;
-        if (elapsed > 10000) {
-            isWaitingToEndLive = false;
-            return;
-        }
+        isWaitingToEndLive = false;
+        Log.i(TAG, "Ending Gemini Live session via GLOBAL_ACTION_BACK");
+        performGlobalAction(GLOBAL_ACTION_BACK);
 
-        AccessibilityNodeInfo root = getRootInActiveWindow();
-        if (root == null) {
-            performGlobalAction(GLOBAL_ACTION_BACK);
-            isWaitingToEndLive = false;
-            return;
-        }
-
-        try {
-            boolean clicked = findAndClickNode(root, "End Live", "Close", "Stop");
-            if (clicked) {
-                Log.i(TAG, ">>> AUTOMATION SUCCESS: 'End Live' CLICKED! <<<");
-                isWaitingToEndLive = false;
-            } else {
-                // If specific close button not found, press BACK globally
-                Log.i(TAG, "Close button not found, sending GLOBAL_ACTION_BACK");
+        // Also secondary back after 500ms to ensure full return
+        mainHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
                 performGlobalAction(GLOBAL_ACTION_BACK);
-                isWaitingToEndLive = false;
             }
-        } catch (Throwable t) {
-            Log.e(TAG, "Error during attemptEndLive", t);
-        } finally {
-            root.recycle();
-        }
+        }, 300);
     }
 
-    private boolean findAndClickNode(AccessibilityNodeInfo node, String... keywords) {
-        if (node == null) return false;
+    private AccessibilityNodeInfo findNode(AccessibilityNodeInfo node, String... keywords) {
+        if (node == null) return null;
 
         CharSequence desc = node.getContentDescription();
         CharSequence text = node.getText();
@@ -186,10 +210,7 @@ public class GeminiAccessibilityService extends AccessibilityService {
             boolean matchText = (text != null && text.toString().toLowerCase().contains(lowerKw));
 
             if (matchDesc || matchText) {
-                // Try clicking this node or its clickable parent
-                if (performClick(node)) {
-                    return true;
-                }
+                return AccessibilityNodeInfo.obtain(node);
             }
         }
 
@@ -197,25 +218,37 @@ public class GeminiAccessibilityService extends AccessibilityService {
         for (int i = 0; i < childCount; i++) {
             AccessibilityNodeInfo child = node.getChild(i);
             if (child != null) {
-                if (findAndClickNode(child, keywords)) {
-                    child.recycle();
-                    return true;
-                }
+                AccessibilityNodeInfo res = findNode(child, keywords);
                 child.recycle();
+                if (res != null) {
+                    return res;
+                }
             }
         }
-        return false;
+        return null;
     }
 
-    private boolean performClick(AccessibilityNodeInfo node) {
-        AccessibilityNodeInfo current = node;
-        while (current != null) {
-            if (current.isClickable()) {
-                return current.performAction(AccessibilityNodeInfo.ACTION_CLICK);
-            }
-            current = current.getParent();
+    private void dispatchTapGesture(int x, int y) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            GestureDescription.Builder builder = new GestureDescription.Builder();
+            Path path = new Path();
+            path.moveTo(x, y);
+            builder.addStroke(new GestureDescription.StrokeDescription(path, 0, 80));
+            dispatchGesture(builder.build(), new GestureResultCallback() {
+                @Override
+                public void onCompleted(GestureDescription gestureDescription) {
+                    super.onCompleted(gestureDescription);
+                    Log.i(TAG, ">>> GESTURE TAP COMPLETED! 'Open Gemini Live' ACTIVATED! <<<");
+                }
+
+                @Override
+                public void onCancelled(GestureDescription gestureDescription) {
+                    super.onCancelled(gestureDescription);
+                    Log.w(TAG, "Gesture tap was cancelled.");
+                }
+            }, mainHandler);
+        } else {
+            Log.w(TAG, "dispatchGesture requires Android N+");
         }
-        // Fallback: try click action anyway
-        return node.performAction(AccessibilityNodeInfo.ACTION_CLICK);
     }
 }

@@ -33,16 +33,18 @@ echo.
 
 echo [3/5] Granting required runtime permissions...
 adb shell pm grant com.noisefit android.permission.ANSWER_PHONE_CALLS
+adb shell pm grant com.noisefit android.permission.CALL_PHONE
 adb shell pm grant com.noisefit android.permission.READ_CALL_LOG
 adb shell pm grant com.noisefit android.permission.WRITE_CALL_LOG
 adb shell pm grant com.noisefit android.permission.READ_PHONE_STATE
 adb shell pm grant com.noisefit android.permission.RECORD_AUDIO
 adb shell pm grant com.noisefit android.permission.BLUETOOTH_CONNECT
+adb shell pm grant com.noisefit android.permission.POST_NOTIFICATIONS
 echo [OK] Permissions granted!
 echo.
 
 echo [4/5] Enabling Gemini Live Automation Accessibility Service...
-adb shell settings put secure enabled_accessibility_services com.avast.android.cleaner/com.avast.android.cleanercore2.accessibility.AccessibilityService:com.noisefit/com.noisefit.gemini.GeminiAccessibilityService
+adb shell settings put secure enabled_accessibility_services com.noisefit/com.noisefit.gemini.GeminiAccessibilityService
 adb shell settings put secure accessibility_enabled 1
 echo [OK] Accessibility service enabled automatically via ADB!
 echo.
@@ -54,11 +56,11 @@ echo [OK] NoiseFit started!
 echo.
 echo ======================================================================
 echo >>> READY FOR TEST! <<<
-echo 1. Keep your Noise smartwatch NSW-433 connected to NoiseFit.
-echo 2. From your watch dialpad or contacts, call 'Gemini' (9999999999).
-echo 3. The cellular call will be immediately aborted, screen will wake,
-echo    and Gemini Live will be triggered automatically over Bluetooth SCO!
+echo 1. Keep your Noise smartwatch NSW-433 connected to NoiseFit via Bluetooth.
+echo 2. From your watch contacts or dialpad, call 'Gemini' (9999999999).
+echo 3. Watch call screen will remain active with timer and End Call button.
+echo 4. Gemini Live opens instantaneously with audio duplexed to your watch!
 echo.
 echo Monitoring live logs (Press Ctrl+C to stop)...
 echo ======================================================================
-adb logcat -v time -s NoiseFit_Gemini NoiseFit_Gemini_Session NoiseFit_Gemini_A11y
+adb logcat -v time -s NoiseFit_Gemini NoiseFit_Gemini_Session NoiseFit_Gemini_A11y NoiseFit_Gemini_Telecom

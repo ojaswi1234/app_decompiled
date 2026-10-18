@@ -1,6 +1,7 @@
 package com.noisefit.gemini;
 
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -27,7 +28,7 @@ public class GeminiCallInterceptor {
 
     private static volatile boolean isInitialized = false;
     private static long lastInterceptTimestamp = 0;
-    private static ContentObserver sCallObserver; // STRONG STATIC REFERENCE TO PREVENT GC
+    private static ContentObserver sCallObserver;
     private static Handler sMainHandler = new Handler(Looper.getMainLooper());
 
     public static synchronized void init(final Context context) {
@@ -41,6 +42,9 @@ public class GeminiCallInterceptor {
         Log.i(TAG, "Target Number: " + TRIGGER_NUMBER_PRIMARY);
         Log.i(TAG, "Target Contact Name: " + TRIGGER_NAME);
         Log.i(TAG, "==========================================================");
+
+        // Register Telecom PhoneAccount early
+        GeminiTelecomConnectionService.registerPhoneAccount(appContext);
 
         // 1. Real-time ContentObserver on CallLog.Calls (strong static reference)
         try {
@@ -173,7 +177,7 @@ public class GeminiCallInterceptor {
                             lastInterceptTimestamp = now;
                             Log.i(TAG, ">>> DETECTED GEMINI CALL FROM WATCH: number=" + number + ", name=" + cachedName + " (type=" + type + ") <<<");
 
-                            // 1. Immediately abort cellular network call
+                            // 1. Abort cellular carrier call
                             terminateCellularCall(context);
 
                             // 2. Remove fake number from Call Log
@@ -181,7 +185,7 @@ public class GeminiCallInterceptor {
                                 cr.delete(CallLog.Calls.CONTENT_URI, CallLog.Calls._ID + "=?", new String[]{id});
                             } catch (Throwable ignored) {}
 
-                            // 3. Launch Gemini Voice Call Session & Automation
+                            // 3. Launch Gemini Voice Call Session, Telecom Connection, & Automation
                             triggerGeminiSession(context, number != null ? number : TRIGGER_NUMBER_PRIMARY);
                             break;
                         }
@@ -250,13 +254,16 @@ public class GeminiCallInterceptor {
         sMainHandler.post(new Runnable() {
             @Override
             public void run() {
-                // 1. Start Bluetooth SCO Audio Routing & Watch Interaction
+                // 1. Establish Telecom Connection to keep smartwatch in CALL ACTIVE state with timer & controls
+                GeminiTelecomConnectionService.startGeminiLiveCall(app, "Gemini", number);
+
+                // 2. Start Bluetooth SCO Audio Routing to lock watch mic & speaker
                 GeminiVoiceCallSession.getInstance().startCall(app, number);
 
-                // 2. Request Accessibility Service to click Open Gemini Live
+                // 3. Request Accessibility Service to gesture-click Open Gemini Live
                 GeminiAccessibilityService.requestLiveSessionStart();
 
-                // 3. Wake screen and bring up official installed Google Gemini App
+                // 4. Wake screen and bring up official installed Google Gemini App
                 launchOfficialGeminiApp(app);
             }
         });
@@ -274,16 +281,27 @@ public class GeminiCallInterceptor {
                 wakeLock.acquire(4000);
             }
 
-            // 1. Launch official installed Gemini App EntryPoint
+            // Launch official installed Gemini App EntryPoint (Direct component for maximum speed)
+            Intent directIntent = new Intent(Intent.ACTION_MAIN);
+            directIntent.setComponent(new ComponentName("com.google.android.apps.bard", "com.google.android.apps.bard.shellapp.BardEntryPointActivity"));
+            directIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            try {
+                context.startActivity(directIntent);
+                Log.i(TAG, "Instantly launched official Gemini app via direct component!");
+                return;
+            } catch (Throwable t) {
+                Log.w(TAG, "Direct component launch failed, trying package manager fallback", t);
+            }
+
             Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage("com.google.android.apps.bard");
             if (launchIntent != null) {
                 launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 context.startActivity(launchIntent);
-                Log.i(TAG, "Launched official Google Gemini app in foreground!");
+                Log.i(TAG, "Launched official Google Gemini app via package manager fallback!");
                 return;
             }
 
-            // 2. Fallback: Voice Command intent
+            // Fallback: Voice Command intent
             Intent voiceIntent = new Intent(Intent.ACTION_VOICE_COMMAND);
             voiceIntent.setPackage("com.google.android.apps.bard");
             voiceIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -292,12 +310,6 @@ public class GeminiCallInterceptor {
                 Log.i(TAG, "Launched Gemini via ACTION_VOICE_COMMAND");
                 return;
             }
-
-            // 3. Fallback: Assist intent
-            Intent assistIntent = new Intent(Intent.ACTION_ASSIST);
-            assistIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(assistIntent);
-            Log.i(TAG, "Launched digital assistant via ACTION_ASSIST fallback");
         } catch (Exception e) {
             Log.e(TAG, "Error launching official Gemini app", e);
         }
@@ -312,6 +324,7 @@ public class GeminiCallInterceptor {
     public static void onPhoneIdle() {
         if (GeminiVoiceCallSession.getInstance().isCallActive()) {
             Log.i(TAG, "Phone/Watch call went IDLE, ending Gemini session & Live automation");
+            GeminiTelecomConnectionService.endActiveCall();
             GeminiAccessibilityService.requestLiveSessionEnd();
             GeminiVoiceCallSession.getInstance().endCall();
         }

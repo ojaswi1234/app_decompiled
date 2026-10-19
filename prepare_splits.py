@@ -84,10 +84,11 @@ def main():
         dex18_data = f.read()
     with open('classes19.dex', 'rb') as f:
         dex19_data = f.read()
+    with open('fixed_onboard_video_gradient_bg.xml', 'rb') as f:
+        fixed_gradient_xml = f.read()
 
     with zipfile.ZipFile('temp_base_manifest.apk', 'r') as zmanifest:
         compiled_manifest = zmanifest.read('AndroidManifest.xml')
-        compiled_arsc = zmanifest.read('resources.arsc')
         compiled_a11y_xml = zmanifest.read('res/xml/gemini_accessibility_service_config.xml')
 
     # 1. Base APK
@@ -100,7 +101,7 @@ def main():
         },
         replace_files={
             'AndroidManifest.xml': compiled_manifest,
-            'resources.arsc': compiled_arsc,
+            'res/drawable/onboard_video_gradient_bg.xml': fixed_gradient_xml,
             'classes17.dex': dex17_data,
             'classes18.dex': dex18_data
         }

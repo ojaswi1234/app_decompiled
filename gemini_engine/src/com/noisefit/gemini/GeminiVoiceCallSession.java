@@ -8,6 +8,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.AudioDeviceCallback;
 import android.media.AudioDeviceInfo;
 import android.media.AudioManager;
 import android.os.Build;
@@ -21,6 +22,7 @@ public class GeminiVoiceCallSession {
     private static final String TAG = "NoiseFit_Gemini_Session";
     private static final String NOTIF_CHANNEL_ID = "gemini_voice_call_channel";
     private static final int NOTIF_ID = 998811;
+    private static final long WATCHDOG_INTERVAL_MS = 500L;
 
     private static volatile GeminiVoiceCallSession instance;
 
@@ -28,12 +30,26 @@ public class GeminiVoiceCallSession {
     private AudioManager audioManager;
     private PowerManager.WakeLock wakeLock;
 
-    private boolean isCallActive = false;
-    private boolean isScoConnected = false;
+    private volatile boolean isCallActive = false;
+    private volatile boolean isScoConnected = false;
     private String activeNumber = "";
 
-    private Handler mainHandler = new Handler(Looper.getMainLooper());
+    private final Handler mainHandler = new Handler(Looper.getMainLooper());
     private BroadcastReceiver scoReceiver;
+    private AudioDeviceCallback audioDeviceCallback;
+    private Object communicationDeviceListener; // AudioManager.OnCommunicationDeviceChangedListener on API 33+
+
+    private final Runnable scoWatchdogRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (!isCallActive) return;
+
+            enforceBluetoothScoRouting();
+
+            // Reschedule watchdog while call remains active
+            mainHandler.postDelayed(this, WATCHDOG_INTERVAL_MS);
+        }
+    };
 
     private GeminiVoiceCallSession() {}
 
@@ -54,12 +70,16 @@ public class GeminiVoiceCallSession {
         this.activeNumber = (number != null) ? number : "Gemini";
 
         if (isCallActive) {
-            Log.w(TAG, "Gemini call session is already active.");
+            Log.w(TAG, "Gemini call session is already active. Re-enforcing audio routing.");
+            enforceBluetoothScoRouting();
             return;
         }
 
         isCallActive = true;
-        Log.i(TAG, "Starting Gemini Watch Bluetooth SCO Audio Session for: " + activeNumber);
+        Log.i(TAG, "==========================================================");
+        Log.i(TAG, ">>> STARTING GEMINI SMARTWATCH BLUETOOTH SCO CALL SESSION <<<");
+        Log.i(TAG, "Target Number: " + activeNumber);
+        Log.i(TAG, "==========================================================");
 
         // 1. Acquire WakeLock
         acquireWakeLock();
@@ -67,8 +87,12 @@ public class GeminiVoiceCallSession {
         // 2. Setup Notification
         showOngoingNotification();
 
-        // 3. Setup Audio & Bluetooth SCO (routes watch mic & speaker)
-        setupBluetoothSco();
+        // 3. Setup Audio & Bluetooth SCO Routing
+        setupAudioRouting();
+
+        // 4. Start continuous BTMicFix routing watchdog
+        mainHandler.removeCallbacks(scoWatchdogRunnable);
+        mainHandler.postDelayed(scoWatchdogRunnable, WATCHDOG_INTERVAL_MS);
     }
 
     private void acquireWakeLock() {
@@ -76,19 +100,19 @@ public class GeminiVoiceCallSession {
             PowerManager pm = (PowerManager) appContext.getSystemService(Context.POWER_SERVICE);
             if (pm != null) {
                 wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "NoiseFit:GeminiCallWake");
-                wakeLock.acquire(10 * 60 * 1000L /* 10 minutes max */);
+                wakeLock.acquire(15 * 60 * 1000L /* 15 minutes max */);
             }
         } catch (Exception e) {
             Log.e(TAG, "Error acquiring wake lock", e);
         }
     }
 
-    private void setupBluetoothSco() {
+    private void setupAudioRouting() {
         try {
             audioManager = (AudioManager) appContext.getSystemService(Context.AUDIO_SERVICE);
             if (audioManager == null) return;
 
-            // Register receiver for SCO state updates
+            // Register receiver for legacy SCO audio state updates
             if (scoReceiver == null) {
                 scoReceiver = new BroadcastReceiver() {
                     @Override
@@ -100,21 +124,100 @@ public class GeminiVoiceCallSession {
                             Log.i(TAG, ">>> Bluetooth SCO CONNECTED! Watch mic & speaker ACTIVE for Gemini Live <<<");
                             isScoConnected = true;
                         } else if (state == AudioManager.SCO_AUDIO_STATE_DISCONNECTED) {
-                            Log.i(TAG, "Bluetooth SCO disconnected");
+                            Log.i(TAG, "Bluetooth SCO disconnected event received");
                             isScoConnected = false;
+                            if (isCallActive) {
+                                // Watchdog or immediate re-connection
+                                enforceBluetoothScoRouting();
+                            }
                         }
                     }
                 };
                 IntentFilter filter = new IntentFilter(AudioManager.ACTION_SCO_AUDIO_STATE_UPDATED);
-                appContext.registerReceiver(scoReceiver, filter);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    appContext.registerReceiver(scoReceiver, filter, Context.RECEIVER_EXPORTED);
+                } else {
+                    appContext.registerReceiver(scoReceiver, filter);
+                }
             }
 
-            // Keep audio mode normal so Gemini Live app can freely record and capture microphone without conflict
-            Log.i(TAG, "Audio mode kept NORMAL to allow Gemini Live full microphone access");
+            // Register AudioDeviceCallback for dynamic hardware connection/disconnection
+            if (audioDeviceCallback == null) {
+                audioDeviceCallback = new AudioDeviceCallback() {
+                    @Override
+                    public void onAudioDevicesAdded(AudioDeviceInfo[] addedDevices) {
+                        super.onAudioDevicesAdded(addedDevices);
+                        Log.d(TAG, "Audio devices added, re-verifying SCO routing");
+                        if (isCallActive) enforceBluetoothScoRouting();
+                    }
 
-            // Android 12+ (API 31+) direct communication device routing
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    @Override
+                    public void onAudioDevicesRemoved(AudioDeviceInfo[] removedDevices) {
+                        super.onAudioDevicesRemoved(removedDevices);
+                        Log.d(TAG, "Audio devices removed, re-verifying SCO routing");
+                        if (isCallActive) enforceBluetoothScoRouting();
+                    }
+                };
+                audioManager.registerAudioDeviceCallback(audioDeviceCallback, mainHandler);
+            }
+
+            // Android 13+ (API 33+) Communication Device Changed Listener
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 try {
+                    AudioManager.OnCommunicationDeviceChangedListener listener = new AudioManager.OnCommunicationDeviceChangedListener() {
+                        @Override
+                        public void onCommunicationDeviceChanged(AudioDeviceInfo device) {
+                            Log.d(TAG, "onCommunicationDeviceChanged: " + (device != null ? (device.getProductName() + " type=" + device.getType()) : "null"));
+                            if (isCallActive) {
+                                if (device == null || (device.getType() != AudioDeviceInfo.TYPE_BLUETOOTH_SCO && device.getType() != AudioDeviceInfo.TYPE_BLE_HEADSET)) {
+                                    Log.w(TAG, "Communication device diverted away from Bluetooth! Re-enforcing immediately!");
+                                    enforceBluetoothScoRouting();
+                                }
+                            }
+                        }
+                    };
+                    audioManager.addOnCommunicationDeviceChangedListener(appContext.getMainExecutor(), listener);
+                    communicationDeviceListener = listener;
+                    Log.i(TAG, "Registered OnCommunicationDeviceChangedListener (API 33+)");
+                } catch (Throwable t) {
+                    Log.w(TAG, "Could not register OnCommunicationDeviceChangedListener", t);
+                }
+            }
+
+            // Initial routing enforcement
+            enforceBluetoothScoRouting();
+
+        } catch (Exception e) {
+            Log.e(TAG, "Error setting up Audio Routing", e);
+        }
+    }
+
+    /**
+     * Core BTMicFix enforcement:
+     * 1. Forces audioManager mode to MODE_IN_COMMUNICATION (required by setCommunicationDevice).
+     * 2. Finds the Bluetooth SCO or BLE Headset device.
+     * 3. Sets it as the active communication device.
+     * 4. Triggers startBluetoothSco() and setBluetoothScoOn(true) as fallback for OEM vendor audio stacks.
+     */
+    public synchronized void enforceBluetoothScoRouting() {
+        if (!isCallActive || audioManager == null) return;
+
+        try {
+            // 1. MUST set MODE_IN_COMMUNICATION for setCommunicationDevice to take effect
+            int currentMode = audioManager.getMode();
+            if (currentMode != AudioManager.MODE_IN_COMMUNICATION) {
+                audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
+                Log.d(TAG, "Forced AudioManager mode to MODE_IN_COMMUNICATION (was " + currentMode + ")");
+            }
+
+            // 2. Android 12+ (API 31+) direct communication device routing
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                AudioDeviceInfo currentCommDevice = audioManager.getCommunicationDevice();
+                boolean isCurrentBt = (currentCommDevice != null &&
+                        (currentCommDevice.getType() == AudioDeviceInfo.TYPE_BLUETOOTH_SCO ||
+                         currentCommDevice.getType() == AudioDeviceInfo.TYPE_BLE_HEADSET));
+
+                if (!isCurrentBt) {
                     List<AudioDeviceInfo> devices = audioManager.getAvailableCommunicationDevices();
                     AudioDeviceInfo targetDevice = null;
                     for (AudioDeviceInfo dev : devices) {
@@ -124,45 +227,71 @@ public class GeminiVoiceCallSession {
                             break;
                         }
                     }
+
                     if (targetDevice != null) {
                         boolean routed = audioManager.setCommunicationDevice(targetDevice);
-                        Log.i(TAG, "audioManager.setCommunicationDevice(TYPE_BLUETOOTH_SCO): " + routed);
+                        Log.i(TAG, ">>> audioManager.setCommunicationDevice(" + targetDevice.getProductName() + ", type=" + targetDevice.getType() + "): " + routed + " <<<");
                     } else {
-                        Log.w(TAG, "No Bluetooth SCO device found in getAvailableCommunicationDevices");
+                        Log.w(TAG, "No Bluetooth SCO device found in getAvailableCommunicationDevices (watch might be re-connecting)");
                     }
-                } catch (Throwable t) {
-                    Log.e(TAG, "Error routing via setCommunicationDevice", t);
                 }
             }
 
-            // Fallback for legacy/hybrid Android versions
+            // 3. Fallback / reinforcement for Samsung One UI & legacy vendor audio stacks
             try {
-                audioManager.startBluetoothSco();
-                audioManager.setBluetoothScoOn(true);
+                if (!audioManager.isBluetoothScoOn()) {
+                    audioManager.startBluetoothSco();
+                    audioManager.setBluetoothScoOn(true);
+                    Log.d(TAG, "Invoked audioManager.startBluetoothSco() & setBluetoothScoOn(true)");
+                }
             } catch (Throwable t) {
-                Log.w(TAG, "Legacy startBluetoothSco invocation exception", t);
+                Log.w(TAG, "Legacy startBluetoothSco invocation warning", t);
             }
 
-        } catch (Exception e) {
-            Log.e(TAG, "Error setting up Bluetooth SCO", e);
+        } catch (Throwable t) {
+            Log.e(TAG, "Error in enforceBluetoothScoRouting", t);
         }
     }
 
     public synchronized void endCall() {
         if (!isCallActive) return;
         isCallActive = false;
-        Log.i(TAG, "Ending Gemini Call Session and releasing audio resources...");
+        Log.i(TAG, "==========================================================");
+        Log.i(TAG, ">>> ENDING GEMINI CALL SESSION & RELEASING AUDIO RESOURCES <<<");
+        Log.i(TAG, "==========================================================");
 
-        // Ensure Telecom connection is terminated
+        // 1. Stop continuous watchdog
+        mainHandler.removeCallbacks(scoWatchdogRunnable);
+
+        // 2. Terminate Telecom connection if still active
         try {
             GeminiTelecomConnectionService.endActiveCall();
         } catch (Throwable t) {
             Log.w(TAG, "Error ending telecom connection from VoiceCallSession", t);
         }
 
-        // 1. Reset Audio & Bluetooth SCO
-        try {
-            if (audioManager != null) {
+        // 3. Unregister dynamic device listeners
+        if (audioManager != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && communicationDeviceListener != null) {
+                try {
+                    audioManager.removeOnCommunicationDeviceChangedListener(
+                            (AudioManager.OnCommunicationDeviceChangedListener) communicationDeviceListener
+                    );
+                    communicationDeviceListener = null;
+                    Log.d(TAG, "Removed OnCommunicationDeviceChangedListener");
+                } catch (Throwable ignored) {}
+            }
+
+            if (audioDeviceCallback != null) {
+                try {
+                    audioManager.unregisterAudioDeviceCallback(audioDeviceCallback);
+                    audioDeviceCallback = null;
+                    Log.d(TAG, "Unregistered AudioDeviceCallback");
+                } catch (Throwable ignored) {}
+            }
+
+            // 4. Reset Audio Routing & SCO
+            try {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                     try {
                         audioManager.clearCommunicationDevice();
@@ -173,13 +302,15 @@ public class GeminiVoiceCallSession {
                     audioManager.stopBluetoothSco();
                     audioManager.setBluetoothScoOn(false);
                 } catch (Throwable ignored) {}
+
                 audioManager.setMode(AudioManager.MODE_NORMAL);
+                Log.i(TAG, "Restored AudioManager mode to MODE_NORMAL");
+            } catch (Exception e) {
+                Log.e(TAG, "Error resetting SCO audio", e);
             }
-        } catch (Exception e) {
-            Log.e(TAG, "Error resetting SCO audio", e);
         }
 
-        // 2. Unregister SCO receiver
+        // 5. Unregister SCO receiver
         try {
             if (scoReceiver != null && appContext != null) {
                 appContext.unregisterReceiver(scoReceiver);
@@ -187,10 +318,10 @@ public class GeminiVoiceCallSession {
             }
         } catch (Exception ignored) {}
 
-        // 3. Dismiss Notification
+        // 6. Dismiss Notification
         dismissNotification();
 
-        // 4. Release WakeLock
+        // 7. Release WakeLock
         try {
             if (wakeLock != null && wakeLock.isHeld()) {
                 wakeLock.release();

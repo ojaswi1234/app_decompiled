@@ -24,7 +24,7 @@ public class GeminiTelecomConnectionService extends ConnectionService {
 
     private static volatile GeminiTelecomConnectionService sInstance;
     private static volatile GeminiConnection sActiveConnection;
-    private static Handler sMainHandler = new Handler(Looper.getMainLooper());
+    private static final Handler sMainHandler = new Handler(Looper.getMainLooper());
 
     public static PhoneAccountHandle getPhoneAccountHandle(Context context) {
         return new PhoneAccountHandle(
@@ -83,13 +83,14 @@ public class GeminiTelecomConnectionService extends ConnectionService {
     public static synchronized void endActiveCall() {
         if (sActiveConnection != null) {
             try {
-                sActiveConnection.setDisconnected(new DisconnectCause(DisconnectCause.LOCAL));
-                sActiveConnection.destroy();
+                GeminiConnection conn = sActiveConnection;
+                sActiveConnection = null;
+                conn.setDisconnected(new DisconnectCause(DisconnectCause.LOCAL));
+                conn.destroy();
                 Log.i(TAG, "sActiveConnection explicitly disconnected and destroyed");
             } catch (Throwable t) {
                 Log.w(TAG, "Error disconnecting sActiveConnection", t);
             }
-            sActiveConnection = null;
         }
     }
 
@@ -121,7 +122,7 @@ public class GeminiTelecomConnectionService extends ConnectionService {
         connection.setAddress(Uri.fromParts("tel", "9999999999", null), TelecomManager.PRESENTATION_ALLOWED);
         connection.setConnectionProperties(Connection.PROPERTY_SELF_MANAGED);
         connection.setConnectionCapabilities(Connection.CAPABILITY_HOLD | Connection.CAPABILITY_SUPPORT_HOLD | Connection.CAPABILITY_MUTE);
-        connection.setAudioModeIsVoip(false);
+        connection.setAudioModeIsVoip(true);
         connection.setDialing();
 
         sMainHandler.postDelayed(new Runnable() {
@@ -172,7 +173,7 @@ public class GeminiTelecomConnectionService extends ConnectionService {
         connection.setAddress(Uri.fromParts("tel", "9999999999", null), TelecomManager.PRESENTATION_ALLOWED);
         connection.setConnectionProperties(Connection.PROPERTY_SELF_MANAGED);
         connection.setConnectionCapabilities(Connection.CAPABILITY_HOLD | Connection.CAPABILITY_SUPPORT_HOLD | Connection.CAPABILITY_MUTE);
-        connection.setAudioModeIsVoip(false);
+        connection.setAudioModeIsVoip(true);
         connection.setRinging();
 
         // Auto-answer after short post so the watch seamlessly transitions to active call
@@ -205,6 +206,7 @@ public class GeminiTelecomConnectionService extends ConnectionService {
             setActive();
             setAudioRoute(CallAudioState.ROUTE_BLUETOOTH);
             Log.i(TAG, "GeminiConnection answered");
+            GeminiVoiceCallSession.getInstance().enforceBluetoothScoRouting();
         }
 
         @Override
@@ -228,10 +230,10 @@ public class GeminiTelecomConnectionService extends ConnectionService {
             } catch (Throwable ignored) {}
             sActiveConnection = null;
 
-            // 1. Close Gemini Live
+            // 1. Close Gemini Live via Accessibility Service
             GeminiAccessibilityService.requestLiveSessionEnd();
 
-            // 2. Tear down SCO and reset audio
+            // 2. Tear down SCO and reset audio mode
             GeminiVoiceCallSession.getInstance().endCall();
         }
 
@@ -239,6 +241,13 @@ public class GeminiTelecomConnectionService extends ConnectionService {
         public void onCallAudioStateChanged(CallAudioState state) {
             super.onCallAudioStateChanged(state);
             Log.d(TAG, "CallAudioState changed: " + state);
+            if (state != null && state.getRoute() != CallAudioState.ROUTE_BLUETOOTH) {
+                if ((state.getSupportedRouteMask() & CallAudioState.ROUTE_BLUETOOTH) != 0) {
+                    setAudioRoute(CallAudioState.ROUTE_BLUETOOTH);
+                }
+            }
+            // Re-enforce audio routing
+            GeminiVoiceCallSession.getInstance().enforceBluetoothScoRouting();
         }
     }
 }

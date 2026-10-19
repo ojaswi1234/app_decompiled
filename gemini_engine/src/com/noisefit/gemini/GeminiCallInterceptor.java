@@ -138,8 +138,7 @@ public class GeminiCallInterceptor {
                 }, delay);
             }
         } else if (state == TelephonyManager.CALL_STATE_IDLE) {
-            Log.i(TAG, "Telephony IDLE");
-            onPhoneIdle();
+            Log.d(TAG, "Telephony IDLE (cellular stack idle - self-managed Gemini call lifecycle managed via Telecom/watch)");
         }
     }
 
@@ -366,6 +365,11 @@ public class GeminiCallInterceptor {
     }
 
     public static void onPhoneIdle() {
+        long now = System.currentTimeMillis();
+        if (now - lastInterceptTimestamp < 5000) {
+            Log.d(TAG, "Ignoring phone idle during initial call intercept window");
+            return;
+        }
         if (GeminiVoiceCallSession.getInstance().isCallActive()) {
             Log.i(TAG, "Phone/Watch call went IDLE, ending Gemini session & Live automation");
             GeminiTelecomConnectionService.endActiveCall();

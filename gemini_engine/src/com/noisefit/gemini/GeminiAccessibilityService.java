@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Path;
-import android.graphics.Point;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Handler;
@@ -18,6 +17,8 @@ import android.util.Log;
 import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
+import android.view.accessibility.AccessibilityWindowInfo;
+import java.util.List;
 
 public class GeminiAccessibilityService extends AccessibilityService {
     private static final String TAG = "NoiseFit_Gemini_A11y";
@@ -32,7 +33,11 @@ public class GeminiAccessibilityService extends AccessibilityService {
     private static volatile boolean isWaitingToEndLive = false;
     private static volatile long endLiveRequestTime = 0;
 
-    private Handler mainHandler = new Handler(Looper.getMainLooper());
+    private static final int MAX_TAP_ATTEMPTS = 20;
+    private static final long MAX_AUTOMATION_TIMEOUT_MS = 15000L;
+    private static final long RETRY_INTERVAL_MS = 350L;
+
+    private final Handler mainHandler = new Handler(Looper.getMainLooper());
 
     private final BroadcastReceiver actionReceiver = new BroadcastReceiver() {
         @Override
@@ -228,41 +233,47 @@ public class GeminiAccessibilityService extends AccessibilityService {
         long elapsed = System.currentTimeMillis() - startLiveRequestTime;
         Log.d(TAG, "attemptStartLive executing: elapsed=" + elapsed + "ms, attempts=" + tapAttempts);
 
-        if (elapsed > 15000 || tapAttempts >= 8) {
-            Log.w(TAG, "Start Live automation finished or timed out (15s)");
+        if (elapsed > MAX_AUTOMATION_TIMEOUT_MS || tapAttempts >= MAX_TAP_ATTEMPTS) {
+            Log.w(TAG, "Start Live automation finished or reached limit: elapsed=" + elapsed + "ms, attempts=" + tapAttempts);
             isWaitingToStartLive = false;
             return;
         }
 
-        // Check if Gemini Live is ALREADY active (as in 1000226324.jpg with the [X] close button and live pill)
-        AccessibilityNodeInfo closeNode = null;
+        // 1. Check if Gemini Live is ALREADY actively running (verified in live UI dump: "Close", "Turn off microphone", "Turn off camera")
+        AccessibilityNodeInfo activeLiveIndicatorNode = null;
         try {
             AccessibilityNodeInfo root = getRootInActiveWindow();
             if (root != null) {
-                closeNode = findNode(root, "Close Live", "End Live", "Stop Live");
+                activeLiveIndicatorNode = findNode(root, "Turn off microphone", "Turn off camera", "Close Live", "End Live", "Stop Live");
                 root.recycle();
             }
         } catch (Throwable ignored) {}
 
-        if (closeNode != null) {
-            closeNode.recycle();
-            Log.i(TAG, ">>> GEMINI LIVE IS ACTIVELY RUNNING! Session successfully established! <<<");
+        if (activeLiveIndicatorNode != null) {
+            activeLiveIndicatorNode.recycle();
+            Log.i(TAG, "==========================================================");
+            Log.i(TAG, ">>> GEMINI LIVE IS ACTIVELY RUNNING! Session Established! <<<");
+            Log.i(TAG, "==========================================================");
             isWaitingToStartLive = false;
             return;
         }
 
-        // Wait at least 300ms for Gemini app window to draw before clicking
-        if (elapsed < 300) {
+        // Wait at least 250ms for the Gemini app window to draw before clicking
+        if (elapsed < 250) {
             scheduleRetry(100);
             return;
         }
 
-        // 1. Try finding Live button node in active window or interactive windows
+        // 2. Multi-strategy node search for Live start button
         AccessibilityNodeInfo liveNode = null;
         try {
             AccessibilityNodeInfo root = getRootInActiveWindow();
             if (root != null) {
-                liveNode = findNode(root, "Open Gemini Live", "assistant_robin_input_voice_chat_button_compose", "Gemini Live");
+                liveNode = findNode(root,
+                        "Open Gemini Live",
+                        "assistant_robin_input_voice_chat_button_compose",
+                        "Gemini Live",
+                        "Live");
                 root.recycle();
             }
         } catch (Throwable t) {
@@ -272,12 +283,16 @@ public class GeminiAccessibilityService extends AccessibilityService {
         if (liveNode == null) {
             try {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    java.util.List<android.view.accessibility.AccessibilityWindowInfo> windows = getWindows();
+                    List<AccessibilityWindowInfo> windows = getWindows();
                     if (windows != null) {
-                        for (android.view.accessibility.AccessibilityWindowInfo window : windows) {
+                        for (AccessibilityWindowInfo window : windows) {
                             AccessibilityNodeInfo wRoot = window.getRoot();
                             if (wRoot != null) {
-                                liveNode = findNode(wRoot, "Open Gemini Live", "assistant_robin_input_voice_chat_button_compose", "Gemini Live");
+                                liveNode = findNode(wRoot,
+                                        "Open Gemini Live",
+                                        "assistant_robin_input_voice_chat_button_compose",
+                                        "Gemini Live",
+                                        "Live");
                                 wRoot.recycle();
                                 if (liveNode != null) break;
                             }
@@ -289,8 +304,27 @@ public class GeminiAccessibilityService extends AccessibilityService {
             }
         }
 
-        int tapX = 911;
-        int tapY = 1343;
+        // Determine screen resolution dynamically
+        int screenWidth = 1080;
+        int screenHeight = 2408;
+        try {
+            WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+            if (wm != null) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    Rect b = wm.getMaximumWindowMetrics().getBounds();
+                    screenWidth = b.width();
+                    screenHeight = b.height();
+                } else {
+                    DisplayMetrics dm = new DisplayMetrics();
+                    wm.getDefaultDisplay().getRealMetrics(dm);
+                    screenWidth = dm.widthPixels;
+                    screenHeight = dm.heightPixels;
+                }
+            }
+        } catch (Throwable ignored) {}
+
+        int tapX;
+        int tapY;
 
         if (liveNode != null) {
             Rect bounds = new Rect();
@@ -298,10 +332,13 @@ public class GeminiAccessibilityService extends AccessibilityService {
             if (!bounds.isEmpty()) {
                 tapX = bounds.centerX();
                 tapY = bounds.centerY();
-                Log.i(TAG, "Found Live node at exact screen bounds: " + bounds + " -> center (" + tapX + ", " + tapY + ")");
+                Log.i(TAG, "Found Live node at screen bounds: " + bounds + " -> center (" + tapX + ", " + tapY + ")");
+            } else {
+                tapX = (int) (screenWidth * 0.834f);
+                tapY = (int) (screenHeight * 0.845f);
             }
 
-            // Click the node or parent if clickable
+            // Click node directly or clickable parent
             try {
                 AccessibilityNodeInfo clickableTarget = liveNode;
                 while (clickableTarget != null && !clickableTarget.isClickable()) {
@@ -319,45 +356,27 @@ public class GeminiAccessibilityService extends AccessibilityService {
 
             liveNode.recycle();
         } else {
-            // Screen metrics for Galaxy M33 (1080x2408)
-            int screenWidth = 1080;
-            int screenHeight = 2408;
-            try {
-                android.view.WindowManager wm = (android.view.WindowManager) getSystemService(Context.WINDOW_SERVICE);
-                if (wm != null) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                        Rect b = wm.getMaximumWindowMetrics().getBounds();
-                        screenWidth = b.width();
-                        screenHeight = b.height();
-                    } else {
-                        android.graphics.Point size = new android.graphics.Point();
-                        wm.getDefaultDisplay().getRealSize(size);
-                        screenWidth = size.x;
-                        screenHeight = size.y;
-                    }
-                }
-            } catch (Throwable ignored) {}
-
-            // Alternate between Zero-State Half-Sheet position (911, 1343) and Full-Screen Chat position (855, 2126)
+            // Proportional fallbacks:
+            // Full-Screen Chat Live button center: X=83.4%, Y=84.5% (verified bounds [844,1968][958,2101])
+            // Half-Sheet Zero-State Live button center: X=84.3%, Y=55.8% (center 911, 1343)
             if (tapAttempts % 2 == 0) {
-                // Half-Sheet Zero-State position: Center of Live button (911, 1343)
-                tapX = (screenWidth == 1080) ? 911 : (int) (screenWidth * 0.843f);
-                tapY = (screenHeight == 2408) ? 1343 : (int) (screenHeight * 0.558f);
-                Log.i(TAG, "Fallback targeting Half-Sheet Zero-State Live button at (" + tapX + ", " + tapY + ")");
-            } else {
-                // Full-Screen Chat position: Center of Live button (855, 2126)
-                tapX = (screenWidth == 1080) ? 855 : (int) (screenWidth * 0.792f);
-                tapY = (screenHeight == 2408) ? 2126 : (int) (screenHeight * 0.883f);
+                tapX = (int) (screenWidth * 0.834f);
+                tapY = (int) (screenHeight * 0.845f);
                 Log.i(TAG, "Fallback targeting Full-Screen Chat Live button at (" + tapX + ", " + tapY + ")");
+            } else {
+                tapX = (int) (screenWidth * 0.843f);
+                tapY = (int) (screenHeight * 0.558f);
+                Log.i(TAG, "Fallback targeting Half-Sheet Zero-State Live button at (" + tapX + ", " + tapY + ")");
             }
         }
 
+        // Dispatch verified gesture tap
         Log.i(TAG, ">>> Dispatching verified Live gesture tap at (" + tapX + ", " + tapY + ") [attempt " + (tapAttempts + 1) + "] <<<");
         dispatchTapGesture(tapX, tapY);
         tapAttempts++;
 
-        // Schedule check 350ms later to see if Live opened, or retry
-        scheduleRetry(350);
+        // Schedule check 350ms later
+        scheduleRetry(RETRY_INTERVAL_MS);
     }
 
     private void scheduleRetry(long delayMs) {
@@ -374,25 +393,48 @@ public class GeminiAccessibilityService extends AccessibilityService {
     private synchronized void attemptEndLive() {
         if (!isWaitingToEndLive) return;
         isWaitingToEndLive = false;
-        Log.i(TAG, "Ending Gemini Live session: clicking Close [X] and sending BACK");
+        Log.i(TAG, "==========================================================");
+        Log.i(TAG, ">>> Ending Gemini Live session: clicking Close [X] & BACK <<<");
+        Log.i(TAG, "==========================================================");
 
-        // 1. Try finding and clicking the [X] close button (visible in 1000226324.jpg)
+        // Determine screen resolution dynamically
+        int screenWidth = 1080;
+        int screenHeight = 2408;
+        try {
+            WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+            if (wm != null) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    Rect b = wm.getMaximumWindowMetrics().getBounds();
+                    screenWidth = b.width();
+                    screenHeight = b.height();
+                } else {
+                    DisplayMetrics dm = new DisplayMetrics();
+                    wm.getDefaultDisplay().getRealMetrics(dm);
+                    screenWidth = dm.widthPixels;
+                    screenHeight = dm.heightPixels;
+                }
+            }
+        } catch (Throwable ignored) {}
+
+        // 1. Try finding and clicking the Close button node (verified in dump: desc="Close", bounds [828,1956][948,2076])
+        boolean clickedCloseNode = false;
         try {
             AccessibilityNodeInfo root = getRootInActiveWindow();
             if (root != null) {
                 AccessibilityNodeInfo closeNode = findNode(root, "Close Live", "End Live", "Stop Live", "Close");
                 if (closeNode != null) {
-                    closeNode.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                    clickedCloseNode = closeNode.performAction(AccessibilityNodeInfo.ACTION_CLICK);
                     closeNode.recycle();
-                    Log.i(TAG, "Clicked Live close node");
+                    Log.i(TAG, "Clicked Live close node: " + clickedCloseNode);
                 }
                 root.recycle();
             }
         } catch (Throwable ignored) {}
 
-        // 2. Dispatch tap gesture to [X] location (885, 2126) on Galaxy M33
-        int closeX = 885;
-        int closeY = 2126;
+        // 2. Dispatch tap gesture to Close [X] location: X=82.2%, Y=83.7% (center 888, 2016 on 1080x2408)
+        int closeX = (int) (screenWidth * 0.822f);
+        int closeY = (int) (screenHeight * 0.837f);
+        Log.i(TAG, "Dispatching tap gesture to Close [X] button at (" + closeX + ", " + closeY + ")");
         dispatchTapGesture(closeX, closeY);
 
         // 3. Fallback: Double Back to return cleanly to home screen

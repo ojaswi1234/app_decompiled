@@ -18,6 +18,7 @@ public class GeminiCallRedirectionService extends CallRedirectionService {
 
         String schemeSpecific = handle.getSchemeSpecificPart();
         Log.i(TAG, "onPlaceCall requested for: " + schemeSpecific);
+        GeminiCallInterceptor.init(getApplicationContext());
 
         if (GeminiCallInterceptor.isTriggerMatch(schemeSpecific)) {
             Log.i(TAG, ">>> MATCHED GEMINI CALL IN REDIRECTION SERVICE! REDIRECTING TO GEMINI CONNECTION SERVICE <<<");

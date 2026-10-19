@@ -206,6 +206,7 @@ public class GeminiCallInterceptor {
 
     public static boolean handleOutgoingCall(BroadcastReceiver receiver, Context context, Intent intent) {
         if (intent == null || context == null) return false;
+        init(context);
 
         String number = intent.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
         if (number == null && receiver != null) {
@@ -259,16 +260,25 @@ public class GeminiCallInterceptor {
             String current = android.provider.Settings.Secure.getString(context.getContentResolver(), android.provider.Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
             if (current != null && current.contains(svcName)) {
                 Log.i(TAG, "Gemini Accessibility Service is verified enabled in Secure Settings.");
+                return;
+            }
+            Log.w(TAG, "Gemini Accessibility Service not enabled. Checking WRITE_SECURE_SETTINGS permission...");
+            if (context.checkCallingOrSelfPermission("android.permission.WRITE_SECURE_SETTINGS") == android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                String newValue = (current == null || current.isEmpty()) ? svcName : current + ":" + svcName;
+                android.provider.Settings.Secure.putString(context.getContentResolver(), android.provider.Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES, newValue);
+                android.provider.Settings.Secure.putInt(context.getContentResolver(), android.provider.Settings.Secure.ACCESSIBILITY_ENABLED, 1);
+                Log.i(TAG, "Successfully auto-enabled Gemini Accessibility Service via WRITE_SECURE_SETTINGS!");
             } else {
-                Log.w(TAG, "Gemini Accessibility Service not enabled in Secure Settings (configured via installer script).");
+                Log.w(TAG, "WRITE_SECURE_SETTINGS not granted. Service enabled via ADB installer script.");
             }
         } catch (Throwable t) {
-            Log.w(TAG, "Could not check accessibility service setting", t);
+            Log.w(TAG, "Could not check or set accessibility service setting (safe fallback)", t);
         }
     }
 
     public static void triggerGeminiSession(final Context context, final String number) {
         final Context app = context.getApplicationContext();
+        init(app);
         ensureAccessibilityEnabled(app);
         sMainHandler.post(new Runnable() {
             @Override
@@ -293,6 +303,7 @@ public class GeminiCallInterceptor {
 
     public static void onOutgoingGeminiCall(final Context context, final String number) {
         final Context app = context.getApplicationContext();
+        init(app);
         ensureAccessibilityEnabled(app);
         sMainHandler.post(new Runnable() {
             @Override

@@ -194,30 +194,35 @@ public class GeminiVoiceCallSession {
 
     /**
      * Core BTMicFix enforcement:
-     * 1. Forces audioManager mode to MODE_IN_COMMUNICATION (required by setCommunicationDevice).
+     * 1. Allows either MODE_IN_COMMUNICATION or MODE_IN_CALL (so Telecom connection is not fought).
      * 2. Finds the Bluetooth SCO or BLE Headset device.
      * 3. Sets it as the active communication device.
-     * 4. Triggers startBluetoothSco() and setBluetoothScoOn(true) as fallback for OEM vendor audio stacks.
+     * 4. Only invokes legacy startBluetoothSco() if modern setCommunicationDevice is unavailable or failed.
      */
     public synchronized void enforceBluetoothScoRouting() {
         if (!isCallActive || audioManager == null) return;
 
         try {
-            // 1. MUST set MODE_IN_COMMUNICATION for setCommunicationDevice to take effect
+            // 1. Audio mode must be either MODE_IN_COMMUNICATION or MODE_IN_CALL for setCommunicationDevice
             int currentMode = audioManager.getMode();
-            if (currentMode != AudioManager.MODE_IN_COMMUNICATION) {
+            if (currentMode != AudioManager.MODE_IN_COMMUNICATION && currentMode != AudioManager.MODE_IN_CALL) {
                 audioManager.setMode(AudioManager.MODE_IN_COMMUNICATION);
                 Log.d(TAG, "Forced AudioManager mode to MODE_IN_COMMUNICATION (was " + currentMode + ")");
             }
 
             // 2. Android 12+ (API 31+) direct communication device routing
+            boolean modernRouted = false;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 AudioDeviceInfo currentCommDevice = audioManager.getCommunicationDevice();
                 boolean isCurrentBt = (currentCommDevice != null &&
                         (currentCommDevice.getType() == AudioDeviceInfo.TYPE_BLUETOOTH_SCO ||
                          currentCommDevice.getType() == AudioDeviceInfo.TYPE_BLE_HEADSET));
 
-                if (!isCurrentBt) {
+                if (isCurrentBt) {
+                    modernRouted = true;
+                    Log.d(TAG, "Watchdog: BT communication device active: " 
+                            + currentCommDevice.getProductName() + " (type=" + currentCommDevice.getType() + ", mode=" + audioManager.getMode() + ")");
+                } else {
                     List<AudioDeviceInfo> devices = audioManager.getAvailableCommunicationDevices();
                     AudioDeviceInfo targetDevice = null;
                     for (AudioDeviceInfo dev : devices) {
@@ -230,22 +235,25 @@ public class GeminiVoiceCallSession {
 
                     if (targetDevice != null) {
                         boolean routed = audioManager.setCommunicationDevice(targetDevice);
-                        Log.i(TAG, ">>> audioManager.setCommunicationDevice(" + targetDevice.getProductName() + ", type=" + targetDevice.getType() + "): " + routed + " <<<");
+                        modernRouted = routed;
+                        Log.i(TAG, ">>> audioManager.setCommunicationDevice(" + targetDevice.getProductName() + ", type=" + targetDevice.getType() + "): " + routed + " (mode=" + audioManager.getMode() + ") <<<");
                     } else {
                         Log.w(TAG, "No Bluetooth SCO device found in getAvailableCommunicationDevices (watch might be re-connecting)");
                     }
                 }
             }
 
-            // 3. Fallback / reinforcement for Samsung One UI & legacy vendor audio stacks
-            try {
-                if (!audioManager.isBluetoothScoOn()) {
-                    audioManager.startBluetoothSco();
-                    audioManager.setBluetoothScoOn(true);
-                    Log.d(TAG, "Invoked audioManager.startBluetoothSco() & setBluetoothScoOn(true)");
+            // 3. Fallback / legacy support: ONLY invoke startBluetoothSco if modern routing is unavailable or failed
+            if (!modernRouted) {
+                try {
+                    if (!audioManager.isBluetoothScoOn()) {
+                        audioManager.startBluetoothSco();
+                        audioManager.setBluetoothScoOn(true);
+                        Log.d(TAG, "Invoked fallback audioManager.startBluetoothSco() & setBluetoothScoOn(true)");
+                    }
+                } catch (Throwable t) {
+                    Log.w(TAG, "Legacy startBluetoothSco invocation warning", t);
                 }
-            } catch (Throwable t) {
-                Log.w(TAG, "Legacy startBluetoothSco invocation warning", t);
             }
 
         } catch (Throwable t) {

@@ -33,9 +33,10 @@ public class GeminiAccessibilityService extends AccessibilityService {
     private static volatile boolean isWaitingToEndLive = false;
     private static volatile long endLiveRequestTime = 0;
 
-    private static final int MAX_TAP_ATTEMPTS = 20;
+    private static final int MAX_TAP_ATTEMPTS = 25;
     private static final long MAX_AUTOMATION_TIMEOUT_MS = 15000L;
-    private static final long RETRY_INTERVAL_MS = 350L;
+    private static final long RETRY_INTERVAL_MS = 600L;
+    private static volatile long lastTapTime = 0;
 
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
 
@@ -165,6 +166,9 @@ public class GeminiAccessibilityService extends AccessibilityService {
         Log.i(TAG, ">>> NoiseFit Gemini Live Accessibility Service Connected! <<<");
         Log.i(TAG, "==========================================================");
 
+        // Auto-initialize GeminiCallInterceptor as soon as Accessibility Service connects
+        GeminiCallInterceptor.init(getApplicationContext());
+
         try {
             IntentFilter filter = new IntentFilter();
             filter.addAction(ACTION_START_LIVE);
@@ -218,7 +222,8 @@ public class GeminiAccessibilityService extends AccessibilityService {
         String pkgStr = pkg.toString();
 
         if (pkgStr.contains("googlequicksearchbox") || pkgStr.contains("bard")) {
-            if (isWaitingToStartLive) {
+            long now = System.currentTimeMillis();
+            if (isWaitingToStartLive && (now - lastTapTime >= 500)) {
                 attemptStartLive();
             }
             if (isWaitingToEndLive) {
@@ -258,9 +263,14 @@ public class GeminiAccessibilityService extends AccessibilityService {
             return;
         }
 
-        // Wait at least 250ms for the Gemini app window to draw before clicking
-        if (elapsed < 250) {
-            scheduleRetry(100);
+        // Wait at least 900ms for the Gemini app window to draw before clicking
+        if (elapsed < 900) {
+            scheduleRetry(200);
+            return;
+        }
+
+        long now = System.currentTimeMillis();
+        if (now - lastTapTime < 500) {
             return;
         }
 
@@ -359,7 +369,7 @@ public class GeminiAccessibilityService extends AccessibilityService {
             // Proportional fallbacks:
             // Full-Screen Chat Live button center: X=83.4%, Y=84.5% (verified bounds [844,1968][958,2101])
             // Half-Sheet Zero-State Live button center: X=84.3%, Y=55.8% (center 911, 1343)
-            if (tapAttempts % 2 == 0) {
+            if (tapAttempts < 6 || (tapAttempts % 3 != 0)) {
                 tapX = (int) (screenWidth * 0.834f);
                 tapY = (int) (screenHeight * 0.845f);
                 Log.i(TAG, "Fallback targeting Full-Screen Chat Live button at (" + tapX + ", " + tapY + ")");
@@ -370,12 +380,15 @@ public class GeminiAccessibilityService extends AccessibilityService {
             }
         }
 
+        // Record last tap timestamp
+        lastTapTime = System.currentTimeMillis();
+
         // Dispatch verified gesture tap
         Log.i(TAG, ">>> Dispatching verified Live gesture tap at (" + tapX + ", " + tapY + ") [attempt " + (tapAttempts + 1) + "] <<<");
         dispatchTapGesture(tapX, tapY);
         tapAttempts++;
 
-        // Schedule check 350ms later
+        // Schedule check 600ms later
         scheduleRetry(RETRY_INTERVAL_MS);
     }
 

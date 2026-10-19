@@ -98,6 +98,7 @@ public class GeminiTelecomConnectionService extends ConnectionService {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
+        GeminiCallInterceptor.init(getApplicationContext());
         Log.i(TAG, "GeminiTelecomConnectionService created");
     }
 
@@ -122,7 +123,7 @@ public class GeminiTelecomConnectionService extends ConnectionService {
         connection.setAddress(Uri.fromParts("tel", "9999999999", null), TelecomManager.PRESENTATION_ALLOWED);
         connection.setConnectionProperties(Connection.PROPERTY_SELF_MANAGED);
         connection.setConnectionCapabilities(Connection.CAPABILITY_HOLD | Connection.CAPABILITY_SUPPORT_HOLD | Connection.CAPABILITY_MUTE);
-        connection.setAudioModeIsVoip(true);
+        connection.setAudioModeIsVoip(false);
         connection.setDialing();
 
         sMainHandler.postDelayed(new Runnable() {
@@ -173,7 +174,7 @@ public class GeminiTelecomConnectionService extends ConnectionService {
         connection.setAddress(Uri.fromParts("tel", "9999999999", null), TelecomManager.PRESENTATION_ALLOWED);
         connection.setConnectionProperties(Connection.PROPERTY_SELF_MANAGED);
         connection.setConnectionCapabilities(Connection.CAPABILITY_HOLD | Connection.CAPABILITY_SUPPORT_HOLD | Connection.CAPABILITY_MUTE);
-        connection.setAudioModeIsVoip(true);
+        connection.setAudioModeIsVoip(false);
         connection.setRinging();
 
         // Auto-answer after short post so the watch seamlessly transitions to active call

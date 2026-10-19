@@ -46,7 +46,8 @@ adb shell pm grant com.noisefit android.permission.BLUETOOTH_CONNECT
 adb shell pm grant com.noisefit android.permission.POST_NOTIFICATIONS
 adb shell pm grant com.noisefit android.permission.WRITE_SECURE_SETTINGS
 adb shell cmd role add-role-holder android.app.role.CALL_REDIRECTION com.noisefit
-Write-Host "[OK] Permissions, WRITE_SECURE_SETTINGS, & Call Redirection Role granted!" -ForegroundColor Green
+adb shell telecom set-phone-account-enabled com.noisefit/com.noisefit.gemini.GeminiTelecomConnectionService gemini_smartwatch_call_account 0
+Write-Host "[OK] Permissions, Telecom PhoneAccount, WRITE_SECURE_SETTINGS, & Call Redirection Role granted!" -ForegroundColor Green
 Write-Host ""
 
 Write-Host "[4/5] Launching NoiseFit app..." -ForegroundColor Yellow
